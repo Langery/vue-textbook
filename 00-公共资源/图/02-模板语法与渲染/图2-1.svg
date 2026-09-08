@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" font-family="system-ui,PingFang SC,sans-serif">
+<rect width="720" height="400" fill="#fafafa"/>
+<text x="360" y="28" font-weight="bold" fill="#212529" font-size="17" text-anchor="middle">Vue 模板 = HTML + Vue 指令（超集）</text>
+
+<!-- 左侧：HTML 部分 -->
+<rect x="40" y="55" width="300" height="310" fill="#fff" stroke="#adb5bd" rx="4"/>
+<text x="190" y="80" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">HTML 部分（标准语法）</text>
+
+<rect x="56" y="95" width="268" height="30" fill="#f8f9fa" stroke="#dee2e6" rx="3"/>
+<text x="190" y="115" fill="#495057" font-size="11" font-family="monospace" text-anchor="middle">&lt;div class="card"&gt;</text>
+
+<rect x="76" y="130" width="228" height="26" fill="#f8f9fa" stroke="#dee2e6" rx="3"/>
+<text x="190" y="148" fill="#495057" font-size="11" font-family="monospace" text-anchor="middle">&lt;h1&gt;标题&lt;/h1&gt;</text>
+
+<rect x="76" y="160" width="228" height="26" fill="#f8f9fa" stroke="#dee2e6" rx="3"/>
+<text x="190" y="178" fill="#495057" font-size="11" font-family="monospace" text-anchor="middle">&lt;p&gt;段落&lt;/p&gt;</text>
+
+<rect x="76" y="190" width="228" height="26" fill="#f8f9fa" stroke="#dee2e6" rx="3"/>
+<text x="190" y="208" fill="#495057" font-size="11" font-family="monospace" text-anchor="middle">&lt;button&gt;按钮&lt;/button&gt;</text>
+
+<rect x="56" y="220" width="268" height="30" fill="#f8f9fa" stroke="#dee2e6" rx="3"/>
+<text x="190" y="240" fill="#495057" font-size="11" font-family="monospace" text-anchor="middle">&lt;/div&gt;</text>
+
+<text x="190" y="280" fill="#868e96" font-size="10" text-anchor="middle">浏览器原生认识</text>
+<text x="190" y="297" fill="#868e96" font-size="10" text-anchor="middle">设计师也能看懂</text>
+<text x="190" y="335" fill="#495057" font-size="11" font-weight="bold" text-anchor="middle">📐 骨架</text>
+
+<!-- 中间 + 号 -->
+<text x="360" y="218" font-weight="bold" fill="#495057" font-size="32" text-anchor="middle">+</text>
+
+<!-- 右侧：Vue 指令部分 -->
+<rect x="380" y="55" width="300" height="310" fill="#fff" stroke="#adb5bd" rx="4"/>
+<text x="530" y="80" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">Vue 指令（超能力）</text>
+
+<rect x="396" y="95" width="268" height="26" fill="#f8f9fa" stroke="#dee2e6" rx="3"/>
+<text x="530" y="113" fill="#495057" font-size="11" font-family="monospace" text-anchor="middle">{{ count }}  插值</text>
+
+<rect x="396" y="125" width="268" height="26" fill="#f8f9fa" stroke="#dee2e6" rx="3"/>
+<text x="530" y="143" fill="#495057" font-size="11" font-family="monospace" text-anchor="middle">v-if="seen"  条件</text>
+
+<rect x="396" y="155" width="268" height="26" fill="#f8f9fa" stroke="#dee2e6" rx="3"/>
+<text x="530" y="173" fill="#495057" font-size="11" font-family="monospace" text-anchor="middle">v-for  列表</text>
+
+<rect x="396" y="185" width="268" height="26" fill="#f8f9fa" stroke="#dee2e6" rx="3"/>
+<text x="530" y="203" fill="#495057" font-size="11" font-family="monospace" text-anchor="middle">@click  事件</text>
+
+<rect x="396" y="215" width="268" height="26" fill="#f8f9fa" stroke="#dee2e6" rx="3"/>
+<text x="530" y="233" fill="#495057" font-size="11" font-family="monospace" text-anchor="middle">v-model  双向绑定</text>
+
+<text x="530" y="280" fill="#868e96" font-size="10" text-anchor="middle">Vue 编译器处理</text>
+<text x="530" y="297" fill="#868e96" font-size="10" text-anchor="middle">让 HTML "活"起来</text>
+<text x="530" y="335" fill="#495057" font-size="11" font-weight="bold" text-anchor="middle">⚡ 超能力</text>
+
+<!-- 底部说明 -->
+<rect x="40" y="378" width="640" height="18" fill="#f1f3f5" stroke="#dee2e6" rx="3"/>
+<text x="360" y="391" fill="#495057" font-size="11" font-weight="bold" text-anchor="middle">合在一起 = 模板（HTML 的超集）</text>
+</svg>

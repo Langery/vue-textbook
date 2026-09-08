@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--
+  figure-1-1 v2 — 原生 JS 时代 UI 联动的噩梦
+  改进（vision 反馈 6.5/10）：
+  - 红色警示条移出 canvas（不遮挡节点）
+  - 节点从 8 个减到 6 个（降低密度）
+  - 节点布局更平衡
+-->
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>图 1-1 原生 JS 时代 UI 联动的噩梦</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: #fffaf0;
+    font-family: "Comic Sans MS", "Marker Felt", "STXingkai", "华文行楷", "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
+  #capture { width: 900px; padding: 24px 40px 30px; background: #fffaf0; }
+  .figure-title {
+    font-size: 26px; font-weight: bold; color: #2c2c2c;
+    text-align: center; margin-bottom: 8px; letter-spacing: 0.5px;
+  }
+  .figure-sub {
+    font-size: 16px; color: #5c5c5c;
+    text-align: center; font-style: italic; margin-bottom: 14px;
+  }
+  /* 红色警示条：放在 canvas 上方，不在内部 */
+  .manual-tag {
+    background: #c92a2a; color: #fffaf0;
+    padding: 8px 18px; border-radius: 8px;
+    font-size: 16px; font-weight: bold;
+    border: 2px solid #1e1e1e;
+    text-align: center; margin-bottom: 14px;
+    box-shadow: 3px 4px 0 rgba(0,0,0,0.12);
+  }
+  .canvas {
+    position: relative; width: 820px; height: 360px;
+    margin: 0 auto; background: #fff3bf; border-radius: 14px;
+    border: 2.5px solid #1e1e1e;
+  }
+  /* 中心数据节点 */
+  .center-data {
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffc9c9; border: 3px solid #c92a2a;
+    border-radius: 12px; padding: 14px 20px;
+    font-weight: bold; color: #c92a2a;
+    text-align: center; box-shadow: 4px 5px 0 rgba(0,0,0,0.15);
+    z-index: 5; min-width: 150px;
+  }
+  .center-data .emoji { font-size: 30px; display: block; margin-bottom: 4px; }
+  .center-data .label { font-size: 17px; }
+  .center-data .value { font-size: 16px; font-style: italic; margin-top: 4px; }
+  /* 外围 UI 节点 - 6 个 */
+  .ui-node {
+    position: absolute;
+    background: #dbe4ff; border: 2.5px solid #1e1e1e;
+    border-radius: 10px; padding: 8px 12px;
+    font-size: 14px; font-weight: bold; color: #1e1e1e;
+    text-align: center; min-width: 110px;
+    box-shadow: 2px 3px 0 rgba(0,0,0,0.12);
+  }
+  .ui-node .emoji { font-size: 18px; display: block; margin-bottom: 2px; }
+  /* 节点位置（6 个，平衡分布） */
+  .n1 { top: 20px; left: 100px; transform: rotate(-3deg); }
+  .n2 { top: 20px; right: 100px; transform: rotate(2deg); }
+  .n3 { top: 165px; left: 30px; transform: rotate(1.5deg); }
+  .n4 { top: 165px; right: 30px; transform: rotate(-1.5deg); }
+  .n5 { bottom: 20px; left: 130px; transform: rotate(-2deg); }
+  .n6 { bottom: 20px; right: 130px; transform: rotate(2deg); }
+  .equation { text-align: center; font-size: 18px; color: #5c5c5c; margin-top: 16px; font-style: italic; }
+  .jitter { filter: url(#handDrawn); }
+</style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute;">
+    <defs>
+      <filter id="handDrawn">
+        <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="11"/>
+        <feDisplacementMap in="SourceGraphic" scale="2.5"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <div id="capture">
+    <div class="figure-title">图 1-1 &nbsp; 原生 JS 时代 UI 联动的噩梦</div>
+    <div class="figure-sub">一次"点赞"会触发多个 UI 更新，全靠手动维护</div>
+
+    <!-- 警示条放在 canvas 外面（修复遮挡） -->
+    <div class="manual-tag">⚠️ 全靠手动维护：找元素 → 改元素</div>
+
+    <div class="canvas jitter">
+      <!-- 中心数据 -->
+      <div class="center-data">
+        <span class="emoji">📊</span>
+        <div class="label">点赞数据</div>
+        <div class="value">count = 5</div>
+      </div>
+
+      <!-- 6 个 UI 节点 -->
+      <div class="ui-node n1">
+        <span class="emoji">👍</span>
+        点赞按钮
+      </div>
+      <div class="ui-node n2">
+        <span class="emoji">🔔</span>
+        通知中心
+      </div>
+      <div class="ui-node n3">
+        <span class="emoji">👤</span>
+        头像红点
+      </div>
+      <div class="ui-node n4">
+        <span class="emoji">📈</span>
+        排行榜
+      </div>
+      <div class="ui-node n5">
+        <span class="emoji">💬</span>
+        评论数
+      </div>
+      <div class="ui-node n6">
+        <span class="emoji">📊</span>
+        用户积分
+      </div>
+
+      <!-- SVG 箭头：6 条 -->
+      <svg width="820" height="360" style="position:absolute; top:0; left:0; pointer-events:none;">
+        <defs>
+          <marker id="arrowhead1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#c92a2a"/>
+          </marker>
+        </defs>
+        <path d="M 165 65 Q 270 100, 360 165" stroke="#c92a2a" stroke-width="2" fill="none" stroke-dasharray="4,3" marker-end="url(#arrowhead1)"/>
+        <path d="M 680 65 Q 560 100, 460 165" stroke="#c92a2a" stroke-width="2" fill="none" stroke-dasharray="4,3" marker-end="url(#arrowhead1)"/>
+        <path d="M 90 195 Q 220 195, 340 185" stroke="#c92a2a" stroke-width="2" fill="none" stroke-dasharray="4,3" marker-end="url(#arrowhead1)"/>
+        <path d="M 720 195 Q 580 195, 470 185" stroke="#c92a2a" stroke-width="2" fill="none" stroke-dasharray="4,3" marker-end="url(#arrowhead1)"/>
+        <path d="M 185 305 Q 280 270, 360 210" stroke="#c92a2a" stroke-width="2" fill="none" stroke-dasharray="4,3" marker-end="url(#arrowhead1)"/>
+        <path d="M 660 305 Q 550 270, 450 210" stroke="#c92a2a" stroke-width="2" fill="none" stroke-dasharray="4,3" marker-end="url(#arrowhead1)"/>
+      </svg>
+    </div>
+
+    <div class="equation">改 1 个数据 → 改 6 个 DOM 元素，bug 多到怀疑人生</div>
+  </div>
+</body>
+</html>

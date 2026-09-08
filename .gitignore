@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# 构建预览产物（保留 preview.html，其余旧截图/备份不入库）
+_dev_artifacts/*.png
+_dev_artifacts/preview.html
+_dev_artifacts/*.bak
+_dev_artifacts/*.bak2
+_dev_artifacts/*.card-backup
+_dev_artifacts/*.svg-backup
+_dev_artifacts/output/
+_dev_artifacts/temp/
+
+# 本地构建临时文件
+__pycache__/
+*.pyc

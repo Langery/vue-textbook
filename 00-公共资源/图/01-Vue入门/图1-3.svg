@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="340" viewBox="0 0 700 340" font-family="system-ui, -apple-system, sans-serif"><rect width="700" height="340" fill="#fff"/>
+  <rect width="700" height="340" fill="#1a1a2e"/>
+  <rect x="0" y="0" width="700" height="48" fill="#333"/>
+  <text x="30" y="31" fill="#8c8" font-size="16" font-weight="bold">Node.js&#174;</text>
+  <text x="620" y="31" fill="#ccc" font-size="13" text-anchor="end">Docs · About · Download</text>
+  <rect x="80" y="100" width="250" height="160" rx="8" fill="#2a2a3e" stroke="#4c4" stroke-width="2"/>
+  <text x="205" y="145" fill="#4c4" font-size="22" font-weight="bold" text-anchor="middle">LTS</text>
+  <text x="205" y="175" fill="#fff" font-size="13" text-anchor="middle">长期支持版本</text>
+  <text x="205" y="205" fill="#ccc" font-size="28" font-weight="bold" text-anchor="middle">20.x.x</text>
+  <text x="205" y="235" fill="#8c8" font-size="14" text-anchor="middle">推荐给大多数用户</text>
+  <rect x="380" y="100" width="240" height="160" rx="8" fill="#2a2a3e" stroke="#666" stroke-width="1"/>
+  <text x="500" y="145" fill="#888" font-size="22" font-weight="bold" text-anchor="middle">Current</text>
+  <text x="500" y="175" fill="#888" font-size="13" text-anchor="middle">最新特性版本</text>
+  <text x="500" y="205" fill="#888" font-size="28" font-weight="bold" text-anchor="middle">22.x.x</text>
+  <text x="500" y="235" fill="#888" font-size="14" text-anchor="middle">尝鲜版</text>
+  <text x="350" y="300" fill="#4c4" font-size="15" text-anchor="middle">▲ 下载 LTS 版，不要下 Current 版</text>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400">
+  <defs>
+    <filter id="rough">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fdfaf2"/>
+      <stop offset="100%" stop-color="#f5eedc"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="400" fill="url(#bg)" rx="8" filter="url(#rough)"/>
+  <rect x="12" y="12" width="696" height="376" fill="none" stroke="#d4c5a0" stroke-width="2" rx="6" stroke-dasharray="12,4"/>
+  <text x="360" y="175" text-anchor="middle" font-family="Georgia, 'Noto Serif SC', serif" font-size="28" fill="#5c4a2e" font-weight="bold">图 2-9</text>
+  <text x="360" y="220" text-anchor="middle" font-family="Georgia, 'Noto Serif SC', serif" font-size="18" fill="#8b7355">图 2-9：v-if vs v-show 决策树</text>
+  <line x1="180" y1="250" x2="540" y2="250" stroke="#d4c5a0" stroke-width="1.5"/>
+  <text x="360" y="290" text-anchor="middle" font-family="monospace" font-size="13" fill="#a09080">占位图 · 待替换为正式插图</text>
+</svg>

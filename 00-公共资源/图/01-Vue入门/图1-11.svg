@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="320" viewBox="0 0 700 320" font-family="system-ui, -apple-system, sans-serif"><rect width="700" height="320" fill="#fff"/>
+  <rect width="700" height="320" fill="#f8f9fa" rx="6" stroke="#dee2e6" stroke-width="1"/>
+  <rect x="40" y="30" width="620" height="70" rx="6" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5"/>
+  <text x="60" y="52" fill="#1971c2" font-size="14" font-weight="bold" font-family="monospace">&lt;template&gt;</text>
+  <text x="60" y="72" fill="#495057" font-size="13" font-family="monospace">  &lt;h1&gt;{{ msg }}&lt;/h1&gt;</text>
+  <text x="60" y="90" fill="#1971c2" font-size="14" font-weight="bold" font-family="monospace">&lt;/template&gt;</text>
+  <text x="570" y="65" fill="#868e96" font-size="12" text-anchor="end">HTML 模板</text>
+
+  <rect x="40" y="120" width="620" height="70" rx="6" fill="#fff9db" stroke="#fab005" stroke-width="1.5"/>
+  <text x="60" y="142" fill="#fab005" font-size="14" font-weight="bold" font-family="monospace">&lt;script setup&gt;</text>
+  <text x="60" y="162" fill="#495057" font-size="13" font-family="monospace">  const msg = ref('Hello Vue!')</text>
+  <text x="80" y="180" fill="#868e96" font-size="12" font-family="monospace">// 逻辑 &amp; 数据</text>
+  <text x="570" y="155" fill="#868e96" font-size="12" text-anchor="end">组件逻辑</text>
+
+  <rect x="40" y="210" width="620" height="70" rx="6" fill="#d3f9d8" stroke="#2f9e44" stroke-width="1.5"/>
+  <text x="60" y="232" fill="#2f9e44" font-size="14" font-weight="bold" font-family="monospace">&lt;style scoped&gt;</text>
+  <text x="60" y="252" fill="#495057" font-size="13" font-family="monospace">  h1 { color: green; }</text>
+  <text x="80" y="270" fill="#868e96" font-size="12" font-family="monospace">/* 组件样式 */</text>
+  <text x="570" y="245" fill="#868e96" font-size="12" text-anchor="end">组件样式</text>
+  <text x="350" y="310" fill="#333" font-size="15" font-weight="bold" text-anchor="middle">一个 .vue 文件 = 模板 + 逻辑 + 样式</text>
+</svg>

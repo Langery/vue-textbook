@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" font-family="system-ui,PingFang SC,sans-serif">
+<rect width="720" height="400" fill="#fafafa"/>
+<text x="360" y="28" font-weight="bold" fill="#212529" font-size="17" text-anchor="middle">传统一页到底 vs 组件化开发</text>
+
+<!-- 左侧：传统（一页到底）— 浅灰主调，仅"问题"用红色细标 -->
+<rect x="30" y="50" width="310" height="320" fill="#fff" stroke="#adb5bd" rx="4"/>
+<text x="185" y="74" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">❌ 一页到底（index.html）</text>
+
+<rect x="46" y="86" width="278" height="32" fill="#f8f9fa" stroke="#dee2e6" rx="3"/>
+<text x="185" y="106" fill="#868e96" font-size="11" font-family="monospace" text-anchor="middle">index.html</text>
+
+<rect x="46" y="124" width="278" height="26" fill="#f8f9fa" stroke="#dee2e6" rx="3"/>
+<text x="185" y="142" fill="#495057" font-size="10" font-family="monospace" text-anchor="middle">├── 头部 + 轮播图 + 商品列表</text>
+
+<rect x="46" y="156" width="278" height="26" fill="#f8f9fa" stroke="#dee2e6" rx="3"/>
+<text x="185" y="174" fill="#495057" font-size="10" font-family="monospace" text-anchor="middle">├── 侧边栏 + 底部 + 弹窗 ...</text>
+
+<text x="185" y="210" fill="#868e96" font-size="10" text-anchor="middle">500 行 HTML + 300 行 CSS + 200 行 JS</text>
+<text x="185" y="226" fill="#868e96" font-size="10" text-anchor="middle">全部堆在一个文件里</text>
+
+<line x1="46" y1="244" x2="324" y2="244" stroke="#dee2e6" stroke-width="1"/>
+
+<text x="185" y="266" fill="#c92a2a" font-size="11" text-anchor="middle" font-weight="bold">改一个轮播图</text>
+<text x="185" y="285" fill="#868e96" font-size="10" text-anchor="middle">→ 在 500 行 HTML 里找位置</text>
+<text x="185" y="302" fill="#868e96" font-size="10" text-anchor="middle">→ 在 300 行 CSS 里找样式</text>
+<text x="185" y="319" fill="#868e96" font-size="10" text-anchor="middle">→ 在 200 行 JS 里找事件</text>
+
+<rect x="46" y="338" width="278" height="22" fill="#fff5f5" stroke="#ffc9c9" rx="3"/>
+<text x="185" y="353" fill="#c92a2a" font-size="10" font-weight="bold" text-anchor="middle">⚠️ 改小东西，全局颤抖</text>
+
+<!-- 右侧：组件化 — 浅灰主调，仅"结果"用绿色细标 -->
+<rect x="380" y="50" width="310" height="320" fill="#fff" stroke="#adb5bd" rx="4"/>
+<text x="535" y="74" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">✅ 组件化</text>
+
+<rect x="396" y="86" width="278" height="26" fill="#f8f9fa" stroke="#dee2e6" rx="3"/>
+<text x="535" y="103" fill="#495057" font-size="10" font-family="monospace" text-anchor="middle">components/Header.vue</text>
+
+<rect x="396" y="116" width="278" height="26" fill="#f8f9fa" stroke="#dee2e6" rx="3"/>
+<text x="535" y="133" fill="#495057" font-size="10" font-family="monospace" text-anchor="middle">components/Carousel.vue</text>
+
+<rect x="396" y="146" width="278" height="26" fill="#f8f9fa" stroke="#dee2e6" rx="3"/>
+<text x="535" y="163" fill="#495057" font-size="10" font-family="monospace" text-anchor="middle">components/ProductList.vue</text>
+
+<rect x="396" y="176" width="278" height="26" fill="#f8f9fa" stroke="#dee2e6" rx="3"/>
+<text x="535" y="193" fill="#495057" font-size="10" font-family="monospace" text-anchor="middle">components/Sidebar.vue</text>
+
+<rect x="396" y="206" width="278" height="26" fill="#f8f9fa" stroke="#dee2e6" rx="3"/>
+<text x="535" y="223" fill="#495057" font-size="10" font-family="monospace" text-anchor="middle">components/Footer.vue</text>
+
+<line x1="396" y1="244" x2="674" y2="244" stroke="#dee2e6" stroke-width="1"/>
+
+<text x="535" y="266" fill="#2b8a3e" font-size="11" text-anchor="middle" font-weight="bold">改轮播图</text>
+<text x="535" y="285" fill="#868e96" font-size="10" text-anchor="middle">→ 只改 Carousel.vue 一个文件</text>
+<text x="535" y="302" fill="#868e96" font-size="10" text-anchor="middle">→ 其他组件完全不动</text>
+
+<rect x="396" y="338" width="278" height="22" fill="#ebfbee" stroke="#b2f2bb" rx="3"/>
+<text x="535" y="353" fill="#2b8a3e" font-size="10" font-weight="bold" text-anchor="middle">✓ 各管各的，互不影响</text>
+</svg>

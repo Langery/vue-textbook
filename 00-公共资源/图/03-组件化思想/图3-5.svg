@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="340" viewBox="0 0 720 340" font-family="system-ui,PingFang SC,sans-serif">
+<defs><marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#666"/></marker></defs>
+<rect width="720" height="340" fill="#fafafa"/>
+<text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">动态组件的比喻 —— 遥控器切换信号源</text>
+
+<!-- Remote -->
+<rect x="30" y="55" width="160" height="260" fill="#f8f9fa" stroke="#adb5bd" stroke-width="1.5" rx="8"/>
+<text x="110" y="85" font-weight="bold" fill="#333" font-size="14" text-anchor="middle">遥控器</text>
+<rect x="55" y="100" width="110" height="28" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+<text x="110" y="119"  fill="#1971c2" font-size="11" text-anchor="middle">HDMI 1</text>
+<rect x="55" y="138" width="110" height="28" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+<text x="110" y="157"  fill="#2f9e44" font-size="11" text-anchor="middle">HDMI 2</text>
+<rect x="55" y="176" width="110" height="28" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+<text x="110" y="195"  fill="#e8590c" font-size="11" text-anchor="middle">AV 信号</text>
+<rect x="55" y="220" width="110" height="28" fill="#f3f0ff" stroke="#7048e8" stroke-width="1.5" rx="4"/>
+<text x="110" y="239"  fill="#7048e8" font-size="11" text-anchor="middle">USB</text>
+<text x="110" y="280" font-weight="bold" fill="#c92a2a" font-size="11" text-anchor="middle">:is 绑定值</text>
+
+<text x="235" y="170" font-weight="bold" fill="#666" font-size="14" text-anchor="middle">→ 切换 →</text>
+
+<!-- Screen showing active component -->
+<rect x="310" y="55" width="380" height="260" fill="#fff" stroke="#333" stroke-width="1.5" rx="8"/>
+<text x="500" y="82"  fill="#7048e8" font-size="12" text-anchor="middle">&lt;component :is=&quot;currentTab&quot; /&gt;</text>
+<rect x="335" y="100" width="330" height="100" fill="#e7f3ff" stroke="#1971c2" rx="4"/>
+<text x="500" y="135" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">当前激活：HomePage.vue</text>
+<text x="500" y="155"  fill="#868e96" font-size="11" text-anchor="middle">其他组件被销毁/缓存</text>
+
+<rect x="335" y="220" width="70" height="30" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+<text x="370" y="240"  fill="#1971c2" font-size="11" text-anchor="middle">首页</text>
+<rect x="415" y="220" width="70" height="30" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+<text x="450" y="240"  fill="#2f9e44" font-size="11" text-anchor="middle">列表</text>
+<rect x="495" y="220" width="70" height="30" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+<text x="530" y="240"  fill="#e8590c" font-size="11" text-anchor="middle">设置</text>
+<rect x="575" y="220" width="70" height="30" fill="#f3f0ff" stroke="#7048e8" stroke-width="1.5" rx="4"/>
+<text x="610" y="240"  fill="#7048e8" font-size="11" text-anchor="middle">关于</text>
+
+<text x="500" y="295" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">Tab 切换 / 多步骤表单 / 仪表盘</text>
+
+</svg>

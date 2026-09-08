@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" font-family="system-ui,PingFang SC,sans-serif">
+<rect width="720" height="400" fill="#fafafa"/>
+<text x="360" y="28" font-weight="bold" fill="#212529" font-size="17" text-anchor="middle">v-bind 动态属性绑定的 3 种写法</text>
+
+<!-- 1. 完整写法 -->
+<rect x="40" y="60" width="640" height="80" fill="#fff" stroke="#adb5bd" rx="4"/>
+<text x="56" y="84" fill="#1971c2" font-size="12" font-weight="bold">① 完整写法 v-bind:（最清晰）</text>
+<rect x="56" y="95" width="608" height="32" fill="#1e1e1e" rx="3"/>
+<text x="66" y="116" fill="#d4d4d4" font-size="12" font-family="monospace">&lt;img </text>
+<text x="115" y="116" fill="#9cdcfe" font-size="12" font-family="monospace">v-bind:src</text>
+<text x="195" y="116" fill="#ce9178" font-size="12" font-family="monospace">="imageUrl"</text>
+<text x="295" y="116" fill="#d4d4d4" font-size="12" font-family="monospace"> :</text>
+<text x="311" y="116" fill="#9cdcfe" font-size="12" font-family="monospace">alt</text>
+<text x="345" y="116" fill="#ce9178" font-size="12" font-family="monospace">="头像"&gt;</text>
+
+<!-- 2. 简写 -->
+<rect x="40" y="150" width="640" height="80" fill="#fff" stroke="#adb5bd" rx="4"/>
+<text x="56" y="174" fill="#1971c2" font-size="12" font-weight="bold">② 简写 :（最常用，99% 场景）</text>
+<rect x="56" y="185" width="608" height="32" fill="#1e1e1e" rx="3"/>
+<text x="66" y="206" fill="#d4d4d4" font-size="12" font-family="monospace">&lt;img </text>
+<text x="115" y="206" fill="#9cdcfe" font-size="12" font-family="monospace">:src</text>
+<text x="170" y="206" fill="#ce9178" font-size="12" font-family="monospace">="imageUrl"</text>
+<text x="270" y="206" fill="#d4d4d4" font-size="12" font-family="monospace"> :</text>
+<text x="286" y="206" fill="#9cdcfe" font-size="12" font-family="monospace">alt</text>
+<text x="320" y="206" fill="#ce9178" font-size="12" font-family="monospace">="头像"&gt;</text>
+
+<!-- 3. 动态属性名 -->
+<rect x="40" y="240" width="640" height="80" fill="#fff" stroke="#adb5bd" rx="4"/>
+<text x="56" y="264" fill="#1971c2" font-size="12" font-weight="bold">③ 动态属性名（高级用法）：v-bind:[属性名]</text>
+<rect x="56" y="275" width="608" height="32" fill="#1e1e1e" rx="3"/>
+<text x="66" y="296" fill="#d4d4d4" font-size="12" font-family="monospace">&lt;img </text>
+<text x="115" y="296" fill="#9cdcfe" font-size="12" font-family="monospace">:[attrName]</text>
+<text x="220" y="296" fill="#ce9178" font-size="12" font-family="monospace">="imageUrl"</text>
+<text x="335" y="296" fill="#6a9955" font-size="12" font-family="monospace"> // attrName = 'src' 或 'alt'</text>
+
+<!-- 底部 -->
+<rect x="40" y="345" width="640" height="34" fill="#ebfbee" stroke="#b2f2bb" rx="4"/>
+<text x="360" y="368" fill="#2b8a3e" font-size="12" font-weight="bold" text-anchor="middle">记住：v-bind 是所有"动态属性"的入口，简写 : 一辈子够用</text>
+</svg>

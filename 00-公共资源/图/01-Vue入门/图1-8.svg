@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="340" viewBox="0 0 700 340" font-family="system-ui, -apple-system, sans-serif"><rect width="700" height="340" fill="#fff"/>
+  <rect width="700" height="340" fill="#f8f9fa" rx="6" stroke="#dee2e6" stroke-width="1"/>
+  <text x="30" y="35" fill="#333" font-size="18" font-weight="bold">my-vue-app/</text>
+  <text x="50" y="65" fill="#1971c2" font-size="14" font-family="monospace">├── index.html</text>
+  <text x="70" y="88" fill="#888" font-size="11" font-family="monospace">入口 HTML</text>
+  <text x="50" y="115" fill="#1971c2" font-size="14" font-family="monospace">├── package.json</text>
+  <text x="70" y="138" fill="#888" font-size="11" font-family="monospace">项目配置 &amp; 依赖</text>
+  <text x="50" y="165" fill="#1971c2" font-size="14" font-family="monospace">├── vite.config.js</text>
+  <text x="70" y="188" fill="#888" font-size="11" font-family="monospace">Vite 构建配置</text>
+  <text x="50" y="215" fill="#e8590c" font-size="14" font-family="monospace">├── src/</text>
+  <text x="70" y="238" fill="#333" font-size="13" font-family="monospace">│  ├── App.vue</text>
+  <text x="90" y="258" fill="#888" font-size="11" font-family="monospace">根组件</text>
+  <text x="70" y="282" fill="#333" font-size="13" font-family="monospace">│  └── main.js</text>
+  <text x="90" y="302" fill="#888" font-size="11" font-family="monospace">入口 JS</text>
+  <text x="50" y="330" fill="#999" font-size="14" font-family="monospace">└── node_modules/</text>
+  <text x="70" y="330" fill="#999" font-size="11" font-family="monospace"> 依赖（不要手动改）</text>
+</svg>

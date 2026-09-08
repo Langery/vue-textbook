@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="380" viewBox="0 0 720 380" font-family="system-ui,PingFang SC,sans-serif">
+
+<rect width="720" height="380" fill="#fafafa"/>
+<text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">选项式 API vs 组合式 API：代码组织对比</text>
+
+<!-- Options API -->
+<rect x="20" y="55" width="330" height="305" fill="#f3f0ff" stroke="#7048e8" rx="6"/>
+<text x="185" y="80" font-weight="bold" fill="#7048e8" font-size="14" text-anchor="middle">选项式 API (Options API)</text>
+<rect x="40" y="95" width="140" height="35" fill="#e5dbff" stroke="#7048e8" stroke-width="1.5" rx="4"/>
+<text x="110" y="117" font-weight="bold" fill="#6741d9" font-size="12" text-anchor="middle">data()</text>
+<rect x="190" y="95" width="140" height="35" fill="#e5dbff" stroke="#7048e8" stroke-width="1.5" rx="4"/>
+<text x="260" y="117" font-weight="bold" fill="#6741d9" font-size="12" text-anchor="middle">methods</text>
+<rect x="40" y="140" width="140" height="35" fill="#e5dbff" stroke="#7048e8" stroke-width="1.5" rx="4"/>
+<text x="110" y="162" font-weight="bold" fill="#6741d9" font-size="12" text-anchor="middle">computed</text>
+<rect x="190" y="140" width="140" height="35" fill="#e5dbff" stroke="#7048e8" stroke-width="1.5" rx="4"/>
+<text x="260" y="162" font-weight="bold" fill="#6741d9" font-size="12" text-anchor="middle">watch</text>
+<rect x="40" y="185" width="140" height="35" fill="#e5dbff" stroke="#7048e8" stroke-width="1.5" rx="4"/>
+<text x="110" y="207" font-weight="bold" fill="#6741d9" font-size="12" text-anchor="middle">mounted()</text>
+<rect x="190" y="185" width="140" height="35" fill="#e5dbff" stroke="#7048e8" stroke-width="1.5" rx="4"/>
+<text x="260" y="207" font-weight="bold" fill="#6741d9" font-size="12" text-anchor="middle">components</text>
+
+<!-- arrows showing scattered logic -->
+<line x1="75" y1="240" x2="75" y2="290" stroke="#adb5bd" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="260" y1="240" x2="260" y2="290" stroke="#adb5bd" stroke-width="1" stroke-dasharray="3,3"/>
+<line x1="110" y1="240" x2="260" y2="290" stroke="#adb5bd" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="185" y="270"  fill="#adb5bd" font-size="11" text-anchor="middle">同一功能分散在多个选项</text>
+<text x="185" y="290"  fill="#adb5bd" font-size="11" text-anchor="middle">跨选项跳转，心智负担大</text>
+
+<text x="185" y="330" font-weight="bold" fill="#7048e8" font-size="12" text-anchor="middle">按「选项类型」组织代码</text>
+
+<!-- Composition API -->
+<rect x="370" y="55" width="330" height="305" fill="#e7f3ff" stroke="#1971c2" rx="6"/>
+<text x="535" y="80" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">组合式 API (Composition API)</text>
+
+<rect x="385" y="98" width="140" height="80" fill="#cce5ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+<text x="455" y="120" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">搜索功能</text>
+<text x="455" y="140"  fill="#495057" font-size="10" text-anchor="middle">ref / computed</text>
+<text x="455" y="158"  fill="#495057" font-size="10" text-anchor="middle">watch / methods</text>
+<text x="455" y="175"  fill="#495057" font-size="10" text-anchor="middle">全部写在一起</text>
+
+<rect x="535" y="98" width="140" height="80" fill="#cce5ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+<text x="605" y="120" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">分页功能</text>
+<text x="605" y="140"  fill="#495057" font-size="10" text-anchor="middle">ref / computed</text>
+<text x="605" y="158"  fill="#495057" font-size="10" text-anchor="middle">watch / methods</text>
+<text x="605" y="175"  fill="#495057" font-size="10" text-anchor="middle">全部写在一起</text>
+
+<rect x="385" y="195" width="140" height="80" fill="#cce5ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+<text x="455" y="217" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">表单校验</text>
+<text x="455" y="237"  fill="#495057" font-size="10" text-anchor="middle">ref / computed</text>
+<text x="455" y="255"  fill="#495057" font-size="10" text-anchor="middle">watch / methods</text>
+<text x="455" y="272"  fill="#495057" font-size="10" text-anchor="middle">全部写在一起</text>
+
+<rect x="535" y="195" width="140" height="80" fill="#cce5ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+<text x="605" y="217" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">useXxx()</text>
+<text x="605" y="237"  fill="#495057" font-size="11" text-anchor="middle">可抽离</text>
+<text x="605" y="255"  fill="#495057" font-size="11" text-anchor="middle">可复用</text>
+<text x="605" y="272"  fill="#495057" font-size="11" text-anchor="middle">可测试</text>
+
+<text x="535" y="315" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">按「功能」组织代码</text>
+<text x="535" y="340"  fill="#495057" font-size="12" text-anchor="middle">setup() 或 &lt;script setup&gt;</text>
+
+</svg>

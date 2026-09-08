@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="300" viewBox="0 0 700 300" font-family="system-ui, -apple-system, sans-serif"><rect width="700" height="300" fill="#fff"/>
+  <rect width="700" height="300" fill="#252526"/>
+  <rect x="0" y="0" width="48" height="300" fill="#333"/>
+  <rect x="48" y="0" width="280" height="300" fill="#252526"/>
+  <rect x="48" y="0" width="280" height="36" fill="#383838"/>
+  <text x="64" y="24" fill="#ccc" font-size="12">扩展</text>
+  <rect x="64" y="50" width="248" height="28" rx="4" fill="#3c3c3c"/>
+  <text x="76" y="70" fill="#888" font-size="12">Volar</text>
+  <rect x="64" y="90" width="248" height="44" rx="4" fill="#094771"/>
+  <text x="76" y="108" fill="#fff" font-size="14" font-weight="bold">Vue - Official</text>
+  <text x="76" y="125" fill="#aaa" font-size="11">Vue Language Features (Volar)</text>
+  <rect x="280" y="98" width="28" height="28" rx="4" fill="#007acc"/>
+  <text x="294" y="118" fill="#fff" font-size="14" text-anchor="middle">↓</text>
+  <text x="76" y="150" fill="#999" font-size="11">Vue, Inc. | 12.3M installs</text>
+  <text x="76" y="170" fill="#ccc" font-size="12">Vue 3 语法高亮、智能提示、模板诊断</text>
+  <rect x="340" y="0" width="360" height="300" fill="#1e1e1e"/>
+  <rect x="340" y="0" width="360" height="28" fill="#2d2d2d"/>
+  <text x="520" y="19" fill="#999" font-size="11" text-anchor="middle">App.vue — 已安装 Volar 后的效果</text>
+  <text x="360" y="60" fill="#569cd6" font-size="13" font-family="monospace">&lt;script setup&gt;</text>
+  <text x="360" y="90" fill="#dcdcaa" font-size="13" font-family="monospace">import</text>
+  <text x="430" y="90" fill="#ccc" font-size="13" font-family="monospace"> { ref } </text>
+  <text x="510" y="90" fill="#dcdcaa" font-size="13" font-family="monospace">from</text>
+  <text x="550" y="90" fill="#ce9178" font-size="13" font-family="monospace">'vue'</text>
+</svg>

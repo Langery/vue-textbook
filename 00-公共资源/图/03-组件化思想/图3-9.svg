@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="340" viewBox="0 0 720 340" font-family="system-ui,PingFang SC,sans-serif">
+<defs><marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#666"/></marker></defs>
+<rect width="720" height="340" fill="#fafafa"/>
+<text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">单向数据流：Props 向下，事件向上</text>
+
+<!-- Root -->
+<rect x="260" y="55" width="200" height="50" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="6"/>
+<text x="360" y="85" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">根组件 App.vue</text>
+
+<!-- Level 2 -->
+<rect x="100" y="150" width="140" height="45" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="6"/>
+<text x="170" y="178" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">Header.vue</text>
+<rect x="290" y="150" width="140" height="45" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="6"/>
+<text x="360" y="178" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">Main.vue</text>
+<rect x="480" y="150" width="140" height="45" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="6"/>
+<text x="550" y="178" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">Footer.vue</text>
+
+<!-- Level 3 -->
+<rect x="290" y="240" width="80" height="45" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="6"/>
+<text x="330" y="268" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="middle">Card</text>
+<rect x="385" y="240" width="80" height="45" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="6"/>
+<text x="425" y="268" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="middle">List</text>
+
+<!-- Props arrows (down) -->
+<line x1="310" y1="110" x2="170" y2="145" stroke="#1971c2" stroke-width="2" marker-end="url(#arrowhead)"/>
+<line x1="360" y1="110" x2="360" y2="145" stroke="#1971c2" stroke-width="2" marker-end="url(#arrowhead)"/>
+<line x1="410" y1="110" x2="550" y2="145" stroke="#1971c2" stroke-width="2" marker-end="url(#arrowhead)"/>
+<line x1="330" y1="200" x2="310" y2="235" stroke="#1971c2" stroke-width="2" marker-end="url(#arrowhead)"/>
+<line x1="390" y1="200" x2="405" y2="235" stroke="#1971c2" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+<!-- Emit arrows (up) -->
+<line x1="175" y1="200" x2="235" y2="130" stroke="#e8590c" stroke-width="2" marker-end="url(#arrowhead)" stroke-dasharray="6,3"/>
+<line x1="545" y1="200" x2="485" y2="130" stroke="#e8590c" stroke-width="2" marker-end="url(#arrowhead)" stroke-dasharray="6,3"/>
+<line x1="315" y1="290" x2="280" y2="225" stroke="#e8590c" stroke-width="2" marker-end="url(#arrowhead)" stroke-dasharray="6,3"/>
+<line x1="420" y1="290" x2="455" y2="225" stroke="#e8590c" stroke-width="2" marker-end="url(#arrowhead)" stroke-dasharray="6,3"/>
+
+<text x="50" y="125" font-weight="bold" fill="#1971c2" font-size="11" text-anchor="start">Props ↓</text>
+<text x="50" y="145"  fill="#868e96" font-size="10" text-anchor="start">(数据)</text>
+<text x="610" y="125" font-weight="bold" fill="#e8590c" font-size="11" text-anchor="end">↑ Emit</text>
+<text x="610" y="145"  fill="#868e96" font-size="10" text-anchor="end">(事件)</text>
+
+<text x="360" y="320" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="middle">数据只能从父到子，事件从子到父。禁止兄弟组件直接通信。</text>
+
+</svg>

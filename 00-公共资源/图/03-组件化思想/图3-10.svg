@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" font-family="system-ui,PingFang SC,sans-serif">
+
+<rect width="720" height="400" fill="#fafafa"/>
+<text x="360" y="25" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">电商首页设计稿 → 组件树拆解</text>
+
+<!-- Wireframe -->
+<rect x="30" y="45" width="310" height="340" fill="#fff" stroke="#adb5bd" rx="4"/>
+<rect x="40" y="55" width="290" height="50" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1.5" rx="3"/>
+<text x="185" y="85"  fill="#adb5bd" font-size="12" text-anchor="middle">顶部导航 (Header)</text>
+<rect x="40" y="115" width="290" height="40" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1.5" rx="3"/>
+<text x="185" y="140"  fill="#adb5bd" font-size="12" text-anchor="middle">搜索栏 (SearchBar)</text>
+<rect x="40" y="165" width="290" height="80" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1.5" rx="3"/>
+<text x="185" y="210"  fill="#adb5bd" font-size="12" text-anchor="middle">轮播图 (Banner)</text>
+<rect x="40" y="255" width="140" height="55" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1.5" rx="3"/>
+<text x="110" y="287"  fill="#adb5bd" font-size="11" text-anchor="middle">商品卡片</text>
+<rect x="190" y="255" width="140" height="55" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1.5" rx="3"/>
+<text x="260" y="287"  fill="#adb5bd" font-size="11" text-anchor="middle">商品卡片</text>
+<rect x="40" y="320" width="290" height="45" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1.5" rx="3"/>
+<text x="185" y="347"  fill="#adb5bd" font-size="12" text-anchor="middle">底部 (Footer)</text>
+
+<text x="195" y="395" font-weight="bold" fill="#333" font-size="12" text-anchor="middle">设计稿</text>
+
+<!-- Component tree -->
+<text x="530" y="60" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">组件树</text>
+<rect x="410" y="75" width="240" height="40" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="5"/>
+<text x="530" y="100" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">App.vue (根)</text>
+
+<line x1="470" y1="120" x2="470" y2="150" stroke="#adb5bd" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+<rect x="380" y="155" width="90" height="35" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+<text x="425" y="177"  fill="#2f9e44" font-size="11" text-anchor="middle">Header</text>
+<rect x="480" y="155" width="90" height="35" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+<text x="525" y="177"  fill="#2f9e44" font-size="11" text-anchor="middle">Footer</text>
+<rect x="580" y="155" width="90" height="35" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+<text x="625" y="177"  fill="#2f9e44" font-size="11" text-anchor="middle">Layout</text>
+
+<line x1="425" y1="195" x2="380" y2="220" stroke="#adb5bd" stroke-width="2" marker-end="url(#arrowhead)"/>
+<line x1="425" y1="195" x2="470" y2="220" stroke="#adb5bd" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+<rect x="355" y="225" width="90" height="35" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+<text x="400" y="247"  fill="#e8590c" font-size="10" text-anchor="middle">SearchBar</text>
+<rect x="455" y="225" width="90" height="35" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+<text x="500" y="247"  fill="#e8590c" font-size="10" text-anchor="middle">Banner</text>
+
+<line x1="467" y1="265" x2="467" y2="290" stroke="#adb5bd" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+<rect x="440" y="295" width="140" height="35" fill="#f3f0ff" stroke="#7048e8" stroke-width="1.5" rx="4"/>
+<text x="510" y="317"  fill="#7048e8" font-size="11" text-anchor="middle">ProductCard</text>
+
+<line x1="480" y1="335" x2="450" y2="355" stroke="#adb5bd" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+<rect x="425" y="360" width="170" height="30" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+<text x="510" y="380"  fill="#1971c2" font-size="10" text-anchor="middle">ProductCard × N</text>
+
+<text x="530" y="395" font-weight="bold" fill="#333" font-size="12" text-anchor="middle">组件树</text>
+
+</svg>

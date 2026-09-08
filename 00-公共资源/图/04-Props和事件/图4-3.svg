@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="system-ui,PingFang SC,sans-serif"><defs><marker id="a" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#666"/></marker></defs>
+<rect width="720" height="300" fill="#fafafa"/>
+<text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">子组件如何通知父组件？Emit 事件机制</text>
+
+<rect x="30" y="55" width="200" height="220" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+<text x="130" y="85" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">子组件 (Child)</text>
+<rect x="55" y="105" width="150" height="40" fill="#cce5ff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+<text x="130" y="120"  fill="#1971c2" font-size="11" text-anchor="middle">const emit =</text>
+<text x="130" y="135"  fill="#1971c2" font-size="11" text-anchor="middle">defineEmits()</text>
+<rect x="55" y="160" width="150" height="40" fill="#cce5ff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+<text x="130" y="175"  fill="#1971c2" font-size="11" text-anchor="middle">emit('increment')</text>
+<text x="130" y="190"  fill="#1971c2" font-size="11" text-anchor="middle">emit('submit', data)</text>
+<text x="130" y="235" font-weight="bold" fill="#c92a2a" font-size="11" text-anchor="middle">不能直接改 props</text>
+<text x="130" y="255" font-weight="bold" fill="#c92a2a" font-size="11" text-anchor="middle">只能通过 emit 通知</text>
+
+<line x1="240" y1="120" x2="330" y2="120" stroke="#1971c2" stroke-width="2" marker-end="url(#a)"/>
+<text x="285" y="110" font-weight="bold" fill="#1971c2" font-size="11" text-anchor="middle">emit</text>
+<line x1="370" y1="180" x2="460" y2="180" stroke="#e8590c" stroke-width="2" marker-end="url(#a)"/>
+<text x="415" y="170" font-weight="bold" fill="#e8590c" font-size="11" text-anchor="middle">Props</text>
+
+<rect x="480" y="55" width="210" height="220" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+<text x="585" y="85" font-weight="bold" fill="#e8590c" font-size="14" text-anchor="middle">父组件 (Parent)</text>
+<rect x="505" y="105" width="160" height="40" fill="#fff3e0" stroke="#ffd8a8" stroke-width="1.5" rx="4"/>
+<text x="585" y="120"  fill="#e8590c" font-size="11" text-anchor="middle">&lt;Child</text>
+<text x="585" y="135"  fill="#e8590c" font-size="11" text-anchor="middle">  @increment="..."</text>
+<rect x="505" y="160" width="160" height="40" fill="#fff3e0" stroke="#ffd8a8" stroke-width="1.5" rx="4"/>
+<text x="585" y="175"  fill="#e8590c" font-size="11" text-anchor="middle">&lt;Child</text>
+<text x="585" y="190"  fill="#e8590c" font-size="11" text-anchor="middle">  :count="count"</text>
+<text x="585" y="235" font-weight="bold" fill="#e8590c" font-size="11" text-anchor="middle">修改自己的状态</text>
+<text x="585" y="255" font-weight="bold" fill="#e8590c" font-size="11" text-anchor="middle">响应子组件事件</text>
+</svg>

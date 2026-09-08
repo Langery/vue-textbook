@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" font-family="system-ui,PingFang SC,sans-serif">
+
+<rect width="720" height="300" fill="#fafafa"/>
+<text x="360" y="35" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">slot 的比喻：组件是主机，slot 是 USB 接口</text>
+
+<!-- Computer -->
+<rect x="50" y="60" width="200" height="210" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="8"/>
+<text x="150" y="95" font-weight="bold" fill="#1971c2" font-size="16" text-anchor="middle">组件（主机）</text>
+<rect x="90" y="115" width="120" height="30" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+<text x="150" y="135"  fill="#1971c2" font-size="12" text-anchor="middle">固定内容</text>
+<rect x="90" y="155" width="120" height="24" fill="#b2d8ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+<text x="150" y="171"  fill="#1971c2" font-size="11" text-anchor="middle">Header</text>
+<rect x="90" y="185" width="120" height="24" fill="#b2d8ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+<text x="150" y="201"  fill="#1971c2" font-size="11" text-anchor="middle">Footer</text>
+<rect x="90" y="215" width="60" height="24" fill="#ffd43b" stroke="#f08c00" stroke-width="1.5" rx="4"/>
+<text x="120" y="231" font-weight="bold" fill="#e8590c" font-size="10" text-anchor="middle">slot</text>
+<rect x="160" y="215" width="50" height="24" fill="#ffd43b" stroke="#f08c00" stroke-width="1.5" rx="4"/>
+<text x="185" y="231" font-weight="bold" fill="#e8590c" font-size="10" text-anchor="middle">slot</text>
+
+<!-- arrow -->
+<text x="290" y="165" font-weight="bold" fill="#666" font-size="32" text-anchor="middle">→</text>
+
+<!-- USB devices -->
+<text x="475" y="80" font-weight="bold" fill="#333" font-size="14" text-anchor="middle">插什么设备由你决定</text>
+<rect x="350" y="100" width="110" height="60" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="6"/>
+<text x="405" y="125" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="middle">按钮组件</text>
+<text x="405" y="145"  fill="#999" font-size="10" text-anchor="middle">（U盘）</text>
+<rect x="480" y="100" width="110" height="60" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="6"/>
+<text x="535" y="125" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">表单组件</text>
+<text x="535" y="145"  fill="#999" font-size="10" text-anchor="middle">（键盘）</text>
+<rect x="350" y="175" width="110" height="60" fill="#f3f0ff" stroke="#7048e8" stroke-width="1.5" rx="6"/>
+<text x="405" y="200" font-weight="bold" fill="#7048e8" font-size="12" text-anchor="middle">列表组件</text>
+<text x="405" y="220"  fill="#999" font-size="10" text-anchor="middle">（鼠标）</text>
+<rect x="480" y="175" width="110" height="60" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="6"/>
+<text x="535" y="200" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">图标组件</text>
+<text x="535" y="220"  fill="#999" font-size="10" text-anchor="middle">（U盘）</text>
+
+<text x="360" y="275" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="start">slot 让组件「对扩展开放、对修改关闭」</text>
+
+</svg>

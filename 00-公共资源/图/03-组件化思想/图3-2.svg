@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" font-family="system-ui,PingFang SC,sans-serif">
+<defs><marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#666"/></marker></defs>
+<rect width="720" height="400" fill="#fafafa"/>
+<text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">神组件 vs 单一职责组件</text>
+
+<!-- God component -->
+<rect x="30" y="60" width="310" height="310" fill="#fff5f5" stroke="#e03131" rx="6"/>
+<text x="185" y="85" font-weight="bold" fill="#e03131" font-size="14" text-anchor="middle">神组件 (God Component)</text>
+<rect x="50" y="100" width="270" height="36" fill="#ffe3e3" stroke="#ffa8a8" stroke-width="1.5" rx="4"/>
+<text x="185" y="123"  fill="#c92a2a" font-size="11" text-anchor="middle">Header + Sidebar + Content + Footer</text>
+<rect x="50" y="145" width="270" height="36" fill="#ffe3e3" stroke="#ffa8a8" stroke-width="1.5" rx="4"/>
+<text x="185" y="168"  fill="#c92a2a" font-size="11" text-anchor="middle">表单校验 + 数据请求 + 状态管理</text>
+<rect x="50" y="190" width="270" height="36" fill="#ffe3e3" stroke="#ffa8a8" stroke-width="1.5" rx="4"/>
+<text x="185" y="213"  fill="#c92a2a" font-size="11" text-anchor="middle">500+ 行代码</text>
+<rect x="50" y="235" width="270" height="36" fill="#ffe3e3" stroke="#ffa8a8" stroke-width="1.5" rx="4"/>
+<text x="185" y="258"  fill="#c92a2a" font-size="11" text-anchor="middle">改一处可能崩溃全局</text>
+<rect x="50" y="280" width="270" height="36" fill="#ffe3e3" stroke="#ffa8a8" stroke-width="1.5" rx="4"/>
+<text x="185" y="303"  fill="#c92a2a" font-size="11" text-anchor="middle">几乎不可复用</text>
+<text x="185" y="345" font-weight="bold" fill="#e03131" font-size="12" text-anchor="middle">一句话说不清这个组件干什么</text>
+
+<!-- arrow -->
+<text x="355" y="215" font-weight="bold" fill="#2f9e44" font-size="28" text-anchor="middle">→</text>
+
+<!-- SRP components -->
+<rect x="380" y="60" width="310" height="310" fill="#f0f9e8" stroke="#2f9e44" rx="6"/>
+<text x="535" y="85" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="middle">单一职责组件 (SRP)</text>
+<rect x="400" y="100" width="270" height="32" fill="#d8f5cc" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+<text x="535" y="121"  fill="#2f9e44" font-size="11" text-anchor="middle">AppHeader.vue — 只做导航</text>
+<rect x="400" y="140" width="270" height="32" fill="#d8f5cc" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+<text x="535" y="161"  fill="#2f9e44" font-size="11" text-anchor="middle">AppSidebar.vue — 只做侧边栏</text>
+<rect x="400" y="180" width="270" height="32" fill="#d8f5cc" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+<text x="535" y="201"  fill="#2f9e44" font-size="11" text-anchor="middle">UserForm.vue — 只做表单</text>
+<rect x="400" y="220" width="270" height="32" fill="#d8f5cc" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+<text x="535" y="241"  fill="#2f9e44" font-size="11" text-anchor="middle">DataTable.vue — 只做表格</text>
+<rect x="400" y="260" width="270" height="32" fill="#d8f5cc" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+<text x="535" y="281"  fill="#2f9e44" font-size="11" text-anchor="middle">每个组件 < 100 行</text>
+<rect x="400" y="300" width="270" height="32" fill="#d8f5cc" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+<text x="535" y="321"  fill="#2f9e44" font-size="11" text-anchor="middle">独立测试 / 独立复用</text>
+<text x="535" y="355" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">一句话：它就是一个导航栏</text>
+
+</svg>

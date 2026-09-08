@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" font-family="system-ui,PingFang SC,sans-serif">
+<rect width="720" height="420" fill="#fafafa"/>
+<text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">三种组件目录组织方式对比</text>
+
+<!-- Flat -->
+<rect x="20" y="55" width="215" height="345" fill="#f0f9e8" stroke="#2f9e44" rx="6"/>
+<text x="127" y="80" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="middle">按类型分 (Flat)</text>
+<rect x="35" y="95" width="185" height="28" fill="#d8f5cc" stroke="#a9e095" rx="3"/>
+<text x="127" y="114" fill="#2f9e44" font-size="10" text-anchor="middle">components/</text>
+<rect x="40" y="128" width="175" height="22" fill="#fff" stroke="#dee2e6" rx="2"/>
+<text x="127" y="143" fill="#495057" font-size="9" text-anchor="middle">Header.vue</text>
+<rect x="40" y="154" width="175" height="22" fill="#fff" stroke="#dee2e6" rx="2"/>
+<text x="127" y="169" fill="#495057" font-size="9" text-anchor="middle">Sidebar.vue</text>
+<rect x="40" y="180" width="175" height="22" fill="#fff" stroke="#dee2e6" rx="2"/>
+<text x="127" y="195" fill="#495057" font-size="9" text-anchor="middle">UserForm.vue</text>
+<rect x="40" y="206" width="175" height="22" fill="#fff" stroke="#dee2e6" rx="2"/>
+<text x="127" y="221" fill="#495057" font-size="9" text-anchor="middle">DataTable.vue</text>
+<rect x="40" y="232" width="175" height="22" fill="#fff" stroke="#dee2e6" rx="2"/>
+<text x="127" y="247" fill="#495057" font-size="9" text-anchor="middle">Modal.vue</text>
+<rect x="40" y="258" width="175" height="22" fill="#fff" stroke="#dee2e6" rx="2"/>
+<text x="127" y="273" fill="#495057" font-size="9" text-anchor="middle">Pagination.vue</text>
+<text x="127" y="305" fill="#2f9e44" font-size="11" text-anchor="middle">适用: &lt;10个组件</text>
+<text x="127" y="325" fill="#868e96" font-size="10" text-anchor="middle">缺点: 组件多了难找</text>
+<text x="127" y="350" fill="#868e96" font-size="10" font-weight="bold" text-anchor="middle">简单直观，上手零成本</text>
+<rect x="40" y="365" width="175" height="22" fill="#e9fac8" stroke="#2f9e44" rx="3"/>
+<text x="127" y="380" fill="#2f9e44" font-size="10" font-weight="bold" text-anchor="middle">小型项目首选</text>
+
+<!-- Feature-based -->
+<rect x="252" y="55" width="215" height="345" fill="#e7f3ff" stroke="#1971c2" rx="6"/>
+<text x="359" y="80" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">按功能分 (Feature)</text>
+<rect x="267" y="95" width="185" height="28" fill="#cce5ff" stroke="#74c0fc" rx="3"/>
+<text x="359" y="114" fill="#1971c2" font-size="10" text-anchor="middle">modules/</text>
+<rect x="272" y="128" width="175" height="22" fill="#fff" stroke="#dee2e6" rx="2"/>
+<text x="359" y="143" fill="#495057" font-size="9" text-anchor="middle">user/</text>
+<rect x="277" y="154" width="165" height="18" fill="#f8f9fa" stroke="#eee" rx="1"/>
+<text x="359" y="167" fill="#868e96" font-size="8" text-anchor="middle">UserList / UserForm / UserDetail</text>
+<rect x="272" y="178" width="175" height="22" fill="#fff" stroke="#dee2e6" rx="2"/>
+<text x="359" y="193" fill="#495057" font-size="9" text-anchor="middle">order/</text>
+<rect x="277" y="204" width="165" height="18" fill="#f8f9fa" stroke="#eee" rx="1"/>
+<text x="359" y="217" fill="#868e96" font-size="8" text-anchor="middle">OrderList / OrderDetail / OrderForm</text>
+<rect x="272" y="228" width="175" height="22" fill="#fff" stroke="#dee2e6" rx="2"/>
+<text x="359" y="243" fill="#495057" font-size="9" text-anchor="middle">product/</text>
+<rect x="277" y="254" width="165" height="18" fill="#f8f9fa" stroke="#eee" rx="1"/>
+<text x="359" y="267" fill="#868e96" font-size="8" text-anchor="middle">ProductCard / ProductList</text>
+<text x="359" y="305" fill="#1971c2" font-size="11" text-anchor="middle">适用: 中大型项目</text>
+<text x="359" y="325" fill="#868e96" font-size="10" text-anchor="middle">优点: 功能内聚好找</text>
+<text x="359" y="350" fill="#868e96" font-size="10" font-weight="bold" text-anchor="middle">功能边界清晰、易扩展</text>
+<rect x="272" y="365" width="175" height="22" fill="#cce5ff" stroke="#1971c2" rx="3"/>
+<text x="359" y="380" fill="#1971c2" font-size="10" font-weight="bold" text-anchor="middle">中大型项目推荐</text>
+
+<!-- Atomic Design -->
+<rect x="484" y="55" width="215" height="345" fill="#f3f0ff" stroke="#7048e8" rx="6"/>
+<text x="591" y="80" font-weight="bold" fill="#7048e8" font-size="14" text-anchor="middle">原子设计 (Atomic)</text>
+<rect x="499" y="95" width="185" height="28" fill="#e5dbff" stroke="#b197fc" rx="3"/>
+<text x="591" y="114" fill="#7048e8" font-size="10" text-anchor="middle">components/</text>
+<rect x="504" y="128" width="175" height="22" fill="#fff" stroke="#dee2e6" rx="2"/>
+<text x="591" y="143" fill="#495057" font-size="9" text-anchor="middle">atoms/ (Button, Input, Icon)</text>
+<rect x="504" y="154" width="175" height="22" fill="#fff" stroke="#dee2e6" rx="2"/>
+<text x="591" y="169" fill="#495057" font-size="9" text-anchor="middle">molecules/ (SearchBar, Card)</text>
+<rect x="504" y="180" width="175" height="22" fill="#fff" stroke="#dee2e6" rx="2"/>
+<text x="591" y="195" fill="#495057" font-size="9" text-anchor="middle">organisms/ (Header, Sidebar)</text>
+<rect x="504" y="206" width="175" height="22" fill="#fff" stroke="#dee2e6" rx="2"/>
+<text x="591" y="221" fill="#495057" font-size="9" text-anchor="middle">templates/ (PageLayout)</text>
+<rect x="504" y="232" width="175" height="22" fill="#fff" stroke="#dee2e6" rx="2"/>
+<text x="591" y="247" fill="#495057" font-size="9" text-anchor="middle">pages/ (HomePage, About)</text>
+<text x="591" y="280" fill="#7048e8" font-size="10" text-anchor="middle">原子 → 分子 → 有机体</text>
+<text x="591" y="298" fill="#7048e8" font-size="10" text-anchor="middle">→ 模板 → 页面</text>
+<text x="591" y="325" fill="#868e96" font-size="10" text-anchor="middle">适用: 设计系统 / UI库</text>
+<text x="591" y="350" fill="#868e96" font-size="10" font-weight="bold" text-anchor="middle">颗粒度最细、复用率最高</text>
+<rect x="504" y="365" width="175" height="22" fill="#f3f0ff" stroke="#7048e8" rx="3"/>
+<text x="591" y="380" fill="#7048e8" font-size="10" font-weight="bold" text-anchor="middle">大型设计系统</text>
+
+<!-- Summary -->
+<line x1="30" y1="410" x2="690" y2="410" stroke="#dee2e6" stroke-width="1"/>
+<text x="360" y="415" fill="#495057" font-size="10" font-weight="bold" text-anchor="middle">原则：一致性大于完美 —— 团队选定一种后就坚持到底，不要混用</text>
+</svg>
