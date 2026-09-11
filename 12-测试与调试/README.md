@@ -58,6 +58,7 @@
 | 12.6 | 常见 Bug 排查技巧 | console 高级用法、断点、Network、Vue 高频 Bug | 1 |
 | 12.7 | 错误边界与日志 | `onErrorCaptured`、`app.config.errorHandler`、日志上报 | 1 |
 | 12.8 | 本章小测 | 选择 + 判断 + 编码题 | 0.5 |
+| **12.9** | **章末实战：记账本单测** ⭐ | 给 5.10 记账本补 Vitest 纯函数 + 组件单测，DevTools 揪 Bug | **1** |
 
 ---
 

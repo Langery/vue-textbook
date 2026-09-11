@@ -49,9 +49,11 @@
 | 9.6 | 导航守卫：路由保安 ⭐ | `beforeEach`、`beforeEnter`、`onBeforeRouteLeave` | 0.5 |
 | 9.7 | Vuex 核心概念 | State/Getter/Mutation/Action/Module、单向数据流 | 0.5 |
 | 9.8 | Pinia：新一代状态管理 | Setup Store vs Option Store、对比 Vuex、storeToRefs | 0.5 |
-| **9.9** | **Pinia 模块化实战** ⭐⭐ | **购物车完整案例（产品/购物车/用户三模块 + 持久化）** | **1** |
-| 9.10 | 路由与状态管理联合 | 守卫 + Store 权限、URL ↔ Store 双向同步 | 0.5 |
-| 9.11 | 本章小测 | 6 选择 + 5 判断 + 3 简答 + 2 编程 | 0.5 |
+| **9.9** | **Pinia 模块化实战（一）** ⭐⭐ | **产品/购物车/用户三模块 Store、跨 Store 协作** | **1** |
+| **9.10** | **Pinia 模块化实战（二）** ⭐⭐ | **购物车组件 + localStorage 持久化** | **1** |
+| 9.11 | 路由与状态管理联合 | 守卫 + Store 权限、URL ↔ Store 双向同步 | 0.5 |
+| 9.12 | 本章小测 | 6 选择 + 5 判断 + 3 简答 + 2 编程 | 0.5 |
+| **9.13** | **章末实战：迷你店铺导航** ⭐ | Router + Pinia 搭列表-详情-购物车-登录拦截完整动线 | **1** |
 
 ---
 
