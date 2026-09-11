@@ -34,7 +34,7 @@
 **N = 章号，X = 图在该章的序号**
 
 示例：
-- `图3-1.png` + `图3-1.html` —— 第 3 章第 1 张图
+- `图3-1.svg` —— 第 3 章第 1 张图
 - `图1-1.png` + `图1-1.html` —— 第 1 章第 1 张图
 
 ## 🔗 Markdown 引用规范
@@ -43,7 +43,7 @@
 
 ```markdown
 <!-- 从 03-组件化思想/03.1-xxx/ 引用第 3 章图 -->
-![图 3-1：xxx](../../../00-公共资源/图/03-组件化思想/图3-1.png)
+![图 3-1：xxx](../../../00-公共资源/图/03-组件化思想/图3-1.svg)
 ```
 
 **路径层数计算**：从小节目录回到 vue-textbook 根目录，要走几层：
@@ -56,17 +56,17 @@
 ```bash
 # 1. 准备 HTML 源文件（从 templates/ 复制或自己写）
 cp ~/.hermes/skills/creative/textbook-diagram/templates/concept.html \
-   ~/Desktop/vue-textbook/00-公共资源/图/03-组件化思想/图3-6.html
+   ~/Desktop/vue-textbook/00-公共资源/图/01-Vue入门/图1-1.html
 
 # 2. 填内容（改 HTML 里的标题、节点等）
 
 # 3. 渲染
 ~/.hermes/skills/creative/textbook-diagram/scripts/render.sh \
-   ~/Desktop/vue-textbook/00-公共资源/图/03-组件化思想/图3-6.html \
-   ~/Desktop/vue-textbook/00-公共资源/图/03-组件化思想/图3-6.png
+   ~/Desktop/vue-textbook/00-公共资源/图/01-Vue入门/图1-1.html \
+   ~/Desktop/vue-textbook/00-公共资源/图/01-Vue入门/图1-1.png
 
 # 4. 在 Markdown 里引用
-# ![图 3-6：xxx](../../../00-公共资源/图/03-组件化思想/图3-6.png)
+# ![图 1-1：xxx](../../../00-公共资源/图/01-Vue入门/图1-1.png)
 ```
 
 ## ⚠️ 注意事项
