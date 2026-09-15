@@ -77,8 +77,8 @@
 
 | 图号 | 主题 | 状态 |
 |---|---|---|
-| 8-1 | 组合式 API vs 选项式 API 对比 | 待做 |
-| 8-2 | Mixin vs Composable 复用对比 | 待做 |
+| 8-1 | 组合式 API vs 选项式 API 对比 | 已完成 |
+| 8-2 | Mixin vs Composable 复用对比 | 已完成 |
 | 8-3 | shallowRef vs ref 响应式范围 | 待做 |
 | 8-4 | readonly 防子组件误改 | 待做 |
 | 8-5 | computed 缓存机制 | 待做 |
