@@ -18,30 +18,30 @@ except ImportError:
     sys.exit(1)
 
 
-# 13 章主题色 - 按 4 大色系分组
+# 12 章主题色 - 按色系分组（对应方案 C 新章序）
 CHAPTER_THEMES = {
     "00": {"bg": "#fff8e7", "accent": "#c92a2a", "label": "课程总览", "icon": "📖"},
-    # 入门基础（蓝绿）
-    "01": {"bg": "#e7f3ff", "accent": "#1971c2", "label": "Vue 入门", "icon": "🚀"},
-    "02": {"bg": "#e7f3ff", "accent": "#1971c2", "label": "模板语法", "icon": "📝"},
-    # 组件化（绿色）
-    "03": {"bg": "#f0f9e8", "accent": "#2f9e44", "label": "组件化思想", "icon": "🧩"},
-    "04": {"bg": "#e7f3ff", "accent": "#1971c2", "label": "Props 与事件", "icon": "📡"},
-    # 响应式（橙色）
-    "05": {"bg": "#fff4e6", "accent": "#e8590c", "label": "响应式基础", "icon": "⚡"},
-    "06": {"bg": "#fff4e6", "accent": "#e8590c", "label": "生命周期", "icon": "🔄"},
-    # 组合式 API（紫色）
-    "08": {"bg": "#f3f0ff", "accent": "#7048e8", "label": "组合式 API 精讲", "icon": "🎨"},
+    # 入门基础（蓝）
+    "01": {"bg": "#e7f3ff", "accent": "#1971c2", "label": "Vue 入门与准备", "icon": "🚀"},
+    "02": {"bg": "#e7f3ff", "accent": "#1971c2", "label": "模板语法与渲染", "icon": "📝"},
+    # 响应式（橙）
+    "03": {"bg": "#fff4e6", "accent": "#e8590c", "label": "响应式数据", "icon": "⚡"},
+    # 组件化（绿）
+    "04": {"bg": "#f0f9e8", "accent": "#2f9e44", "label": "组件化思想", "icon": "🧩"},
+    "05": {"bg": "#e7f3ff", "accent": "#1971c2", "label": "Props 和事件", "icon": "📡"},
+    "06": {"bg": "#fff4e6", "accent": "#e8590c", "label": "生命周期与副作用", "icon": "🔄"},
+    # 组合式 API（紫）
+    "07": {"bg": "#f3f0ff", "accent": "#7048e8", "label": "组合式 API 与代码复用", "icon": "🎨"},
     # 路由与状态管理（靛蓝）
-    "09": {"bg": "#eef2ff", "accent": "#4338ca", "label": "路由与状态管理", "icon": "🧭"},
-    # 服务端通信（青色）
-    "10": {"bg": "#e8f4f8", "accent": "#1864ab", "label": "服务端通信", "icon": "🌐"},
+    "08": {"bg": "#eef2ff", "accent": "#4338ca", "label": "路由与状态管理", "icon": "🧭"},
+    # 服务端通信（青）
+    "09": {"bg": "#e8f4f8", "accent": "#1864ab", "label": "服务端通信", "icon": "🌐"},
     # 表单处理（琥珀）
-    "11": {"bg": "#fffbeb", "accent": "#b45309", "label": "表单处理与验证", "icon": "📝"},
+    "10": {"bg": "#fffbeb", "accent": "#b45309", "label": "表单处理与验证", "icon": "📝"},
     # 测试与调试（玫瑰）
-    "12": {"bg": "#fff1f2", "accent": "#be123c", "label": "测试与调试", "icon": "🧪"},
+    "11": {"bg": "#fff1f2", "accent": "#be123c", "label": "测试与调试", "icon": "🧪"},
     # 综合项目（暖黄）
-    "13": {"bg": "#fff9db", "accent": "#d9480f", "label": "综合项目", "icon": "🏆"},
+    "12": {"bg": "#fff9db", "accent": "#d9480f", "label": "综合项目", "icon": "🏆"},
 }
 
 
