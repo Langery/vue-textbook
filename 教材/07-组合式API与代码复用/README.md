@@ -75,23 +75,23 @@
 
 | 图号 | 主题 | 状态 |
 |---|---|---|
-| 8-1 | 组合式 API vs 选项式 API 对比 | 已完成 |
-| 8-2 | Mixin vs Composable 复用对比 | 已完成 |
-| 8-3 | shallowRef vs ref 响应式范围 | 待做 |
-| 8-4 | readonly 防子组件误改 | 待做 |
-| 8-5 | computed 缓存机制 | 待做 |
-| 8-6 | computed vs watch vs methods 决策图 | 待做 |
-| 8-7 | provide/inject 数据流 | 待做 |
-| 8-8 | Symbol Key 防命名冲突 | 待做 |
-| 8-9 | Composable 结构模板 | 待做 |
-| 8-10 | useDebounce 时序图 | 待做 |
-| 8-11 | useLocalStorage 同步流程 | 待做 |
-| 8-12 | 自定义指令生命周期 | 待做 |
-| 8-13 | v-copy / v-focus / v-debounce 用法总览 | 待做 |
-| 8-14 | VueUse 生态总览（200+ composable 分类） | 待做 |
-| 8-15 | useStorage 工作原理（ref ↔ localStorage） | 待做 |
-| 8-16 | useDark 工作原理（系统偏好 → Class → Tailwind） | 待做 |
-| 8-17 | useClipboard 流程 | 待做 |
+| 7-1 | 组合式 API vs 选项式 API 对比 | 已完成 |
+| 7-2 | Mixin vs Composable 复用对比 | 已完成 |
+| 7-3 | shallowRef vs ref 响应式范围 | 待做 |
+| 7-4 | readonly 防子组件误改 | 待做 |
+| 7-5 | computed 缓存机制 | 待做 |
+| 7-6 | computed vs watch vs methods 决策图 | 待做 |
+| 7-7 | provide/inject 数据流 | 待做 |
+| 7-8 | Symbol Key 防命名冲突 | 待做 |
+| 7-9 | Composable 结构模板 | 待做 |
+| 7-10 | useDebounce 时序图 | 待做 |
+| 7-11 | useLocalStorage 同步流程 | 待做 |
+| 7-12 | 自定义指令生命周期 | 待做 |
+| 7-13 | v-copy / v-focus / v-debounce 用法总览 | 待做 |
+| 7-14 | VueUse 生态总览（200+ composable 分类） | 待做 |
+| 7-15 | useStorage 工作原理（ref ↔ localStorage） | 待做 |
+| 7-16 | useDark 工作原理（系统偏好 → Class → Tailwind） | 待做 |
+| 7-17 | useClipboard 流程 | 待做 |
 
 ---
 
