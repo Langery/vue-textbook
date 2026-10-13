@@ -1284,9 +1284,9 @@
 <ul>
 <li><strong>当前版本</strong>：v0.1（草稿阶段）</li>
 <li><strong>Vue 版本</strong>：Vue 3（主）+ Vue 2.7 简要对比</li>
-<li><strong>构建工具</strong>：Vite 5</li>
+<li><strong>构建工具</strong>：Vite 8</li>
 <li><strong>状态管理</strong>：Pinia</li>
-<li><strong>路由</strong>：Vue Router 4</li>
+<li><strong>路由</strong>：Vue Router 5</li>
 <li><strong>类型支持</strong>：可选 TypeScript（不强求）</li>
 </ul>
 <hr>
@@ -2420,8 +2420,8 @@ npm run dev
     &quot;vue&quot;: &quot;^3.4.0&quot;
   },
   &quot;devDependencies&quot;: {        // 开发依赖（只在开发时用）
-    &quot;@vitejs/plugin-vue&quot;: &quot;^5.0.0&quot;,
-    &quot;vite&quot;: &quot;^5.0.0&quot;
+    &quot;@vitejs/plugin-vue&quot;: &quot;^6.0.0&quot;,
+    &quot;vite&quot;: &quot;^8.0.0&quot;
   }
 }
 </code></pre></div>
@@ -2704,8 +2704,8 @@ import TheWelcome from './components/TheWelcome.vue'
     &quot;vue&quot;: &quot;^3.4.0&quot;
   },
   &quot;devDependencies&quot;: {
-    &quot;@vitejs/plugin-vue&quot;: &quot;^5.0.0&quot;,
-    &quot;vite&quot;: &quot;^5.0.0&quot;
+    &quot;@vitejs/plugin-vue&quot;: &quot;^6.0.0&quot;,
+    &quot;vite&quot;: &quot;^8.0.0&quot;
   }
 }
 </code></pre></div>
@@ -2844,7 +2844,7 @@ export default defineConfig({
 <h2 id="sec-01-01.4-项目结构：认识新家-h2-11">📚 拓展阅读</h2>
 <ul>
 <li><a href="https://cn.vitejs.dev/guide/">Vite 项目结构</a></li>
-<li><a href="https://cn.vuejs.org/guide/scaling-up/folder-structure.html">Vue 官方 - 项目结构建议</a></li>
+<li><a href="https://cn.vuejs.org/guide/quick-start.html">Vue 官方 - 项目结构建议</a></li>
 <li><a href="https://docs.npmjs.com/cli/v10/configuring-npm/package-json">npm package.json 文档</a></li>
 </ul>
 <hr>
@@ -8752,7 +8752,7 @@ const config = shallowReactive({
 <ul>
 <li><a href="https://cn.vuejs.org/api/reactivity-core.html#reactive">Vue 3 官方文档 - reactive</a></li>
 <li><a href="https://cn.vuejs.org/api/reactivity-advanced.html#shallowreactive">Vue 3 官方文档 - shallowReactive</a></li>
-<li><a href="https://v3-migration.vuejs.org/breaking-changes/reactivity.html">Vue 3 迁移指南 - 响应式系统变更</a></li>
+<li><a href="https://v3-migration.vuejs.org/breaking-changes/">Vue 3 迁移指南 - 响应式系统变更</a></li>
 </ul>
 <hr>
 <p><strong>（3.3 节结束，下一节 3.4 ref 进阶：复杂状态 →）</strong></p></div></article><article id="sec-03-03.4-ref进阶：复杂状态" class="section"><h2 class="section-title"><span class="section-num">3.4</span>ref 进阶：复杂状态</h2><div class="section-body"><blockquote>
@@ -25331,11 +25331,11 @@ const vFocus = {
 export const vCopy = {
   mounted(el, binding) {
     // binding.value 是要复制的文本
-    const textToCopy = binding.value
+    el._copyText = binding.value
 
     el.addEventListener('click', async () =&gt; {
       try {
-        await navigator.clipboard.writeText(textToCopy)
+        await navigator.clipboard.writeText(el._copyText)
         // 复制成功：改按钮文字提示
         const originalText = el.textContent
         el.textContent = '已复制！'
@@ -26893,16 +26893,16 @@ const filteredNotes = computed(() =&gt; {
 </ol>
 <hr>
 <h2 id="sec-07-07.12-本地笔记-h2-4">🔮 它在最后的大项目里长成什么</h2>
-<p>这一节的&rdquo;本地笔记&rdquo;，就是大项目 <strong>Campus2Hand 校园二手集市</strong>的<strong>公共能力层雏形</strong>：商品搜索框的防抖输入 = 这里的 <code>useDebounce</code>；发布闲置时&rdquo;草稿自动保存防误关&rdquo; = 这里的 <code>useLocalStorage</code>；而 <code>useAuth</code>（登录态）、<code>useCart</code>（购物车）、<code>useDebounce</code> 这些给 13 章所有页面共用的 hooks，就是你在 7.6 / 7.7 / 本实战里练出来的&rdquo;按逻辑抽 composable&rdquo;这一招。</p>
+<p>这一节的&rdquo;本地笔记&rdquo;，就是大项目 <strong>Campus2Hand 校园二手集市</strong>的<strong>公共能力层雏形</strong>：商品搜索框的防抖输入 = 这里的 <code>useDebounce</code>；发布闲置时&rdquo;草稿自动保存防误关&rdquo; = 这里的 <code>useLocalStorage</code>；而 <code>useAuth</code>（登录态）、<code>useCart</code>（购物车）、<code>useDebounce</code> 这些给 12 章所有页面共用的 hooks，就是你在 7.6 / 7.7 / 本实战里练出来的&rdquo;按逻辑抽 composable&rdquo;这一招。</p>
 <hr>
 <p>下一章是<strong>第 8 章&rdquo;路由与状态管理&rdquo;</strong>——页面要&rdquo;跳&rdquo;起来、多页面要共享数据，都从第 8 章开始。章末有 P8 在等你，先把本章的组合式写法练扎实。</p>
 <hr>
 <blockquote>
 <p>🧊 <strong>冷知识</strong>：本地笔记里的&rdquo;自动保存&rdquo;与&rdquo;搜索防抖&rdquo;防的是两回事——自动保存防的是<strong>误关丢数据</strong>（改一个字符就存一次也行，但没必要），搜索防抖防的是<strong>高频无效计算</strong>（每敲一个字母都过滤，将来接后端就是每敲一个字母发一次请求）。同样的&rdquo;等一等再做&rdquo;，目的不同，参数和实现也就不同。</p>
 </blockquote>
-<details><summary>🔍 想深究再看：为什么说这个实战是"13 章大项目的缩影"？</summary>
+<details><summary>🔍 想深究再看：为什么说这个实战是"12 章大项目的缩影"？</summary>
 
-Campus2Hand 的商品搜索框防抖、发布页草稿自动保存、本地浏览历史，底层就是本章练过的 `useDebounce` + `useLocalStorage`；而登录态 `useAuth`、购物车 `useCart` 等会被 13 章所有页面共用——它们和这里的 `useNotes` 是同一个套路：**一块业务逻辑 = 一个 composable + 状态/方法返回值**。本地笔记 50 行代码练的是"抽函数"的肌肉记忆，13 章只是把它放大到整个应用。所以别急着赶进度，把本节验收清单打满勾，后面会轻松很多。
+Campus2Hand 的商品搜索框防抖、发布页草稿自动保存、本地浏览历史，底层就是本章练过的 `useDebounce` + `useLocalStorage`；而登录态 `useAuth`、购物车 `useCart` 等会被 12 章所有页面共用——它们和这里的 `useNotes` 是同一个套路：**一块业务逻辑 = 一个 composable + 状态/方法返回值**。本地笔记 50 行代码练的是"抽函数"的肌肉记忆，12 章只是把它放大到整个应用。所以别急着赶进度，把本节验收清单打满勾，后面会轻松很多。
 
 </details>
 
@@ -27434,7 +27434,7 @@ window.addEventListener('popstate', () =&gt; {
 <h2 id="sec-08-08.2-Vue Router入门-h2-2">🧠 思维导图</h2>
 <div class="code-block mindmap-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-text">8.2 Vue Router 入门
 ├── 安装和配置
-│   ├── npm install vue-router@4
+│   ├── npm install vue-router@5
 │   ├── 创建 src/router/index.js
 │   └── 在 main.js 中 app.use(router)
 ├── 路由表
@@ -27458,8 +27458,8 @@ window.addEventListener('popstate', () =&gt; {
 </blockquote>
 <hr>
 <h2 id="sec-08-08.2-Vue Router入门-h2-3">🤔 一、准备工作：安装 Vue Router</h2>
-<p>Vue Router 是 Vue 官方的路由库，Vue 3 对应的是 v4 版本：</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">bash</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-bash">npm install vue-router@4
+<p>Vue Router 是 Vue 官方的路由库，Vue 3 对应的是 v5 版本（v5 与 v4 的 API 完全兼容，旧教程的 v4 写法同样适用）：</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">bash</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-bash">npm install vue-router@5
 </code></pre></div>
 <p>装好之后，创建项目结构：</p>
 <div class="code-block mindmap-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-text">src/
@@ -27587,7 +27587,7 @@ export default router
   &lt;/div&gt;
 &lt;/template&gt;
 </code></pre></div>
-<p><code>path: '/:pathMatch(.*)*'</code> 是 Vue Router 4 的通配语法，它会匹配所有未被上面路由匹配到的路径。</p>
+<p><code>path: '/:pathMatch(.*)*'</code> 是 Vue Router 5 的通配语法，它会匹配所有未被上面路由匹配到的路径。</p>
 <hr>
 <h2 id="sec-08-08.2-Vue Router入门-h2-7">⚠️ 五、常见陷阱</h2>
 <h3>陷阱 1：忘记 <code>app.use(router)</code></h3>
@@ -27612,7 +27612,7 @@ app.mount('#app')
 <hr>
 <h2 id="sec-08-08.2-Vue Router入门-h2-8">🧠 本节小结</h2>
 <ul>
-<li><strong>安装引入</strong>：<code>npm install vue-router@4</code> + <code>app.use(router)</code>，别忘了要配 Vue 3</li>
+<li><strong>安装引入</strong>：<code>npm install vue-router@5</code> + <code>app.use(router)</code>，别忘了要配 Vue 3</li>
 <li><strong>核心四件套</strong>：<code>createRouter</code> + <code>createWebHistory()</code> + <code>routes</code> 数组 + 模板里的 <code>&lt;router-view&gt;</code></li>
 <li><strong>routes 写法</strong>：每个路由对象给 <code>path</code>（/ 开头）和 <code>component</code>，还可加 <code>name</code></li>
 <li><strong>声明式跳转</strong>：模板里用 <code>&lt;router-link to="/about"&gt;</code>，它会渲染成可被拦截的 <code>&lt;a&gt;</code></li>
@@ -27660,7 +27660,7 @@ app.mount('#app')
 ├── 动态路由定义
 │   ├── path: '/user/:id' → 匹配 /user/1、/user/abc
 │   ├── 多个参数：'/user/:userId/post/:postId'
-│   └── 可选参数：'/user/:id?'（Vue Router 4 正则语法）
+│   └── 可选参数：'/user/:id?'（Vue Router 5 正则语法）
 ├── 获取参数：useRoute()
 │   ├── route.params.id → 动态路径参数
 │   ├── route.query.key → ?key=value 查询参数
@@ -28273,7 +28273,7 @@ router.push({ name: 'user', params: { id: 1 } })
 // Vue Router 会抛出一个 Uncaught (in promise) NavigationDuplicated 错误
 router.push('/about')
 </code></pre></div>
-<p>这个错误通常无害，但如果你在测试中看到它，用 <code>.catch(() =&gt; {})</code> 处理即可。Vue Router 4 的 <code>push</code> 返回 Promise。</p>
+<p>这个错误通常无害，但如果你在测试中看到它，用 <code>.catch(() =&gt; {})</code> 处理即可。Vue Router 5 的 <code>push</code> 返回 Promise。</p>
 <h3>陷阱 3：导航后立即读取路由参数</h3>
 <div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">// ❌ router.push 是异步的，但这里没有 await
 router.push('/dashboard')
@@ -28355,7 +28355,7 @@ console.log(route.path)  // '/dashboard'
 每个乘客（导航）进站（路由跳转）都必须过闸机（守卫）：没票（未登录）→ 被拦去补票（重定向登录页）；票没问题 → 放行。闸机设在进站口（全局守卫 beforeEach），也可以设在特定站台（路由独享 beforeEnter）、甚至车厢门口（组件内守卫）。</p>
 <p>🧑 <strong>小白</strong>：守卫里 return 一个路径，就是&rdquo;重定向&rdquo;吗？
 🤖 <strong>Vue 君</strong>：对，返回路径 = 改道去别的站；返回 false = 关门不放行（取消导航）。
-👨🏫 <strong>老湿</strong>：<strong>Vue Router 4 记住一条：守卫靠&rdquo;返回值&rdquo;说话</strong>，不用再纠结 next() 那套老写法。</p>
+👨🏫 <strong>老湿</strong>：<strong>Vue Router 5 记住一条：守卫靠&rdquo;返回值&rdquo;说话</strong>，不用再纠结 next() 那套老写法。</p>
 </blockquote>
 <hr>
 <h2 id="sec-08-08.6-导航守卫：路由保安-h2-3">🤔 一、导航守卫要解决什么问题？</h2>
@@ -28378,11 +28378,11 @@ const router = createRouter({ /* ... */ })
 router.beforeEach((to, from, next) =&gt; {
   // to：要去的路由（Route 对象）
   // from：当前的路由（Route 对象）
-  // next：控制放行/重定向的函数（Vue Router 4 中 next 是可选的）
+  // next：控制放行/重定向的函数（Vue Router 5 中 next 是可选的）
 })
 </code></pre></div>
-<p>Vue Router 4 推荐用<strong>返回值</strong>来控制导航（而不是调 <code>next</code>）：</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">// ✅ Vue Router 4 推荐写法：返回值
+<p>Vue Router 5 推荐用<strong>返回值</strong>来控制导航（而不是调 <code>next</code>）：</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">// ✅ Vue Router 5 推荐写法：返回值
 router.beforeEach((to, from) =&gt; {
   const isLoggedIn = !!localStorage.getItem('token')
 
@@ -28535,7 +28535,7 @@ router.beforeEach((to, from, next) =&gt; {
   next('/login')  // ← 可能调用两次
 })
 
-// ✅ Vue Router 4 推荐不用 next，直接用 return
+// ✅ Vue Router 5 推荐不用 next，直接用 return
 router.beforeEach((to, from) =&gt; {
   if (isLoggedIn) return true
   return '/login'
@@ -28548,14 +28548,14 @@ router.beforeEach((to, from) =&gt; {
 <li><strong>全局守卫</strong>：<code>beforeEach</code> 最常用；<code>return false</code> 中止导航，返回路径字符串则重定向</li>
 <li><strong>路由独享守卫</strong>：<code>beforeEnter</code> 只保护某一条路由；<strong>组件内守卫</strong>：<code>onBeforeRouteLeave</code> 等写在组件里</li>
 <li><strong>读元信息</strong>：<code>to.meta.requiresAuth</code> 这类字段配合守卫实现权限拦截，别把权限判断散落各组件</li>
-<li><strong>写法纪律</strong>：<code>next()</code> 之后不要再 <code>return</code> 别的值（反模式）；Vue Router 4 推荐直接 <code>return</code> 结果而非调用 <code>next</code></li>
+<li><strong>写法纪律</strong>：<code>next()</code> 之后不要再 <code>return</code> 别的值（反模式）；Vue Router 5 推荐直接 <code>return</code> 结果而非调用 <code>next</code></li>
 </ul>
 <blockquote>
 <p>🧊 <strong>冷知识</strong>：守卫的执行顺序是固定的：<strong>全局 beforeEach → 路由独享 beforeEnter → 组件内 onBeforeRouteUpdate / beforeRouteEnter → 全局 beforeResolve → 导航确认 → 全局 afterEach</strong>。想给页面加&rdquo;标题更新&rdquo;就放 afterEach（导航已确定），想加&rdquo;权限校验&rdquo;就放 beforeEach（最早、最前置）。顺序记牢，写守卫心里有谱。</p>
 </blockquote>
-<details><summary>🔍 想深究再看：为什么 Vue Router 4 弃用 next()？</summary>
+<details><summary>🔍 想深究再看：为什么 Vue Router 5 弃用 next()？</summary>
 
-Vue Router 3 时代守卫必须调 `next()` 显式放行，漏调会导致导航"卡死"（既不放行也不取消，页面白等）。Vue Router 4 改为**靠返回值说话**：返回 `true` / 不返回 = 放行，返回 `false` = 取消，返回路径 / 对象 = 重定向。返回值模式没有"漏调"问题——没写 return 就是默认放行。老代码里 `next()` 写法还能兼容运行，但新代码请一律用返回值，这是官方推荐的唯一正确姿势。
+Vue Router 3 时代守卫必须调 `next()` 显式放行，漏调会导致导航"卡死"（既不放行也不取消，页面白等）。Vue Router 5 改为**靠返回值说话**：返回 `true` / 不返回 = 放行，返回 `false` = 取消，返回路径 / 对象 = 重定向。返回值模式没有"漏调"问题——没写 return 就是默认放行。老代码里 `next()` 写法还能兼容运行，但新代码请一律用返回值，这是官方推荐的唯一正确姿势。
 
 </details>
 
@@ -29739,7 +29739,7 @@ const cartDetail = computed(() =&gt; {
 })
 </code></pre></div>
 <h3>陷阱 2：localStorage 存储敏感信息</h3>
-<p>购物车数据存 localStorage 没问题，但不要把用户密码、手机号、token 存进去（不安全）。敏感信息用 <code>sessionStorage</code> 或干脆不持久化。</p>
+<p>购物车数据存 localStorage 没问题，但不要把用户密码、手机号、token 存进去（不安全）。敏感信息不要持久化到浏览器存储——localStorage 和 sessionStorage 都不安全，前者关掉浏览器还在，后者关标签页才清，都别放密码和 token。</p>
 <h3>陷阱 3：store 之间形成循环依赖</h3>
 <div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">// ❌ cart.js import product.js，product.js 又 import cart.js
 // 这会导致初始化时的循环引用问题
@@ -30110,7 +30110,7 @@ D. 在守卫里调用 <code>useStore()</code> 会拿到旧实例，因此 Pinia 
 <p><strong>8.</strong> <code>router.push</code> 和 <code>router.replace</code> 的区别是：<code>push</code> 追加历史记录，<code>replace</code> 替换当前历史记录。 ( )</p>
 <p><strong>9.</strong> Pinia 中 <code>$patch</code> 方法可以用来批量修改多个 state 属性，而且只触发一次响应式更新。 ( )</p>
 <p><strong>10.</strong> 在 Pinia 的一个 store 的 getter 中，无法访问另一个 store 的数据。 ( )</p>
-<p><strong>11.</strong> 在 Vue Router 4 中，<code>router.push</code> 会返回一个 Promise，可以配合 <code>await</code> 在导航完成后继续执行逻辑。 ( )</p>
+<p><strong>11.</strong> 在 Vue Router 5 中，<code>router.push</code> 会返回一个 Promise，可以配合 <code>await</code> 在导航完成后继续执行逻辑。 ( )</p>
 <hr>
 <h2 id="sec-08-08.12-本章小测-h2-3">📝 三、简答题（每题 10 分，共 30 分）</h2>
 <p><strong>12.</strong> 请用自己的话解释&rdquo;什么是前端路由&rdquo;，它解决了什么问题。并简述 Hash 模式和 History 模式的区别。</p>
@@ -30175,7 +30175,7 @@ router.beforeEach((to, from) =&gt; {
 <tr>
 <td>4</td>
 <td>B</td>
-<td>Vue Router 4 推荐用返回值控制，A 写法不完整（需要 else），C 什么都没返回</td>
+<td>Vue Router 5 推荐用返回值控制，A 写法不完整（需要 else），C 什么都没返回</td>
 </tr>
 <tr>
 <td>5</td>
@@ -30784,7 +30784,7 @@ const { theme, fontSize } = storeToRefs(settings)
 <h2 id="sec-09-09.1-前后端分离是啥-h2-5">🔑 三、HTTP 协议：前后端怎么&rdquo;说话&rdquo;？</h2>
 <p>前后端分离后，前端和后端靠 <strong>HTTP 协议</strong> 通信。理解 HTTP 是做服务端通信的基础。</p>
 <h3>3.1 一个 HTTP 请求长什么样</h3>
-<div class="code-block"><div class="code-header"><span class="code-lang">http</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-http">GET /api/products HTTP/1.1
+<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-text">GET /api/products HTTP/1.1
 Host: shop.com
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ...
 Content-Type: application/json
@@ -30796,7 +30796,7 @@ Content-Type: application/json
 <li><strong>请求体（Body）</strong>：POST/PUT 时携带的数据（通常是 JSON）</li>
 </ul>
 <h3>3.2 一个 HTTP 响应长什么样</h3>
-<div class="code-block"><div class="code-header"><span class="code-lang">http</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-http">HTTP/1.1 200 OK
+<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-text">HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -32897,7 +32897,7 @@ import { ref, onUnmounted } from 'vue'
 <li><a href="https://cn.vuejs.org/guide/reusability/composables.html">Vue 官方 - Composables</a></li>
 <li><a href="https://axios-http.com/zh/docs/cancellation">Axios 取消请求</a></li>
 <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/AbortController">AbortController - MDN</a></li>
-<li><a href="https://www.attojs.org/">vue-request 库</a></li>
+<li><a href="https://www.attojs.com/">vue-request 库</a></li>
 </ul>
 <hr>
 <p><strong>（9.7 节结束，下一节 9.8 本章小测 →）</strong></p></div></article><article id="sec-09-09.8-本章小测" class="section"><h2 class="section-title"><span class="section-num">9.8</span>本章小测</h2><div class="section-body"><blockquote>
@@ -35195,7 +35195,7 @@ schema 内联函数写法 `(value, { form }) => ...` 里的 `{ form }` 就是**�
 <hr>
 <h2 id="sec-10-10.5-自定义验证规则-h2-11">📚 拓展阅读</h2>
 <ul>
-<li><a href="https://vee-validate.logaretm.com/v4/guide/custom-rules">VeeValidate 4 - 自定义规则</a></li>
+<li><a href="https://vee-validate.logaretm.com/v4/">VeeValidate 4 - 自定义规则</a></li>
 <li><a href="https://vueuse.org/shared/useDebounceFn/">VueUse - useDebounceFn（防抖）</a></li>
 <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions">MDN - 正则表达式指南</a></li>
 </ul>
@@ -38360,7 +38360,7 @@ afterEach(() =&gt; {
 <ul>
 <li><a href="https://cn.vitest.dev/guide/mocking.html">Vitest 官方文档 - Mocking</a></li>
 <li><a href="https://cn.vitest.dev/guide/coverage.html">Vitest 官方文档 - 覆盖率</a></li>
-<li><a href="https://test-utils.vuejs.org/guide/advanced/vitest.html">Vue Test Utils - 配合 Vitest 使用</a></li>
+<li><a href="https://test-utils.vuejs.org/guide/">Vue Test Utils - 配合 Vitest 使用</a></li>
 </ul>
 <hr>
 <p><strong>（11.4 节结束，下一节 11.5 讲 Vue DevTools 调试 →）</strong></p></div></article><article id="sec-11-11.5-Vue DevTools调试" class="section"><h2 class="section-title"><span class="section-num">11.5</span>Vue DevTools 调试</h2><div class="section-body"><blockquote>
@@ -38565,7 +38565,7 @@ Timeline 面板会录制组件渲染事件，每个组件显示一条时间条�
 <ul>
 <li><a href="https://devtools.vuejs.org/">Vue DevTools 官方文档</a></li>
 <li><a href="https://github.com/vuejs/devtools">Vue DevTools GitHub</a></li>
-<li><a href="https://pinia.vuejs.org/cookbook/devtools.html">Pinia DevTools 指南</a></li>
+<li><a href="https://pinia.vuejs.org/zh/cookbook/">Pinia DevTools 指南</a></li>
 </ul>
 <hr>
 <p><strong>（11.5 节结束，下一节 11.6 讲常见 Bug 排查技巧 →）</strong></p></div></article><article id="sec-11-11.6-常见Bug排查技巧" class="section"><h2 class="section-title"><span class="section-num">11.6</span>常见 Bug 排查技巧</h2><div class="section-body"><blockquote>
@@ -40075,7 +40075,7 @@ describe('ledger 汇总逻辑', () =&gt; {
 │   ├── Vue 3（组合式 API + script setup）
 │   ├── Vite（构建工具）
 │   ├── Pinia（状态管理）
-│   ├── Vue Router 4（路由，双端分层）
+│   ├── Vue Router 5（路由，双端分层）
 │   ├── Axios（HTTP 请求）
 │   └── Element Plus（UI 组件库）
 └── 验收标准
@@ -40304,7 +40304,7 @@ export const useUserStore = defineStore('user', () =&gt; {
   return { token, setToken }
 })
 </code></pre></div>
-<h3>4.4 Vue Router 4（路由）</h3>
+<h3>4.4 Vue Router 5（路由）</h3>
 <p>Vue 3 配套的路由库，功能：</p>
 <ul>
 <li>路由守卫（登录拦截）</li>
@@ -40351,7 +40351,7 @@ export const useUserStore = defineStore('user', () =&gt; {
 <li><strong>前台 5 模块</strong>：首页闲置列表与搜索、闲置物品详情与留言、发布闲置、购物车与模拟下单、登录注册</li>
 <li><strong>管理后台 3 模块</strong>：数据看板（ECharts）、闲置物品管理（CRUD + 上传）、交易订单管理（状态流转 + 详情），用户管理可选</li>
 <li><strong>双端路由分层</strong>：前台 <code>/#/</code> 公开、管理后台 <code>/#/admin</code> 需登录鉴权——第 8 章守卫能力的集中演练</li>
-<li><strong>技术选型六件套</strong>：Vue 3 + Vite + Pinia + Vue Router 4 + Axios + Element Plus；选型理由比&rdquo;选了什么&rdquo;更重要——面试官爱问&rdquo;为什么&rdquo;</li>
+<li><strong>技术选型六件套</strong>：Vue 3 + Vite + Pinia + Vue Router 5 + Axios + Element Plus；选型理由比&rdquo;选了什么&rdquo;更重要——面试官爱问&rdquo;为什么&rdquo;</li>
 <li><strong>三个陷阱</strong>：别一开始追求&rdquo;完美&rdquo;（先跑起来再迭代）；别跳过需求分析直接写码（token 存哪、过期怎么办先想清楚）；别&rdquo;追新&rdquo;选生态不稳的库</li>
 <li><strong>项目体系</strong>：前 11 章的 P1~P11 章末实战是种子，本章把它们合拢成完整的 Campus2Hand</li>
 <li><strong>验收标准</strong>：双端功能完整（前台可逛/可发/可下单 + 管理后台可管/可看）+ 代码规范（ESLint + 目录规范）+ <code>vite build</code> 可运行部署</li>
@@ -40458,7 +40458,7 @@ npm run dev
 <h2 id="sec-12-12.2-项目搭建与目录结构-h2-4">💡 二、安装项目依赖</h2>
 <h3>2.1 核心依赖</h3>
 <div class="code-block"><div class="code-header"><span class="code-lang">bash</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-bash"># 路由
-npm install vue-router@4
+npm install vue-router@5
 
 # 状态管理
 npm install pinia
@@ -40469,7 +40469,7 @@ npm install axios
 # UI 组件库
 npm install element-plus
 
-# ECharts（13.11 数据看板用）
+# ECharts（12.17 数据看板用）
 npm install echarts
 </code></pre></div>
 <h3>2.2 开发依赖</h3>
@@ -40490,11 +40490,11 @@ npm install -D eslint @eslint/js eslint-plugin-vue prettier
   },
   &quot;dependencies&quot;: {
     &quot;axios&quot;: &quot;^1.7.0&quot;,
-    &quot;echarts&quot;: &quot;^5.5.0&quot;,
+    &quot;echarts&quot;: &quot;^6.0.0&quot;,
     &quot;element-plus&quot;: &quot;^2.8.0&quot;,
-    &quot;pinia&quot;: &quot;^2.2.0&quot;,
-    &quot;vue&quot;: &quot;^3.4.0&quot;,
-    &quot;vue-router&quot;: &quot;^4.4.0&quot;
+    &quot;pinia&quot;: &quot;^4.0.0&quot;,
+    &quot;vue&quot;: &quot;^3.5.0&quot;,
+    &quot;vue-router&quot;: &quot;^5.0.0&quot;
   }
 }
 </code></pre></div>
@@ -40663,7 +40663,7 @@ app.use(ElementPlus)
 <div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">import 'element-plus/dist/index.css'  // ← 这一行不能少
 </code></pre></div>
 <h3>陷阱 3：Node 版本太低</h3>
-<p>Vite 5 需要 Node.js 18+。如果你的 Node 是 14 或 16，<code>npm create vite</code> 会报错。</p>
+<p>Vite 8 需要 Node.js 20.19+ 或 22.12+。如果你的 Node 低于 20.19，<code>npm create vite</code> 会报错。</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">bash</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-bash"># 检查 Node 版本
 node -v
 
@@ -40680,7 +40680,7 @@ nvm use 18
 <h2 id="sec-12-12.2-项目搭建与目录结构-h2-9">🧠 本节小结</h2>
 <ul>
 <li><strong>创建项目</strong>：<code>npm create vite@latest admin-system -- --template vue</code> → <code>npm i</code> → <code>npm run dev</code>；Vite 基于原生 ESM 按需编译，启动秒级（Webpack 需全量打包）</li>
-<li><strong>依赖分工</strong>：运行时 <code>vue-router@4 / pinia / axios / element-plus / echarts</code>，开发时 <code>eslint / prettier</code>；Node 版本要 18+</li>
+<li><strong>依赖分工</strong>：运行时 <code>vue-router@5 / pinia / axios / element-plus / echarts</code>，开发时 <code>eslint / prettier</code>；Node 版本要 20.19+</li>
 <li><strong>目录规范</strong>：<code>api/</code> 放接口函数、<code>components/</code> 放可复用组件、<code>views/</code> 放页面级组件、<code>stores/</code> 放 Pinia、<code>utils/</code> 放工具函数——判断标准：&rdquo;是否被多个页面使用&rdquo;</li>
 <li><strong>main.js 注册</strong>：<code>createPinia</code> / <code>router</code> / <code>ElementPlus</code> 依次 <code>app.use</code>，别忘了引入 <code>element-plus/dist/index.css</code></li>
 <li><strong>vite.config.js</strong>：配置 <code>@</code> → <code>src</code> 别名（否则 <code>@/...</code> import 不生效）；<code>/api</code> proxy 转发后端</li>
@@ -40870,7 +40870,7 @@ export default router
 </tr>
 <tr>
 <td><code>/:pathMatch(.*)*</code></td>
-<td>Vue Router 4 的通配符语法，匹配所有未定义路径</td>
+<td>Vue Router 5 的通配符语法，匹配所有未定义路径</td>
 </tr>
 </tbody>
 </table></div>
@@ -41048,9 +41048,9 @@ const routes = [
 <hr>
 <h2 id="sec-12-12.3-路由设计与权限控制-h2-12">📚 拓展阅读</h2>
 <ul>
-<li><a href="https://router.vuejs.org/zh/guide/advanced/navigation-guards.html">Vue Router 4 - 导航守卫</a></li>
-<li><a href="https://router.vuejs.org/zh/guide/advanced/dynamic-routing.html">Vue Router 4 - 动态路由</a></li>
-<li><a href="https://router.vuejs.org/zh/guide/advanced/meta.html">Vue Router 4 - 路由元信息</a></li>
+<li><a href="https://router.vuejs.org/zh/guide/advanced/navigation-guards.html">Vue Router 5 - 导航守卫</a></li>
+<li><a href="https://router.vuejs.org/zh/guide/advanced/dynamic-routing.html">Vue Router 5 - 动态路由</a></li>
+<li><a href="https://router.vuejs.org/zh/guide/advanced/meta.html">Vue Router 5 - 路由元信息</a></li>
 </ul>
 <hr>
 <p><strong>（12.3 节结束，下一节 12.4 讲前台首页：闲置列表与搜索筛选 →）</strong></p></div></article><article id="sec-12-12.4-前台首页：闲置列表与搜索筛选" class="section"><h2 class="section-title"><span class="section-num">12.4</span>前台首页：闲置列表与搜索筛选</h2><div class="section-body"><blockquote>
@@ -41116,7 +41116,7 @@ const routes = [
 <h2 id="sec-12-12.4-前台首页：闲置列表与搜索筛选-h2-4">💡 二、准备本地 mock 数据</h2>
 <p>新建 <code>src/data/goods.js</code>，集中放闲置数据与分类/价格区间常量（<strong>常量集中定义</strong>，12.11 管理后台筛选会复用同一份分类）：</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">// src/data/goods.js
-// 前台首页的本地数据：13.11 接管理后台接口后，这份文件会被 api/goods.js 取代
+// 前台首页的本地数据：12.11 接管理后台接口后，这份文件会被 api/goods.js 取代
 export const GOODS_CATEGORIES = ['教材书籍', '数码电子', '生活用品', '运动户外', '其他']
 
 export const PRICE_RANGES = [
@@ -41523,7 +41523,7 @@ const filteredGoods = computed(() =&gt; goods.value.filter(...))
 <hr>
 <h2 id="sec-12-12.5-前台商品详情与留言-h2-3">🤔 一、从&rdquo;列表&rdquo;到&rdquo;详情&rdquo;：动态路由参数</h2>
 <p>回忆 8.3：路径里的冒号片段是<strong>参数占位符</strong>。</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">// 13.3 已经配好的路由
+<div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">// 12.3 已经配好的路由
 {
   path: '/goods/:id',
   name: 'goods-detail',
@@ -43158,7 +43158,7 @@ const router = useRouter()
 const cart = useCartStore()
 
 function handleCheckout() {
-  // 1. 登录校验（13.3 的守卫也会拦，这里显式兜底 + 带 redirect）
+  // 1. 登录校验（12.3 的守卫也会拦，这里显式兜底 + 带 redirect）
   if (!localStorage.getItem('token')) {
     ElMessage.warning('请先登录再下单')
     router.push({ path: '/login', query: { redirect: '/cart' } })
@@ -45685,7 +45685,7 @@ defineProps({ title: String, value: [String, Number], icon: String })
 <h2 id="sec-12-12.17-数据看板-h2-9">📚 拓展阅读</h2>
 <ul>
 <li><a href="https://echarts.apache.org/zh/index.html">ECharts 官方文档</a></li>
-<li><a href="https://echarts.apache.org/handbook/zh/how-to/cross-platform/vue/">ECharts 在 Vue 3 中的使用</a></li>
+<li><a href="https://echarts.apache.org/handbook/zh/get-started/">ECharts 在 Vue 3 中的使用</a></li>
 <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/all">Promise.all MDN</a></li>
 </ul>
 <hr>
@@ -45832,7 +45832,7 @@ VITE_API_BASE=https://api.your-domain.com/api
 <div class="code-block"><div class="code-header"><span class="code-lang">bash</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-bash">scp -r dist/* root@your-server:/var/www/admin/
 </code></pre></div>
 <p><strong>第二步：配置 Nginx</strong></p>
-<div class="code-block"><div class="code-header"><span class="code-lang">nginx</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-nginx">server {
+<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-text">server {
     listen       80;
     server_name  admin.your-domain.com;
     root         /var/www/admin;
@@ -45903,7 +45903,7 @@ nginx -s reload       # 重载配置
 <li><a href="https://cn.vitejs.dev/guide/build.html">Vite 官方文档 - 构建生产版本</a></li>
 <li><a href="https://cn.vitejs.dev/guide/static-deploy.html">Vite 官方文档 - 部署静态站点</a></li>
 <li><a href="https://nginx.org/en/docs/beginners_guide.html">Nginx 入门指南</a></li>
-<li><a href="https://vercel.com/guides/deploying-vite-to-vercel">Vercel 部署 Vite 应用</a></li>
+<li><a href="https://vercel.com/docs/frameworks/vite">Vercel 部署 Vite 应用</a></li>
 </ul>
 <hr>
 <h2 id="sec-12-12.18-项目打包与部署-h2-10">🧠 本节小结</h2>
@@ -45924,7 +45924,7 @@ nginx -s reload       # 重载配置
 <summary>💡 深究一下：`try_files` 到底在做什么？</summary>
 
 
-<div class="code-block"><div class="code-header"><span class="code-lang">nginx</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-nginx">location / {
+<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-text">location / {
     root /usr/share/nginx/html;
     try_files $uri $uri/ /index.html;
 }
@@ -46164,7 +46164,7 @@ const form = ref&lt;LoginForm&gt;({ username: '', password: '' })
 </ul>
 <hr>
 <h2 id="sec-12-12.19-本章小结与学习路线-h2-7">⚠️ 五、常见问题（课程结束前你可能会问）</h2>
-<h3>Q1：我学完这 13 章，能投简历了吗？</h3>
+<h3>Q1：我学完这 12 章，能投简历了吗？</h3>
 <p><strong>能</strong>。前提是你独立完成了本章的综合项目，并且能讲清楚&rdquo;为什么这样设计&rdquo;（不仅是&rdquo;怎么写的&rdquo;）。</p>
 <h3>Q2：面试官会问什么？</h3>
 <p>大概率会围绕你的项目展开：
