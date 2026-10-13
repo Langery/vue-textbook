@@ -98,6 +98,33 @@
 - **前置**：第 4 章（组件化）+ 第 7 章（组合式 API，特别是 composable）
 - **后续直接被依赖**：第 9 章（服务端通信）、第 12 章（综合项目）
 
+## 📖 本章术语表
+
+下表收录本章 8.1~8.13 正文实际讲到的核心术语，按首次出现的节号排序，方便随时回查。
+
+| 术语 | 一句话解释 | 首现节号 |
+|---|---|---|
+| `SPA` | 单页应用：整个应用只有一个 HTML 页面，切换路由不刷新页面，由 JS 动态切换组件。 | 8.1 |
+| `Hash 模式` | 利用 URL 中 # 后的 hash 变化不刷新页面，监听 hashchange 事件实现前端路由。 | 8.1 |
+| `History 模式` | 利用 HTML5 History API（pushState/popstate）改写 URL 而不刷新页面的路由模式。 | 8.1 |
+| `router-view` | 路由出口组件，像插槽一样根据当前 URL 动态渲染匹配到的页面组件。 | 8.1 |
+| `Vue Router` | Vue 官方路由库（Vue 3 用 v4），负责路由表、导航、参数传递与守卫等能力。 | 8.2 |
+| `createRouter` | 创建路由实例的函数，接收 history 与 routes 配置，用 app.use 挂载到应用。 | 8.2 |
+| `router-link` | 声明式导航链接组件，渲染成 a 标签但点击不刷新，自动加激活高亮类。 | 8.2 |
+| `懒加载` | 路由组件写成 () => import(...) 动态导入，访问该页时才下载代码，加快首屏。 | 8.2 |
+| `动态路由` | 用 /user/:id 带占位符的路径匹配一类 URL，参数从 route.params 读取。 | 8.3 |
+| `useRoute` | 组合式 API，返回当前路由信息对象，可读取 params、query、hash 等参数。 | 8.3 |
+| `query` | URL 中 ? 后的查询参数（如 ?keyword=vue），可选可增减，适合筛选排序分页。 | 8.3 |
+| `嵌套路由` | 父路由负责布局、children 子路由切换内容，每层各有一个 router-view 出口。 | 8.4 |
+| `命名路由` | 给路由配置 name 后按名跳转，路径改了也不用改跳转代码，可读性更好。 | 8.4 |
+| `编程式导航` | 在 JS 逻辑中用 router.push / replace / go 跳转页面，如登录成功后跳首页。 | 8.5 |
+| `beforeEach` | 全局前置守卫，每次导航前触发，适合做登录拦截、权限校验等。 | 8.6 |
+| `Vuex` | Vue 经典状态管理库，用 State/Getter/Mutation/Action/Module 组织全局数据。 | 8.7 |
+| `Mutation` | Vuex 中同步修改 state 的唯一途径，通过 commit 调用以便追踪每次变更。 | 8.7 |
+| `Pinia` | Vue 3 官方推荐的新一代状态管理库，无 mutation、API 简洁、天然模块化。 | 8.8 |
+| `defineStore` | 定义 Pinia store 的函数，支持 Option Store（对象）与 Setup Store（函数）写法。 | 8.8 |
+| `storeToRefs` | 解构 store 的 state/getters 时保持响应式的 API，actions 可直接解构。 | 8.8 |
+
 ---
 
 **（开始学习：8.1 单页应用 →）**

@@ -109,6 +109,33 @@
 - **前置**：第 4 章（组件化）+ 第 3 章（响应式）
 - **后续直接被依赖**：第 8 章（路由与状态管理）、第 11 章（测试与调试）
 
+## 📖 本章术语表
+
+下表收录本章 7.1~7.12 正文实际讲到的核心术语，按首次出现的节号排序，方便随时回查。
+
+| 术语 | 一句话解释 | 首现节号 |
+|---|---|---|
+| `组合式 API` | Vue 3 主推的组织代码方式，把同一功能的数据、方法、监听等写在 setup 中聚合。 | 7.1 |
+| `选项式 API` | Vue 2 传统写法，按 data、methods、computed、watch 等类型分块组织组件代码。 | 7.1 |
+| `<script setup>` | 组合式 API 的语法糖写法，在单文件组件中直接写逻辑，无需 export default 选项。 | 7.1 |
+| `Mixin` | Vue 2 时代复用逻辑的混入机制，存在命名冲突、来源不透明、隐式耦合等问题。 | 7.2 |
+| `composable` | 以 use 开头、封装独立功能并返回响应式状态与方法的组合式函数，如 useMouse。 | 7.2 |
+| `命名冲突` | 多个 Mixin 或来源的同名属性互相覆盖、难以排查的问题，composable 通过显式解构规避。 | 7.2 |
+| `provide` | 祖先组件向所有后代注入数据的 API，配合 inject 实现隔代传值、跳过中间层。 | 7.4 |
+| `inject` | 后代组件获取祖先 provide 数据的 API，按 key 读取注入值，可选默认值。 | 7.4 |
+| `Prop Drilling` | 中间层组件被迫逐级转发不关心的 Props 的传值现象，可用 provide/inject 消除。 | 7.4 |
+| `readonly` | 把对象包装为只读的 API，常用于 provide 传值防止子组件误改共享数据。 | 7.4 |
+| `Symbol` | 用 Symbol 作为 provide/inject 的 key，可避免字符串 key 的命名冲突问题。 | 7.5 |
+| `useXxx 约定` | composable 的命名规范：函数以 use 开头、大写名词结尾，如 useMouse、useFetch。 | 7.6 |
+| `防抖` | 多次触发只执行最后一次的技术，常用于搜索输入，减少无效请求、提升性能。 | 7.7 |
+| `useDebounce` | 封装防抖逻辑的 composable，监听源值变化延迟更新，返回防抖后的 ref。 | 7.7 |
+| `useLocalStorage` | 让 ref 与 localStorage 双向同步的 composable，刷新页面后数据依然保留。 | 7.7 |
+| `自定义指令` | 用 v-xxx 声明式给元素挂载 DOM 行为的复用机制，如 v-copy、v-focus、v-debounce。 | 7.8 |
+| `VueUse` | Vue 官方团队维护的 composable 工具库，提供 200+ 个开箱即用的组合式函数。 | 7.9 |
+| `useStorage` | VueUse 提供的响应式 localStorage 封装，一行代码实现持久化读写与多 Tab 同步。 | 7.9 |
+| `effectScope` | 批量管理副作用的"作用域容器"，域内所有 watcher/computed 可经 stop() 一次停掉。 | 7.10 |
+| `onScopeDispose` | 在 effectScope 内注册清理函数的 API，作用域停止时统一执行回收逻辑。 | 7.10 |
+
 ---
 
 **（开始学习：7.1 组合式 API 是啥 →）**
