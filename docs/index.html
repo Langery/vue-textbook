@@ -7334,7 +7334,7 @@ const loading = ref(true)   // 初始为加载中
 <tbody>
 <tr>
 <td>3.1</td>
-<td>ref：响应式数据的&rdquo;容器&rdquo;</td>
+<td>ref：组件的记忆</td>
 <td><code>ref()</code> 基础、<code>.value</code> 语法</td>
 <td>1</td>
 </tr>
@@ -7346,7 +7346,7 @@ const loading = ref(true)   // 初始为加载中
 </tr>
 <tr>
 <td>3.3</td>
-<td>更新对象/数组的正确姿势</td>
+<td>更新对象和数组的正确姿势</td>
 <td>避免 <code>arr[i] = x</code> 失效</td>
 <td>0.5</td>
 </tr>
@@ -7370,7 +7370,7 @@ const loading = ref(true)   // 初始为加载中
 </tr>
 <tr>
 <td>3.7</td>
-<td>响应式触发：为什么改了不立即变</td>
+<td>响应式触发：为啥改了不立即变</td>
 <td>异步更新队列、microtask</td>
 <td>0.5</td>
 </tr>
@@ -7401,7 +7401,7 @@ const loading = ref(true)   // 初始为加载中
 <tr>
 <td>3.12</td>
 <td>本章小测</td>
-<td>8 选择 + 2 实操 + 1 原理题</td>
+<td>10 选择（含 2 多选）+ 2 实操</td>
 <td>—</td>
 </tr>
 <tr>
@@ -7432,42 +7432,42 @@ const loading = ref(true)   // 初始为加载中
 </thead>
 <tbody>
 <tr>
-<td>5-1</td>
-<td>ref：响应式数据容器</td>
+<td>3-1</td>
+<td><code>ref()</code> vs <code>reactive()</code> 对比</td>
 <td>已完成</td>
 </tr>
 <tr>
-<td>5-2</td>
-<td><code>ref</code> vs <code>reactive</code> 对比</td>
+<td>3-2</td>
+<td><code>computed</code> vs <code>watch</code> 选择</td>
 <td>已完成</td>
 </tr>
 <tr>
-<td>5-3</td>
+<td>3-3</td>
 <td><code>ref</code> 工作原理（Proxy 拦截）</td>
 <td>待做</td>
 </tr>
 <tr>
-<td>5-4</td>
+<td>3-4</td>
 <td>不可变原则</td>
 <td>待做</td>
 </tr>
 <tr>
-<td>5-5</td>
+<td>3-5</td>
 <td>响应式触发：异步更新</td>
 <td>待做</td>
 </tr>
 <tr>
-<td>5-6</td>
+<td>3-6</td>
 <td><code>nextTick</code> 时序</td>
 <td>待做</td>
 </tr>
 <tr>
-<td>5-7</td>
+<td>3-7</td>
 <td>对象/数组正确更新姿势</td>
 <td>待做</td>
 </tr>
 <tr>
-<td>5-8</td>
+<td>3-8</td>
 <td>响应式丢失 4 个常见场景</td>
 <td>待做</td>
 </tr>
@@ -7477,7 +7477,7 @@ const loading = ref(true)   // 初始为加载中
 <h2 id="sec-03-README-h2-6">⚠️ 学习提示</h2>
 <ul>
 <li><strong>原理部分（3.10）</strong> 不要死记硬背，理解&rdquo;Proxy 拦截&rdquo;和&rdquo;依赖收集&rdquo;的概念即可</li>
-<li><strong>响应式丢失</strong> 是 Vue 最常见的 bug 来源——3.9 + 3.11 必须<strong>动手试</strong></li>
+<li><strong>响应式丢失</strong> 是 Vue 最常见的 bug 来源——3.3 + 3.9 必须<strong>动手试</strong></li>
 <li><strong>不要</strong>把 <code>reactive</code> 整个赋值给一个新对象（<code>state = newObj</code>），要 <code>Object.assign</code> 或 <code>...</code></li>
 </ul>
 <hr>
@@ -7487,7 +7487,7 @@ const loading = ref(true)   // 初始为加载中
 <li><strong>后续</strong>：第 6 章 <code>watch</code> / <code>watchEffect</code> 都基于响应式</li>
 </ul>
 <hr>
-<p><strong>（开始学习：3.1 ref 响应式数据容器 →）</strong></p></div></article><article id="sec-03-03.1-ref：组件的记忆" class="section"><h2 class="section-title"><span class="section-num">3.1</span>ref：组件的记忆</h2><div class="section-body"><blockquote>
+<p><strong>（开始学习：3.1 ref：组件的记忆 →）</strong></p></div></article><article id="sec-03-03.1-ref：组件的记忆" class="section"><h2 class="section-title"><span class="section-num">3.1</span>ref：组件的记忆</h2><div class="section-body"><blockquote>
 <p>章节：第 3 章 响应式数据
 课时：0.5 课时</p>
 </blockquote>
@@ -7559,14 +7559,14 @@ function add() {
 
 > 🧊 **冷知识：Vue 2 为什么没有 `Vue.set` 了？**
 > Vue 2 用的是 `Object.defineProperty`，它只能劫持对象上**已经存在**的属性。所以那时候给对象**新增**一个属性，视图是不会更新的，必须调用 `Vue.set` 手动补救。
-> Vue 3 换成 `Proxy` 后，新增、删除属性都能被感知——`Vue.set` 也就彻底退休了。
+> Vue 3 换成 `Proxy` 后，新增、删除属性都能被感知——`Vue.set` 已无必要。
 
 </details>
 
 <hr>
 <h2 id="sec-03-03.1-ref：组件的记忆-h2-4">💡 二、ref：给数据套一个&rdquo;能被追踪&rdquo;的壳</h2>
 <h3>2.1 ref 基本语法</h3>
-<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>&lt;script setup&gt;
+<div class="code-block"><div class="code-header"><span class="code-lang">vue</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-vue">&lt;script setup&gt;
 import { ref } from 'vue'
 
 // ref(初始值) 返回一个响应式引用对象
@@ -7580,12 +7580,12 @@ const count = ref(0)
 <li><code>import { ref } from 'vue'</code> —— <strong>模块导入</strong>。把 <code>vue</code> 这个模块里的 <code>ref</code> 拿出来用。在此之前，浏览器里要靠一堆 <code>&lt;script&gt;</code> 标签按顺序引入，容易互相污染。</li>
 <li><code>const count = ref(0)</code> —— <strong>常量声明</strong>。块级作用域，且不允许再指向别的值。</li>
 </ul>
-<p>⚠️ 翻车示例：
-<code>js
-const count = ref(0)
+<p>⚠️ 翻车示例：</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>const count = ref(0)
 count = ref(1)   // ❌ TypeError: Assignment to constant variable.
-count.value = 1  // ✅ 合法——不能改指向，不等于不能改内容</code>
-&ldquo;不能重新赋值&rdquo;管的是<strong>变量指向谁</strong>，不是<strong>对象内部能不能变</strong>。这是初学 <code>const</code> 时最大的误会。</p>
+count.value = 1  // ✅ 合法——不能改指向，不等于不能改内容
+</code></pre></div>
+<p>&ldquo;不能重新赋值&rdquo;管的是<strong>变量指向谁</strong>，不是<strong>对象内部能不能变</strong>。这是初学 <code>const</code> 时最大的误会。</p>
 </blockquote>
 <p><code>ref(0)</code> 做的事：把数字 <code>0</code> 包进一个对象里，这个对象有且只有一个属性叫 <code>.value</code>。</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">console.log(count)        // RefImpl { value: 0 }  ← 不是 0，而是一个对象！
@@ -7604,7 +7604,7 @@ function add() {
 </code></pre></div>
 <h3>2.2 模板里自动解包</h3>
 <p>在 <code>&lt;template&gt;</code> 中，Vue 帮你自动&rdquo;剥壳&rdquo;——不用写 <code>.value</code>：</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>&lt;template&gt;
+<div class="code-block"><div class="code-header"><span class="code-lang">vue</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-vue">&lt;template&gt;
   &lt;p&gt;当前计数：{ count }&lt;/p&gt;   &lt;!-- ✅ 直接写 count，不用 .value --&gt;
   &lt;button @click=&quot;add&quot;&gt;+1&lt;/button&gt;
 &lt;/template&gt;
@@ -7685,10 +7685,10 @@ const { a } = state.value  // ❌ 也是普通数字 1
 <blockquote>
 <p>📦 <strong>ES6 小灶：<code>const { a } = state</code> 这是什么写法？</strong></p>
 <p>这叫<strong>解构赋值</strong>（ES6 新增）。它按&rdquo;形状&rdquo;从对象里把字段取出来：</p>
-<p><code>js
-const obj = { a: 1, b: 2 }
+<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>const obj = { a: 1, b: 2 }
 const { a, b } = obj          // 等价于 const a = obj.a; const b = obj.b
-const { b: renamed } = obj    // 取出 b 并改名为 renamed</code></p>
+const { b: renamed } = obj    // 取出 b 并改名为 renamed
+</code></pre></div>
 <p>它让代码短了不少，但也正是它，把 <code>state.value</code> 里的响应式&rdquo;掰断&rdquo;了——因为解构拿到的是<strong>某个瞬间的值</strong>（一个普通数字），不再是那个被 Proxy 盯着的盒子。</p>
 </blockquote>
 <p>解构会丢失响应式——这点后面 3.2 和 3.9 会详细讲。</p>
@@ -7707,7 +7707,7 @@ const { b: renamed } = obj    // 取出 b 并改名为 renamed</code></p>
 </ul>
 <hr>
 <h2 id="sec-03-03.1-ref：组件的记忆-h2-8">📝 即时练习</h2>
-<p><strong>练习 1</strong>：写一个步长可调的计数器。有一个输入框控制步长，点 <code>+步长</code> 按钮时加上步长值。</p>
+<p><strong>练习 1</strong>：写一个步长可调的计数器。输入框输入步长（如 <code>2</code>），点一次 <code>+</code> 按钮数字加 <code>2</code>。</p>
 <p><strong>练习 2</strong>：创建一个 <code>ref(false)</code> 的布尔值，绑定到一个按钮上切换显示/隐藏一段文字（提示：用 <code>v-if</code>）。</p>
 <p><strong>练习 3</strong>：用 <code>ref</code> 包一个数组 <code>['苹果', '香蕉', '橘子']</code>，用 <code>v-for</code> 渲染成列表，再加一个输入框和按钮实现&rdquo;添加水果&rdquo;。</p>
 <details>
@@ -7810,6 +7810,12 @@ const { b: renamed } = obj    // 取出 b 并改名为 renamed</code></p>
 </tbody>
 </table></div>
 <hr>
+<blockquote>
+<p>🎯 <strong>类比一下：单人间公寓 vs 合租大平层</strong></p>
+<p><code>ref</code> 像<strong>单人间公寓</strong>：整间房都归你，但进门前必须先刷门禁卡——这张卡就是 <code>.value</code>，少刷一次就进不去。
+<code>reactive</code> 像<strong>合租大平层</strong>：屋里每样东西都能直接上手，不用刷卡；代价是这套房子只认&rdquo;房子&rdquo;本身，没法整个端走（不能包基本类型、不能整体替换）。
+一句话：<strong><code>ref</code> 刷卡进门，<code>reactive</code> 直接上手</strong>。</p>
+</blockquote>
 <h2 id="sec-03-03.2-reactive-vs-ref：别搞混-h2-4">💡 二、reactive 基本用法</h2>
 <div class="code-block"><div class="code-header"><span class="code-lang">vue</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-vue">&lt;script setup&gt;
 import { reactive } from 'vue'
@@ -7851,6 +7857,21 @@ user.value.age++  // ✅ 页面会更新
 <p>也就是说 <code>ref({...})</code> ≈ <code>ref(reactive({...}))</code>。<strong>两者都能让深层属性响应式</strong>，区别只是顶层要不要 <code>.value</code>。</p>
 <hr>
 <h2 id="sec-03-03.2-reactive-vs-ref：别搞混-h2-6">🔑 四、toRefs：解构 reactive 不丢响应式</h2>
+<blockquote>
+<p>📦 <strong>ES6 小灶：解构赋值</strong></p>
+<p>一句话：<strong>解构 = 按形状拆快递</strong>——把盒子（对象）里的东西一件件取出来，装进新变量。</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>const user = { name: '张三', age: 20 }
+const { name, age } = user   // 取出 name、age，装进两个新变量
+console.log(name)            // '张三'
+</code></pre></div>
+<p>⚠️ 翻车例：解构出来的是<strong>值本身</strong>，不是那个盒子上的标签。</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>const state = reactive({ count: 0 })
+const { count } = state   // count 拿到的是数字 0，和 state.count 再无关系
+count++                   // 页面纹丝不动
+state.count++             // 页面才更新
+</code></pre></div>
+<p>人话翻译：解构等于把值<strong>抠出来放进新变量</strong>，Vue 给原对象拉的那根&rdquo;监听线&rdquo;没跟着出来——线被剪断了。要连人带线一起搬，就得用下面的 <code>toRefs</code>。</p>
+</blockquote>
 <p><code>reactive</code> 最大的坑：<strong>解构会丢失响应式</strong>。</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">const state = reactive({ count: 0, name: 'Vue' })
 
@@ -7859,7 +7880,7 @@ const { count, name } = state
 // count = 1 → 页面不变
 </code></pre></div>
 <p>解决方案：<code>toRefs()</code> 把 <code>reactive</code> 对象的每个属性转成独立的 <code>ref</code>：</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>&lt;script setup&gt;
+<div class="code-block"><div class="code-header"><span class="code-lang">vue</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-vue">&lt;script setup&gt;
 import { reactive, toRefs } from 'vue'
 
 const state = reactive({ count: 0, name: 'Vue' })
@@ -7907,7 +7928,7 @@ function submit() {
 &lt;/template&gt;
 </code></pre></div>
 <h3>ref 版（等价写法）</h3>
-<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>&lt;script setup&gt;
+<div class="code-block"><div class="code-header"><span class="code-lang">vue</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-vue">&lt;script setup&gt;
 import { ref } from 'vue'
 
 const form = ref({
@@ -7933,6 +7954,14 @@ function submit() {
 </code></pre></div>
 <p>两者都能跑。<code>reactive</code> 版 JS 代码里不用 <code>.value</code>，爽一点；<code>ref</code> 版更通用（能包基本类型）。</p>
 <hr>
+<blockquote>
+<p>🎬 <strong>小剧场：小新的&rdquo;整体替换&rdquo;</strong></p>
+<p><strong>小新</strong>：我把 <code>state</code> 整个换成新对象了，写得多干净——<code>state = { count: 1 }</code>。
+<strong>页面</strong>：……（一动不动）
+<strong>报错君</strong>：它不是没听见，是你<strong>把线拔了</strong>。<code>reactive</code> 返回的是原对象的代理，你把变量指向新对象，代理还挂在旧对象身上。
+<strong>小新</strong>：那我想清空重来怎么办？
+<strong>报错君</strong>：要么 <code>Object.assign(state, { count: 1 })</code> 就地合并属性，要么改用 <code>ref</code>，整体换 <code>.value</code>。</p>
+</blockquote>
 <h2 id="sec-03-03.2-reactive-vs-ref：别搞混-h2-8">⚠️ 六、常见陷阱</h2>
 <h3>陷阱 1：reactive 整体替换会丢响应式</h3>
 <div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">const state = reactive({ count: 0 })
@@ -8011,7 +8040,7 @@ const obj = { count: ref(0) }  // 普通对象里包了一个 ref
 <li><a href="https://cn.vuejs.org/guide/essentials/reactivity-fundamentals.html#reactive">Vue 3 官方文档 - ref vs reactive</a></li>
 </ul>
 <hr>
-<p><strong>（3.2 节结束，下一节 3.10 讲 ref 的底层套路 →）</strong></p></div></article><article id="sec-03-03.3-更新对象和数组的正确姿势" class="section"><h2 class="section-title"><span class="section-num">3.3</span>更新对象和数组的正确姿势</h2><div class="section-body"><blockquote>
+<p><strong>（3.2 节结束，下一节 3.3 更新对象和数组的正确姿势 →）</strong></p></div></article><article id="sec-03-03.3-更新对象和数组的正确姿势" class="section"><h2 class="section-title"><span class="section-num">3.3</span>更新对象和数组的正确姿势</h2><div class="section-body"><blockquote>
 <p>章节：第 3 章 响应式数据
 课时：0.5 课时</p>
 </blockquote>
@@ -8088,6 +8117,20 @@ state = reactive({ count: 1 })
 Object.assign(state, { count: 1, name: 'new' })
 </code></pre></div>
 <hr>
+<blockquote>
+<p>📦 <strong>ES6 小灶：展开运算符 <code>...</code></strong></p>
+<p>一句话：<strong>展开 = 把盒子拆开，把里面的东西一件件摆出来</strong>；想&rdquo;复制一份再改&rdquo;，靠的就是它。</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>const arr = [1, 2, 3]
+const copy = [...arr]          // 复制出一份新数组
+const obj = { a: 1 }
+const obj2 = { ...obj, b: 2 }  // 复制旧属性，再补一个新属性
+</code></pre></div>
+<p>⚠️ 翻车例：<code>const copy = arr</code> 不是复制，是给同一个数组起了两个名字，改 <code>copy</code> 等于改 <code>arr</code>。</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>const copy = arr
+copy.push(4)   // arr 也变成 [1, 2, 3, 4] 了
+</code></pre></div>
+<p>人话翻译：<code>[...arr]</code> 就是&rdquo;<strong>照着原样重新包一份</strong>&ldquo;。下面 <code>list.splice(0, list.length, ...filtered)</code> 把筛选结果灌回原数组，正是把新数组拆开、一件件摆进去；这也是后面&rdquo;不可变原则&rdquo;那节的语法地基。</p>
+</blockquote>
 <h2 id="sec-03-03.3-更新对象和数组的正确姿势-h2-5">🛠 三、数组更新的正确姿势</h2>
 <h3>3.1 Vue 能拦截的数组方法</h3>
 <p>这些方法修改数组后<strong>会自动触发更新</strong>：</p>
@@ -8176,6 +8219,11 @@ list.value[0] = 999  // 因为 ref 的 setter 会 trigger
 </code></pre></div>
 <p>为什么？因为 <code>ref</code> 数组是通过 <code>.value</code> 整体替换来触发更新的——Vue 只监听 <code>.value</code> 的变化。但注意：这是通过 Vue 内部对 <code>ref</code> 套 <code>reactive</code> 时的深层代理实现的。安全起见，建议统一用 <code>splice</code>。</p>
 <hr>
+<blockquote>
+<p>🧊 <strong>冷知识：那七个&rdquo;变异方法&rdquo;的名单，从 Vue 2 抄到了 Vue 3</strong></p>
+<p><code>push / pop / shift / unshift / splice / sort / reverse</code> 这七个名字不是随手列的。Vue 2 时代 <code>Object.defineProperty</code> 拦不住数组索引和 <code>length</code>，Vue 只好在数组原型上包一层，专门重写这七个&rdquo;会改动原数组&rdquo;的方法——只有它们能通知视图。
+Vue 3 换成 <code>Proxy</code> 后本不必再迁就这份名单，但官方文档和社区习惯依旧以它们为准：<strong>要改原数组，就用它们</strong>。这也是本节建议把 <code>arr[i] = x</code> 一律改写成 <code>splice</code> 的由来。</p>
+</blockquote>
 <h2 id="sec-03-03.3-更新对象和数组的正确姿势-h2-7">💡 五、shallowReactive：轻量级响应式</h2>
 <p><code>shallowReactive</code> 和 <code>shallowRef</code> 是一对——它只代理对象的第一层属性。</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">import { shallowReactive } from 'vue'
@@ -8231,6 +8279,16 @@ const config = shallowReactive({
 </code></pre></div>
 <hr>
 <h2 id="sec-03-03.3-更新对象和数组的正确姿势-h2-8">⚠️ 六、常见陷阱汇总</h2>
+<blockquote>
+<p>🎬 <strong>小剧场：小新的&rdquo;静默失效&rdquo;</strong></p>
+<p><strong>小新</strong>：<code>list[0] = 999</code>，按下保存，等页面刷新……
+（三秒后）<strong>小新</strong>：怎么一点没动？！
+<strong>报错君</strong>：因为你这条命令 Vue 收不到通知。它只认那几个&rdquo;变异方法&rdquo;——<code>push</code>、<code>splice</code> 之类；你直接按索引塞值，它当没发生。
+<strong>小新</strong>：那 <code>list.length = 0</code> 清空呢？
+<strong>报错君</strong>：一样静默失效，连个报错都不给。换成 <code>list.splice(0)</code> 才有人听得见。
+<strong>小新</strong>：所以&rdquo;改了没反应&rdquo;不等于我写错了……
+<strong>报错君</strong>：对，它不报错，它只是安安静静地把你误导。</p>
+</blockquote>
 <div class="table-wrap"><table>
 <thead>
 <tr>
@@ -8284,7 +8342,7 @@ const config = shallowReactive({
 </table></div>
 <hr>
 <h2 id="sec-03-03.3-更新对象和数组的正确姿势-h2-9">📝 快速参考卡</h2>
-<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>🔧 reactive 数组修改速查：
+<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-text">🔧 reactive 数组修改速查：
 
   arr[i] = newVal    →  arr.splice(i, 1, newVal)
   arr.length = n     →  arr.splice(n)
@@ -8313,7 +8371,7 @@ const config = shallowReactive({
 <li><a href="https://v3-migration.vuejs.org/breaking-changes/reactivity.html">Vue 3 迁移指南 - 响应式系统变更</a></li>
 </ul>
 <hr>
-<p><strong>（3.3 节结束，下一节 3.12 本章小测 →）</strong></p></div></article><article id="sec-03-03.4-ref进阶：复杂状态" class="section"><h2 class="section-title"><span class="section-num">3.4</span>ref 进阶：复杂状态</h2><div class="section-body"><blockquote>
+<p><strong>（3.3 节结束，下一节 3.4 ref 进阶：复杂状态 →）</strong></p></div></article><article id="sec-03-03.4-ref进阶：复杂状态" class="section"><h2 class="section-title"><span class="section-num">3.4</span>ref 进阶：复杂状态</h2><div class="section-body"><blockquote>
 <p>章节：第 3 章 响应式数据
 课时：0.5 课时</p>
 </blockquote>
@@ -8362,6 +8420,12 @@ user.value.address.city = '上海'  // ✅ 页面会更新
 </code></pre></div>
 <p>这对大多数场景是好事——你怎么改都能感知到。但有一个代价：<strong>Vue 要对整个对象树做 Proxy 代理</strong>。如果对象很大（比如一个包含 10000 条数据的列表），初始化时会有明显的性能开销。</p>
 <hr>
+<blockquote>
+<p>🎯 <strong>类比一下：深潜队员 vs 水面观察员</strong></p>
+<p><code>ref</code> 包对象，像派了一名<strong>深潜队员</strong>：水下（对象内部）任何一层有动静，他都第一时间打报告，页面随之更新。
+<code>shallowRef</code> 像只盯水面的<strong>观察员</strong>：他只认&rdquo;整个 <code>.value</code> 换人了&rdquo;这一个信号——水面上整条船被换掉，他立刻汇报；船里换了几名船员，他压根看不见。
+所以：<strong>要深层响应就派 <code>ref</code>，只关心整体替换就派观察员</strong>。</p>
+</blockquote>
 <h2 id="sec-03-03.4-ref进阶：复杂状态-h2-4">💡 二、shallowRef：浅层响应式</h2>
 <p>当你有一个很大的数据对象，<strong>只需要关心&rdquo;整个对象是否被替换&rdquo;而不关心内部属性变化</strong>时，就用 <code>shallowRef</code>：</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">import { shallowRef } from 'vue'
@@ -8404,6 +8468,15 @@ bigList.value[0].name = '王五'  // 页面不变！
 </table></div>
 <hr>
 <h2 id="sec-03-03.4-ref进阶：复杂状态-h2-5">🔑 三、triggerRef：手动触发更新</h2>
+<blockquote>
+<p>🎬 <strong>小剧场：手动挡的钥匙</strong></p>
+<p><strong>小新</strong>：我用 <code>shallowRef</code> 包了列表，改了里面某条的 <code>done</code>，页面怎么没反应？
+<strong>报错君</strong>：<code>shallowRef</code> 是<strong>手动挡</strong>。你只动了车厢里的货，车头没动，它当然不自己走。
+<strong>小新</strong>：那我该怎么办？
+<strong>报错君</strong>：钥匙给你——<code>triggerRef(list)</code>，喊一嗓子&rdquo;我这里面变了&rdquo;，视图才会重新渲染。
+<strong>小新</strong>：那我以后天天喊？
+<strong>报错君</strong>：别。多数时候该换的是 <code>ref</code>，让车自己走；<code>triggerRef</code> 是应急钥匙，不是油门。</p>
+</blockquote>
 <p>如果用了 <code>shallowRef</code>，改了内部属性后想手动通知视图更新，用 <code>triggerRef</code>：</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">vue</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-vue">&lt;script setup&gt;
 import { shallowRef, triggerRef } from 'vue'
@@ -8433,6 +8506,33 @@ function toggleDone(index) {
 </blockquote>
 <hr>
 <h2 id="sec-03-03.4-ref进阶：复杂状态-h2-6">🛠 四、toRef 和 toRefs：在 ref 体系中解构</h2>
+<blockquote>
+<p>📦 <strong>ES6 小灶（回指）：还是&rdquo;解构&rdquo;这件事</strong></p>
+<p>3.2 那个 📦 小灶讲过：<strong>解构 = 按形状拆快递</strong>，抠出来的只是值，Vue 拉的监听线会断。
+这里要补的是&rdquo;接线工具怎么挑&rdquo;——<code>reactive</code> 对象想解构又不想丢响应式，Vue 给了两把起子：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>写法</th>
+<th>作用</th>
+<th>适合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>toRef(state, 'count')</code></td>
+<td>只给<strong>一个</strong>属性接上线</td>
+<td>只要某一两个字段</td>
+</tr>
+<tr>
+<td><code>toRefs(state)</code></td>
+<td>给<strong>所有</strong>属性各接一根线</td>
+<td>整包解构传出去</td>
+</tr>
+</tbody>
+</table></div>
+<p>记忆点：<strong><code>toRef</code> 单抽，<code>toRefs</code> 全抽，抽出来的都是 <code>ref</code>，用的时候记得带 <code>.value</code>。</strong></p>
+</blockquote>
 <h3>4.1 toRef：给 reactive 对象的某个属性&rdquo;绑一个 ref&rdquo;</h3>
 <div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">import { reactive, toRef } from 'vue'
 
@@ -8575,6 +8675,12 @@ a = 2                // 页面不变
 </code></pre></div>
 <p>解决：<code>toRefs(state)</code>（见 3.4）。</p>
 <hr>
+<blockquote>
+<p>🎯 <strong>类比一下：博物馆的玻璃展柜</strong></p>
+<p><code>readonly(original)</code> 像展柜上那层玻璃：<strong>看得见、改不动</strong>。
+但注意，这块玻璃靠的是&rdquo;礼仪&rdquo;——开发模式下你伸手去碰，Vue 会<strong>出声警告</strong>，却不会真的拦住你；真正上锁的是 <code>Object.freeze</code>。
+所以 <code>readonly</code> 的价值更多是<strong>表态</strong>：同事一看某个变量是 <code>readonly</code>，就知道&rdquo;这个数据不该从这儿改&rdquo;。</p>
+</blockquote>
 <h2 id="sec-03-03.5-reactive进阶-h2-4">💡 二、readonly：创建只读响应式</h2>
 <p>有些场景下，你希望数据是响应式的（数据变了 UI 自动更新），但<strong>不允许组件内部修改</strong>它。这时用 <code>readonly</code>：</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">vue</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-vue">&lt;script setup&gt;
@@ -8661,6 +8767,13 @@ const state = shallowReactive({
 state.chart = markRaw(new ECharts(dom))  // 图表实例永不代理
 </code></pre></div>
 <hr>
+<blockquote>
+<p>🧊 <strong>冷知识：<code>markRaw</code> 和 <code>Object.freeze</code> 经常被搞混</strong></p>
+<p>两个名字听着都是&rdquo;别动它&rdquo;，管的却不是一回事：
+- <code>markRaw(obj)</code> 管的是 <strong>Vue</strong>——给对象贴一张&rdquo;别代理我&rdquo;的标签，Vue 跳过响应式包装，对象本身照常能改。
+- <code>Object.freeze(obj)</code> 管的是 <strong>JS 引擎</strong>——把对象冻上，谁改谁静默失败（严格模式下直接抛错），Vue 想代理也拦不到新值。</p>
+<p>一句话：<strong><code>markRaw</code> 是对 Vue 说的，<code>Object.freeze</code> 是对 JS 说的</strong>。第三方实例（地图、图表编辑器）怕被 Proxy 惹出 bug，用前者；真想禁止任何人改，用后者。</p>
+</blockquote>
 <h2 id="sec-03-03.5-reactive进阶-h2-7">🔍 五、检测响应式状态</h2>
 <p>Vue 提供了几个&rdquo;检测&rdquo; API，用于调试或条件判断：</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">import { reactive, readonly, ref, isReactive, isReadonly, isProxy, isRef } from 'vue'
@@ -8686,6 +8799,31 @@ isRef(r)          // true
 <blockquote class="quote-chat">
 <p><span class="q-avatar">💬</span> <strong>老师备注</strong>：这些 API 平时写业务代码很少用到，但它们非常有用——写 composable 时可以根据传入的是 ref 还是 reactive 做不同处理；写单元测试时可以用它们验证返回值的响应式状态是否正确。</p>
 </blockquote>
+<details>
+<summary>🏆 动手挑战：给任意值写一份「响应式体检报告」</summary>
+
+任务：实现 `checkType(val)`，把不确定是 `ref` / `reactive` / `readonly` 的值丢进去，返回一份四项体检报告。
+
+
+<div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">import { ref, reactive, readonly, isRef, isReactive, isReadonly, isProxy } from 'vue'
+
+function checkType(val) {
+  // 你的代码：用上面的 isXxx 系列拼出报告
+}
+
+checkType(ref(0))
+// 期望：ref ✅ ｜ reactive ❌ ｜ readonly ❌ ｜ Proxy ❌
+checkType(reactive({ a: 1 }))
+// 期望：ref ❌ ｜ reactive ✅ ｜ readonly ❌ ｜ Proxy ✅
+checkType(readonly({ a: 1 }))
+// 期望：ref ❌ ｜ reactive ❌ ｜ readonly ✅ ｜ Proxy ✅
+</code></pre></div>
+
+
+验收点：三个用例的输出与注释完全一致；只允许调用本节的 `isXxx` API，不许去读 `__v_isRef` 这类内部字段（那是实现细节，不是给业务用的）。
+
+</details>
+
 <hr>
 <h2 id="sec-03-03.5-reactive进阶-h2-8">⚠️ 六、常见陷阱</h2>
 <h3>陷阱 1：markRaw 之后放进 reactive 会被再次代理？</h3>
@@ -8711,6 +8849,13 @@ state.count.value  // 0（需要手动 .value）
 <p>再提醒一个连带坑：如果直接写 <code>state.count = 1</code>，会把顶层属性替换成普通数字，<strong>与原 ref 切断连接</strong>——之后原 <code>count</code> 怎么变，<code>state.count</code> 都不会再同步，也不触发更新。想保持响应式同步，请改 <code>state.count.value</code>。</p>
 <p>结论：「shallowReactive 对顶层 ref <strong>不会</strong>自动解包，这与 reactive 不同；使用时记得 <code>.value</code>，直接替换整个属性会切断与原 ref 的连接。」</p>
 <hr>
+<blockquote>
+<p>🎬 <strong>小剧场：那个&rdquo;永远同步&rdquo;的承诺</strong></p>
+<p><strong>小新</strong>：我把一个 <code>ref</code> 放进 <code>shallowReactive</code> 里，直接 <code>state.count = 1</code> 改了，怎么原先那个 <code>count</code> 反而不跟着变了？
+<strong>报错君</strong>：你俩的&rdquo;连接&rdquo;被你自己剪了。<code>state.count</code> 里原本躺的是那根 ref，你把它整个换成数字 <code>1</code>，原 ref 还留在原地，谁也不认识谁了。
+<strong>小新</strong>：那我该怎么改？
+<strong>报错君</strong>：改 <code>state.count.value</code>。<code>shallowReactive</code> 只代理顶层，<strong>不会帮你解包 ref</strong>——它只负责保管，不负责翻译。</p>
+</blockquote>
 <h2 id="sec-03-03.5-reactive进阶-h2-9">🧠 本节小结</h2>
 <ul>
 <li><strong>reactive 三局限</strong>：装不了基本类型（用 ref）、解构即丢响应（用 toRefs 找回）、整体替换对象会断链</li>
@@ -8785,7 +8930,7 @@ state.count.value  // 0（需要手动 .value）
 <p><code>computed</code> 就是用来解决这个问题的——<strong>把派生逻辑封装起来，并且自动缓存</strong>。</p>
 <hr>
 <h2 id="sec-03-03.6-computed：派生状态-h2-4">💡 二、computed 基本用法</h2>
-<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>&lt;script setup&gt;
+<div class="code-block"><div class="code-header"><span class="code-lang">vue</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-vue">&lt;script setup&gt;
 import { ref, computed } from 'vue'
 
 const firstName = ref('张')
@@ -8818,6 +8963,10 @@ const fullName = computed(() =&gt; {
 - 控制台不打印</p>
 <hr>
 <h2 id="sec-03-03.6-computed：派生状态-h2-5">🔑 三、缓存机制（这是重点）</h2>
+<blockquote>
+<p>🎯 <strong>类比一下：computed 像 Excel 里的公式格</strong></p>
+<p>在 Excel 里写 <code>B1 = A1 * 2</code>：你一改 A1，B1 立刻跟着变；可要是你没碰 A1，B1 就一直显示上次算好的结果，<strong>不会因为你到别处乱点就重算</strong>。<code>computed</code> 就是这样一个&rdquo;公式格&rdquo;——依赖不变就吃缓存。而 <code>methods</code> 更像手动按一次&rdquo;重新计算&rdquo;按钮：按几次，算几次。</p>
+</blockquote>
 <h3>3.1 computed vs methods：本质区别</h3>
 <p>很多同学会问：&rdquo;computed 不就是一个函数吗？我用 methods 不是一样？&rdquo;</p>
 <p>看这个例子：</p>
@@ -8870,10 +9019,14 @@ a.value = 3   // ✅ 缓存失效，重新计算 → 5
 b.value = 4   // ✅ 缓存失效，重新计算 → 7
 // 任何不是 a 和 b 的变化都不会触发重新计算
 </code></pre></div>
+<blockquote>
+<p>🧊 <strong>冷知识：computed 是&rdquo;懒&rdquo;的</strong></p>
+<p>依赖变化时，<code>computed</code> <strong>并不会立刻重算</strong>，它只是把自己标记成&rdquo;脏&rdquo;（dirty），等你下次读 <code>.value</code> 时才动手——这叫<strong>惰性求值</strong>。所以如果你在 getter 里写了 <code>console.log('计算了')</code>，却发现日志次数比预想的少，不是 Vue 漏算了，而是它一直在偷懒。也正因为懒，一个没人读的 computed 几乎不花性能——它连算都不算。</p>
+</blockquote>
 <hr>
 <h2 id="sec-03-03.6-computed：派生状态-h2-6">🛠 四、可写计算属性（get + set）</h2>
 <p>默认情况下 <code>computed</code> 是只读的。如果你需要既能读又能写，用带 <code>get</code> 和 <code>set</code> 的形式：</p>
-<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>&lt;script setup&gt;
+<div class="code-block"><div class="code-header"><span class="code-lang">vue</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-vue">&lt;script setup&gt;
 import { ref, computed } from 'vue'
 
 const firstName = ref('张')
@@ -8900,8 +9053,14 @@ const fullName = computed({
 &lt;/template&gt;
 </code></pre></div>
 <p>用户输入 &ldquo;李四&rdquo; → <code>set('李四')</code> → 自动把 <code>firstName</code> 设为 <code>'李'</code>，<code>lastName</code> 设为 <code>'四'</code>。</p>
-<blockquote class="quote-chat">
-<p><span class="q-avatar">💬</span> <strong>老师备注</strong>：可写计算属性最常见的场景就是 <code>v-model</code> 绑定——你希望组件对外暴露一个字段，但内部实际维护的是多个字段，计算属性作为&rdquo;翻译层&rdquo;负责来回转换。比如你在 Pinia 里封装一个 store，把内部 <code>cents</code> 转换成对外的 <code>yuan</code>。</p>
+<blockquote>
+<p>🎬 <strong>小剧场：翻译官的两副面孔</strong></p>
+<p><strong>对外</strong>（模板）：结账吧，报个总价。
+<strong>翻译官</strong>（<code>get</code>）：稍等，我去内部账本上把房费、餐费加起来，换成<strong>元</strong>给你们看。
+<strong>模板</strong>：客人填了&rdquo;200 元&rdquo;，记上。
+<strong>翻译官</strong>（<code>set</code>）：收到，&rdquo;200 元&rdquo;我折成 20000 <strong>分</strong>，塞进内部账本。
+对外一套话术（元），对内一套账目（分），来回都是它——这就是可写计算属性：<code>get</code> 负责&rdquo;翻出去&rdquo;，<code>set</code> 负责&rdquo;翻回来&rdquo;。</p>
+<p>💬 <strong>老师备注</strong>：可写计算属性最常见的场景就是 <code>v-model</code> 绑定——你希望组件对外暴露一个字段，但内部实际维护的是多个字段，计算属性作为&rdquo;翻译层&rdquo;负责来回转换。比如你在 Pinia 里封装一个 store，把内部 <code>cents</code> 转换成对外的 <code>yuan</code>。</p>
 </blockquote>
 <h3>可写计算属性的典型场景</h3>
 <div class="table-wrap"><table>
@@ -8979,7 +9138,7 @@ double.value = 10  // ❌ 控制台警告：computed value is readonly
 <li><a href="https://cn.vuejs.org/guide/essentials/computed.html#computed-caching-vs-methods">Vue 3 官方文档 - 计算属性 vs 方法</a></li>
 </ul>
 <hr>
-<p><strong>（3.6 节结束，下一节 7.3 讲 computed vs watch vs methods →）</strong></p></div></article><article id="sec-03-03.7-响应式触发：为啥改了不立即变" class="section"><h2 class="section-title"><span class="section-num">3.7</span>响应式触发：为啥改了不立即变</h2><div class="section-body"><blockquote>
+<p><strong>（3.6 节结束，下一节 3.7 响应式触发：为啥改了不立即变 →）</strong></p></div></article><article id="sec-03-03.7-响应式触发：为啥改了不立即变" class="section"><h2 class="section-title"><span class="section-num">3.7</span>响应式触发：为啥改了不立即变</h2><div class="section-body"><blockquote>
 <p>章节：第 3 章 响应式数据
 课时：0.5 课时</p>
 </blockquote>
@@ -9030,6 +9189,12 @@ function test() {
 </code></pre></div>
 <p>你已经 <code>count.value = 100</code> 了，<code>console.log</code> 也输出 <code>100</code> 了——<strong>但页面上还没变</strong>。</p>
 <p>别慌，这不是 bug，这是 Vue 的<strong>异步批量更新机制</strong>。</p>
+<blockquote>
+<p>🎯 <strong>类比一下：取件码和包裹</strong></p>
+<p>你在网上下单，<strong>取件码</strong>常常秒到手机，但<strong>包裹</strong>还得等物流慢慢过来。
+<code>count.value = 100</code> 就是取件码到了——数据确实已经改了；页面上那个数字是包裹，还在路上。
+你拿着取件码去驿站问&rdquo;我的包裹呢&rdquo;，驿站只能说：<strong>再等等</strong>。这不是驿站丢了件，只是它还没到。</p>
+</blockquote>
 <hr>
 <h2 id="sec-03-03.7-响应式触发：为啥改了不立即变-h2-4">💡 二、Vue 的&rdquo;攒一波再更新&rdquo;策略</h2>
 <h3>2.1 为什么要异步？</h3>
@@ -9049,8 +9214,17 @@ age.value = 25
 本轮事件循环微任务阶段：
   执行队列里的更新 → 只渲染 1 次 ✨
 </code></pre></div>
+<blockquote>
+<p>🎬 <strong>小剧场：小新在奶茶店连点 100 杯</strong></p>
+<p><strong>小新</strong>：一杯、一杯、一杯……（连喊 100 声）
+<strong>店员（Vue君）</strong>：都记在<strong>同一张单</strong>上了，后厨只出一次餐。
+<strong>小新</strong>：可我每喊一声都盯着出餐口，怎么一杯都没出？
+<strong>Vue君</strong>：因为要等你<strong>这一轮全喊完</strong>才开火。想第一时间知道&rdquo;出杯了&rdquo;，得用 <code>nextTick</code> 催单。
+<strong>小新</strong>：那我喊完立刻去看出餐口，看到的是空盘子——它也不报错？
+<strong>Vue君</strong>：对，它只会安安静静地把你误导。这就是下面 <code>console.log</code> 骗你的原因。</p>
+</blockquote>
 <h3>2.2 实际验证：for 循环改 100 次</h3>
-<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>&lt;script setup&gt;
+<div class="code-block"><div class="code-header"><span class="code-lang">vue</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-vue">&lt;script setup&gt;
 import { ref } from 'vue'
 
 const count = ref(0)
@@ -9084,6 +9258,18 @@ count.value = 100
 await nextTick()
 console.log(document.getElementById('display').textContent)  // 拿到的是 &quot;100&quot; ✅
 </code></pre></div>
+<blockquote>
+<p>📦 <strong>ES6 小灶：<code>Promise</code> 与 <code>async</code> / <code>await</code></strong></p>
+<p>一句话：<code>Promise</code> 是 ES6 表示&rdquo;<strong>以后才会有结果</strong>&ldquo;的对象；<code>async</code> / <code>await</code> 让我们像写同步代码那样等它。</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>async function run() {
+  const data = await fetch('/api/user')   // 等结果回来，再往下走
+  console.log(data)
+}
+run()   // 函数内部在等，整体并不阻塞
+</code></pre></div>
+<p>⚠️ 翻车例：<code>await</code> 只能出现在 <code>async</code> 函数里，或模块 / <code>&lt;script setup&gt;</code> 的最外层（就是你上面看到的写法）。写在普通函数里却漏了 <code>async</code>，会直接语法报错 <code>Uncaught SyntaxError: await is only valid in async functions</code>。
+人话翻译：<code>await</code> = &ldquo;<strong>到号了再叫我</strong>&ldquo;。Vue 的 DOM 更新也在排队，<code>await nextTick()</code> 就是站到队伍末尾等它叫号；第四节那个 <code>Promise.resolve().then(flushJobs)</code>，正是这套排号机制在干活。</p>
+</blockquote>
 <hr>
 <h2 id="sec-03-03.7-响应式触发：为啥改了不立即变-h2-6">🔬 四、Vue 内部怎么做到的？</h2>
 <p>Vue 3 的内部用了一个叫&rdquo;调度器（Scheduler）&rdquo;的模块。简化版逻辑：</p>
@@ -9224,6 +9410,10 @@ count.value = 2
 </tr>
 </tbody>
 </table></div>
+<blockquote>
+<p>🎯 <strong>类比一下：改数据像点外卖，nextTick 是取餐提醒</strong></p>
+<p>你把数据改掉，其实只是&rdquo;下了单&rdquo;；Vue 的后厨还要配菜、下锅（攒一波异步更新 DOM）。这时候你冲到取餐口翻盘子（立刻读 DOM），看到的当然还是上一单的残渣。<code>nextTick</code> 就是那声&rdquo;XX 号，您的餐好了&rdquo;——听到提醒再伸手，拿到的才是新鲜 DOM。</p>
+</blockquote>
 <hr>
 <h2 id="sec-03-03.8-nextTick：等DOM更新完-h2-4">💡 二、核心用法</h2>
 <h3>2.1 基础语法</h3>
@@ -9261,7 +9451,7 @@ console.log('DOM 更新完了')
 <hr>
 <h2 id="sec-03-03.8-nextTick：等DOM更新完-h2-5">🛠 三、3 个典型应用场景</h2>
 <h3>场景 1：改了数据后读 DOM 属性</h3>
-<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>&lt;script setup&gt;
+<div class="code-block"><div class="code-header"><span class="code-lang">vue</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-vue">&lt;script setup&gt;
 import { ref, nextTick } from 'vue'
 
 const msg = ref('Hello')
@@ -9303,7 +9493,7 @@ async function openInput() {
 &lt;/template&gt;
 </code></pre></div>
 <h3>场景 3：列表新增后滚动到底部</h3>
-<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>&lt;script setup&gt;
+<div class="code-block"><div class="code-header"><span class="code-lang">vue</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-vue">&lt;script setup&gt;
 import { ref, nextTick } from 'vue'
 
 const list = ref(['消息1', '消息2', '消息3'])
@@ -9336,6 +9526,13 @@ async function addMessage(msg) {
 </code></pre></div>
 <hr>
 <h2 id="sec-03-03.8-nextTick：等DOM更新完-h2-6">🔬 四、nextTick vs setTimeout 时序对比</h2>
+<blockquote>
+<p>🎬 <strong>小剧场：一场抢跑比赛</strong></p>
+<p><strong>裁判</strong>：各就位——终点线是&rdquo;DOM 已刷新&rdquo;，谁先摸到谁赢。
+<strong>setTimeout</strong>：我先出门绕个圈，跟浏览器打个招呼、排个号再回来……（挠头）怎么还没轮到我？
+<strong>nextTick</strong>：我就住在后台更新队列隔壁，DOM 一刷完，抬脚就过线。
+<strong>裁判</strong>：想第一时间摸到新 DOM，别派 <code>setTimeout</code> 这个爱绕远路的信使——它走的是宏任务大道，路上还堵着别人。</p>
+</blockquote>
 <div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">console.log('1. 同步代码')
 
 count.value = 100                     // 修改数据
@@ -9359,6 +9556,10 @@ console.log('4. 同步代码结束')
 */
 </code></pre></div>
 <p>如果要在 DOM 更新后立刻操作 DOM，用 <code>nextTick</code>（微任务），不要用 <code>setTimeout</code>（宏任务，晚一步）。</p>
+<blockquote>
+<p>🧊 <strong>冷知识：nextTick 为什么叫&rdquo;下一个 tick&rdquo;？</strong></p>
+<p>&ldquo;tick&rdquo; 指的是浏览器事件循环里的一次轮转。Vue 2 那个年代 <code>Promise</code> 还没普及，Vue 甚至用一个&rdquo;假文本节点 + <code>MutationObserver</code>&ldquo;来模拟微任务，兜不住了才依次退到 <code>setImmediate</code>、<code>setTimeout</code>。Vue 3 干脆直接以 <code>Promise</code> 为底，所以你才能 <code>await</code> 它——这个名字算是当年打补丁留下的化石。</p>
+</blockquote>
 <hr>
 <h2 id="sec-03-03.8-nextTick：等DOM更新完-h2-7">⚠️ 五、常见陷阱</h2>
 <h3>陷阱 1：忘了 await</h3>
@@ -9400,7 +9601,7 @@ count.value++     // 又改了！这次 DOM 又没更新
 <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API/Microtask_guide">MDN - 微任务与宏任务</a></li>
 </ul>
 <hr>
-<p><strong>（3.8 节结束，下一节 3.11 讲 customRef 自定义响应式 →）</strong></p></div></article><article id="sec-03-03.9-不可变原则：响应式的铁律" class="section"><h2 class="section-title"><span class="section-num">3.9</span>不可变原则：响应式的铁律</h2><div class="section-body"><blockquote>
+<p><strong>（3.8 节结束，下一节 3.9 不可变原则：响应式的铁律 →）</strong></p></div></article><article id="sec-03-03.9-不可变原则：响应式的铁律" class="section"><h2 class="section-title"><span class="section-num">3.9</span>不可变原则：响应式的铁律</h2><div class="section-body"><blockquote>
 <p>章节：第 3 章 响应式数据
 课时：0.5 课时</p>
 </blockquote>
@@ -9446,6 +9647,11 @@ count.value++     // 又改了！这次 DOM 又没更新
 </blockquote>
 <p>在 Vue 中，这特别重要——因为 Vue 靠&rdquo;引用的变化&rdquo;来判断数据有没有变。你改了对象内部的一个字段，Vue 通过 Proxy 能感知；但你把整个变量指向一个新对象，Vue 要看情况才能感知。</p>
 <p>更直白点：<strong>Vue 是在对象上装了&rdquo;监控&rdquo;。你把整个对象换掉，监控就没了。</strong></p>
+<blockquote>
+<p>🎯 <strong>类比一下：Vue 的&rdquo;门禁卡&rdquo;只认卡号</strong></p>
+<p><code>reactive</code> 对象就像一张<strong>实名门禁卡</strong>——闸机里登记的是<strong>卡号</strong>（对象的引用），不是你卡面上印的内容。你在卡面上改一个字段（<code>state.count = 1</code>），卡号没变，闸机照常放行；可你要是&rdquo;换了一张新卡&rdquo;（<code>state = {...}</code> 让变量指向新对象），闸机里登记的卡号就对不上了——从此数据怎么变，页面都不再开门。</p>
+<p>一句话记住：<strong>Vue 认卡号，不认卡面。</strong></p>
+</blockquote>
 <hr>
 <h2 id="sec-03-03.9-不可变原则：响应式的铁律-h2-4">💡 二、reactive 的铁律：不要整体替换</h2>
 <div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">import { reactive } from 'vue'
@@ -9560,6 +9766,13 @@ function replaceRef() {
 </code></pre></div>
 <hr>
 <h2 id="sec-03-03.9-不可变原则：响应式的铁律-h2-6">⚠️ 四、响应式丢失三大陷阱</h2>
+<blockquote>
+<p>🎬 <strong>小剧场：响应式丢失三连败</strong></p>
+<p><strong>第 1 幕·解构</strong>：小新 <code>const { count } = state</code>——&ldquo;我把值请出来了！&rdquo; Vue 摊手：&rdquo;你请出来的只是个快照，原件怎么改都跟它没关系了。&rdquo;
+<strong>第 2 幕·传参</strong>：小新把 <code>state.price</code> 交给普通函数 <code>applyDiscount(price)</code>——&ldquo;函数里能算就行！&rdquo; Vue：&rdquo;你递过去的是数字，不是链接；<code>state.price</code> 后来变了，那位函数毫不知情。&rdquo;
+<strong>第 3 幕·换引用</strong>：小新 <code>let { items } = state; items = [1, 2, 3, 4]</code>——&ldquo;我换了一整个数组！&rdquo; Vue：&rdquo;你换的是局部变量 <code>items</code> 的指向，<code>state.items</code> 还站在原地没动。&rdquo;
+<strong>收场白</strong>：三幕病因相同——<strong>你拿到的是值或影子，不是那条通往 Proxy 的线。</strong></p>
+</blockquote>
 <h3>陷阱 1：解构 reactive 对象</h3>
 <div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">const state = reactive({ count: 0, name: 'vue' })
 
@@ -9608,6 +9821,10 @@ items = [1, 2, 3, 4]              // ❌ 替换引用→ 但 state.items 没变�
 let list = state.items
 list = [4, 5, 6]  // ❌ list 换了引用，但 state.items 还是 [1,2,3]
 </code></pre></div>
+<blockquote>
+<p>🧊 <strong>冷知识：这条&rdquo;铁律&rdquo;不是 Vue 发明的</strong></p>
+<p>&ldquo;返回新对象、别改旧的&rdquo;来自函数式编程的 <strong>Immutability</strong> 传统，React 的 <code>setState</code>、Redux 的 reducer 都把它写成了硬规矩。原因很实际：判断&rdquo;引用换没换&rdquo;只需比一次指针，而判断&rdquo;对象里哪个字段变了&rdquo;得逐层深比较——前者几乎免费。Vue 靠 <code>Proxy</code> 走了另一条路，所以对 <code>reactive</code> 宽容得多；可一旦碰上 <code>shallowRef</code>、<code>computed</code>、<code>props</code>，你还是得乖乖回到这条铁律上来。</p>
+</blockquote>
 <hr>
 <h2 id="sec-03-03.9-不可变原则：响应式的铁律-h2-7">🧠 本节小结</h2>
 <ul>
@@ -9629,7 +9846,7 @@ list = [4, 5, 6]  // ❌ list 换了引用，但 state.items 还是 [1,2,3]
 <li><a href="https://cn.vuejs.org/api/reactivity-utilities.html#torefs">Vue 3 官方文档 - toRefs</a></li>
 </ul>
 <hr>
-<p><strong>（3.9 节结束，下一节 3.7 讲响应式触发时机 →）</strong></p></div></article><article id="sec-03-03.10-ref的底层套路" class="section"><h2 class="section-title"><span class="section-num">3.10</span>ref 的底层套路</h2><div class="section-body"><blockquote>
+<p><strong>（3.9 节结束，下一节 3.10 ref 的底层套路 →）</strong></p></div></article><article id="sec-03-03.10-ref的底层套路" class="section"><h2 class="section-title"><span class="section-num">3.10</span>ref 的底层套路</h2><div class="section-body"><blockquote>
 <p>章节：第 3 章 响应式数据
 课时：1 课时</p>
 </blockquote>
@@ -9699,8 +9916,15 @@ list = [4, 5, 6]  // ❌ list 换了引用，但 state.items 还是 [1,2,3]
 </tr>
 </tbody>
 </table></div>
-<blockquote class="quote-chat">
-<p><span class="q-avatar">💬</span> <strong>老师备注</strong>：你不需要手写 <code>track</code> / <code>trigger</code>——这是 Vue 内部自动干的。但理解这个机制，后面调 bug 会快很多。</p>
+<blockquote>
+<p>🎬 <strong>小剧场：点名和广播</strong></p>
+<p><strong>小新</strong>：<code>count.value = 2</code> 之后，Vue 怎么知道该叫谁起床？
+<strong>Vue君</strong>：我手里有两本账。第一本记&rdquo;谁读过这个数据&rdquo;，叫 <strong>track</strong>——像老师上课<strong>点名</strong>：你举手读了 <code>count.value</code>，我就在名单上划一笔。
+<strong>小新</strong>：那第二本呢？
+<strong>Vue君</strong>：改数据时叫 <strong>trigger</strong>，像校园<strong>广播</strong>：<code>count</code> 变了，名单上的人统统去操场集合（重新渲染）。
+<strong>小新</strong>：要是我压根没读过它呢？
+<strong>Vue君</strong>：那名单上就没你，广播喊破嗓子也跟你无关——<strong>没收集，就不触发</strong>。所以遇到&rdquo;改了某个数据页面却不动&rdquo;的玄学 bug，先问一句：渲染时我真的读过它吗？</p>
+<p>💬 <strong>老师备注</strong>：你不需要手写 <code>track</code> / <code>trigger</code>——这是 Vue 内部自动干的。但理解这个机制，后面调 bug 会快很多。</p>
 </blockquote>
 <hr>
 <h2 id="sec-03-03.10-ref的底层套路-h2-4">💡 二、ref 的源码级实现（简化版）</h2>
@@ -9737,8 +9961,23 @@ function ref(value) {
 <li>读的时候调 <code>track()</code> 收集依赖，写的时候调 <code>trigger()</code> 派发更新</li>
 <li><code>newVal !== this._rawValue</code> 保证值真的变了才触发——避免无效更新</li>
 </ul>
+<blockquote>
+<p>📦 <strong>ES6 小灶：<code>class</code> 与 <code>get</code> / <code>set</code></strong></p>
+<p>一句话：<code>class</code> 是 ES6 定义&rdquo;类&rdquo;的写法；写在类里的 <code>get</code> / <code>set</code> 能让一个属性<strong>看着是普通读写，实际偷偷跑了函数</strong>。</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>class Box {
+  constructor(v) { this._v = v }
+  get value() { console.log('有人读了'); return this._v }
+  set value(n) { console.log('有人写了'); this._v = n }
+}
+const b = new Box(1)
+b.value      // 打印"有人读了"，得到 1
+b.value = 2  // 打印"有人写了"
+</code></pre></div>
+<p>⚠️ 翻车例：内部存值必须换个名字（如 <code>_v</code>）。写成 <code>get value() { return this.value }</code> 会<strong>自己调自己</strong>，直接 <code>RangeError: Maximum call stack size exceeded</code>。
+人话翻译：<code>get</code> / <code>set</code> 就像<strong>宿管阿姨</strong>——你以为只是路过拿钥匙，其实每一笔她都登记了。Vue 正是靠这两道&rdquo;登记口&rdquo;，把 <code>track</code> / <code>trigger</code> 塞进了 <code>.value</code> 的读写里。</p>
+</blockquote>
 <h3>依赖收集 + 派发更新 完整链路</h3>
-<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>模板渲染 effect: 
+<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-text">模板渲染 effect:
   ┌─ 执行渲染函数
   └─ 读到 count.value
        └─ track(count, 'value')
@@ -9752,6 +9991,11 @@ function ref(value) {
                  └─ 执行每个 effect（包括渲染effect）
                       └─ 组件重新渲染
 </code></pre></div>
+<blockquote>
+<p>🧊 <strong>冷知识：Vue 的依赖账本，为什么不占内存？</strong>
+上面 <code>RefImpl</code> 把依赖存在自己身上的 <code>deps</code> 里；而处理普通对象的依赖表（<code>targetMap</code>），Vue 用的是 ES6 的 <strong><code>WeakMap</code></strong>——一种&rdquo;键没人引用了，条目就自动消失&rdquo;的结构。
+于是组件卸载、对象被回收时，它对应的依赖记录会被垃圾回收顺手清掉，Vue 不需要手动遍历删除。换句话说：<strong>WeakMap 让&rdquo;记账&rdquo;这件事不会变成内存泄漏。</strong></p>
+</blockquote>
 <hr>
 <h2 id="sec-03-03.10-ref的底层套路-h2-5">🛠 三、shallowRef：别追那么深</h2>
 <h3>3.1 普通 ref 的&rdquo;过度热情&rdquo;</h3>
@@ -9933,7 +10177,7 @@ r.value.count = 10  // ❌ 不会触发更新——整个对象都被标记跳�
 <li><a href="https://www.vuemastery.com/courses/vue-3-reactivity/">Vue Mastery - Vue 3 Reactivity 课程</a></li>
 </ul>
 <hr>
-<p><strong>（3.10 节结束，下一节 3.9 讲不可变原则 →）</strong></p></div></article><article id="sec-03-03.11-customRef：自定义响应式" class="section"><h2 class="section-title"><span class="section-num">3.11</span>customRef：自定义响应式</h2><div class="section-body"><blockquote>
+<p><strong>（3.10 节结束，下一节 3.11 customRef：自定义响应式 →）</strong></p></div></article><article id="sec-03-03.11-customRef：自定义响应式" class="section"><h2 class="section-title"><span class="section-num">3.11</span>customRef：自定义响应式</h2><div class="section-body"><blockquote>
 <p>章节：第 3 章 响应式数据
 课时：1 课时</p>
 </blockquote>
@@ -9994,6 +10238,21 @@ r.value.count = 10  // ❌ 不会触发更新——整个对象都被标记跳�
 <p>这就是 <code>customRef</code> 的用武之地——它把 <code>track</code> 和 <code>trigger</code> 的控制权交给你。</p>
 <hr>
 <h2 id="sec-03-03.11-customRef：自定义响应式-h2-4">💡 二、customRef 基础语法</h2>
+<blockquote>
+<p>📦 <strong>ES6 小灶：<code>value</code> 写在哪，决定它能不能&rdquo;活下来&rdquo;（闭包）</strong></p>
+<p>一句话定义：函数内部引用了外层的 <code>let</code> 变量，函数返回后这个变量也不会被回收——这就是<strong>闭包</strong>。</p>
+<p>最小示例：</p>
+<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>function makeCounter() {
+  let n = 0                                 // 外层变量，只声明一次
+  return { get: () =&gt; n, inc: () =&gt; ++n }   // 箭头函数引用它
+}
+const c = makeCounter()
+c.inc()
+c.get()   // 1 —— n 被"随身抽屉"带走了，没丢
+</code></pre></div>
+<p>⚠️ 翻车例：把 <code>let timer = null</code> 写进 <code>set()</code> 里面，每次赋值都会新建一个 <code>timer</code>，上一次的闹钟谁也记不住——防抖永远数不到 500ms。</p>
+<p>人话翻译：闭包 = 函数随身带的抽屉。<code>customRef</code> 能&rdquo;加料&rdquo;，全靠 <code>value</code> / <code>timer</code> 被这个抽屉留住。</p>
+</blockquote>
 <div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">import { customRef } from 'vue'
 
 function myRef(initialValue) {
@@ -10085,6 +10344,15 @@ export function debounceRef(value, delay = 500) {
   })
 }
 </code></pre></div>
+<blockquote>
+<p>🎬 <strong>小剧场：小新的&rdquo;再等等&rdquo;</strong></p>
+<p><strong>小新</strong>：（噼里啪啦敲下 <code>v-u-e</code>）打完，发请求！
+<strong>报错君</strong>：住手。你这么敲，服务器要收四份&rdquo;我猜你要搜什么&rdquo;。
+<strong>小新</strong>：那该怎么发？
+<strong>报错君</strong>：<code>debounceRef</code> 替你攥着一个 <code>timer</code>。你每敲一下，它就把上一个闹钟掐掉、重新定 500ms。
+<strong>小新</strong>：（停手，心里默数两秒）……它响了。
+<strong>报错君</strong>：对。只有&rdquo;你停下来&rdquo;这个动作，才让代码走到 <code>trigger()</code>——值早就存进去了，被押后的只是&rdquo;通知视图&rdquo;这一步。</p>
+</blockquote>
 <h3>使用示例</h3>
 <div class="code-block"><div class="code-header"><span class="code-lang">vue</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-vue">&lt;script setup&gt;
 import { debounceRef } from './composables/useDebounceRef'
@@ -10174,7 +10442,7 @@ export function localRef(key, initialValue) {
 }
 </code></pre></div>
 <h3>使用示例</h3>
-<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>&lt;script setup&gt;
+<div class="code-block"><div class="code-header"><span class="code-lang">vue</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-vue">&lt;script setup&gt;
 import { localRef } from './composables/useLocalRef'
 
 // 表单数据自动持久化，刷新页面不丢
@@ -10243,7 +10511,7 @@ export function historyRef(initialValue, maxHistory = 50) {
     future.push(JSON.parse(JSON.stringify(value)))
     value = history.pop()
     isUndoing = false
-    trigger()  // 这里需要拿到 factory 里的 trigger → 
+    trigger()  // 这里需要拿到 factory 里的 trigger →
   }
 
   // ... 由于 trigger 在 factory 闭包里，需要改造一下
@@ -10385,6 +10653,19 @@ import { track, trigger } from 'vue'  // 不存在！
 <li><strong>注意</strong>：<code>track</code>/<code>trigger</code> 不能直接 import，只能在 customRef 工厂参数里使用</li>
 </ul>
 <hr>
+<details>
+<summary>🏆 动手挑战：自定义 ref 三关闯关</summary>
+
+本节写了三个实战，合上教程，凭记忆**各重写一遍**，一关一个验收点：
+
+- **第 1 关｜debounceRef**：连着敲 `v`、`u`、`e` 三个字符，控制台只在停手 500ms 后出现**一次**输出——出现 3 次算没过。
+- **第 2 关｜localRef**：输入后刷新页面，值**还在**；手动清空浏览器本地存储再刷新，值回到默认——两件事都对才算过。
+- **第 3 关｜historyRef**：连改 5 次后反复按撤销，能一路退回最初值；退到底后继续点撤销，**不报错、也不能把游标退成负数**。
+
+三关都过，说明你已经能把 `track` / `trigger` 当"开闸、关闸"来使唤了；哪一关写不出来，就回去重看哪一节。
+
+</details>
+
 <h2 id="sec-03-03.11-customRef：自定义响应式-h2-11">📝 即时练习</h2>
 <p><strong>练习 1</strong>：写一个 <code>throttleRef</code>（节流 ref），与 <code>debounceRef</code> 的区别是：第一次 set 立刻 trigger，后续 set 在指定间隔内忽略（提示：用时间戳判断）。</p>
 <p><strong>练习 2</strong>：给 <code>localRef</code> 加上过期时间支持——存储时附带时间戳，<code>get</code> 时检查是否过期，过期则返回默认值。</p>
@@ -10397,7 +10678,7 @@ import { track, trigger } from 'vue'  // 不存在！
 <li><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Debounce">JavaScript - 防抖与节流</a></li>
 </ul>
 <hr>
-<p><strong>（3.11 节结束，下一节 3.3 讲更新对象和数组的正确姿势 →）</strong></p></div></article><article id="sec-03-03.12-本章小测" class="section"><h2 class="section-title"><span class="section-num">3.12</span>本章小测</h2><div class="section-body"><blockquote>
+<p><strong>（3.11 节结束，下一节 3.12 本章小测 →）</strong></p></div></article><article id="sec-03-03.12-本章小测" class="section"><h2 class="section-title"><span class="section-num">3.12</span>本章小测</h2><div class="section-body"><blockquote>
 <p>章节：第 3 章 响应式数据
 课时：0.5 课时</p>
 </blockquote>
@@ -10476,6 +10757,15 @@ C. <code>list = ['new', 'array']</code><br>
 D. <code>list.push('new')</code>  </p>
 <hr>
 <h2 id="sec-03-03.12-本章小测-h2-2">🛠 实操题（每题 25 分，共 50 分）</h2>
+<blockquote>
+<p>🎬 <strong>小剧场：小新的两张求助工单</strong></p>
+<p><strong>小新</strong>：报错君！我的搜索框疯了——每敲一个字就发一次请求，控制台刷得停不下来！
+<strong>报错君</strong>：那是&rdquo;抖&rdquo;了。第 1 张工单收下：<strong>500 毫秒内只认最后一次输入</strong>，交一份 <code>debounceRef</code> 给我。
+<strong>小新</strong>：还有……我手滑删掉了论文的一段，老师让我加&rdquo;撤销&rdquo;。我现在想撤销我的人生。
+<strong>报错君</strong>：第 2 张工单也收下：<strong><code>useHistoryRef</code> + <code>undo()</code> / <code>redo()</code></strong>。历史栈自己维护，别把&rdquo;上一次的值&rdquo;一个个堆成 <code>ref</code> 小山。
+<strong>小新</strong>：那我把这两张工单写完就算过关？
+<strong>报错君</strong>：下面两道实操题就是这两张工单的验收单。写完，你这一章的响应式才算真正过手。</p>
+</blockquote>
 <h3>实操题 1：防抖搜索框（customRef）（25 分）</h3>
 <p><strong>要求</strong>：</p>
 <ol>
@@ -10568,8 +10858,16 @@ D. <code>list.push('new')</code>  </p>
 </tr>
 </tbody>
 </table></div>
+<blockquote class="quote-chat">
+<p><span class="q-avatar">💬</span> <strong>老师备注：三道最容易栽的选择题，到底错在哪</strong></p>
+<ul>
+<li><strong>第 4 题（reactive 数组）</strong>：下标直接赋值 <code>list[0] = 'new'</code> 落不进 Vue 的更新通道，视图当然不动。要改数组就用 <code>splice</code> / <code>push</code> 这类&rdquo;直接改写内容&rdquo;的方法。</li>
+<li><strong>第 9 题（customRef 的参数）</strong>：<code>track</code> 和 <code>trigger</code> 不是从 <code>vue</code> 里 <code>import</code> 进来的函数，而是 <code>customRef</code> 的工厂函数<strong>在回调里递给你</strong>的两个开关——<code>track</code> 负责记账，<code>trigger</code> 负责通知。</li>
+<li><strong>第 10 题（reactive 整体替换）</strong>：<code>state = {...}</code> 只换了变量指向，模板手里捧的还是<strong>旧代理</strong>，所以不会更新。这正是 3.9「不可变原则」反复强调的那条铁律。</li>
+</ul>
+</blockquote>
 <h3>实操题 1 参考实现</h3>
-<div class="code-block"><div class="code-header"><span class="code-lang">text</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code>&lt;script setup&gt;
+<div class="code-block"><div class="code-header"><span class="code-lang">vue</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-vue">&lt;script setup&gt;
 import { customRef, watch } from 'vue'
 
 function debounceRef(value, delay = 500) {
@@ -10628,7 +10926,7 @@ function onInput(e) {
 <tr>
 <td>90-100</td>
 <td>A</td>
-<td>响应式基础扎实，可以进入第 6 章</td>
+<td>响应式基础扎实，可以进入第 4 章</td>
 </tr>
 <tr>
 <td>75-89</td>
@@ -10647,8 +10945,22 @@ function onInput(e) {
 </tr>
 </tbody>
 </table></div>
+<details>
+<summary>🏆 成就徽章：把分数段换成称号</summary>
+
+| 分数 | 称号 | 领完徽章该做的事 |
+| --- | --- | --- |
+| 90-100 | 🏆 响应式侦探 | 直接进下一章（组件化思想）；顺手把 03.11 的"三关闯关"打穿 |
+| 75-89 | 🥈 响应式学徒 | 重看 3.10（底层套路）+ 3.11 的三个实战，隔天再测一次 |
+| 60-74 | 🥉 回炉候补 | 把 3.2（ref vs reactive）、3.3（数组更新）、3.7（异步更新）各抄一遍示例跑通 |
+| < 60 | 🔧 返厂重修 | 按 3.1 → 3.9 → 3.7 的顺序重走一遍基础流程，再来测 |
+
+称号自己认领，不用客气——这套题是给你照镜子的，不是拿去交差的。
+
+</details>
+
 <hr>
-<p><strong>（3.12 本章小测结束，下一站 3.13 章末实战：记账小账本 →）</strong></p></div></article><article id="sec-03-03.13-记账小账本" class="section"><h2 class="section-title"><span class="section-num">3.13</span>章末实战：记账小账本（P5）</h2><div class="section-body"><hr>
+<p><strong>（3.12 节结束，下一节 3.13 章末实战：记账小账本 →）</strong></p></div></article><article id="sec-03-03.13-记账小账本" class="section"><h2 class="section-title"><span class="section-num">3.13</span>章末实战：记账小账本（P5）</h2><div class="section-body"><hr>
 <p>AIGC:
     Label: &ldquo;1&rdquo;
     ContentProducer: 001191440300708461136T1XGW3
@@ -10668,6 +10980,15 @@ function onInput(e) {
 <hr>
 <h2 id="sec-03-03.13-记账小账本-h2-1">🎯 项目需求（一句话）</h2>
 <p>做一个&rdquo;闲置交易记账本&rdquo;：记录每笔&rdquo;卖出 / 买入&rdquo;流水（物品、金额、方向），能增删流水，并实时算出总收入、总支出、结余——全程只用第 3 章已学的 <code>ref</code> / <code>reactive</code>、计算属性、响应式更新姿势，不引入任何新库。</p>
+<blockquote>
+<p>🎬 <strong>剧情开场：这本账，是购物车的&rdquo;前传&rdquo;</strong></p>
+<p><strong>小新</strong>：我算了算，宿舍里那几本闲置书和台灯卖出去能回血两百多……但每次算完就忘，还要翻聊天记录对半天。
+<strong>报错君</strong>：那就写个记账本。
+<strong>小新</strong>：这么小的东西，值得单独做一节？
+<strong>报错君</strong>：别嫌弃它小——等第 12 章做 Campus2Hand 校园二手集市时，<strong>购物车就是它</strong>。加购 = 新增流水，删购 = 删除流水，合计金额 = 结余。
+<strong>小新</strong>：那我先把&rdquo;钱的加减&rdquo;算明白？
+<strong>报错君</strong>：对。你现在写的这三十行逻辑，就是后面购物车的发动机。</p>
+</blockquote>
 <h3>✅ 验收标准（能跑、能展示）</h3>
 <ul>
 <li>[ ] 项目能 <code>npm run dev</code> 启动，页面能看到流水列表 + 汇总卡片（收入 / 支出 / 结余）</li>
@@ -10716,6 +11037,17 @@ const balance = computed(() =&gt; totalIncome.value - totalExpense.value)
 <blockquote>
 <p>锚点检查：在计算属性里只依赖 <code>records</code>，删/加流水后汇总自动变——这就是&rdquo;状态单一来源&rdquo;的甜头。</p>
 </blockquote>
+<details>
+<summary>🔍 卡住了点这里：本节引用的三个"前人章节"在哪</summary>
+
+- **2.8 方案一（computed 过滤）**：`filter` + `reduce` 求和的标准写法在第 2 章 2.8 节；忘了 `reduce` 第二个参数（初始值）干什么用的，回去扫一眼那节示例。
+- **3.3 更新数组的姿势**：`push` / `splice` 能触发更新，按下标改（`records.value[0] = x`）会失效，原因见 3.3。
+- **3.9 不可变原则**：为什么"整体换一个新数组"在 `ref` 下生效、在 `reactive` 下却会断链？这条铁律 3.9 讲得最透。
+
+三处都是学过的内容，不用重学，回去**只找对应那一段**。这也是真实开发的常态：不靠背，靠知道去哪儿查。
+
+</details>
+
 <h3>Step 4：删除流水——按 id 过滤出新数组</h3>
 <p>删除用&rdquo;过滤出新数组再整体赋值&rdquo;还是 <code>splice</code>？两种都要注意响应式（回顾 3.3）。推荐 <code>splice</code> 原地改：</p>
 <div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">function removeRecord(id) {
@@ -10731,6 +11063,23 @@ const balance = computed(() =&gt; totalIncome.value - totalExpense.value)
 <li><strong>加一个&rdquo;单价 × 数量&rdquo;的明细</strong>：每条流水带数量，汇总金额 = Σ(单价 × 数量)。你会发现&rdquo;金额由数据推导&rdquo;在复杂场景更省心。</li>
 <li><strong>试试 <code>customRef</code> 做个金额输入</strong>：参考 3.11，让金额输入带 2 位小数格式化 / 防抖——这是响应式自定义能力的第一次实战。</li>
 </ol>
+<details>
+<summary>🏆 成就挑战：财务自由徽章 + 一处"找茬"</summary>
+
+**徽章 1｜🧮 账房先生**：记满 5 笔流水（3 收 2 支），三张汇总卡片的数字和手算完全一致——结余 = 总收入 − 总支出，一分不差。
+
+**徽章 2｜💰 财务自由**：随便删掉一笔流水，汇总数字**立刻**跟着变。如果列表变了、卡片没动，说明还有一处总金额在手动维护（`total += amount` 那种写法），回去把它换成计算属性。
+
+**找茬模式**：小新写了下面这个"清空账本"的函数，点按钮后页面纹丝不动，控制台还飘了红。错在哪？
+
+    function resetAll() {
+      records = []          // 想把流水全部清空
+    }
+
+提示：`records` 是 `ref`（见 Step 1）。想想 3.1 那句口诀——"模板里光杆司令，脚本里 `.value` 护身"。
+
+</details>
+
 <hr>
 <h2 id="sec-03-03.13-记账小账本-h2-4">🔮 它在最后的大项目里长成什么</h2>
 <p>这一节的&rdquo;记账本&rdquo;，就是大项目 <strong>Campus2Hand 校园二手集市</strong>购物车的<strong>状态管理雏形</strong>——&ldquo;购物车数量加减 + 金额合计&rdquo;和记账本完全同构：加购 = 新增流水，删购 = 删除流水，合计金额 = 计算属性推导。第 12 章把记账本的&rdquo;物品/金额&rdquo;换成&rdquo;商品/数量/单价&rdquo;，购物车立起来。</p>
@@ -11036,7 +11385,7 @@ const balance = computed(() =&gt; totalIncome.value - totalExpense.value)
 </code></pre></div>
 <p><strong>所有代码全写在一个文件里</strong>——HTML 几百行、CSS 几百行、JS 几百行。这叫<strong>&ldquo;一页到底式&rdquo;开发</strong>。</p>
 <p>改一个轮播图？你可能要在 500 行 HTML 里找到那一块，在 300 行 CSS 里找相关样式，在 200 行 JS 里找事件绑定——<strong>改一个小东西，全局颤抖</strong>。</p>
-<p><img width="720" height="400" loading="lazy" alt="图 3-1：传统一页到底 vs 组件化开发的对比" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MjAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNzIwIDQwMCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxQaW5nRmFuZyBTQyxzYW5zLXNlcmlmIj48cmVjdCB3aWR0aD0iNzIwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2ZhZmFmYSIvPjx0ZXh0IHg9IjM2MCIgeT0iMjgiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjEyNTI5IiBmb250LXNpemU9IjE3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7kvKDnu5/kuIDpobXliLDlupUgdnMg57uE5Lu25YyW5byA5Y+RPC90ZXh0PjwhLS0g5bem5L6n77ya5Lyg57uf77yI5LiA6aG15Yiw5bqV77yJ4oCUIOa1heeBsOS4u+iwg++8jOS7hSLpl67popgi55So57qi6Imy57uG5qCHIC0tPjxyZWN0IHg9IjMwIiB5PSI1MCIgd2lkdGg9IjMxMCIgaGVpZ2h0PSIzMjAiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2FkYjViZCIgcng9IjQiLz48dGV4dCB4PSIxODUiIHk9Ijc0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzQ5NTA1NyIgZm9udC1zaXplPSIxMyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+4p2MIOS4gOmhteWIsOW6le+8iGluZGV4Lmh0bWzvvIk8L3RleHQ+PHJlY3QgeD0iNDYiIHk9Ijg2IiB3aWR0aD0iMjc4IiBoZWlnaHQ9IjMyIiBmaWxsPSIjZjhmOWZhIiBzdHJva2U9IiNkZWUyZTYiIHJ4PSIzIi8+PHRleHQgeD0iMTg1IiB5PSIxMDYiIGZpbGw9IiM4NjhlOTYiIGZvbnQtc2l6ZT0iMTEiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmluZGV4Lmh0bWw8L3RleHQ+PHJlY3QgeD0iNDYiIHk9IjEyNCIgd2lkdGg9IjI3OCIgaGVpZ2h0PSIyNiIgZmlsbD0iI2Y4ZjlmYSIgc3Ryb2tlPSIjZGVlMmU2IiByeD0iMyIvPjx0ZXh0IHg9IjE4NSIgeT0iMTQyIiBmaWxsPSIjNDk1MDU3IiBmb250LXNpemU9IjEwIiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7ilJzilIDilIAg5aS06YOoICsg6L2u5pKt5Zu+ICsg5ZWG5ZOB5YiX6KGoPC90ZXh0PjxyZWN0IHg9IjQ2IiB5PSIxNTYiIHdpZHRoPSIyNzgiIGhlaWdodD0iMjYiIGZpbGw9IiNmOGY5ZmEiIHN0cm9rZT0iI2RlZTJlNiIgcng9IjMiLz48dGV4dCB4PSIxODUiIHk9IjE3NCIgZmlsbD0iIzQ5NTA1NyIgZm9udC1zaXplPSIxMCIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+4pSc4pSA4pSAIOS+p+i+ueagjyArIOW6lemDqCArIOW8ueeqlyAuLi48L3RleHQ+PHRleHQgeD0iMTg1IiB5PSIyMTAiIGZpbGw9IiM4NjhlOTYiIGZvbnQtc2l6ZT0iMTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjUwMCDooYwgSFRNTCArIDMwMCDooYwgQ1NTICsgMjAwIOihjCBKUzwvdGV4dD48dGV4dCB4PSIxODUiIHk9IjIyNiIgZmlsbD0iIzg2OGU5NiIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+5YWo6YOo5aCG5Zyo5LiA5Liq5paH5Lu26YeMPC90ZXh0PjxsaW5lIHgxPSI0NiIgeTE9IjI0NCIgeDI9IjMyNCIgeTI9IjI0NCIgc3Ryb2tlPSIjZGVlMmU2IiBzdHJva2Utd2lkdGg9IjEiLz48dGV4dCB4PSIxODUiIHk9IjI2NiIgZmlsbD0iI2M5MmEyYSIgZm9udC1zaXplPSIxMSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC13ZWlnaHQ9ImJvbGQiPuaUueS4gOS4qui9ruaSreWbvjwvdGV4dD48dGV4dCB4PSIxODUiIHk9IjI4NSIgZmlsbD0iIzg2OGU5NiIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+4oaSIOWcqCA1MDAg6KGMIEhUTUwg6YeM5om+5L2N572uPC90ZXh0Pjx0ZXh0IHg9IjE4NSIgeT0iMzAyIiBmaWxsPSIjODY4ZTk2IiBmb250LXNpemU9IjEwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7ihpIg5ZyoIDMwMCDooYwgQ1NTIOmHjOaJvuagt+W8jzwvdGV4dD48dGV4dCB4PSIxODUiIHk9IjMxOSIgZmlsbD0iIzg2OGU5NiIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+4oaSIOWcqCAyMDAg6KGMIEpTIOmHjOaJvuS6i+S7tjwvdGV4dD48cmVjdCB4PSI0NiIgeT0iMzM4IiB3aWR0aD0iMjc4IiBoZWlnaHQ9IjIyIiBmaWxsPSIjZmZmNWY1IiBzdHJva2U9IiNmZmM5YzkiIHJ4PSIzIi8+PHRleHQgeD0iMTg1IiB5PSIzNTMiIGZpbGw9IiNjOTJhMmEiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSJib2xkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7imqDvuI8g5pS55bCP5Lic6KW/77yM5YWo5bGA6aKk5oqWPC90ZXh0PjwhLS0g5Y+z5L6n77ya57uE5Lu25YyWIOKAlCDmtYXngbDkuLvosIPvvIzku4Ui57uT5p6cIueUqOe7v+iJsue7huaghyAtLT48cmVjdCB4PSIzODAiIHk9IjUwIiB3aWR0aD0iMzEwIiBoZWlnaHQ9IjMyMCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjYWRiNWJkIiByeD0iNCIvPjx0ZXh0IHg9IjUzNSIgeT0iNzQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjNDk1MDU3IiBmb250LXNpemU9IjEzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7inIUg57uE5Lu25YyWPC90ZXh0PjxyZWN0IHg9IjM5NiIgeT0iODYiIHdpZHRoPSIyNzgiIGhlaWdodD0iMjYiIGZpbGw9IiNmOGY5ZmEiIHN0cm9rZT0iI2RlZTJlNiIgcng9IjMiLz48dGV4dCB4PSI1MzUiIHk9IjEwMyIgZmlsbD0iIzQ5NTA1NyIgZm9udC1zaXplPSIxMCIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Y29tcG9uZW50cy9IZWFkZXIudnVlPC90ZXh0PjxyZWN0IHg9IjM5NiIgeT0iMTE2IiB3aWR0aD0iMjc4IiBoZWlnaHQ9IjI2IiBmaWxsPSIjZjhmOWZhIiBzdHJva2U9IiNkZWUyZTYiIHJ4PSIzIi8+PHRleHQgeD0iNTM1IiB5PSIxMzMiIGZpbGw9IiM0OTUwNTciIGZvbnQtc2l6ZT0iMTAiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmNvbXBvbmVudHMvQ2Fyb3VzZWwudnVlPC90ZXh0PjxyZWN0IHg9IjM5NiIgeT0iMTQ2IiB3aWR0aD0iMjc4IiBoZWlnaHQ9IjI2IiBmaWxsPSIjZjhmOWZhIiBzdHJva2U9IiNkZWUyZTYiIHJ4PSIzIi8+PHRleHQgeD0iNTM1IiB5PSIxNjMiIGZpbGw9IiM0OTUwNTciIGZvbnQtc2l6ZT0iMTAiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmNvbXBvbmVudHMvUHJvZHVjdExpc3QudnVlPC90ZXh0PjxyZWN0IHg9IjM5NiIgeT0iMTc2IiB3aWR0aD0iMjc4IiBoZWlnaHQ9IjI2IiBmaWxsPSIjZjhmOWZhIiBzdHJva2U9IiNkZWUyZTYiIHJ4PSIzIi8+PHRleHQgeD0iNTM1IiB5PSIxOTMiIGZpbGw9IiM0OTUwNTciIGZvbnQtc2l6ZT0iMTAiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmNvbXBvbmVudHMvU2lkZWJhci52dWU8L3RleHQ+PHJlY3QgeD0iMzk2IiB5PSIyMDYiIHdpZHRoPSIyNzgiIGhlaWdodD0iMjYiIGZpbGw9IiNmOGY5ZmEiIHN0cm9rZT0iI2RlZTJlNiIgcng9IjMiLz48dGV4dCB4PSI1MzUiIHk9IjIyMyIgZmlsbD0iIzQ5NTA1NyIgZm9udC1zaXplPSIxMCIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Y29tcG9uZW50cy9Gb290ZXIudnVlPC90ZXh0PjxsaW5lIHgxPSIzOTYiIHkxPSIyNDQiIHgyPSI2NzQiIHkyPSIyNDQiIHN0cm9rZT0iI2RlZTJlNiIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iNTM1IiB5PSIyNjYiIGZpbGw9IiMyYjhhM2UiIGZvbnQtc2l6ZT0iMTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIj7mlLnova7mkq3lm748L3RleHQ+PHRleHQgeD0iNTM1IiB5PSIyODUiIGZpbGw9IiM4NjhlOTYiIGZvbnQtc2l6ZT0iMTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuKGkiDlj6rmlLkgQ2Fyb3VzZWwudnVlIOS4gOS4quaWh+S7tjwvdGV4dD48dGV4dCB4PSI1MzUiIHk9IjMwMiIgZmlsbD0iIzg2OGU5NiIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+4oaSIOWFtuS7lue7hOS7tuWujOWFqOS4jeWKqDwvdGV4dD48cmVjdCB4PSIzOTYiIHk9IjMzOCIgd2lkdGg9IjI3OCIgaGVpZ2h0PSIyMiIgZmlsbD0iI2ViZmJlZSIgc3Ryb2tlPSIjYjJmMmJiIiByeD0iMyIvPjx0ZXh0IHg9IjUzNSIgeT0iMzUzIiBmaWxsPSIjMmI4YTNlIiBmb250LXNpemU9IjEwIiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+4pyTIOWQhOeuoeWQhOeahO+8jOS6kuS4jeW9seWTjTwvdGV4dD48L3N2Zz4="></p>
+<p><img width="720" height="340" loading="lazy" alt="图 3-1：传统一页到底 vs 组件化开发的对比" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MjAiIGhlaWdodD0iMzQwIiB2aWV3Qm94PSIwIDAgNzIwIDM0MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxQaW5nRmFuZyBTQyxzYW5zLXNlcmlmIj48cmVjdCB3aWR0aD0iNzIwIiBoZWlnaHQ9IjM0MCIgZmlsbD0iI2ZhZmFmYSIvPjx0ZXh0IHg9IjM2MCIgeT0iMzAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMzMzIiBmb250LXNpemU9IjE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5yZWYoKSB2cyByZWFjdGl2ZSgp77ya5Lik56eN5ZON5bqU5byPIEFQSSDlr7nmr5Q8L3RleHQ+PHJlY3QgeD0iMjAiIHk9IjU1IiB3aWR0aD0iMzMwIiBoZWlnaHQ9IjI2NSIgZmlsbD0iI2U3ZjNmZiIgc3Ryb2tlPSIjMTk3MWMyIiBzdHJva2Utd2lkdGg9IjEuNSIgcng9IjQiLz48dGV4dCB4PSIxODUiIHk9IjgwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzE5NzFjMiIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+cmVmKCkg4oCUIOWMheijheWfuuacrOexu+WeizwvdGV4dD48cmVjdCB4PSIzNSIgeT0iMTAwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwIiBmaWxsPSIjY2NlNWZmIiBzdHJva2U9IiM3NGMwZmMiIHN0cm9rZS13aWR0aD0iMS41IiByeD0iNCIvPjx0ZXh0IHg9IjE4NSIgeT0iMTI1IiAgZmlsbD0iIzE5NzFjMiIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Y29uc3QgY291bnQgPSByZWYoMCk8L3RleHQ+PHRleHQgeD0iMTg1IiB5PSIxNTUiICBmaWxsPSIjNDk1MDU3IiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5jb3VudC52YWx1ZSsrICAvLyAudmFsdWUg6K6/6ZeuPC90ZXh0Pjx0ZXh0IHg9IjE4NSIgeT0iMTg1IiAgZmlsbD0iIzE5NzFjMiIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+5qih5p2/5Lit6Ieq5Yqo6Kej5YyF77yae3sgY291bnQgfX08L3RleHQ+PHRleHQgeD0iMTg1IiB5PSIyMjAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMTk3MWMyIiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7pgILnlKjvvJpTdHJpbmcgLyBOdW1iZXIgLyBCb29sZWFuPC90ZXh0Pjx0ZXh0IHg9IjE4NSIgeT0iMjQ1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzE5NzFjMiIgZm9udC1zaXplPSIxMSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+ICAgICAg5Y2V5YC8IC8g54us56uL5YC8PC90ZXh0Pjx0ZXh0IHg9IjE4NSIgeT0iMjgwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJmOWU0NCIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+5Y6f5YiZ77ya5LiN56Gu5a6a5bCx55SoIHJlZigpPC90ZXh0PjxyZWN0IHg9IjM3MCIgeT0iNTUiIHdpZHRoPSIzMzAiIGhlaWdodD0iMjY1IiBmaWxsPSIjZjBmOWU4IiBzdHJva2U9IiMyZjllNDQiIHN0cm9rZS13aWR0aD0iMS41IiByeD0iNCIvPjx0ZXh0IHg9IjUzNSIgeT0iODAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMmY5ZTQ0IiBmb250LXNpemU9IjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5yZWFjdGl2ZSgpIOKAlCDljIXoo4Xlr7nosaE8L3RleHQ+PHJlY3QgeD0iMzg1IiB5PSIxMDAiIHdpZHRoPSIzMDAiIGhlaWdodD0iNDAiIGZpbGw9IiNkOGY1Y2MiIHN0cm9rZT0iI2E5ZTA5NSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHJ4PSI0Ii8+PHRleHQgeD0iNTM1IiB5PSIxMjUiICBmaWxsPSIjMmY5ZTQ0IiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5jb25zdCBzdGF0ZSA9IHJlYWN0aXZlKHsgbmFtZTogJy4uLicgfSk8L3RleHQ+PHRleHQgeD0iNTM1IiB5PSIxNTUiICBmaWxsPSIjNDk1MDU3IiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5zdGF0ZS5jb3VudCsrICAvLyDnm7TmjqXorr/pl67vvIzml6DpnIAgLnZhbHVlPC90ZXh0Pjx0ZXh0IHg9IjUzNSIgeT0iMTg1IiAgZmlsbD0iIzJmOWU0NCIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+5rex5bGC5ZON5bqU5byP77ya5bWM5aWX5a+56LGh5Lmf6Ieq5Yqo6L+96LiqPC90ZXh0Pjx0ZXh0IHg9IjUzNSIgeT0iMjIwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJmOWU0NCIgZm9udC1zaXplPSIxMSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+6YCC55So77yaT2JqZWN0IC8gQXJyYXkgLyBNYXAgLyBTZXQ8L3RleHQ+PHRleHQgeD0iNTM1IiB5PSIyNDUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMmY5ZTQ0IiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4gICAgICDooajljZUgLyDlpI3mnYLnirbmgIHlr7nosaE8L3RleHQ+PHRleHQgeD0iNTM1IiB5PSIyODAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzkyYTJhIiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7ms6jmhI/vvJrkuI3lj6/mm7/mjaLmlbTkuKrlr7nosaE8L3RleHQ+PC9zdmc+"></p>
 <blockquote class="quote-chat">
 <p><span class="q-avatar">💬</span> <strong>老师备注</strong>：你有没有遇到过这种情况——改一个按钮的样式，结果另一个页面也跟着变了（或者没变）？这就是&rdquo;一页到底式&rdquo;的典型问题：<strong>样式污染</strong>和<strong>逻辑耦合</strong>。</p>
 </blockquote>
@@ -12506,7 +12855,7 @@ function addToCart(id) { /* ... */ }
 ├── 快捷操作按钮（操作）
 └── 数据统计图表（统计）
 </code></pre></div>
-<p><img width="720" height="400" loading="lazy" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MjAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNzIwIDQwMCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxQaW5nRmFuZyBTQyxzYW5zLXNlcmlmIj48ZGVmcz48bWFya2VyIGlkPSJhcnJvd2hlYWQiIG1hcmtlcldpZHRoPSIxMCIgbWFya2VySGVpZ2h0PSI3IiByZWZYPSIxMCIgcmVmWT0iMy41IiBvcmllbnQ9ImF1dG8iPjxwb2x5Z29uIHBvaW50cz0iMCAwLCAxMCAzLjUsIDAgNyIgZmlsbD0iIzY2NiIvPjwvbWFya2VyPjwvZGVmcz48cmVjdCB3aWR0aD0iNzIwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2ZhZmFmYSIvPjx0ZXh0IHg9IjM2MCIgeT0iMzAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMzMzIiBmb250LXNpemU9IjE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7npZ7nu4Tku7YgdnMg5Y2V5LiA6IGM6LSj57uE5Lu2PC90ZXh0PjwhLS0gR29kIGNvbXBvbmVudCAtLT48cmVjdCB4PSIzMCIgeT0iNjAiIHdpZHRoPSIzMTAiIGhlaWdodD0iMzEwIiBmaWxsPSIjZmZmNWY1IiBzdHJva2U9IiNlMDMxMzEiIHJ4PSI2Ii8+PHRleHQgeD0iMTg1IiB5PSI4NSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNlMDMxMzEiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuelnue7hOS7tiAoR29kIENvbXBvbmVudCk8L3RleHQ+PHJlY3QgeD0iNTAiIHk9IjEwMCIgd2lkdGg9IjI3MCIgaGVpZ2h0PSIzNiIgZmlsbD0iI2ZmZTNlMyIgc3Ryb2tlPSIjZmZhOGE4IiBzdHJva2Utd2lkdGg9IjEuNSIgcng9IjQiLz48dGV4dCB4PSIxODUiIHk9IjEyMyIgIGZpbGw9IiNjOTJhMmEiIGZvbnQtc2l6ZT0iMTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkhlYWRlciArIFNpZGViYXIgKyBDb250ZW50ICsgRm9vdGVyPC90ZXh0PjxyZWN0IHg9IjUwIiB5PSIxNDUiIHdpZHRoPSIyNzAiIGhlaWdodD0iMzYiIGZpbGw9IiNmZmUzZTMiIHN0cm9rZT0iI2ZmYThhOCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHJ4PSI0Ii8+PHRleHQgeD0iMTg1IiB5PSIxNjgiICBmaWxsPSIjYzkyYTJhIiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7ooajljZXmoKHpqowgKyDmlbDmja7or7fmsYIgKyDnirbmgIHnrqHnkIY8L3RleHQ+PHJlY3QgeD0iNTAiIHk9IjE5MCIgd2lkdGg9IjI3MCIgaGVpZ2h0PSIzNiIgZmlsbD0iI2ZmZTNlMyIgc3Ryb2tlPSIjZmZhOGE4IiBzdHJva2Utd2lkdGg9IjEuNSIgcng9IjQiLz48dGV4dCB4PSIxODUiIHk9IjIxMyIgIGZpbGw9IiNjOTJhMmEiIGZvbnQtc2l6ZT0iMTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjUwMCsg6KGM5Luj56CBPC90ZXh0PjxyZWN0IHg9IjUwIiB5PSIyMzUiIHdpZHRoPSIyNzAiIGhlaWdodD0iMzYiIGZpbGw9IiNmZmUzZTMiIHN0cm9rZT0iI2ZmYThhOCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHJ4PSI0Ii8+PHRleHQgeD0iMTg1IiB5PSIyNTgiICBmaWxsPSIjYzkyYTJhIiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7mlLnkuIDlpITlj6/og73ltKnmuoPlhajlsYA8L3RleHQ+PHJlY3QgeD0iNTAiIHk9IjI4MCIgd2lkdGg9IjI3MCIgaGVpZ2h0PSIzNiIgZmlsbD0iI2ZmZTNlMyIgc3Ryb2tlPSIjZmZhOGE4IiBzdHJva2Utd2lkdGg9IjEuNSIgcng9IjQiLz48dGV4dCB4PSIxODUiIHk9IjMwMyIgIGZpbGw9IiNjOTJhMmEiIGZvbnQtc2l6ZT0iMTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuWHoOS5juS4jeWPr+WkjeeUqDwvdGV4dD48dGV4dCB4PSIxODUiIHk9IjM0NSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNlMDMxMzEiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuS4gOWPpeivneivtOS4jea4hei/meS4que7hOS7tuW5suS7gOS5iDwvdGV4dD48IS0tIGFycm93IC0tPjx0ZXh0IHg9IjM1NSIgeT0iMjE1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJmOWU0NCIgZm9udC1zaXplPSIyOCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+4oaSPC90ZXh0PjwhLS0gU1JQIGNvbXBvbmVudHMgLS0+PHJlY3QgeD0iMzgwIiB5PSI2MCIgd2lkdGg9IjMxMCIgaGVpZ2h0PSIzMTAiIGZpbGw9IiNmMGY5ZTgiIHN0cm9rZT0iIzJmOWU0NCIgcng9IjYiLz48dGV4dCB4PSI1MzUiIHk9Ijg1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJmOWU0NCIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+5Y2V5LiA6IGM6LSj57uE5Lu2IChTUlApPC90ZXh0PjxyZWN0IHg9IjQwMCIgeT0iMTAwIiB3aWR0aD0iMjcwIiBoZWlnaHQ9IjMyIiBmaWxsPSIjZDhmNWNjIiBzdHJva2U9IiNhOWUwOTUiIHN0cm9rZS13aWR0aD0iMS41IiByeD0iNCIvPjx0ZXh0IHg9IjUzNSIgeT0iMTIxIiAgZmlsbD0iIzJmOWU0NCIgZm9udC1zaXplPSIxMSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QXBwSGVhZGVyLnZ1ZSDigJQg5Y+q5YGa5a+86IiqPC90ZXh0PjxyZWN0IHg9IjQwMCIgeT0iMTQwIiB3aWR0aD0iMjcwIiBoZWlnaHQ9IjMyIiBmaWxsPSIjZDhmNWNjIiBzdHJva2U9IiNhOWUwOTUiIHN0cm9rZS13aWR0aD0iMS41IiByeD0iNCIvPjx0ZXh0IHg9IjUzNSIgeT0iMTYxIiAgZmlsbD0iIzJmOWU0NCIgZm9udC1zaXplPSIxMSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QXBwU2lkZWJhci52dWUg4oCUIOWPquWBmuS+p+i+ueagjzwvdGV4dD48cmVjdCB4PSI0MDAiIHk9IjE4MCIgd2lkdGg9IjI3MCIgaGVpZ2h0PSIzMiIgZmlsbD0iI2Q4ZjVjYyIgc3Ryb2tlPSIjYTllMDk1IiBzdHJva2Utd2lkdGg9IjEuNSIgcng9IjQiLz48dGV4dCB4PSI1MzUiIHk9IjIwMSIgIGZpbGw9IiMyZjllNDQiIGZvbnQtc2l6ZT0iMTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlVzZXJGb3JtLnZ1ZSDigJQg5Y+q5YGa6KGo5Y2VPC90ZXh0PjxyZWN0IHg9IjQwMCIgeT0iMjIwIiB3aWR0aD0iMjcwIiBoZWlnaHQ9IjMyIiBmaWxsPSIjZDhmNWNjIiBzdHJva2U9IiNhOWUwOTUiIHN0cm9rZS13aWR0aD0iMS41IiByeD0iNCIvPjx0ZXh0IHg9IjUzNSIgeT0iMjQxIiAgZmlsbD0iIzJmOWU0NCIgZm9udC1zaXplPSIxMSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RGF0YVRhYmxlLnZ1ZSDigJQg5Y+q5YGa6KGo5qC8PC90ZXh0PjxyZWN0IHg9IjQwMCIgeT0iMjYwIiB3aWR0aD0iMjcwIiBoZWlnaHQ9IjMyIiBmaWxsPSIjZDhmNWNjIiBzdHJva2U9IiNhOWUwOTUiIHN0cm9rZS13aWR0aD0iMS41IiByeD0iNCIvPjx0ZXh0IHg9IjUzNSIgeT0iMjgxIiAgZmlsbD0iIzJmOWU0NCIgZm9udC1zaXplPSIxMSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+5q+P5Liq57uE5Lu2IDwgMTAwIOihjDwvdGV4dD48cmVjdCB4PSI0MDAiIHk9IjMwMCIgd2lkdGg9IjI3MCIgaGVpZ2h0PSIzMiIgZmlsbD0iI2Q4ZjVjYyIgc3Ryb2tlPSIjYTllMDk1IiBzdHJva2Utd2lkdGg9IjEuNSIgcng9IjQiLz48dGV4dCB4PSI1MzUiIHk9IjMyMSIgIGZpbGw9IiMyZjllNDQiIGZvbnQtc2l6ZT0iMTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPueLrOeri+a1i+ivlSAvIOeLrOeri+WkjeeUqDwvdGV4dD48dGV4dCB4PSI1MzUiIHk9IjM1NSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyZjllNDQiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuS4gOWPpeivne+8muWug+WwseaYr+S4gOS4quWvvOiIquagjzwvdGV4dD48L3N2Zz4=" alt="神组件 vs 单一职责组件的对比"></p>
+<p><img width="720" height="340" loading="lazy" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MjAiIGhlaWdodD0iMzQwIiB2aWV3Qm94PSIwIDAgNzIwIDM0MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxQaW5nRmFuZyBTQyxzYW5zLXNlcmlmIj48cmVjdCB3aWR0aD0iNzIwIiBoZWlnaHQ9IjM0MCIgZmlsbD0iI2ZhZmFmYSIvPjx0ZXh0IHg9IjM2MCIgeT0iMzAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMzMzIiBmb250LXNpemU9IjE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5jb21wdXRlZCB2cyB3YXRjaO+8muivpeeUqOWTquS4qu+8nzwvdGV4dD48cmVjdCB4PSIyMCIgeT0iNTUiIHdpZHRoPSIzMzAiIGhlaWdodD0iMjY1IiBmaWxsPSIjZjBmOWU4IiBzdHJva2U9IiMyZjllNDQiIHN0cm9rZS13aWR0aD0iMS41IiByeD0iNCIvPjx0ZXh0IHg9IjE4NSIgeT0iODAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMmY5ZTQ0IiBmb250LXNpemU9IjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5jb21wdXRlZCgpIOKAlCDorqHnrpflsZ7mgKc8L3RleHQ+PHRleHQgeD0iMTg1IiB5PSIxMTAiICBmaWxsPSIjNDk1MDU3IiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7mnInnvJPlrZjvvIzkvp3otZbkuI3lj5jkuI3ph43nrpc8L3RleHQ+PHRleHQgeD0iMTg1IiB5PSIxNDAiICBmaWxsPSIjMmY5ZTQ0IiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5jb25zdCBmdWxsID0gY29tcHV0ZWQoKCkgPT48L3RleHQ+PHRleHQgeD0iMTg1IiB5PSIxNTgiICBmaWxsPSIjMmY5ZTQ0IiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4gIGZpcnN0ICsgJyAnICsgbGFzdCk8L3RleHQ+PHRleHQgeD0iMTg1IiB5PSIxOTAiICBmaWxsPSIjNDk1MDU3IiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7lnLrmma/vvJrov4fmu6QgLyDmjpLluo8gLyDmoLzlvI/ljJYgLyDmi7zmjqU8L3RleHQ+PHRleHQgeD0iMTg1IiB5PSIyMTUiICBmaWxsPSIjNDk1MDU3IiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7ln7rkuo7lt7LmnInmlbDmja7mtL7nlJ/mlrDlgLw8L3RleHQ+PHRleHQgeD0iMTg1IiB5PSIyNTAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMmY5ZTQ0IiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7lhrPnrZY6IOmcgOimgSLlvpfliLAi5LiA5Liq5YC85pe2PC90ZXh0Pjx0ZXh0IHg9IjE4NSIgeT0iMjgwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJmOWU0NCIgZm9udC1zaXplPSIxMyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+6aaW6YCJIGNvbXB1dGVkPC90ZXh0PjxyZWN0IHg9IjM3MCIgeT0iNTUiIHdpZHRoPSIzMzAiIGhlaWdodD0iMjY1IiBmaWxsPSIjZmZmNGU2IiBzdHJva2U9IiNlODU5MGMiIHN0cm9rZS13aWR0aD0iMS41IiByeD0iNCIvPjx0ZXh0IHg9IjUzNSIgeT0iODAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZTg1OTBjIiBmb250LXNpemU9IjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj53YXRjaCgpIOKAlCDkvqblkKzlmag8L3RleHQ+PHRleHQgeD0iNTM1IiB5PSIxMTAiICBmaWxsPSIjNDk1MDU3IiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7ml6DnvJPlrZjvvIzkvp3otZblj5jljJblsLHmiafooYzlm57osIM8L3RleHQ+PHRleHQgeD0iNTM1IiB5PSIxNDAiICBmaWxsPSIjZTg1OTBjIiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj53YXRjaChzZWFyY2gsIChuZXcsIG9sZCkgPT4gezwvdGV4dD48dGV4dCB4PSI1MzUiIHk9IjE1OCIgIGZpbGw9IiNlODU5MGMiIGZvbnQtc2l6ZT0iMTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPiAgZmV0Y2hSZXN1bHRzKG5ldykgfSk8L3RleHQ+PHRleHQgeD0iNTM1IiB5PSIxOTAiICBmaWxsPSIjNDk1MDU3IiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7lnLrmma/vvJpBUEkg6K+35rGCIC8g6Lev55Sx5Y+Y5YyWIC8g5Ymv5L2c55SoPC90ZXh0Pjx0ZXh0IHg9IjUzNSIgeT0iMjE1IiAgZmlsbD0iIzQ5NTA1NyIgZm9udC1zaXplPSIxMSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+bG9jYWxTdG9yYWdlIOWQjOatpSAvIOWkjeadguW8guatpemAu+i+kTwvdGV4dD48dGV4dCB4PSI1MzUiIHk9IjI1MCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNlODU5MGMiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuWGs+etljog6ZyA6KaBIuWBmiLkuIDku7bkuovml7Y8L3RleHQ+PHRleHQgeD0iNTM1IiB5PSIyODAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZTg1OTBjIiBmb250LXNpemU9IjEzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7nlKggd2F0Y2g8L3RleHQ+PC9zdmc+" alt="神组件 vs 单一职责组件的对比"></p>
 <p>这个组件管了 <strong>5 种完全不同的业务</strong>。后果：</p>
 <ul>
 <li><strong>难维护</strong>：改订单列表，可能不小心改到通知面板的逻辑</li>
@@ -12521,7 +12870,7 @@ function addToCart(id) { /* ... */ }
 ├── &lt;QuickActions /&gt;      ← 只管快捷操作
 └── &lt;StatsChart /&gt;        ← 只管统计图表
 </code></pre></div>
-<p><img width="720" height="400" loading="lazy" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MjAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgNzIwIDQwMCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxQaW5nRmFuZyBTQyxzYW5zLXNlcmlmIj48ZGVmcz48bWFya2VyIGlkPSJhcnJvd2hlYWQiIG1hcmtlcldpZHRoPSIxMCIgbWFya2VySGVpZ2h0PSI3IiByZWZYPSIxMCIgcmVmWT0iMy41IiBvcmllbnQ9ImF1dG8iPjxwb2x5Z29uIHBvaW50cz0iMCAwLCAxMCAzLjUsIDAgNyIgZmlsbD0iIzY2NiIvPjwvbWFya2VyPjwvZGVmcz48cmVjdCB3aWR0aD0iNzIwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2ZhZmFmYSIvPjx0ZXh0IHg9IjM2MCIgeT0iMzAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMzMzIiBmb250LXNpemU9IjE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7npZ7nu4Tku7YgdnMg5Y2V5LiA6IGM6LSj57uE5Lu2PC90ZXh0PjwhLS0gR29kIGNvbXBvbmVudCAtLT48cmVjdCB4PSIzMCIgeT0iNjAiIHdpZHRoPSIzMTAiIGhlaWdodD0iMzEwIiBmaWxsPSIjZmZmNWY1IiBzdHJva2U9IiNlMDMxMzEiIHJ4PSI2Ii8+PHRleHQgeD0iMTg1IiB5PSI4NSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNlMDMxMzEiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuelnue7hOS7tiAoR29kIENvbXBvbmVudCk8L3RleHQ+PHJlY3QgeD0iNTAiIHk9IjEwMCIgd2lkdGg9IjI3MCIgaGVpZ2h0PSIzNiIgZmlsbD0iI2ZmZTNlMyIgc3Ryb2tlPSIjZmZhOGE4IiBzdHJva2Utd2lkdGg9IjEuNSIgcng9IjQiLz48dGV4dCB4PSIxODUiIHk9IjEyMyIgIGZpbGw9IiNjOTJhMmEiIGZvbnQtc2l6ZT0iMTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkhlYWRlciArIFNpZGViYXIgKyBDb250ZW50ICsgRm9vdGVyPC90ZXh0PjxyZWN0IHg9IjUwIiB5PSIxNDUiIHdpZHRoPSIyNzAiIGhlaWdodD0iMzYiIGZpbGw9IiNmZmUzZTMiIHN0cm9rZT0iI2ZmYThhOCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHJ4PSI0Ii8+PHRleHQgeD0iMTg1IiB5PSIxNjgiICBmaWxsPSIjYzkyYTJhIiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7ooajljZXmoKHpqowgKyDmlbDmja7or7fmsYIgKyDnirbmgIHnrqHnkIY8L3RleHQ+PHJlY3QgeD0iNTAiIHk9IjE5MCIgd2lkdGg9IjI3MCIgaGVpZ2h0PSIzNiIgZmlsbD0iI2ZmZTNlMyIgc3Ryb2tlPSIjZmZhOGE4IiBzdHJva2Utd2lkdGg9IjEuNSIgcng9IjQiLz48dGV4dCB4PSIxODUiIHk9IjIxMyIgIGZpbGw9IiNjOTJhMmEiIGZvbnQtc2l6ZT0iMTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjUwMCsg6KGM5Luj56CBPC90ZXh0PjxyZWN0IHg9IjUwIiB5PSIyMzUiIHdpZHRoPSIyNzAiIGhlaWdodD0iMzYiIGZpbGw9IiNmZmUzZTMiIHN0cm9rZT0iI2ZmYThhOCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHJ4PSI0Ii8+PHRleHQgeD0iMTg1IiB5PSIyNTgiICBmaWxsPSIjYzkyYTJhIiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7mlLnkuIDlpITlj6/og73ltKnmuoPlhajlsYA8L3RleHQ+PHJlY3QgeD0iNTAiIHk9IjI4MCIgd2lkdGg9IjI3MCIgaGVpZ2h0PSIzNiIgZmlsbD0iI2ZmZTNlMyIgc3Ryb2tlPSIjZmZhOGE4IiBzdHJva2Utd2lkdGg9IjEuNSIgcng9IjQiLz48dGV4dCB4PSIxODUiIHk9IjMwMyIgIGZpbGw9IiNjOTJhMmEiIGZvbnQtc2l6ZT0iMTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuWHoOS5juS4jeWPr+WkjeeUqDwvdGV4dD48dGV4dCB4PSIxODUiIHk9IjM0NSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNlMDMxMzEiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuS4gOWPpeivneivtOS4jea4hei/meS4que7hOS7tuW5suS7gOS5iDwvdGV4dD48IS0tIGFycm93IC0tPjx0ZXh0IHg9IjM1NSIgeT0iMjE1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJmOWU0NCIgZm9udC1zaXplPSIyOCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+4oaSPC90ZXh0PjwhLS0gU1JQIGNvbXBvbmVudHMgLS0+PHJlY3QgeD0iMzgwIiB5PSI2MCIgd2lkdGg9IjMxMCIgaGVpZ2h0PSIzMTAiIGZpbGw9IiNmMGY5ZTgiIHN0cm9rZT0iIzJmOWU0NCIgcng9IjYiLz48dGV4dCB4PSI1MzUiIHk9Ijg1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJmOWU0NCIgZm9udC1zaXplPSIxNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+5Y2V5LiA6IGM6LSj57uE5Lu2IChTUlApPC90ZXh0PjxyZWN0IHg9IjQwMCIgeT0iMTAwIiB3aWR0aD0iMjcwIiBoZWlnaHQ9IjMyIiBmaWxsPSIjZDhmNWNjIiBzdHJva2U9IiNhOWUwOTUiIHN0cm9rZS13aWR0aD0iMS41IiByeD0iNCIvPjx0ZXh0IHg9IjUzNSIgeT0iMTIxIiAgZmlsbD0iIzJmOWU0NCIgZm9udC1zaXplPSIxMSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QXBwSGVhZGVyLnZ1ZSDigJQg5Y+q5YGa5a+86IiqPC90ZXh0PjxyZWN0IHg9IjQwMCIgeT0iMTQwIiB3aWR0aD0iMjcwIiBoZWlnaHQ9IjMyIiBmaWxsPSIjZDhmNWNjIiBzdHJva2U9IiNhOWUwOTUiIHN0cm9rZS13aWR0aD0iMS41IiByeD0iNCIvPjx0ZXh0IHg9IjUzNSIgeT0iMTYxIiAgZmlsbD0iIzJmOWU0NCIgZm9udC1zaXplPSIxMSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QXBwU2lkZWJhci52dWUg4oCUIOWPquWBmuS+p+i+ueagjzwvdGV4dD48cmVjdCB4PSI0MDAiIHk9IjE4MCIgd2lkdGg9IjI3MCIgaGVpZ2h0PSIzMiIgZmlsbD0iI2Q4ZjVjYyIgc3Ryb2tlPSIjYTllMDk1IiBzdHJva2Utd2lkdGg9IjEuNSIgcng9IjQiLz48dGV4dCB4PSI1MzUiIHk9IjIwMSIgIGZpbGw9IiMyZjllNDQiIGZvbnQtc2l6ZT0iMTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlVzZXJGb3JtLnZ1ZSDigJQg5Y+q5YGa6KGo5Y2VPC90ZXh0PjxyZWN0IHg9IjQwMCIgeT0iMjIwIiB3aWR0aD0iMjcwIiBoZWlnaHQ9IjMyIiBmaWxsPSIjZDhmNWNjIiBzdHJva2U9IiNhOWUwOTUiIHN0cm9rZS13aWR0aD0iMS41IiByeD0iNCIvPjx0ZXh0IHg9IjUzNSIgeT0iMjQxIiAgZmlsbD0iIzJmOWU0NCIgZm9udC1zaXplPSIxMSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RGF0YVRhYmxlLnZ1ZSDigJQg5Y+q5YGa6KGo5qC8PC90ZXh0PjxyZWN0IHg9IjQwMCIgeT0iMjYwIiB3aWR0aD0iMjcwIiBoZWlnaHQ9IjMyIiBmaWxsPSIjZDhmNWNjIiBzdHJva2U9IiNhOWUwOTUiIHN0cm9rZS13aWR0aD0iMS41IiByeD0iNCIvPjx0ZXh0IHg9IjUzNSIgeT0iMjgxIiAgZmlsbD0iIzJmOWU0NCIgZm9udC1zaXplPSIxMSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+5q+P5Liq57uE5Lu2IDwgMTAwIOihjDwvdGV4dD48cmVjdCB4PSI0MDAiIHk9IjMwMCIgd2lkdGg9IjI3MCIgaGVpZ2h0PSIzMiIgZmlsbD0iI2Q4ZjVjYyIgc3Ryb2tlPSIjYTllMDk1IiBzdHJva2Utd2lkdGg9IjEuNSIgcng9IjQiLz48dGV4dCB4PSI1MzUiIHk9IjMyMSIgIGZpbGw9IiMyZjllNDQiIGZvbnQtc2l6ZT0iMTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPueLrOeri+a1i+ivlSAvIOeLrOeri+WkjeeUqDwvdGV4dD48dGV4dCB4PSI1MzUiIHk9IjM1NSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyZjllNDQiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuS4gOWPpeivne+8muWug+WwseaYr+S4gOS4quWvvOiIquagjzwvdGV4dD48L3N2Zz4=" alt="神组件 vs 单一职责组件的对比"></p>
+<p><img width="720" height="340" loading="lazy" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MjAiIGhlaWdodD0iMzQwIiB2aWV3Qm94PSIwIDAgNzIwIDM0MCIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxQaW5nRmFuZyBTQyxzYW5zLXNlcmlmIj48cmVjdCB3aWR0aD0iNzIwIiBoZWlnaHQ9IjM0MCIgZmlsbD0iI2ZhZmFmYSIvPjx0ZXh0IHg9IjM2MCIgeT0iMzAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMzMzIiBmb250LXNpemU9IjE4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5jb21wdXRlZCB2cyB3YXRjaO+8muivpeeUqOWTquS4qu+8nzwvdGV4dD48cmVjdCB4PSIyMCIgeT0iNTUiIHdpZHRoPSIzMzAiIGhlaWdodD0iMjY1IiBmaWxsPSIjZjBmOWU4IiBzdHJva2U9IiMyZjllNDQiIHN0cm9rZS13aWR0aD0iMS41IiByeD0iNCIvPjx0ZXh0IHg9IjE4NSIgeT0iODAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMmY5ZTQ0IiBmb250LXNpemU9IjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5jb21wdXRlZCgpIOKAlCDorqHnrpflsZ7mgKc8L3RleHQ+PHRleHQgeD0iMTg1IiB5PSIxMTAiICBmaWxsPSIjNDk1MDU3IiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7mnInnvJPlrZjvvIzkvp3otZbkuI3lj5jkuI3ph43nrpc8L3RleHQ+PHRleHQgeD0iMTg1IiB5PSIxNDAiICBmaWxsPSIjMmY5ZTQ0IiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5jb25zdCBmdWxsID0gY29tcHV0ZWQoKCkgPT48L3RleHQ+PHRleHQgeD0iMTg1IiB5PSIxNTgiICBmaWxsPSIjMmY5ZTQ0IiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4gIGZpcnN0ICsgJyAnICsgbGFzdCk8L3RleHQ+PHRleHQgeD0iMTg1IiB5PSIxOTAiICBmaWxsPSIjNDk1MDU3IiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7lnLrmma/vvJrov4fmu6QgLyDmjpLluo8gLyDmoLzlvI/ljJYgLyDmi7zmjqU8L3RleHQ+PHRleHQgeD0iMTg1IiB5PSIyMTUiICBmaWxsPSIjNDk1MDU3IiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7ln7rkuo7lt7LmnInmlbDmja7mtL7nlJ/mlrDlgLw8L3RleHQ+PHRleHQgeD0iMTg1IiB5PSIyNTAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMmY5ZTQ0IiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7lhrPnrZY6IOmcgOimgSLlvpfliLAi5LiA5Liq5YC85pe2PC90ZXh0Pjx0ZXh0IHg9IjE4NSIgeT0iMjgwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzJmOWU0NCIgZm9udC1zaXplPSIxMyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+6aaW6YCJIGNvbXB1dGVkPC90ZXh0PjxyZWN0IHg9IjM3MCIgeT0iNTUiIHdpZHRoPSIzMzAiIGhlaWdodD0iMjY1IiBmaWxsPSIjZmZmNGU2IiBzdHJva2U9IiNlODU5MGMiIHN0cm9rZS13aWR0aD0iMS41IiByeD0iNCIvPjx0ZXh0IHg9IjUzNSIgeT0iODAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZTg1OTBjIiBmb250LXNpemU9IjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj53YXRjaCgpIOKAlCDkvqblkKzlmag8L3RleHQ+PHRleHQgeD0iNTM1IiB5PSIxMTAiICBmaWxsPSIjNDk1MDU3IiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7ml6DnvJPlrZjvvIzkvp3otZblj5jljJblsLHmiafooYzlm57osIM8L3RleHQ+PHRleHQgeD0iNTM1IiB5PSIxNDAiICBmaWxsPSIjZTg1OTBjIiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj53YXRjaChzZWFyY2gsIChuZXcsIG9sZCkgPT4gezwvdGV4dD48dGV4dCB4PSI1MzUiIHk9IjE1OCIgIGZpbGw9IiNlODU5MGMiIGZvbnQtc2l6ZT0iMTEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPiAgZmV0Y2hSZXN1bHRzKG5ldykgfSk8L3RleHQ+PHRleHQgeD0iNTM1IiB5PSIxOTAiICBmaWxsPSIjNDk1MDU3IiBmb250LXNpemU9IjExIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7lnLrmma/vvJpBUEkg6K+35rGCIC8g6Lev55Sx5Y+Y5YyWIC8g5Ymv5L2c55SoPC90ZXh0Pjx0ZXh0IHg9IjUzNSIgeT0iMjE1IiAgZmlsbD0iIzQ5NTA1NyIgZm9udC1zaXplPSIxMSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+bG9jYWxTdG9yYWdlIOWQjOatpSAvIOWkjeadguW8guatpemAu+i+kTwvdGV4dD48dGV4dCB4PSI1MzUiIHk9IjI1MCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNlODU5MGMiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuWGs+etljog6ZyA6KaBIuWBmiLkuIDku7bkuovml7Y8L3RleHQ+PHRleHQgeD0iNTM1IiB5PSIyODAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZTg1OTBjIiBmb250LXNpemU9IjEzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7nlKggd2F0Y2g8L3RleHQ+PC9zdmc+" alt="神组件 vs 单一职责组件的对比"></p>
 <blockquote class="quote-chat">
 <p><span class="q-avatar">💬</span> <strong>老师备注</strong>：判断一个组件是否&rdquo;单一职责&rdquo;，有个很简单的测试——<strong>你能不能用一句「这个组件负责&hellip;」来描述它？</strong> 如果这句话里出现「和」，比如&rdquo;负责用户信息<strong>和</strong>订单列表<strong>和</strong>通知&rdquo;，那它大概率职责不单一。</p>
 </blockquote>
