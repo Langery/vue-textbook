@@ -1,14 +1,3 @@
----
-AIGC:
-    Label: "1"
-    ContentProducer: 001191440300708461136T1XGW3
-    ProduceID: a2bf0a7a8afbd1fb49ac51912b613772_0cbb8d8bb0b211f1af37525400826444
-    ReservedCode1: lEP910lP3UVlGRIbARJmvlo3VVXv9+nM79i/E+yu9j6RZNlLrhffnomMrI/HQyrV3DJm1FUGK5NuRwk12/WelTmozQI3x3z3w6N8RMS3c5zg12u3XIyamAfXdzuiSIOLff1G4nyHrQkDpy/YDx7+MMuxM/dtHoQdVEjzASxA6U3VzxFihR3tS2WGZPI=
-    ContentPropagator: 001191440300708461136T1XGW3
-    PropagateID: a2bf0a7a8afbd1fb49ac51912b613772_0cbb8d8bb0b211f1af37525400826444
-    ReservedCode2: lEP910lP3UVlGRIbARJmvlo3VVXv9+nM79i/E+yu9j6RZNlLrhffnomMrI/HQyrV3DJm1FUGK5NuRwk12/WelTmozQI3x3z3w6N8RMS3c5zg12u3XIyamAfXdzuiSIOLff1G4nyHrQkDpy/YDx7+MMuxM/dtHoQdVEjzASxA6U3VzxFihR3tS2WGZPI=
----
-
 # Vue 3 入门教材（中文 · 12 章 138 小节）
 
 面向大专/高职计算机专业学生的 Vue 3 中文入门教材，共 12 章 138 小节，附带趣味化讲解、即时练习与章节小结。
