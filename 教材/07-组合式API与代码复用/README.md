@@ -45,10 +45,10 @@
 |---|---|---|---|
 | 7.1 | 组合式 API 是啥 | `setup` 函数、`<script setup>` | 0.5 |
 | 7.2 | 组合式 API 的设计动机 | 解决选项式痛点、对比 Mixin | 0.5 |
-| 7.3 | `computed` vs `methods` vs `watch` | 三种 API 对比、选型指南 | 0.5 |
+| 7.3 | computed vs watch vs methods | 三种 API 对比、选型指南 | 0.5 |
 | 7.4 | `provide` / `inject`：跨组件传数据 | 隔代传、readonly 防误改 | 0.5 |
 | 7.5 | `provide` / `inject` 应用场景 | 主题、表单、面包屑、权限 | 0.5 |
-| 7.6 | 自定义 composable 设计模式 | 命名规范、结构模板、返回值设计 | 0.5 |
+| 7.6 | 自定义组合式函数（Composables） | 命名规范、结构模板、返回值设计 | 0.5 |
 | **7.7** | **实用 composable 实战** ⭐ | useDebounce、useLocalStorage、useMouse + VueUse | **1** |
 | **7.8** | **自定义指令** ⭐ | v-copy、v-focus、v-debounce、简写形式 | **1** |
 | **7.9** | **VueUse 生态：瑞士军刀** ⭐⭐ | useStorage/useDark/useClipboard + 200+ composable | **1** |

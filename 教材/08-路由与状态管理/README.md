@@ -46,7 +46,7 @@
 | 8.3 | 动态路由匹配 | `:id` 参数、useRoute、query vs params、Props 传参 | 0.5 |
 | 8.4 | 嵌套路由 | `children`、双层 router-view、命名路由 | 0.5 |
 | 8.5 | 编程式导航 | `push`/`replace`/`go`、登录跳转实战 | 0.5 |
-| 8.6 | 导航守卫：路由保安 ⭐ | `beforeEach`、`beforeEnter`、`onBeforeRouteLeave` | 0.5 |
+| 8.6 | 导航守卫：路由保安 | `beforeEach`、`beforeEnter`、`onBeforeRouteLeave` | 0.5 |
 | 8.7 | Vuex 核心概念 | State/Getter/Mutation/Action/Module、单向数据流 | 0.5 |
 | 8.8 | Pinia：新一代状态管理 | Setup Store vs Option Store、对比 Vuex、storeToRefs | 0.5 |
 | **8.9** | **Pinia 模块化实战（一）** ⭐⭐ | **产品/购物车/用户三模块 Store、跨 Store 协作** | **1** |
