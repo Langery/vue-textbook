@@ -442,14 +442,59 @@ def add_h2_anchors(html: str, anchor: str) -> str:
     return re.sub(r"<h2([^>]*)>", _repl, html)
 
 
-def make_chapter_html(ch: dict) -> str:
+GITHUB_REPO = "Langery/vue-textbook"
+GITHUB_BRANCH = "main"
+
+
+def rewrite_internal_links(html: str, md_file: Path, repo_root: Path) -> str:
+    """将渲染后 HTML 中的站内相对链接重写为线上可用的绝对链接。
+
+    目标：
+    - 章节目录相对链接（如 ./01.1-Vue是个啥玩意儿/）→ 站内锚点 #sec-<章>-<节>
+    - 配图相对链接（如 ../../配图/xx/图1-1.png）→ GitHub blob 绝对 URL
+    - 其余站内相对链接 → GitHub blob 绝对 URL
+    不影响 http/https/mailto/# 等已绝对或锚点链接。
+    """
+    from urllib.parse import quote
+
+    def _resolve(rel_url: str) -> str:
+        """以 md 文件所在目录为基准，解析出相对仓库根的 POSIX 路径。"""
+        target = (md_file.parent / rel_url).resolve()
+        try:
+            return target.relative_to(repo_root).as_posix()
+        except ValueError:
+            return rel_url
+
+    def _repl(m: re.Match) -> str:
+        whole, href = m.group(0), m.group(1)
+        if href.startswith(("http://", "https://", "mailto:", "#", "javascript:", "data:")):
+            return whole
+        rel = _resolve(href)
+        if rel.startswith(("配图/", "教材/")):
+            # 章节目录：href 以 / 结尾且指向 教材/<章目录>/<节目录> → 站内锚点
+            if href.endswith("/"):
+                parts = rel.split("/")
+                if len(parts) >= 3 and parts[0] == "教材":
+                    ch_dir, sec_dir = parts[1], parts[2]
+                    ch_num = re.match(r"^(\d{2})-", ch_dir)
+                    if ch_num:
+                        anchor = f"#sec-{ch_num.group(1)}-{sec_dir}"
+                        return whole.replace(href, anchor)
+            return whole.replace(href, f"https://github.com/{GITHUB_REPO}/blob/{GITHUB_BRANCH}/{quote(rel)}")
+        # 无法识别为仓库内路径的相对链接：保持原样
+        return whole
+
+    return re.sub(r'<a\b[^>]*?\bhref="([^"]*)"', _repl, html, flags=re.IGNORECASE)
+
+
+def make_chapter_html(ch: dict, source: Path) -> str:
     if not ch["files"]:
         return ""
 
     theme = CHAPTER_THEMES.get(ch["chapter"], {"bg": "#fdfaf2", "accent": "#666", "icon": "📄", "label": ch.get("title", "")})
     if ch.get("is_overview"):
         text = ch["files"][0].read_text(encoding="utf-8")
-        body = add_code_copy_buttons(md_to_html(text))
+        body = rewrite_internal_links(add_code_copy_buttons(md_to_html(text)), ch["files"][0], source)
         return (
             f'<section id="ch-00" class="chapter" style="--ch-bg: {theme["bg"]}; --ch-accent: {theme["accent"]};">'
             f'<div class="chapter-cover">'
@@ -479,7 +524,7 @@ def make_chapter_html(ch: dict) -> str:
                 text = re.sub(r"^#\s+.+?\n", "", text, count=1, flags=re.MULTILINE)
                 title = h1_match.group(1).strip()
                 section_num_label = "📋"
-                body = add_code_copy_buttons(md_to_html(text))
+                body = rewrite_internal_links(add_code_copy_buttons(md_to_html(text)), f, source)
                 body = add_h2_anchors(body, anchor)
                 sections.append(
                     f'<article id="{anchor}" class="section section-intro">'
@@ -499,7 +544,7 @@ def make_chapter_html(ch: dict) -> str:
         else:
             title = re.sub(r"^\d+\.\d+-", "", f.stem)
 
-        body = add_code_copy_buttons(md_to_html(text))
+        body = rewrite_internal_links(add_code_copy_buttons(md_to_html(text)), f, source)
         body = add_h2_anchors(body, anchor)
         sections.append(
             f'<article id="{anchor}" class="section">'
@@ -1557,7 +1602,7 @@ def main():
     print(f"找到 {len(chapters)} 章/总览")
 
     nav = make_nav(chapters)
-    content = "\n".join(make_chapter_html(ch) for ch in chapters)
+    content = "\n".join(make_chapter_html(ch, source) for ch in chapters)
 
     img_map = build_image_map(source)
     if img_map:
