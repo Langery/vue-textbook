@@ -7,6 +7,7 @@ Style: 出版级教材 - 加了字号/暗色模式/进度/复制按钮/页码/�
 from __future__ import annotations
 
 import argparse
+import html
 import re
 import sys
 from pathlib import Path
@@ -266,7 +267,7 @@ def md_to_html(text: str) -> str:
         output_format="html5",
     )
     html = md.convert(text)
-    html = _escape_script_tags_outside_pre(html)
+    html = _escape_dangerous_tags_outside_pre(html)
     # 学习目标标题加 class（卡片样式）
     html = re.sub(r'<h2>(.*?学习目标.*?)</h2>', r'<h2 class="h2-goals">\1</h2>', html)
     # 表格包横向滚动容器，防窄屏裁切
@@ -292,33 +293,42 @@ def _classify_fun_quotes(html: str) -> str:
     return _FUN_QUOTE_RE.sub(_repl, html)
 
 
-def _escape_script_tags_outside_pre(html: str) -> str:
-    """Escape <script>/</script>/<style>/</style> tags not inside <pre> blocks.
+def _escape_dangerous_tags_outside_pre(html: str) -> str:
+    """Escape dangerous tags (<script>/<style>/<template>/<component>/<keepalive>)
+    not inside <pre> blocks.
 
-    When markdown fenced code blocks are malformed, the markdown parser may
-    output raw <script> tags that get interpreted by the browser, breaking
-    page rendering. This postprocessor ensures they're always safe.
+    When markdown inline code or malformed fenced code blocks contain raw
+    Vue-like tags (e.g. `<template #item=...>`), the markdown parser may output
+    them unescaped. An unclosed `<template>` becomes a real HTML template
+    element that swallows all subsequent content from the browser DOM, making
+    later chapter anchors disappear. This postprocessor ensures they're always
+    safe.
     """
+    dangerous = (
+        ('<script', '&lt;script'), ('</script', '&lt;/script'),
+        ('<style', '&lt;style'), ('</style', '&lt;/style'),
+        ('<template', '&lt;template'), ('</template', '&lt;/template'),
+        ('<component', '&lt;component'), ('</component', '&lt;/component'),
+        ('<keepalive', '&lt;keepalive'), ('</keepalive', '&lt;/keepalive'),
+    )
+
+    def _escape(text: str) -> str:
+        for src, dst in dangerous:
+            text = text.replace(src, dst)
+        return text
+
     result = []
     last_end = 0
     # Find all <pre>...</pre> blocks and protect their content
     for m in re.finditer(r'<pre>.*?</pre>', html, re.DOTALL):
-        # Escape script/style tags in text OUTSIDE <pre> blocks
+        # Escape dangerous tags in text OUTSIDE <pre> blocks
         before = html[last_end:m.start()]
-        before = before.replace('<script', '&lt;script')
-        before = before.replace('</script', '&lt;/script')
-        before = before.replace('<style', '&lt;style')
-        before = before.replace('</style', '&lt;/style')
-        result.append(before)
+        result.append(_escape(before))
         result.append(m.group(0))
         last_end = m.end()
     # Escape remaining text after last <pre>
     tail = html[last_end:]
-    tail = tail.replace('<script', '&lt;script')
-    tail = tail.replace('</script', '&lt;/script')
-    tail = tail.replace('<style', '&lt;style')
-    tail = tail.replace('</style', '&lt;/style')
-    result.append(tail)
+    result.append(_escape(tail))
     return ''.join(result)
 
 
@@ -522,7 +532,7 @@ def make_chapter_html(ch: dict, source: Path) -> str:
             h1_match = re.search(r"^#\s+(.+)$", text, re.MULTILINE)
             if h1_match:
                 text = re.sub(r"^#\s+.+?\n", "", text, count=1, flags=re.MULTILINE)
-                title = h1_match.group(1).strip()
+                title = html.escape(h1_match.group(1).strip(), quote=False)
                 section_num_label = "📋"
                 body = rewrite_internal_links(add_code_copy_buttons(md_to_html(text)), f, source)
                 body = add_h2_anchors(body, anchor)
@@ -538,7 +548,7 @@ def make_chapter_html(ch: dict, source: Path) -> str:
         h1_match = re.search(r"^#\s+(.+)$", text, re.MULTILINE)
         if h1_match:
             text = re.sub(r"^#\s+.+?\n", "", text, count=1, flags=re.MULTILINE)
-            title = h1_match.group(1).strip()
+            title = html.escape(h1_match.group(1).strip(), quote=False)
             # remove leading number prefix like "1.1 " for display
             title = re.sub(r"^\d+\.\d+\s+", "", title)
         else:
