@@ -8500,6 +8500,10 @@ state = reactive({ count: 1 })
 // ✅ 正确做法：
 Object.assign(state, { count: 1, name: 'new' })
 </code></pre></div>
+<blockquote>
+<p>🎯 <strong>类比一下：往展示柜补货 vs 整个换柜</strong></p>
+<p>把 <code>reactive</code> 对象想象成一个<strong>带监控摄像头的展示柜</strong>。<code>Object.assign(obj, newData)</code> 是&rdquo;往柜子里补货&rdquo;，监控全程拍得到，页面乖乖刷新；而 <code>state = reactive({ count: 1 })</code> 是&rdquo;把整个柜子连人带柜换成新柜子&rdquo;——监控盯着的还是旧柜子，新柜子换了也白换。数组也同理：<code>arr[i] = x</code> 像&rdquo;趁监控死角偷偷塞东西&rdquo;，Vue 看不见；<code>splice</code> 才是走正规登记流程的搬运工。</p>
+</blockquote>
 <hr>
 <blockquote>
 <p>📦 <strong>ES6 小灶：展开运算符 <code>...</code></strong></p>
@@ -10391,6 +10395,10 @@ b.value = 2  // 打印"有人写了"
 state.value.user.address.city = '上海'  // ✅ 响应式，但是很重
 </code></pre></div>
 <p>普通 <code>ref</code> 包对象时，内部会对对象<strong>所有层</strong>都做 <code>reactive</code> 代理——就像一个管家盯着你家里的每一个抽屉。如果对象很大，这开销不小。</p>
+<blockquote>
+<p>🎯 <strong>类比一下：全屋监控 vs 只守大门</strong></p>
+<p><code>ref</code> 包对象时像给整栋楼装了<strong>全屋监控</strong>——每个抽屉、每个角落都有探头（递归代理），改哪儿都看得见，但装监控本身又贵又慢；<code>shallowRef</code> 只在大门装一个探头——门一开（<code>.value</code> 整体替换）就报警，屋里怎么折腾都不管。家里东西多又不常翻（大数据、第三方实例），只守大门又快又省；需要精细管理每个角落，才值得上全屋监控。</p>
+</blockquote>
 <h3>3.2 shallowRef：只管第一层</h3>
 <div class="code-block"><div class="code-header"><span class="code-lang">js</span><button class="code-copy" onclick="copyCode(this)">复制</button></div><pre><code class="language-js">import { shallowRef } from 'vue'
 
@@ -10701,6 +10709,10 @@ function myRef(initialValue) {
 </tbody>
 </table></div>
 <hr>
+<blockquote>
+<p>🎯 <strong>类比一下：自动感应门 vs 手动按钮门</strong></p>
+<p>普通 <code>ref</code> 像<strong>自动感应门</strong>：你人一靠近（赋值），门立刻哗啦打开（<code>trigger</code>）——响应快，但人来人往时门开个不停。<code>customRef</code> 把&rdquo;开门&rdquo;的按钮交到你手里：你可以加一道缓冲——人走远了 500ms 才开门（防抖），也可以开门时顺手拍照存档（持久化）、记一笔谁进过（历史记录）。门还是那扇门，只是<strong>开门的时机和附加动作，你说了算</strong>。</p>
+</blockquote>
 <h2 id="sec-03-03.11-customRef：自定义响应式-h2-5">🛠 三、实战 1：防抖 ref（debounceRef）</h2>
 <h3>场景</h3>
 <p>搜索输入框：用户打字时不应每次按键都发请求，而应等用户停下来再发。</p>
@@ -11419,6 +11431,8 @@ const totalExpense = computed(() =&gt;
 const balance = computed(() =&gt; totalIncome.value - totalExpense.value)
 </code></pre></div>
 <blockquote>
+<p>🎯 <strong>类比一下：手写余额小票 vs 银行自动结账</strong></p>
+<p>手动维护&rdquo;总金额&rdquo;变量，就像在便利贴上自己写余额——每加一笔都要记得擦掉重写，擦漏一次就对不上账；用计算属性从流水列表推导，就像<strong>银行对账单</strong>——你存多少取多少，银行按每笔流水自动算出余额，永远和流水对得上。所以&rdquo;总金额&rdquo;不自己存，改流水汇总自动跟着变。</p>
 <p>锚点检查：在计算属性里只依赖 <code>records</code>，删/加流水后汇总自动变——这就是&rdquo;状态单一来源&rdquo;的甜头。</p>
 </blockquote>
 <details>
