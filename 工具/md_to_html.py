@@ -256,8 +256,29 @@ def rewrite_image_src(html: str, img_map: dict[str, str]) -> str:
     )
 
 
+def _strip_metadata(text: str) -> str:
+    """移除不应进入正文的元数据块。
+
+    1. YAML front matter（`---\n...\n---`）—— 教材本身不使用，统一丢弃；
+       这同时兜住了被内容生成流程注入的 AIGC 合规标识块
+       （ContentProducer / ProduceID / ReservedCode 等），避免其被当正文渲染。
+    2. 裸的 AIGC 标识（即使没有 front matter 包裹，单独出现也清掉）。
+    """
+    # ① 文件开头的 YAML front matter
+    text = re.sub(r"\A---\r?\n.*?\r?\n---\r?\n", "", text, count=1, flags=re.S)
+    # ② 残留的 AIGC 标识块（缩进字段 + 可选的裸 AIGC: 标题行）
+    text = re.sub(
+        r"(?:\A|\n)AIGC:[^\n]*\n(?:[ \t]+\w+:[^\n]*\n?)+",
+        "\n",
+        text,
+    )
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.lstrip("\n")
+
+
 def md_to_html(text: str) -> str:
     """Convert markdown to HTML body fragment."""
+    text = _strip_metadata(text)
     # 清理连续的空 fenced code 块（防止 wrap_mindmaps 错误留下的双重 ```）
     text = re.sub(r'```\s*\n```text', '```text', text)
     # 思维导图识别：用户用 ```text 围栏 + ASCII 树状结构
@@ -503,7 +524,7 @@ def make_chapter_html(ch: dict, source: Path) -> str:
 
     theme = CHAPTER_THEMES.get(ch["chapter"], {"bg": "#fdfaf2", "accent": "#666", "icon": "📄", "label": ch.get("title", "")})
     if ch.get("is_overview"):
-        text = ch["files"][0].read_text(encoding="utf-8")
+        text = _strip_metadata(ch["files"][0].read_text(encoding="utf-8"))
         body = rewrite_internal_links(add_code_copy_buttons(md_to_html(text)), ch["files"][0], source)
         return (
             f'<section id="ch-00" class="chapter" style="--ch-bg: {theme["bg"]}; --ch-accent: {theme["accent"]};">'
@@ -524,7 +545,8 @@ def make_chapter_html(ch: dict, source: Path) -> str:
     # 正常章 - 封面 + 正文分两块
     sections = []
     for idx, f in enumerate(ch["files"], 1):
-        text = f.read_text(encoding="utf-8")
+        # 先剥离元数据（AIGC 标识 / front matter），否则标题提取会命中标记行
+        text = _strip_metadata(f.read_text(encoding="utf-8"))
         anchor = f"sec-{ch['chapter']}-{f.stem}"
         section_num = f"{int(ch['chapter'])}.{idx - 1}" if idx > 1 else f"{int(ch['chapter'])}"
 
