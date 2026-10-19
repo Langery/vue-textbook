@@ -256,6 +256,19 @@ def rewrite_image_src(html: str, img_map: dict[str, str]) -> str:
     )
 
 
+def _is_frontmatter(block: str) -> bool:
+    """判断 --- ... --- 块是否为 YAML front matter。
+
+    真实 front matter 的特征是「至少有一行 key: value」。
+    教材正文里的水平分隔线上下都是散文或空行，据此区分，
+    避免把正文开头的 --- 当成 front matter 吞掉。
+    """
+    for line in block.splitlines():
+        if re.match(r"^\s*[\w.-]+\s*:", line):
+            return True
+    return False
+
+
 def _strip_metadata(text: str) -> str:
     """移除不应进入正文的元数据块。
 
@@ -264,8 +277,19 @@ def _strip_metadata(text: str) -> str:
        （ContentProducer / ProduceID / ReservedCode 等），避免其被当正文渲染。
     2. 裸的 AIGC 标识（即使没有 front matter 包裹，单独出现也清掉）。
     """
-    # ① 文件开头的 YAML front matter
-    text = re.sub(r"\A---\r?\n.*?\r?\n---\r?\n", "", text, count=1, flags=re.S)
+    # ① 文件开头的 YAML front matter。
+    #    用非贪婪匹配找候选，再用 _is_frontmatter 复核 —— 只用正则会把
+    #    「正文以--- 开头」的情况误判：--- 与下一个 --- 之间的正文会被吞掉。
+    def _drop_frontmatter(match: re.Match) -> str:
+        return "" if _is_frontmatter(match.group(1)) else match.group(0)
+
+    text = re.sub(
+        r"\A---[ \t]*\r?\n(.*?)\r?\n---[ \t]*\r?\n",
+        _drop_frontmatter,
+        text,
+        count=1,
+        flags=re.S,
+    )
     # ② 残留的 AIGC 标识块（缩进字段 + 可选的裸 AIGC: 标题行）
     text = re.sub(
         r"(?:\A|\n)AIGC:[^\n]*\n(?:[ \t]+\w+:[^\n]*\n?)+",
