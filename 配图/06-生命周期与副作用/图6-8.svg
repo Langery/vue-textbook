@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" font-family="system-ui,PingFang SC,sans-serif">
+<rect width="720" height="440" fill="#fafafa"/>
+<text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">computed vs watchEffect vs watch：怎么选</text>
+
+<!-- 表头 -->
+<rect x="20" y="50" width="130" height="34" fill="#dee2e6" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+<text x="85" y="72" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">对比项</text>
+
+<rect x="155" y="50" width="180" height="34" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+<text x="245" y="72" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">computed</text>
+
+<rect x="340" y="50" width="180" height="34" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+<text x="430" y="72" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">watchEffect</text>
+
+<rect x="525" y="50" width="175" height="34" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+<text x="612" y="72" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="middle">watch</text>
+
+<!-- 行 1：语法 -->
+<rect x="20" y="89" width="130" height="52" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="85" y="120" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">语法</text>
+
+<rect x="155" y="89" width="180" height="52" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="245" y="112" fill="#2f9e44" font-size="10" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">const total = computed(</text>
+<text x="245" y="128" fill="#2f9e44" font-size="10" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">  () =&gt; a + b)</text>
+
+<rect x="340" y="89" width="180" height="52" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="430" y="112" fill="#1971c2" font-size="10" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">watchEffect(() =&gt; {</text>
+<text x="430" y="128" fill="#1971c2" font-size="10" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">  sideEffect() })</text>
+
+<rect x="525" y="89" width="175" height="52" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="612" y="112" fill="#e8590c" font-size="10" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">watch(src, (n, o) =&gt; {</text>
+<text x="612" y="128" fill="#e8590c" font-size="10" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">  sideEffect(n, o) })</text>
+
+<!-- 行 2：依赖来源 -->
+<rect x="20" y="146" width="130" height="52" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="85" y="177" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">依赖来源</text>
+
+<rect x="155" y="146" width="180" height="52" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="245" y="168" fill="#495057" font-size="11" text-anchor="middle">getter 里读到的响应式值</text>
+<text x="245" y="186" fill="#868e96" font-size="11" text-anchor="middle">自动收集</text>
+
+<rect x="340" y="146" width="180" height="52" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="430" y="168" fill="#495057" font-size="11" text-anchor="middle">回调里读到的响应式值</text>
+<text x="430" y="186" fill="#868e96" font-size="11" text-anchor="middle">自动收集，不用声明</text>
+
+<rect x="525" y="146" width="175" height="52" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="612" y="168" fill="#495057" font-size="11" text-anchor="middle">显式指定的源 src</text>
+<text x="612" y="186" fill="#868e96" font-size="11" text-anchor="middle">不写就不监听</text>
+
+<!-- 行 3：执行时机 -->
+<rect x="20" y="203" width="130" height="52" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="85" y="234" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">执行时机</text>
+
+<rect x="155" y="203" width="180" height="52" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="245" y="225" fill="#2f9e44" font-size="11" text-anchor="middle">依赖变才算，不算不算</text>
+<text x="245" y="243" fill="#868e96" font-size="11" text-anchor="middle">且有缓存，惰性求值</text>
+
+<rect x="340" y="203" width="180" height="52" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="430" y="225" fill="#1971c2" font-size="11" text-anchor="middle">创建时立即跑一次</text>
+<text x="430" y="243" fill="#868e96" font-size="11" text-anchor="middle">之后每次变化都跑</text>
+
+<rect x="525" y="203" width="175" height="52" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="612" y="225" fill="#e8590c" font-size="11" text-anchor="middle">默认不跑（惰性）</text>
+<text x="612" y="243" fill="#868e96" font-size="11" text-anchor="middle">immediate: true 才立即</text>
+
+<!-- 行 4：副作用副作用 / 产出 -->
+<rect x="20" y="260" width="130" height="52" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="85" y="291" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">返回值</text>
+
+<rect x="155" y="260" width="180" height="52" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="245" y="282" fill="#495057" font-size="11" text-anchor="middle">一个只读 ref（新值）</text>
+<text x="245" y="300" fill="#868e96" font-size="11" text-anchor="middle">模板里直接渲染</text>
+
+<rect x="340" y="260" width="180" height="52" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="430" y="282" fill="#495057" font-size="11" text-anchor="middle">停止句柄 stop()</text>
+<text x="430" y="300" fill="#868e96" font-size="11" text-anchor="middle">回调不接收参数</text>
+
+<rect x="525" y="260" width="175" height="52" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="612" y="282" fill="#495057" font-size="11" text-anchor="middle">停止句柄 stop()</text>
+<text x="612" y="300" fill="#868e96" font-size="11" text-anchor="middle">回调拿到 (新值, 旧值)</text>
+
+<!-- 适用场景 -->
+<rect x="20" y="317" width="130" height="105" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="85" y="360" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">适用</text>
+<text x="85" y="380" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">场景</text>
+
+<rect x="155" y="317" width="180" height="105" fill="#f0f9e8" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+<text x="245" y="345" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">派生值</text>
+<text x="245" y="370" fill="#495057" font-size="11" text-anchor="middle">总价、筛选后的列表</text>
+<text x="245" y="390" fill="#495057" font-size="11" text-anchor="middle">格式化、校验结果</text>
+<text x="245" y="412" fill="#868e96" font-size="11" text-anchor="middle">「算出新值」→ computed</text>
+
+<rect x="340" y="317" width="180" height="105" fill="#e7f3ff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+<text x="430" y="345" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">过程性副作用</text>
+<text x="430" y="370" fill="#495057" font-size="11" text-anchor="middle">发请求、写缓存</text>
+<text x="430" y="390" fill="#495057" font-size="11" text-anchor="middle">操作 DOM、开定时器</text>
+<text x="430" y="412" fill="#868e96" font-size="11" text-anchor="middle">不关心新旧值 → watchEffect</text>
+
+<rect x="525" y="317" width="175" height="105" fill="#fff4e6" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+<text x="612" y="345" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="middle">需要新旧值</text>
+<text x="612" y="370" fill="#495057" font-size="11" text-anchor="middle">对比变化量、精确控制源</text>
+<text x="612" y="390" fill="#495057" font-size="11" text-anchor="middle">deep / immediate 选项</text>
+<text x="612" y="412" fill="#868e96" font-size="11" text-anchor="middle">要多参数 → watch</text>
+</svg>

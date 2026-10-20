@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="450" viewBox="0 0 720 450" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="450" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">params vs query：一个 URL 的两段信息</text>
+
+  <!-- URL 拆解 -->
+  <rect x="20" y="48" width="680" height="64" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="276" y="72" font-size="14" font-family="ui-monospace,Menlo,monospace" fill="#495057">/goods/</text>
+  <text x="334.8" y="72" font-weight="bold" font-size="14" font-family="ui-monospace,Menlo,monospace" fill="#1971c2">123</text>
+  <text x="360" y="72" font-size="14" font-family="ui-monospace,Menlo,monospace" fill="#495057">?</text>
+  <text x="368.4" y="72" font-weight="bold" font-size="14" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44">from=list</text>
+  <line x1="334.8" y1="81" x2="360" y2="81" stroke="#1971c2" stroke-width="2.5"/>
+  <line x1="368.4" y1="81" x2="444" y2="81" stroke="#2f9e44" stroke-width="2.5"/>
+  <rect x="250.7" y="90" width="10" height="10" fill="#1971c2"/>
+  <text x="266.7" y="100" font-weight="bold" fill="#1971c2" font-size="11">params（路径段）</text>
+  <rect x="368" y="90" width="10" height="10" fill="#2f9e44"/>
+  <text x="384" y="100" font-weight="bold" fill="#2f9e44" font-size="11">query（问号后）</text>
+
+  <!-- 左栏 params -->
+  <rect x="20" y="128" width="330" height="215" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="185" y="152" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">params — 路径参数</text>
+  <text x="185" y="178" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">path: '/goods/:id'</text>
+  <text x="185" y="202" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">route.params.id === '123'</text>
+  <text x="185" y="232" fill="#495057" font-size="12" text-anchor="middle">· 是路径的一段，决定匹配哪条路由</text>
+  <text x="185" y="254" fill="#495057" font-size="12" text-anchor="middle">· 路径变了才算一个新地址，可被收录</text>
+  <text x="185" y="276" fill="#495057" font-size="12" text-anchor="middle">· 刷新不会丢：路由表重新匹配即可</text>
+  <text x="185" y="298" fill="#495057" font-size="12" text-anchor="middle">· 一般用来标识「哪一个」资源</text>
+
+  <!-- 右栏 query -->
+  <rect x="370" y="128" width="330" height="215" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="535" y="152" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="middle">query — 查询参数</text>
+  <text x="535" y="178" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">path: '/goods'</text>
+  <text x="535" y="202" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">route.query.from === 'list'</text>
+  <text x="535" y="232" fill="#495057" font-size="12" text-anchor="middle">· 问号之后的附加信息，不参与匹配</text>
+  <text x="535" y="254" fill="#495057" font-size="12" text-anchor="middle">· 可以缺省，不影响路由是否命中</text>
+  <text x="535" y="276" fill="#495057" font-size="12" text-anchor="middle">· 刷新同样不丢，URL 里本身就带着</text>
+  <text x="535" y="298" fill="#495057" font-size="12" text-anchor="middle">· 用来表达「筛选、排序、页码」</text>
+
+  <!-- 底部：什么时候用哪个 -->
+  <rect x="20" y="358" width="680" height="76" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="360" y="378" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">什么时候用哪个</text>
+  <text x="360" y="400" fill="#495057" font-size="12" text-anchor="middle">资源标识 → params   ｜   附加条件 → query</text>
+  <text x="360" y="422" fill="#495057" font-size="12" text-anchor="middle">判断标准：这个值变了，会不会改变「资源本身」</text>
+</svg>

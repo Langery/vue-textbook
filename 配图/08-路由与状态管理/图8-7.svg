@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="470" viewBox="0 0 720 470" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="470" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">Vuex 单向数据流：五大概念各司其职</text>
+
+  <!-- view -->
+  <rect x="60" y="60" width="150" height="70" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="135" y="82" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">view 视图</text>
+  <text x="135" y="102" fill="#495057" font-size="11" text-anchor="middle">组件，只读 state</text>
+  <text x="135" y="118" fill="#868e96" font-size="11" text-anchor="middle">自己不发请求</text>
+
+  <!-- action -->
+  <rect x="285" y="60" width="150" height="70" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="82" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="middle">action 动作</text>
+  <text x="360" y="102" fill="#495057" font-size="11" text-anchor="middle">异步、副作用</text>
+  <text x="360" y="118" fill="#868e96" font-size="11" text-anchor="middle">请求只在这一层发</text>
+
+  <!-- mutation -->
+  <rect x="510" y="60" width="150" height="70" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="585" y="82" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">mutation 变更</text>
+  <text x="585" y="102" fill="#495057" font-size="11" text-anchor="middle">同步改 state</text>
+  <text x="585" y="118" fill="#868e96" font-size="11" text-anchor="middle">只能同步，不能异步</text>
+
+  <!-- state -->
+  <rect x="510" y="215" width="150" height="70" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="585" y="237" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">state 状态</text>
+  <text x="585" y="257" fill="#495057" font-size="11" text-anchor="middle">唯一数据源</text>
+  <text x="585" y="273" fill="#868e96" font-size="11" text-anchor="middle">变了就通知视图</text>
+
+  <!-- getters -->
+  <rect x="285" y="215" width="150" height="70" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="237" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="middle">getters 派生</text>
+  <text x="360" y="257" fill="#495057" font-size="11" text-anchor="middle">类似 computed</text>
+  <text x="360" y="273" fill="#868e96" font-size="11" text-anchor="middle">只读，不改数据</text>
+
+  <!-- dispatch -->
+  <line x1="212" y1="95" x2="279" y2="95" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="287,95 275,90 275,100" fill="#1971c2"/>
+  <text x="246" y="85" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">dispatch</text>
+
+  <!-- commit -->
+  <line x1="437" y1="95" x2="504" y2="95" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="512,95 500,90 500,100" fill="#1971c2"/>
+  <text x="472" y="85" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">commit</text>
+
+  <!-- mutate -->
+  <line x1="585" y1="132" x2="585" y2="203" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="585,213 580,201 590,201" fill="#1971c2"/>
+  <text x="624" y="175" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2">mutate</text>
+
+  <!-- derive -->
+  <line x1="508" y1="250" x2="443" y2="250" stroke="#e8590c" stroke-width="1.5"/>
+  <polygon points="433,250 445,245 445,255" fill="#e8590c"/>
+  <text x="472" y="240" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="middle">derive</text>
+
+  <!-- state → view 回流 -->
+  <path d="M 585 287 L 585 340 L 135 340 L 135 138" fill="none" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="135,130 130,142 140,142" fill="#2f9e44"/>
+  <text x="330" y="332" fill="#2f9e44" font-size="11" text-anchor="middle">state 变化 → 视图自动重渲染</text>
+
+  <!-- 底部说明 -->
+  <rect x="60" y="368" width="600" height="48" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="390" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">单向的含义：组件永远不能直接改 state，只能 dispatch → commit</text>
+  <text x="360" y="410" fill="#868e96" font-size="11" text-anchor="middle">好处是每次改动都有迹可循，DevTools 能完整记录，调试和回溯都省事</text>
+</svg>

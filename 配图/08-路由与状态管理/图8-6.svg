@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="556" viewBox="0 0 720 556" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="556" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">导航守卫完整解析流程：先拦后放，逐步确认</text>
+
+  <!-- ① 导航触发 -->
+  <rect x="200" y="46" width="320" height="44" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="360" y="65" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">① 导航被触发</text>
+  <text x="360" y="82" fill="#495057" font-size="11" text-anchor="middle">点击链接 / router.push / 浏览器前进后退</text>
+  <text x="186" y="72" fill="#868e96" font-size="11" text-anchor="end">触发源</text>
+  <line x1="360" y1="90" x2="360" y2="104" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="360,110 353,99 367,99" fill="#adb5bd"/>
+
+  <!-- ② 失活组件守卫 -->
+  <rect x="200" y="110" width="320" height="46" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="360" y="130" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">② 失活组件：beforeRouteLeave</text>
+  <text x="360" y="148" fill="#495057" font-size="11" text-anchor="middle">「表单没保存」这类确认写在这里</text>
+  <text x="186" y="138" fill="#868e96" font-size="11" text-anchor="end">组件内</text>
+  <line x1="360" y1="156" x2="360" y2="170" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="360,176 353,165 367,165" fill="#adb5bd"/>
+
+  <!-- ③ 全局前置 -->
+  <rect x="200" y="176" width="320" height="46" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="196" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="middle">③ 全局前置：router.beforeEach</text>
+  <text x="360" y="214" fill="#495057" font-size="11" text-anchor="middle">登录校验、权限拦截最常写在这里</text>
+  <text x="186" y="204" font-weight="bold" fill="#e8590c" font-size="11" text-anchor="end">最常用</text>
+  <line x1="360" y1="222" x2="360" y2="236" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="360,242 353,231 367,231" fill="#adb5bd"/>
+
+  <!-- ④ 路由级前置 -->
+  <rect x="200" y="242" width="320" height="46" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="360" y="262" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">④ 路由级前置：beforeEnter</text>
+  <text x="360" y="280" fill="#495057" font-size="11" text-anchor="middle">写在路由配置里，只拦这一条路由</text>
+  <text x="186" y="270" fill="#868e96" font-size="11" text-anchor="end">路由配置</text>
+  <line x1="360" y1="288" x2="360" y2="302" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="360,308 353,297 367,297" fill="#adb5bd"/>
+
+  <!-- ⑤ 异步组件解析 -->
+  <rect x="200" y="308" width="320" height="46" fill="#f1f3f5" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="360" y="328" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">⑤ 解析异步路由组件</text>
+  <text x="360" y="346" fill="#868e96" font-size="11" text-anchor="middle">等 import() 把懒加载组件下载解析完</text>
+  <text x="186" y="336" fill="#868e96" font-size="11" text-anchor="end">内部步骤</text>
+  <line x1="360" y1="354" x2="360" y2="368" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="360,374 353,363 367,363" fill="#adb5bd"/>
+
+  <!-- ⑥ 复用组件守卫 -->
+  <rect x="200" y="374" width="320" height="46" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="360" y="394" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">⑥ 复用组件：beforeRouteUpdate</text>
+  <text x="360" y="412" fill="#495057" font-size="11" text-anchor="middle">同一组件只改参数时触发，不重新挂载</text>
+  <text x="186" y="402" fill="#868e96" font-size="11" text-anchor="end">组件内</text>
+  <line x1="360" y1="420" x2="360" y2="434" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="360,440 353,429 367,429" fill="#adb5bd"/>
+
+  <!-- ⑦ 全局后置 -->
+  <rect x="200" y="440" width="320" height="46" fill="#fff" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="360" y="460" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">⑦ 全局后置：router.afterEach</text>
+  <text x="360" y="478" fill="#495057" font-size="11" text-anchor="middle">导航已确定，只做统计、标题、滚动复位</text>
+  <text x="186" y="468" fill="#868e96" font-size="11" text-anchor="end">不可拦截</text>
+
+  <!-- 分支 -->
+  <line x1="360" y1="486" x2="360" y2="500" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="180" y1="500" x2="540" y2="500" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="180" y1="500" x2="180" y2="512" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="540" y1="500" x2="540" y2="512" stroke="#adb5bd" stroke-width="1.5"/>
+
+  <rect x="45" y="512" width="270" height="42" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="180" y="530" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">全部放行：导航被确认</text>
+  <text x="180" y="547" fill="#495057" font-size="11" text-anchor="middle">更新 URL，挂载新组件</text>
+
+  <rect x="405" y="512" width="270" height="42" fill="#fff" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <text x="540" y="530" font-weight="bold" fill="#c92a2a" font-size="13" text-anchor="middle">任一步中断：导航被取消</text>
+  <text x="540" y="547" fill="#495057" font-size="11" text-anchor="middle">next(false) 或重定向到别处</text>
+</svg>

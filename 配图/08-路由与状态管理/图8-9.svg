@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="470" viewBox="0 0 720 470" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="470" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">跨 Store 协作：购物车为什么要依赖另外两个 store</text>
+
+  <!-- product -->
+  <rect x="40" y="60" width="200" height="150" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="140" y="84" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="middle">useProductStore</text>
+  <text x="140" y="106" fill="#495057" font-size="11" text-anchor="middle">商品数据，只读</text>
+  <rect x="56" y="118" width="168" height="30" fill="#d8f5cc" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="140" y="138" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">getProductById(id)</text>
+  <text x="140" y="170" fill="#868e96" font-size="11" text-anchor="middle">名称、单价、库存</text>
+  <text x="140" y="192" fill="#868e96" font-size="11" text-anchor="middle">是全局唯一的价格来源</text>
+
+  <!-- user -->
+  <rect x="480" y="60" width="200" height="150" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="580" y="84" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">useUserStore</text>
+  <text x="580" y="106" fill="#495057" font-size="11" text-anchor="middle">登录态与身份</text>
+  <rect x="496" y="118" width="168" height="30" fill="#cce5ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="580" y="138" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">isLoggedIn / token</text>
+  <text x="580" y="170" fill="#868e96" font-size="11" text-anchor="middle">未登录时只允许加购</text>
+  <text x="580" y="192" fill="#868e96" font-size="11" text-anchor="middle">结算与下单时才校验</text>
+
+  <!-- cart -->
+  <rect x="250" y="270" width="220" height="160" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="294" font-weight="bold" fill="#e8590c" font-size="14" text-anchor="middle">useCartStore</text>
+  <text x="360" y="316" fill="#495057" font-size="11" text-anchor="middle">只存「哪件商品 × 几件」</text>
+  <rect x="266" y="328" width="188" height="28" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="347" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="middle">items: [{ id, qty }]</text>
+  <rect x="266" y="362" width="188" height="28" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="381" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="middle">totalPrice = computed</text>
+  <text x="360" y="408" fill="#868e96" font-size="11" text-anchor="middle">不存价格，只存商品 id</text>
+  <text x="360" y="424" fill="#e8590c" font-size="11" text-anchor="middle">价格永远实时从别处算</text>
+
+  <!-- 箭头 cart ← product -->
+  <line x1="256" y1="318" x2="150" y2="212" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="142,206 152,206 154,216" fill="#2f9e44"/>
+  <text x="128" y="268" fill="#2f9e44" font-size="11" text-anchor="middle">取价格</text>
+  <text x="128" y="284" fill="#2f9e44" font-size="11" text-anchor="middle">productStore</text>
+  <text x="128" y="300" fill="#2f9e44" font-size="11" text-anchor="middle">.getProductById</text>
+
+  <!-- 箭头 cart ← user -->
+  <line x1="464" y1="318" x2="570" y2="212" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="578,206 568,206 566,216" fill="#1971c2"/>
+  <text x="592" y="268" fill="#1971c2" font-size="11" text-anchor="middle">判登录</text>
+  <text x="592" y="284" fill="#1971c2" font-size="11" text-anchor="middle">userStore</text>
+  <text x="592" y="300" fill="#1971c2" font-size="11" text-anchor="middle">.isLoggedIn</text>
+
+  <!-- 底部说明 -->
+  <text x="360" y="452" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">在 cart 的 computed / action 里直接调 useProductStore()，Pinia 会自动追踪依赖</text>
+  <text x="360" y="466" fill="#868e96" font-size="11" text-anchor="middle">不要用 storeToRefs 解构另一个 store 的属性，直接访问即可保持响应式</text>
+</svg>

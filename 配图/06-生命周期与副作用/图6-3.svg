@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" font-family="system-ui,PingFang SC,sans-serif">
+<rect width="720" height="420" fill="#fafafa"/>
+<text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">什么是副作用：纯计算 vs 有副作用</text>
+
+<!-- 左：纯计算 -->
+<rect x="20" y="55" width="320" height="250" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+<text x="180" y="80" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">纯计算（无副作用）</text>
+<rect x="36" y="95" width="288" height="76" fill="#cce5ff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+<text x="180" y="120" fill="#1971c2" font-size="12" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">function double(n) {</text>
+<text x="180" y="142" fill="#1971c2" font-size="12" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">  return n * 2</text>
+<text x="180" y="164" fill="#1971c2" font-size="12" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">}</text>
+<text x="180" y="197" fill="#495057" font-size="12" text-anchor="middle">只依赖参数，不改变外部世界</text>
+<text x="180" y="221" fill="#495057" font-size="12" text-anchor="middle">同样的输入 → 同样的输出</text>
+<rect x="36" y="235" width="288" height="40" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="180" y="252" fill="#495057" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">double(2)  →  4</text>
+<text x="180" y="270" fill="#495057" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">double(2)  →  4</text>
+<text x="180" y="293" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="middle">可预测 · 可缓存 · 易测试</text>
+
+<!-- 右：副作用 -->
+<rect x="380" y="55" width="320" height="250" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+<text x="540" y="80" font-weight="bold" fill="#e8590c" font-size="14" text-anchor="middle">有副作用（Side Effect）</text>
+<rect x="396" y="95" width="288" height="76" fill="#ffe8cc" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+<text x="540" y="118" fill="#e8590c" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">fetch('/api/user')</text>
+<text x="540" y="138" fill="#e8590c" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">document.title = name</text>
+<text x="540" y="158" fill="#e8590c" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">setInterval(tick, 1000)</text>
+<text x="540" y="197" fill="#495057" font-size="12" text-anchor="middle">改变了函数之外的世界</text>
+<text x="540" y="221" fill="#495057" font-size="12" text-anchor="middle">同样的输入 → 结果不确定</text>
+<rect x="396" y="235" width="288" height="40" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+<text x="540" y="252" fill="#495057" font-size="11" text-anchor="middle">外部世界：网络请求 / DOM / 定时器</text>
+<text x="540" y="270" fill="#495057" font-size="11" text-anchor="middle">localStorage / 埋点上报</text>
+<text x="540" y="293" font-weight="bold" fill="#c92a2a" font-size="11" text-anchor="middle">不可预测 · 难测试 · 会泄漏</text>
+
+<!-- 底部：什么时候需要副作用 -->
+<rect x="20" y="320" width="680" height="80" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+<text x="360" y="345" font-weight="bold" fill="#333" font-size="14" text-anchor="middle">那么，什么时候才需要副作用？</text>
+<text x="360" y="368" fill="#495057" font-size="12" text-anchor="middle">把响应式数据的变化，同步到组件之外的世界 —— 这才是 Vue 里 watch 的职责</text>
+<text x="360" y="388" fill="#868e96" font-size="11" text-anchor="middle">服务器请求 · DOM 操作 · 定时器 · 本地存储 · 埋点上报</text>
+</svg>

@@ -1,3 +1,20 @@
 node_modules/
 .DS_Store
 *.log
+
+# 子代理临时文件
+f2bx0f8d
+
+# 子代理/沙箱临时文件残留（内容为测试字符串 "blat"，非有效内容）
+# 因安全策略拦截 rm，改为忽略
+.wb_index.lock
+_ki44jyc
+coweoagt
+es8rvyv6
+l0rkr749
+p_npwbz7
+yiww3n1r
+教材/9oipiuuj
+教材/bvfhen9a
+教材/psjxvw6d
+教材/vc8x_2eu

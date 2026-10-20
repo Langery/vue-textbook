@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="540" viewBox="0 0 720 540" font-family="system-ui,PingFang SC,sans-serif">
+<rect width="720" height="540" fill="#fafafa"/>
+<text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">4 个最常见的 watch 反模式</text>
+
+<!-- 卡片 1 -->
+<rect x="20" y="48" width="330" height="230" fill="#fff5f5" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+<circle cx="46" cy="76" r="12" fill="#c92a2a"/>
+<text x="46" y="81" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">1</text>
+<text x="68" y="81" font-weight="bold" fill="#c92a2a" font-size="14" text-anchor="start">在 watch 里改自己监听的依赖</text>
+
+<rect x="34" y="96" width="302" height="60" fill="#fff" stroke="#ffc9c9" stroke-width="1.5" rx="4"/>
+<text x="46" y="116" fill="#495057" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">watch(count, () =&gt; {</text>
+<text x="46" y="134" fill="#495057" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">  count.value += 1</text>
+<text x="46" y="150" fill="#868e96" font-size="10" text-anchor="start">// 又触发自己 → 无限递归</text>
+
+<text x="34" y="180" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="start">症状</text>
+<text x="34" y="199" fill="#495057" font-size="11" text-anchor="start">Maximum call stack size exceeded</text>
+<text x="34" y="217" fill="#495057" font-size="11" text-anchor="start">页面卡死、控制台刷屏</text>
+
+<rect x="34" y="230" width="302" height="36" fill="#f0f9e8" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+<text x="46" y="246" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="start">✓ 改法：目标是「算出新值」就用 computed</text>
+<text x="46" y="261" fill="#2f9e44" font-size="10" text-anchor="start">真的想在回调里改，就去改另一个 ref</text>
+
+<!-- 卡片 2 -->
+<rect x="370" y="48" width="330" height="230" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+<circle cx="396" cy="76" r="12" fill="#e8590c"/>
+<text x="396" y="81" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">2</text>
+<text x="418" y="81" font-weight="bold" fill="#e8590c" font-size="14" text-anchor="start">忘记 immediate：首屏不执行</text>
+
+<rect x="384" y="96" width="302" height="60" fill="#fff" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+<text x="396" y="116" fill="#495057" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">watch(id, fetchData)</text>
+<text x="396" y="136" fill="#495057" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">watch(id, fetchData,</text>
+<text x="396" y="150" fill="#495057" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">  { immediate: true })</text>
+
+<text x="384" y="180" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="start">症状</text>
+<text x="384" y="199" fill="#495057" font-size="11" text-anchor="start">刷新页面数据是空的</text>
+<text x="384" y="217" fill="#495057" font-size="11" text-anchor="start">只有手动改一次 id 才有内容</text>
+
+<rect x="384" y="230" width="302" height="36" fill="#f0f9e8" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+<text x="396" y="246" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="start">✓ 记住：watch 默认惰性，不立即跑</text>
+<text x="396" y="261" fill="#2f9e44" font-size="10" text-anchor="start">watchEffect 则是默认立即执行</text>
+
+<!-- 卡片 3 -->
+<rect x="20" y="292" width="330" height="230" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+<circle cx="46" cy="320" r="12" fill="#1971c2"/>
+<text x="46" y="325" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">3</text>
+<text x="68" y="325" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="start">忘记 deep：对象改了没反应</text>
+
+<rect x="34" y="340" width="302" height="60" fill="#fff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+<text x="46" y="360" fill="#495057" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">watch(() =&gt; form, save)</text>
+<text x="46" y="378" fill="#495057" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">form.name = 'x'</text>
+<text x="46" y="394" fill="#868e96" font-size="10" text-anchor="start">// 引用没变，回调不触发</text>
+
+<text x="34" y="424" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">症状</text>
+<text x="34" y="443" fill="#495057" font-size="11" text-anchor="start">改了嵌套字段，watch 一声不吭</text>
+<text x="34" y="461" fill="#495057" font-size="11" text-anchor="start">以为 watch 坏了，其实是引用问题</text>
+
+<rect x="34" y="474" width="302" height="36" fill="#f0f9e8" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+<text x="46" y="490" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="start">✓ 加 deep: true，或只监听具体字段</text>
+<text x="46" y="505" fill="#2f9e44" font-size="10" text-anchor="start">大对象上 deep 有性能开销</text>
+
+<!-- 卡片 4 -->
+<rect x="370" y="292" width="330" height="230" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+<circle cx="396" cy="320" r="12" fill="#2f9e44"/>
+<text x="396" y="325" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">4</text>
+<text x="418" y="325" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="start">该用 computed 却用了 watch</text>
+
+<rect x="384" y="340" width="302" height="60" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+<text x="396" y="360" fill="#495057" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">const b = ref(0)</text>
+<text x="396" y="378" fill="#495057" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">watch(a, () =&gt; b.value = a*2)</text>
+<text x="396" y="394" fill="#868e96" font-size="10" text-anchor="start">// 绕一圈，只是为了算个值</text>
+
+<text x="384" y="424" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="start">症状</text>
+<text x="384" y="443" fill="#495057" font-size="11" text-anchor="start">多一个 ref，多一次同步时机</text>
+<text x="384" y="461" fill="#495057" font-size="11" text-anchor="start">首屏 b 仍是 0，还得配 immediate</text>
+
+<rect x="384" y="474" width="302" height="36" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+<text x="396" y="490" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="start">✓ computed(() =&gt; a * 2)：有缓存，首屏就对</text>
+<text x="396" y="505" fill="#2f9e44" font-size="10" text-anchor="start">「算值」永远优先考虑 computed</text>
+</svg>

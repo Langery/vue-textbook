@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" font-family="system-ui,PingFang SC,sans-serif">
+<rect width="720" height="400" fill="#fafafa"/>
+<text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">watchEffect 的本质：运行时自动收集依赖</text>
+
+<!-- 响应式数据 -->
+<rect x="30" y="105" width="160" height="80" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+<text x="110" y="130" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">响应式数据</text>
+<text x="110" y="153" fill="#1971c2" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">const count = ref(0)</text>
+<text x="110" y="172" fill="#868e96" font-size="11" text-anchor="middle">count.value = 0</text>
+
+<!-- 回调 -->
+<rect x="270" y="90" width="200" height="95" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+<text x="370" y="113" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">watchEffect 回调</text>
+<text x="370" y="135" fill="#2f9e44" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">watchEffect(() =&gt; {</text>
+<text x="370" y="153" fill="#2f9e44" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">  console.log(count.value)</text>
+<text x="370" y="171" fill="#2f9e44" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">  doSomething()</text>
+
+<!-- 副作用 -->
+<rect x="550" y="105" width="150" height="80" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+<text x="625" y="130" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="middle">执行副作用</text>
+<text x="625" y="153" fill="#495057" font-size="11" text-anchor="middle">改 DOM / 发请求</text>
+<text x="625" y="172" fill="#495057" font-size="11" text-anchor="middle">启动定时器</text>
+
+<!-- 箭头 ① 读取 -->
+<line x1="192" y1="145" x2="262" y2="145" stroke="#1971c2" stroke-width="1.5"/>
+<polygon points="268,145 258,140 258,150" fill="#1971c2"/>
+<text x="228" y="134" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">①</text>
+
+<!-- 箭头 ② 执行 -->
+<line x1="472" y1="145" x2="542" y2="145" stroke="#e8590c" stroke-width="1.5"/>
+<polygon points="548,145 538,140 538,150" fill="#e8590c"/>
+<text x="508" y="134" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="middle">②</text>
+
+<!-- 箭头 ③ 依赖订阅（反向） -->
+<path d="M 370 187 L 370 235 L 110 235 L 110 192" fill="none" stroke="#1971c2" stroke-width="1.5" stroke-dasharray="5 4"/>
+<polygon points="110,186 105,196 115,196" fill="#1971c2"/>
+<text x="240" y="228" font-weight="bold" fill="#1971c2" font-size="11" text-anchor="middle">③ 自动订阅：读了谁，就收集谁</text>
+
+<!-- 底部说明 -->
+<rect x="20" y="265" width="680" height="112" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+<text x="360" y="292" font-weight="bold" fill="#333" font-size="14" text-anchor="middle">依赖不是「声明」出来的，而是「运行时读了谁」</text>
+<text x="44" y="318" fill="#1971c2" font-size="12" text-anchor="start">① 回调里读了 count.value，Vue 就把 count 记为这条副作用的依赖</text>
+<text x="44" y="343" fill="#e8590c" font-size="12" text-anchor="start">② 回调本身只负责执行副作用；副作用里的操作不会被自动追踪</text>
+<text x="44" y="368" fill="#495057" font-size="12" text-anchor="start">③ count 一变，Vue 自动重跑整个回调，并重新收集一遍依赖</text>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" font-family="system-ui,PingFang SC,sans-serif">
+<rect width="720" height="400" fill="#fafafa"/>
+<text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">watchEffect 基础语法：三段结构</text>
+
+<!-- 代码框 -->
+<rect x="20" y="52" width="410" height="250" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+<rect x="20" y="52" width="410" height="28" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+<text x="225" y="71" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">App.vue</text>
+
+<text x="36" y="104" fill="#495057" font-size="12" font-family="ui-monospace,Menlo,monospace" text-anchor="start">import { watchEffect, ref } from 'vue'</text>
+<text x="36" y="128" fill="#495057" font-size="12" font-family="ui-monospace,Menlo,monospace" text-anchor="start">const count = ref(0)</text>
+
+<rect x="30" y="140" width="390" height="28" fill="#e7f3ff" rx="4"/>
+<text x="40" y="159" fill="#1971c2" font-size="12" font-family="ui-monospace,Menlo,monospace" text-anchor="start">watchEffect(() =&gt; {</text>
+
+<rect x="30" y="170" width="390" height="28" fill="#e7f3ff" rx="4"/>
+<text x="48" y="189" fill="#1971c2" font-size="12" font-family="ui-monospace,Menlo,monospace" text-anchor="start">console.log(count.value)</text>
+
+<rect x="30" y="200" width="390" height="28" fill="#fff4e6" rx="4"/>
+<text x="48" y="219" fill="#e8590c" font-size="12" font-family="ui-monospace,Menlo,monospace" text-anchor="start">document.title = count.value</text>
+
+<text x="36" y="248" fill="#495057" font-size="12" font-family="ui-monospace,Menlo,monospace" text-anchor="start">})</text>
+
+<text x="36" y="274" fill="#868e96" font-size="11" text-anchor="start">// 不需要手动声明依赖，也不用 import onWatcherCleanup</text>
+<text x="36" y="292" fill="#868e96" font-size="11" text-anchor="start">// 需要清理时，用回调的第一个形参 onCleanup</text>
+
+<!-- 右侧三段标注 -->
+<circle cx="458" cy="154" r="12" fill="#1971c2"/>
+<text x="458" y="159" font-weight="bold" fill="#fff" font-size="13" text-anchor="middle">1</text>
+<text x="480" y="150" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="start">创建时立即执行</text>
+<text x="480" y="168" fill="#495057" font-size="11" text-anchor="start">调用那一刻就跑一次</text>
+
+<circle cx="458" cy="184" r="12" fill="#1971c2"/>
+<text x="458" y="189" font-weight="bold" fill="#fff" font-size="13" text-anchor="middle">2</text>
+<text x="480" y="180" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="start">自动收集依赖</text>
+<text x="480" y="198" fill="#495057" font-size="11" text-anchor="start">读了 count 就订阅 count</text>
+
+<circle cx="458" cy="214" r="12" fill="#e8590c"/>
+<text x="458" y="219" font-weight="bold" fill="#fff" font-size="13" text-anchor="middle">3</text>
+<text x="480" y="210" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="start">依赖变化时重跑</text>
+<text x="480" y="228" fill="#495057" font-size="11" text-anchor="start">count 变，整段重新执行</text>
+
+<line x1="422" y1="154" x2="444" y2="154" stroke="#1971c2" stroke-width="1.5"/>
+<line x1="422" y1="184" x2="444" y2="184" stroke="#1971c2" stroke-width="1.5"/>
+<line x1="422" y1="214" x2="444" y2="214" stroke="#e8590c" stroke-width="1.5"/>
+
+<rect x="450" y="245" width="250" height="57" fill="#f1f3f5" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+<text x="575" y="267" font-weight="bold" fill="#333" font-size="12" text-anchor="middle">三段结构缺一不可</text>
+<text x="575" y="288" fill="#868e96" font-size="11" text-anchor="middle">执行 → 收集 → 重跑</text>
+
+<!-- 底部提示 -->
+<rect x="20" y="315" width="680" height="62" fill="#fff4e6" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+<text x="360" y="340" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="middle">重跑的是整个函数体 —— 所以别在回调里修改自己依赖的数据</text>
+<text x="360" y="362" fill="#495057" font-size="11" text-anchor="middle">否则会陷入「改数据 → 触发重跑 → 又改数据」的无限递归</text>
+</svg>

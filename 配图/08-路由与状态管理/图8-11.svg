@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="530" viewBox="0 0 720 530" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="530" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">第 8 章知识体系总览：路由管去哪，Store 管有什么</text>
+
+  <!-- 左侧大块：路由 -->
+  <rect x="20" y="46" width="330" height="300" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="185" y="70" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">Vue Router — 决定「去哪」</text>
+
+  <rect x="34" y="84" width="302" height="58" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="48" y="103" font-weight="bold" fill="#1971c2" font-size="12">① 路由表</text>
+  <text x="48" y="122" fill="#495057" font-size="11">routes 配置，path 与组件的映射表</text>
+  <text x="48" y="137" fill="#868e96" font-size="11">嵌套 children 决定界面层级</text>
+
+  <rect x="34" y="150" width="302" height="58" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="48" y="169" font-weight="bold" fill="#1971c2" font-size="12">② 动态参数</text>
+  <text x="48" y="188" fill="#495057" font-size="11">params 是路径段，query 是问号后</text>
+  <text x="48" y="203" fill="#868e96" font-size="11">前者标识资源，后者表达附加条件</text>
+
+  <rect x="34" y="216" width="302" height="58" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="48" y="235" font-weight="bold" fill="#1971c2" font-size="12">③ 导航方式</text>
+  <text x="48" y="254" fill="#495057" font-size="11">声明式 RouterLink，编程式 push</text>
+  <text x="48" y="269" fill="#868e96" font-size="11">replace 替换记录，back / go 回退</text>
+
+  <rect x="34" y="282" width="302" height="58" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="48" y="301" font-weight="bold" fill="#e8590c" font-size="12">④ 导航守卫</text>
+  <text x="48" y="320" fill="#495057" font-size="11">全局前置拦权限，路由级补规则</text>
+  <text x="48" y="335" fill="#868e96" font-size="11">afterEach 只做事后统计，不能拦</text>
+
+  <!-- 右侧大块：状态 -->
+  <rect x="370" y="46" width="330" height="300" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="535" y="70" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="middle">Pinia — 管住「有什么」</text>
+
+  <rect x="384" y="84" width="302" height="58" fill="#fff" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="398" y="103" font-weight="bold" fill="#2f9e44" font-size="12">① state 状态</text>
+  <text x="398" y="122" fill="#495057" font-size="11">ref 声明，storeToRefs 解构保响应式</text>
+  <text x="398" y="137" fill="#868e96" font-size="11">直接解构会丢掉响应式，最常见的坑</text>
+
+  <rect x="384" y="150" width="302" height="58" fill="#fff" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="398" y="169" font-weight="bold" fill="#2f9e44" font-size="12">② action 动作</text>
+  <text x="398" y="188" fill="#495057" font-size="11">普通函数，异步和同步都写在这里</text>
+  <text x="398" y="203" fill="#868e96" font-size="11">没有 mutations，函数里直接改 state</text>
+
+  <rect x="384" y="216" width="302" height="58" fill="#fff" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="398" y="235" font-weight="bold" fill="#2f9e44" font-size="12">③ 持久化</text>
+  <text x="398" y="254" fill="#495057" font-size="11">watch 写 localStorage，刷新不丢</text>
+  <text x="398" y="269" fill="#868e96" font-size="11">跨 store：直接调另一个 useXxxStore()</text>
+
+  <rect x="384" y="282" width="302" height="58" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="398" y="301" font-weight="bold" fill="#e8590c" font-size="12">④ 跨 Store 协作</text>
+  <text x="398" y="320" fill="#495057" font-size="11">cart 取价格要问 product，问登录问 user</text>
+  <text x="398" y="335" fill="#868e96" font-size="11">一个业务一个 store，按领域拆</text>
+
+  <!-- 中间连接 -->
+  <line x1="352" y1="196" x2="368" y2="196" stroke="#e8590c" stroke-width="2"/>
+  <polygon points="350,196 358,191 358,201" fill="#e8590c"/>
+  <polygon points="370,196 362,191 362,201" fill="#e8590c"/>
+
+  <!-- 底部：联合用法 -->
+  <rect x="20" y="358" width="680" height="86" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="380" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="middle">两者合起来：路由与状态的联合用法</text>
+  <text x="192" y="404" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">守卫里读 Store 判权限</text>
+  <text x="192" y="424" fill="#868e96" font-size="11" text-anchor="middle">beforeEach 查登录态，没登录跳登录页</text>
+  <text x="528" y="404" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">watch 同步 URL 与状态</text>
+  <text x="528" y="424" fill="#868e96" font-size="11" text-anchor="middle">该分享的进 URL，共享的留 Store</text>
+
+  <!-- 底部：主线 -->
+  <rect x="20" y="456" width="680" height="60" fill="#f1f3f5" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="360" y="478" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">本章主线：装好路由 → 配好动态与嵌套 → 选导航方式 → 加守卫 → 引入 Pinia</text>
+  <text x="360" y="500" fill="#868e96" font-size="11" text-anchor="middle">Vuex 的单向数据流概念仍然要懂，但新项目直接写 Pinia Setup Store</text>
+</svg>

@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="560" viewBox="0 0 720 560" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="560" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">路由 + Store 联合：URL 与状态的同步时机</text>
+
+  <!-- 上半：URL → Store -->
+  <rect x="20" y="48" width="680" height="230" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="360" y="72" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">方向一：URL 变了 → 读进 Store（刷新 / 前进后退时）</text>
+
+  <rect x="40" y="88" width="130" height="52" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="105" y="110" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">URL 变化</text>
+  <text x="105" y="128" fill="#495057" font-size="11" text-anchor="middle">?page=3</text>
+
+  <line x1="172" y1="114" x2="216" y2="114" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="224,114 212,109 212,119" fill="#1971c2"/>
+
+  <rect x="226" y="88" width="140" height="52" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="296" y="110" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">路由守卫触发</text>
+  <text x="296" y="128" fill="#495057" font-size="11" text-anchor="middle">beforeRouteUpdate</text>
+
+  <line x1="368" y1="114" x2="412" y2="114" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="420,114 408,109 408,119" fill="#1971c2"/>
+
+  <rect x="422" y="88" width="130" height="52" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="487" y="110" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">取路由参数</text>
+  <text x="487" y="128" fill="#495057" font-size="11" text-anchor="middle">route.query.page</text>
+
+  <line x1="554" y1="114" x2="598" y2="114" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="606,114 594,109 594,119" fill="#1971c2"/>
+
+  <rect x="608" y="88" width="72" height="52" fill="#cce5ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="644" y="110" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">写 Store</text>
+  <text x="644" y="128" fill="#1971c2" font-size="11" text-anchor="middle">page=3</text>
+
+  <text x="40" y="170" fill="#495057" font-size="12">典型场景：用户刷新页面、直接把搜索结果的链接发给同事</text>
+  <text x="40" y="192" fill="#868e96" font-size="11">此时 URL 是唯一可信来源，必须以它为准重建状态，否则刷新就回到默认值</text>
+  <text x="40" y="214" font-weight="bold" fill="#1971c2" font-size="12">要点：URL 里有的状态，初始化时都要能从 route 里重新读一遍</text>
+  <text x="40" y="236" fill="#868e96" font-size="11">所以「搜索词、页码、筛选条件」应该放 query，而不是只放在 store 里</text>
+  <text x="40" y="258" font-weight="bold" fill="#c92a2a" font-size="12">踩坑：只往 store 写不读 URL，刷新后分页和筛选全部丢失</text>
+
+  <!-- 中间双向箭头 -->
+  <line x1="360" y1="280" x2="360" y2="316" stroke="#e8590c" stroke-width="2"/>
+  <polygon points="360,326 352,314 368,314" fill="#e8590c"/>
+  <polygon points="360,280 352,292 368,292" fill="#e8590c"/>
+
+  <!-- 下半：Store → URL -->
+  <rect x="20" y="326" width="680" height="186" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="360" y="350" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="middle">方向二：Store 变了 → 改写 URL（用户点击操作时）</text>
+
+  <rect x="40" y="366" width="130" height="52" fill="#d8f5cc" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="105" y="388" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">用户点了页码</text>
+  <text x="105" y="406" fill="#495057" font-size="11" text-anchor="middle">切到第 3 页</text>
+
+  <line x1="172" y1="392" x2="216" y2="392" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="224,392 212,387 212,397" fill="#2f9e44"/>
+
+  <rect x="226" y="366" width="140" height="52" fill="#fff" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="296" y="388" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">Store 先更新</text>
+  <text x="296" y="406" fill="#495057" font-size="11" text-anchor="middle">page.value = 3</text>
+
+  <line x1="368" y1="392" x2="412" y2="392" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="420,392 408,387 408,397" fill="#2f9e44"/>
+
+  <rect x="422" y="366" width="130" height="52" fill="#fff" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="487" y="388" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">watch 监听到</text>
+  <text x="487" y="406" fill="#495057" font-size="11" text-anchor="middle">watch(page, ...)</text>
+
+  <line x1="554" y1="392" x2="598" y2="392" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="606,392 594,387 594,397" fill="#2f9e44"/>
+
+  <rect x="608" y="366" width="72" height="52" fill="#fff" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="644" y="388" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">replace 改 URL</text>
+  <text x="644" y="406" fill="#495057" font-size="11" text-anchor="middle">?page=3</text>
+
+  <text x="40" y="448" fill="#495057" font-size="12">典型场景：搜索、分页、Tab 切换——用户操作后要能复制地址栏分享给别人</text>
+  <text x="40" y="470" font-weight="bold" fill="#2f9e44" font-size="12">要点：用 router.replace，不要用 push，否则每翻一页都塞一条历史记录</text>
+  <text x="40" y="492" fill="#868e96" font-size="11">replace 会替换当前记录，后退键直接回到搜索页，而不是逐页往回翻</text>
+
+  <!-- 底部：状态该放哪 -->
+  <rect x="20" y="522" width="680" height="30" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="542" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">需要分享 / 收藏的放 URL，全局共享但不分享的（用户、购物车）放 Store</text>
+</svg>

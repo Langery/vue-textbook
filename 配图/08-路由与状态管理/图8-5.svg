@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="470" viewBox="0 0 720 470" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="470" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">编程式导航 vs 声明式导航：两种跳转写法</text>
+
+  <!-- 左：声明式 -->
+  <rect x="20" y="48" width="330" height="230" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="185" y="72" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">声明式：&lt;RouterLink&gt;</text>
+  <rect x="34" y="86" width="302" height="30" fill="#cce5ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="185" y="106" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">&lt;RouterLink to="/goods/123"&gt;</text>
+  <rect x="34" y="124" width="302" height="30" fill="#cce5ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="185" y="144" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">&lt;RouterLink :to="{ name: 'detail', params }"&gt;</text>
+
+  <text x="36" y="182" font-weight="bold" fill="#1971c2" font-size="12">· 写在模板里，浏览器地址栏可读</text>
+  <text x="36" y="208" font-weight="bold" fill="#1971c2" font-size="12">· 自动渲染成 a 标签，右键可新开</text>
+  <text x="36" y="234" font-weight="bold" fill="#1971c2" font-size="12">· 自带激活态 class，配合样式方便</text>
+  <text x="36" y="262" font-weight="bold" fill="#e8590c" font-size="12">· 条件复杂时模板会变得难读</text>
+
+  <!-- 右：编程式 -->
+  <rect x="370" y="48" width="330" height="230" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="535" y="72" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="middle">编程式：router.push / replace</text>
+  <rect x="384" y="86" width="302" height="30" fill="#d8f5cc" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="535" y="106" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">router.push('/goods/123')</text>
+  <rect x="384" y="124" width="302" height="30" fill="#d8f5cc" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="535" y="144" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">router.replace({ name: 'detail', params })</text>
+
+  <text x="386" y="182" font-weight="bold" fill="#2f9e44" font-size="12">· 写在 JS 里，可 await、try/catch</text>
+  <text x="386" y="208" font-weight="bold" fill="#2f9e44" font-size="12">· 能先判断再跳：登录态、权限、表单</text>
+  <text x="386" y="234" font-weight="bold" fill="#2f9e44" font-size="12">· replace 替换当前记录，不堆历史栈</text>
+  <text x="386" y="262" font-weight="bold" fill="#e8590c" font-size="12">· 地址栏无痕，无法直接右键分享</text>
+
+  <!-- 底部：怎么选 -->
+  <rect x="20" y="292" width="680" height="92" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="314" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">怎么选：看「跳转这件事有没有条件」</text>
+  <rect x="34" y="326" width="316" height="48" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="192" y="345" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">无条件、位置固定的入口</text>
+  <text x="192" y="364" fill="#495057" font-size="11" text-anchor="middle">导航栏、列表卡片、分页页码</text>
+  <rect x="370" y="326" width="316" height="48" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="528" y="345" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">有条件、逻辑里才决定去哪</text>
+  <text x="528" y="364" fill="#495057" font-size="11" text-anchor="middle">登录后回跳、购物车结算、守卫重定向</text>
+
+  <!-- 底部补充 -->
+  <rect x="20" y="396" width="680" height="56" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="360" y="418" fill="#495057" font-size="12" text-anchor="middle">两者目标完全等价：&lt;RouterLink&gt; 底层就是包装好的 router.push</text>
+  <text x="360" y="440" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">同一个跳转别混着写，否则历史栈和页面来源会打架</text>
+</svg>

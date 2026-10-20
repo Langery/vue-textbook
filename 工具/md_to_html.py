@@ -22,6 +22,7 @@ except ImportError:
 # 12 章主题色 - 按色系分组（对应方案 C 新章序）
 CHAPTER_THEMES = {
     "00": {"bg": "#fff8e7", "accent": "#c92a2a", "label": "课程总览", "icon": "📖"},
+    "G": {"bg": "#f3f0ff", "accent": "#6741d9", "label": "术语索引", "icon": "🔖"},
     # 入门基础（蓝）
     "01": {"bg": "#e7f3ff", "accent": "#1971c2", "label": "Vue 入门与准备", "icon": "🚀"},
     "02": {"bg": "#e7f3ff", "accent": "#1971c2", "label": "模板语法与渲染", "icon": "📝"},
@@ -65,6 +66,14 @@ def collect_chapter_files(source: Path) -> list[dict]:
     if overview.exists():
         chapters["00"] = {
             "chapter": "00", "files": [overview], "is_overview": True
+        }
+
+    # 术语索引：作为独立章节排在总览之后（用 G 编号，避免与第 1-12 章冲突）
+    glossary = book_root / "术语索引.md"
+    if glossary.exists():
+        chapters["G"] = {
+            "chapter": "G", "files": [glossary], "is_glossary": True,
+            "title": "术语索引",
         }
 
     for ch_dir in sorted(book_root.iterdir()):
@@ -470,13 +479,20 @@ def make_nav(chapters: list[dict]) -> str:
                     f'{sub3_items}'
                     f'</li>'
                 )
+            # 章节显示名：数字章显示「第 N 章」，术语索引用自己的标签
+            if ch.get("is_glossary"):
+                chapter_label = theme["label"]
+            elif ch.get("is_overview"):
+                chapter_label = "课程总览"
+            else:
+                chapter_label = f"第 {int(ch["chapter"])} 章 {theme["label"]}"
             items.append(
                 f'<li class="nav-chapter">'
                 f'<a href="#ch-{ch["chapter"]}" class="nav-chapter-title" '
                 f'style="--nav-accent: {theme["accent"]};">'
                 f'<span class="nav-caret" aria-hidden="true">▸</span>'
                 f'<span class="nav-icon">{theme["icon"]}</span>'
-                f'第 {int(ch["chapter"])} 章 {theme["label"]}</a>'
+                f'{chapter_label}</a>'
                 f'<ul class="nav-subsection">{"".join(sub_items)}</ul>'
                 f'</li>'
             )
@@ -535,6 +551,16 @@ def rewrite_internal_links(html: str, md_file: Path, repo_root: Path) -> str:
                     if ch_num:
                         anchor = f"#sec-{ch_num.group(1)}-{sec_dir}"
                         return whole.replace(href, anchor)
+            # 指向某个小节 .md 文件 → 站内锚点 #sec-<章号>-<文件名>
+            # （术语索引大量使用这种链接，跳到 GitHub 原文件体验很差）
+            if rel.endswith(".md"):
+                parts = rel.split("/")
+                if len(parts) >= 3 and parts[0] == "教材" and parts[-1].endswith(".md"):
+                    ch_num = re.match(r"^(\d{2})-", parts[1])
+                    sec_name = parts[-1][:-3]
+                    if ch_num:
+                        anchor = f"#sec-{ch_num.group(1)}-{sec_name}"
+                        return whole.replace(href, anchor)
             return whole.replace(href, f"https://github.com/{GITHUB_REPO}/blob/{GITHUB_BRANCH}/{quote(rel)}")
         # 无法识别为仓库内路径的相对链接：保持原样
         return whole
@@ -559,6 +585,29 @@ def make_chapter_html(ch: dict, source: Path) -> str:
             f'<div class="chapter-num-label">课程总览</div>'
             f'<h1 class="chapter-title">{theme["label"]}</h1>'
             f'<div class="chapter-meta">📚 全书导览 · 12 章 / 138 节 · 64 课时</div>'
+            f'</div>'
+            f'</div>'
+            f'</div>'
+            f'<div class="chapter-body">{body}</div>'
+            f'</section>'
+        )
+
+    if ch.get("is_glossary"):
+        # 术语索引：单文件章节，整体作为一个 section 渲染
+        f = ch["files"][0]
+        text = _strip_metadata(f.read_text(encoding="utf-8"))
+        # 去掉文件自身的 H1（页面已有章节标题）
+        text = re.sub(r"^#\s+.+?\n", "", text, count=1, flags=re.MULTILINE)
+        body = rewrite_internal_links(add_code_copy_buttons(md_to_html(text)), f, source)
+        return (
+            f'<section id="ch-glossary" class="chapter" style="--ch-bg: {theme["bg"]}; --ch-accent: {theme["accent"]};">'
+            f'<div class="chapter-cover">'
+            f'<div class="chapter-header">'
+            f'<span class="chapter-icon">{theme["icon"]}</span>'
+            f'<div class="chapter-header-text">'
+            f'<div class="chapter-num-label">速查手册</div>'
+            f'<h1 class="chapter-title">{theme["label"]}</h1>'
+            f'<div class="chapter-meta">🔍 138 个术语 · 标注讲解位置 · 支持搜索</div>'
             f'</div>'
             f'</div>'
             f'</div>'
