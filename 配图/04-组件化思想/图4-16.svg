@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="500" viewBox="0 0 720 500" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="500" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">三种写法对比：Vue 选项式 / Vue 组合式 / React</text>
+
+  <!-- 第一栏：Vue 选项式 -->
+  <rect x="20" y="48" width="215" height="380" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="127" y="74" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">Vue 选项式 API</text>
+  <text x="127" y="94" fill="#495057" font-size="11" text-anchor="middle">按「选项类型」组织代码</text>
+
+  <rect x="32" y="106" width="191" height="132" fill="#fff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+  <text x="44" y="126" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">export default {</text>
+  <text x="44" y="144" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">  data() {</text>
+  <text x="44" y="160" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">    return { count: 0 }</text>
+  <text x="44" y="176" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">  },</text>
+  <text x="44" y="192" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">  computed: {</text>
+  <text x="44" y="208" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">    double() {...}</text>
+  <text x="44" y="224" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">}</text>
+
+  <text x="32" y="258" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">怎么组织</text>
+  <text x="32" y="278" fill="#495057" font-size="11" text-anchor="start">数据放 data，函数放 methods</text>
+  <text x="32" y="296" fill="#495057" font-size="11" text-anchor="start">计算属性放 computed 里</text>
+  <text x="32" y="314" fill="#495057" font-size="11" text-anchor="start">同一功能散在好几个抽屉</text>
+
+  <text x="32" y="344" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">优点 / 缺点</text>
+  <text x="32" y="364" fill="#2f9e44" font-size="11" text-anchor="start">结构固定，新手友好</text>
+  <text x="32" y="382" fill="#c92a2a" font-size="11" text-anchor="start">组件大了就难维护</text>
+  <text x="32" y="400" fill="#868e96" font-size="11" text-anchor="start">Vue 2 老项目在用</text>
+
+  <!-- 第二栏：Vue 组合式 -->
+  <rect x="252" y="48" width="215" height="380" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="359" y="74" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="middle">Vue 组合式 API</text>
+  <text x="359" y="94" fill="#495057" font-size="11" text-anchor="middle">按「逻辑功能」组织代码</text>
+
+  <rect x="264" y="106" width="191" height="132" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="276" y="126" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">&lt;script setup&gt;</text>
+  <text x="276" y="144" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">const count = ref(0)</text>
+  <text x="276" y="160" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">const double =</text>
+  <text x="276" y="174" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">  computed(() =&gt;</text>
+  <text x="276" y="190" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">    count.value * 2)</text>
+  <text x="276" y="206" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">function inc() {</text>
+  <text x="276" y="220" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">  count.value++ }</text>
+
+  <text x="264" y="258" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="start">怎么组织</text>
+  <text x="264" y="278" fill="#495057" font-size="11" text-anchor="start">跟一个功能有关的都写一起</text>
+  <text x="264" y="296" fill="#495057" font-size="11" text-anchor="start">变量、方法、监听平铺在顶层</text>
+  <text x="264" y="314" fill="#495057" font-size="11" text-anchor="start">不用 return，模板直接用</text>
+
+  <text x="264" y="344" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="start">优点 / 缺点</text>
+  <text x="264" y="364" fill="#2f9e44" font-size="11" text-anchor="start">逻辑内聚，好抽成 composable</text>
+  <text x="264" y="382" fill="#c92a2a" font-size="11" text-anchor="start">不约束结构，容易写乱</text>
+  <text x="264" y="400" fill="#868e96" font-size="11" text-anchor="start">新项目首选写法</text>
+
+  <!-- 第三栏：React -->
+  <rect x="484" y="48" width="216" height="380" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="592" y="74" font-weight="bold" fill="#e8590c" font-size="14" text-anchor="middle">React 函数组件</text>
+  <text x="592" y="94" fill="#495057" font-size="11" text-anchor="middle">用 Hook 组织状态与副作用</text>
+
+  <rect x="496" y="106" width="192" height="132" fill="#fff" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+  <text x="508" y="126" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">function Counter() {</text>
+  <text x="508" y="144" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">const [count, setCount] =</text>
+  <text x="508" y="158" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">  useState(0)</text>
+  <text x="508" y="174" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">const double =</text>
+  <text x="508" y="188" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">  useMemo(...)</text>
+  <text x="508" y="204" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">useEffect(...)</text>
+  <text x="508" y="220" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">}</text>
+
+  <text x="496" y="258" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="start">怎么组织</text>
+  <text x="496" y="278" fill="#495057" font-size="11" text-anchor="start">状态靠 useState，派生靠 useMemo</text>
+  <text x="496" y="296" fill="#495057" font-size="11" text-anchor="start">副作用靠 useEffect</text>
+  <text x="496" y="314" fill="#495057" font-size="11" text-anchor="start">必须 return JSX 模板</text>
+
+  <text x="496" y="344" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="start">与 Vue 的差别</text>
+  <text x="496" y="364" fill="#495057" font-size="11" text-anchor="start">改状态必须用 setCount()</text>
+  <text x="496" y="382" fill="#495057" font-size="11" text-anchor="start">不能直接改 count 本身</text>
+  <text x="496" y="400" fill="#868e96" font-size="11" text-anchor="start">心智模型与 Vue 接近</text>
+
+  <!-- 底部 -->
+  <rect x="20" y="442" width="680" height="42" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="460" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">三者都是「声明式」：描述「结果应该是什么样」，而不是「一步步怎么改」</text>
+  <text x="360" y="478" fill="#868e96" font-size="11" text-anchor="middle">Vue 组合式 ≈ React Hook，差别在于 Vue 模板更直观、且不强制函数组件写法</text>
+</svg>

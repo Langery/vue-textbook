@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="440" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">defineProps 与 defineEmits：组件的两半</text>
+
+  <!-- 父组件 -->
+  <rect x="40" y="52" width="250" height="120" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="165" y="78" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">父组件 Parent.vue</text>
+  <rect x="48" y="90" width="234" height="34" fill="#fff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+  <text x="165" y="112" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">&lt;Child :title="t" @save="onSave" /&gt;</text>
+  <text x="165" y="146" fill="#495057" font-size="11" text-anchor="middle">把数据往下传，把事件接住</text>
+  <text x="165" y="164" fill="#868e96" font-size="11" text-anchor="middle">父是被动的：等子来通知</text>
+
+  <!-- 子组件 -->
+  <rect x="430" y="52" width="250" height="120" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="555" y="78" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="middle">子组件 Child.vue</text>
+  <rect x="444" y="90" width="222" height="34" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="555" y="112" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">const emit = defineEmits(['save'])</text>
+  <text x="555" y="146" fill="#495057" font-size="11" text-anchor="middle">收到 props、发出事件</text>
+  <text x="555" y="164" fill="#868e96" font-size="11" text-anchor="middle">子是主动的：改完就上报</text>
+
+  <!-- 向下箭头：props -->
+  <line x1="165" y1="172" x2="165" y2="212" stroke="#1971c2" stroke-width="2"/>
+  <polygon points="165,222 156,208 174,208" fill="#1971c2"/>
+  <text x="155" y="196" font-size="11" fill="#1971c2" text-anchor="end">props 向下（父 → 子）</text>
+
+  <!-- 向上箭头：emits -->
+  <line x1="555" y1="222" x2="555" y2="172" stroke="#2f9e44" stroke-width="2"/>
+  <polygon points="555,172 546,186 564,186" fill="#2f9e44"/>
+  <text x="565" y="200" font-size="11" fill="#2f9e44" text-anchor="start">emit 向上（子 → 父）</text>
+
+  <text x="360" y="200" font-weight="bold" fill="#495057" font-size="11" text-anchor="middle">单向数据流</text>
+
+  <!-- 下半：两个宏的写法 -->
+  <text x="20" y="250" font-weight="bold" fill="#495057" font-size="13" text-anchor="start">两个宏怎么写</text>
+
+  <rect x="20" y="262" width="330" height="130" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="36" y="286" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="start">defineProps：声明「我接收什么」</text>
+  <rect x="34" y="296" width="302" height="56" fill="#fff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+  <text x="46" y="315" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">const props = defineProps({</text>
+  <text x="46" y="330" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  title: String,</text>
+  <text x="46" y="345" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  count: { type: Number, default: 0 }</text>
+  <text x="36" y="372" font-size="11" fill="#495057" text-anchor="start">编译期宏：不需要 import，编译器会处理</text>
+  <text x="36" y="388" font-size="11" fill="#868e96" text-anchor="start">props 是只读的，改了会警告</text>
+
+  <rect x="370" y="262" width="330" height="130" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="386" y="286" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="start">defineEmits：声明「我会发什么」</text>
+  <rect x="384" y="296" width="302" height="56" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="396" y="315" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">const emit = defineEmits([</text>
+  <text x="396" y="330" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  'save', 'cancel'</text>
+  <text x="396" y="345" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">])</text>
+  <text x="386" y="372" font-size="11" fill="#495057" text-anchor="start">编译期宏：不需要 import，编译器会处理</text>
+  <text x="386" y="388" font-size="11" fill="#868e96" text-anchor="start">emit('save', 数据) 可以带参数</text>
+
+  <!-- 底部 -->
+  <rect x="20" y="404" width="680" height="26" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="422" font-weight="bold" fill="#495057" font-size="11" text-anchor="middle">defineProps / defineEmits 是编译器宏，只在 &lt;script setup&gt; 顶层用，不能 import 进来</text>
+</svg>

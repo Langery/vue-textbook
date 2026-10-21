@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="560" viewBox="0 0 720 560" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="560" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">部署闭环：本地 build → dist/ → Nginx 静态托管 → 域名访问</text>
+
+  <!-- ===== 五段流水线 ===== -->
+  <rect x="20" y="50" width="128" height="128" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="84" y="72" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">① 本地构建</text>
+  <text x="84" y="94" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">npm run build</text>
+  <text x="84" y="116" font-size="10" fill="#868e96" text-anchor="middle">.vue 编译成 JS</text>
+  <text x="84" y="134" font-size="10" fill="#868e96" text-anchor="middle">环境变量被</text>
+  <text x="84" y="150" font-size="10" fill="#868e96" text-anchor="middle">写死进产物</text>
+  <text x="84" y="168" font-size="10" fill="#c92a2a" text-anchor="middle">构建后不可改</text>
+
+  <line x1="148" y1="114" x2="168" y2="114" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="176,114 164,109 164,119" fill="#1971c2"/>
+
+  <rect x="178" y="50" width="128" height="128" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="242" y="72" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">② 产物 dist/</text>
+  <text x="242" y="94" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">index.html</text>
+  <text x="242" y="112" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">assets/*.js</text>
+  <text x="242" y="130" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">assets/*.css</text>
+  <text x="242" y="152" font-size="10" fill="#868e96" text-anchor="middle">文件名带 Hash，</text>
+  <text x="242" y="168" font-size="10" fill="#868e96" text-anchor="middle">用来做长期缓存</text>
+
+  <line x1="306" y1="114" x2="326" y2="114" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="334,114 322,109 322,119" fill="#1971c2"/>
+
+  <rect x="336" y="50" width="128" height="128" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="400" y="72" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="middle">③ 上传服务器</text>
+  <text x="400" y="94" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">scp -r dist/*</text>
+  <text x="400" y="112" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">root@server:</text>
+  <text x="400" y="130" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">/var/www/admin</text>
+  <text x="400" y="152" font-size="10" fill="#868e96" text-anchor="middle">服务器只需装 Nginx，</text>
+  <text x="400" y="168" font-size="10" fill="#868e96" text-anchor="middle">不需要 Node 环境</text>
+
+  <line x1="464" y1="114" x2="484" y2="114" stroke="#e8590c" stroke-width="1.5"/>
+  <polygon points="492,114 480,109 480,119" fill="#e8590c"/>
+
+  <rect x="494" y="50" width="206" height="128" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="597" y="72" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">④ Nginx 静态托管</text>
+  <text x="508" y="96" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">root /var/www/admin;</text>
+  <text x="508" y="116" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">location / {</text>
+  <text x="508" y="136" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">  try_files $uri $uri/</text>
+  <text x="508" y="152" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">          /index.html;</text>
+  <text x="508" y="168" font-size="10" fill="#868e96" text-anchor="start">nginx -t → nginx -s reload</text>
+
+  <line x1="597" y1="178" x2="597" y2="196" stroke="#2f9e44" stroke-width="2"/>
+  <polygon points="597,204 590,190 604,190" fill="#2f9e44"/>
+
+  <rect x="494" y="204" width="206" height="34" fill="#fff" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="597" y="226" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">⑤ 浏览器访问域名</text>
+
+  <!-- ===== base 配置 ===== -->
+  <rect x="20" y="204" width="458" height="140" fill="#fff4e6" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+  <text x="36" y="226" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="start">最容易踩的坑：base 路径必须和 Nginx 的部署路径一致</text>
+
+  <rect x="36" y="238" width="426" height="46" fill="#fff" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+  <text x="48" y="256" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">// vite.config.js</text>
+  <text x="48" y="274" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">export default defineConfig({ base: '/', ... })</text>
+
+  <text x="36" y="304" font-size="11" fill="#495057" text-anchor="start">base: '/'　　→ 部署到域名根目录，资源路径是 /assets/index.js</text>
+  <text x="36" y="322" font-size="11" fill="#495057" text-anchor="start">base: '/admin/' → 部署到子目录，资源路径要带 /admin/ 前缀</text>
+  <text x="36" y="338" font-size="11" font-weight="bold" fill="#c92a2a" text-anchor="start">两者对不上：页面能打开，但 JS / CSS 全 404，控制台一片红</text>
+
+  <rect x="494" y="252" width="206" height="92" fill="#f1f3f5" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="508" y="274" font-weight="bold" fill="#495057" font-size="11" text-anchor="start">改完 base 必须重新 build</text>
+  <text x="508" y="294" font-size="10" fill="#868e96" text-anchor="start">它是构建期常量，dev 时</text>
+  <text x="508" y="310" font-size="10" fill="#868e96" text-anchor="start">看不出问题，一上线才 404。</text>
+  <text x="508" y="332" font-size="10" fill="#868e96" text-anchor="start">先本地 vite preview 验一遍。</text>
+
+  <rect x="20" y="358" width="680" height="140" fill="#fff" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <text x="36" y="380" font-weight="bold" fill="#c92a2a" font-size="13" text-anchor="start">上线后最常撞的四个坑，以及它们的正确解法</text>
+
+  <text x="36" y="404" font-weight="bold" fill="#c92a2a" font-size="11" text-anchor="start">1. 刷新页面 404</text>
+  <text x="150" y="404" font-size="11" fill="#495057" text-anchor="start">History 路由要物理文件，Nginx 缺 try_files 就挂</text>
+  <text x="150" y="421" font-size="10" fill="#868e96" text-anchor="start">解法：回退 /index.html 让 Router 接管；临时可切 hash 模式</text>
+
+  <text x="36" y="444" font-weight="bold" fill="#c92a2a" font-size="11" text-anchor="start">2. 资源 404</text>
+  <text x="150" y="444" font-size="11" fill="#495057" text-anchor="start">base 与实际部署路径不一致</text>
+  <text x="150" y="461" font-size="10" fill="#868e96" text-anchor="start">解法：对齐 base 与 root，或直接部署到根目录</text>
+
+  <text x="36" y="484" font-weight="bold" fill="#c92a2a" font-size="11" text-anchor="start">3. 接口报错</text>
+  <text x="150" y="484" font-size="11" fill="#495057" text-anchor="start">env 改完没重新 build，变量被写死在旧产物里</text>
+
+  <!-- ===== 兜底方案 ===== -->
+  <rect x="20" y="508" width="334" height="38" fill="#f0f9e8" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="36" y="526" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="start">没有服务器：拖 dist/ 到 Vercel</text>
+  <text x="36" y="540" font-size="10" fill="#868e96" text-anchor="start">自动识别 Vite 并处理 SPA 路由</text>
+
+  <rect x="366" y="508" width="334" height="38" fill="#f1f3f5" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="382" y="526" font-weight="bold" fill="#495057" font-size="11" text-anchor="start">Netlify：新建 _redirects 文件</text>
+  <text x="382" y="540" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#868e96" text-anchor="start">/* /index.html 200</text>
+</svg>

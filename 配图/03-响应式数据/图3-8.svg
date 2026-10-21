@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="520" viewBox="0 0 720 520" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="520" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">响应式最容易丢的 4 个场景</text>
+
+  <!-- 卡片 1：解构丢响应式 -->
+  <rect x="20" y="48" width="330" height="220" fill="#fff5f5" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <circle cx="46" cy="76" r="12" fill="#c92a2a"/>
+  <text x="46" y="81" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">1</text>
+  <text x="68" y="81" font-weight="bold" fill="#c92a2a" font-size="14" text-anchor="start">解构：拿到的是快照</text>
+
+  <rect x="34" y="96" width="302" height="58" fill="#fff" stroke="#ffc9c9" stroke-width="1.5" rx="4"/>
+  <text x="46" y="116" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">const { count } = state</text>
+  <text x="46" y="134" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">count++   // 页面不变</text>
+  <text x="46" y="149" font-size="10" fill="#868e96" text-anchor="start">count 只是数字，不是那条线</text>
+
+  <text x="34" y="180" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="start">症状</text>
+  <text x="34" y="199" fill="#495057" font-size="11" text-anchor="start">改解构出来的变量，界面毫无反应</text>
+  <text x="34" y="217" fill="#495057" font-size="11" text-anchor="start">原对象其实一直是响应式的</text>
+
+  <rect x="34" y="228" width="302" height="30" fill="#f0f9e8" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="46" y="248" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="start">✓ 改法：用 toRefs(state) 保持响应式</text>
+
+  <!-- 卡片 2：整体替换 -->
+  <rect x="370" y="48" width="330" height="220" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <circle cx="396" cy="76" r="12" fill="#e8590c"/>
+  <text x="396" y="81" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">2</text>
+  <text x="418" y="81" font-weight="bold" fill="#e8590c" font-size="14" text-anchor="start">整体替换：Proxy 断链</text>
+
+  <rect x="384" y="96" width="302" height="58" fill="#fff" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+  <text x="396" y="116" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">state = { count: 1 }</text>
+  <text x="396" y="134" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">// 模板还握着旧 Proxy</text>
+  <text x="396" y="149" font-size="10" fill="#868e96" text-anchor="start">变量指向了新对象</text>
+
+  <text x="384" y="180" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="start">症状</text>
+  <text x="384" y="199" fill="#495057" font-size="11" text-anchor="start">数据确实变了，页面就是不动</text>
+  <text x="384" y="217" fill="#495057" font-size="11" text-anchor="start">而且不报错，很难查</text>
+
+  <rect x="384" y="228" width="302" height="30" fill="#f0f9e8" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="396" y="248" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="start">✓ 改法：Object.assign 或只改属性</text>
+
+  <!-- 卡片 3：嵌套过深 -->
+  <rect x="20" y="284" width="330" height="220" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <circle cx="46" cy="312" r="12" fill="#1971c2"/>
+  <text x="46" y="317" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">3</text>
+  <text x="68" y="317" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="start">嵌套过深：代理开销大</text>
+
+  <rect x="34" y="332" width="302" height="58" fill="#fff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+  <text x="46" y="352" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">const state = ref(bigData)</text>
+  <text x="46" y="370" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">// 每一层都被递归代理</text>
+  <text x="46" y="385" font-size="10" fill="#868e96" text-anchor="start">数据量大时创建明显变慢</text>
+
+  <text x="34" y="416" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">症状</text>
+  <text x="34" y="435" fill="#495057" font-size="11" text-anchor="start">功能正常，但首屏和交互变卡</text>
+  <text x="34" y="453" fill="#495057" font-size="11" text-anchor="start">大列表、深度配置尤其明显</text>
+
+  <rect x="34" y="464" width="302" height="30" fill="#f0f9e8" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="46" y="484" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="start">✓ 改法：shallowRef 只代理第一层</text>
+
+  <!-- 卡片 4：第三方实例 -->
+  <rect x="370" y="284" width="330" height="220" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <circle cx="396" cy="312" r="12" fill="#2f9e44"/>
+  <text x="396" y="317" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">4</text>
+  <text x="418" y="317" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="start">第三方实例：不该被代理</text>
+
+  <rect x="384" y="332" width="302" height="58" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="396" y="352" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">const chart = ref(echarts.init(el))</text>
+  <text x="396" y="370" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">// 巨大的实例被 Proxy 包住</text>
+  <text x="396" y="385" font-size="10" fill="#868e96" text-anchor="start">ECharts / 地图 / 地图引擎都算</text>
+
+  <text x="384" y="416" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="start">症状</text>
+  <text x="384" y="435" fill="#495057" font-size="11" text-anchor="start">控制台报警或卡顿，调试困难</text>
+  <text x="384" y="453" fill="#495057" font-size="11" text-anchor="start">实例的内部方法被代理后行为异常</text>
+
+  <rect x="384" y="464" width="302" height="30" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="396" y="484" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="start">✓ 改法：shallowRef + markRaw</text>
+</svg>

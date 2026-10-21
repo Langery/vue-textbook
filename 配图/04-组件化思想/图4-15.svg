@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="480" viewBox="0 0 720 480" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="480" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">组件树：从 App 到卡片组件的层次关系</text>
+
+  <!-- 层级标注 -->
+  <text x="20" y="74" fill="#adb5bd" font-size="11" text-anchor="start">第 1 层</text>
+  <text x="20" y="152" fill="#adb5bd" font-size="11" text-anchor="start">第 2 层</text>
+  <text x="20" y="238" fill="#adb5bd" font-size="11" text-anchor="start">第 3 层</text>
+  <text x="20" y="326" fill="#adb5bd" font-size="11" text-anchor="start">第 4 层</text>
+
+  <!-- 第 1 层：App -->
+  <rect x="290" y="48" width="180" height="40" fill="#1971c2" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="380" y="74" font-weight="bold" fill="#fff" font-size="13" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">App.vue</text>
+  <text x="380" y="102" fill="#868e96" font-size="11" text-anchor="middle">根组件，应用的唯一入口</text>
+
+  <!-- 连线 App → Layout -->
+  <line x1="380" y1="88" x2="380" y2="126" stroke="#adb5bd" stroke-width="1.5"/>
+
+  <!-- 第 2 层：Layout -->
+  <rect x="275" y="126" width="210" height="40" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="380" y="152" font-weight="bold" fill="#1971c2" font-size="13" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">AppLayout.vue</text>
+  <text x="380" y="180" fill="#868e96" font-size="11" text-anchor="middle">骨架：头部 / 侧边栏 / 内容区</text>
+
+  <!-- 分叉线 -->
+  <line x1="380" y1="166" x2="380" y2="192" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="140" y1="192" x2="580" y2="192" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="140" y1="192" x2="140" y2="212" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="360" y1="192" x2="360" y2="212" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="580" y1="192" x2="580" y2="212" stroke="#adb5bd" stroke-width="1.5"/>
+
+  <!-- 第 3 层：Header / Sidebar / Content -->
+  <rect x="60" y="212" width="160" height="40" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="140" y="238" font-weight="bold" fill="#2f9e44" font-size="12" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">AppHeader.vue</text>
+
+  <rect x="280" y="212" width="160" height="40" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="360" y="238" font-weight="bold" fill="#2f9e44" font-size="12" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">AppSidebar.vue</text>
+
+  <rect x="500" y="212" width="160" height="40" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="580" y="238" font-weight="bold" fill="#2f9e44" font-size="12" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">AppContent.vue</text>
+
+  <!-- 连线 Content → 卡片 -->
+  <line x1="580" y1="252" x2="580" y2="280" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="460" y1="280" x2="580" y2="280" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="460" y1="280" x2="460" y2="300" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="580" y1="280" x2="580" y2="300" stroke="#adb5bd" stroke-width="1.5"/>
+
+  <!-- 第 4 层：卡片组件 -->
+  <rect x="390" y="300" width="140" height="40" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="460" y="326" font-weight="bold" fill="#e8590c" font-size="12" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">ProductCard.vue</text>
+
+  <rect x="510" y="300" width="140" height="40" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="580" y="326" font-weight="bold" fill="#e8590c" font-size="12" font-family="ui-monospace,Menlo,monospace" text-anchor="middle">ProductCard.vue</text>
+
+  <text x="470" y="360" fill="#868e96" font-size="11" text-anchor="middle">同一份文件渲染多次 = 组件复用</text>
+
+  <!-- 左侧说明：数据流 -->
+  <text x="70" y="284" font-weight="bold" fill="#495057" font-size="12" text-anchor="start">数据流</text>
+  <text x="70" y="306" fill="#1971c2" font-size="11" text-anchor="start">↓ props 向下</text>
+  <text x="70" y="326" fill="#2f9e44" font-size="11" text-anchor="start">↑ emit 向上</text>
+  <text x="70" y="352" fill="#868e96" font-size="11" text-anchor="start">兄弟不直接通信</text>
+  <text x="70" y="370" fill="#868e96" font-size="11" text-anchor="start">要经父组件中转</text>
+
+  <!-- 底部 -->
+  <rect x="20" y="392" width="680" height="72" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="414" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">黄金规则：props 向下、emit 向上，兄弟组件不直接通信</text>
+  <text x="360" y="436" fill="#495057" font-size="11" text-anchor="middle">健康标准：深度不超过 4 层，单个组件的直接子节点不超过 7 个</text>
+  <text x="360" y="456" fill="#868e96" font-size="11" text-anchor="middle">画树四步：找视觉模块 → 起组件名 → 画层级 → 标数据流</text>
+</svg>

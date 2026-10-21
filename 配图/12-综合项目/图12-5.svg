@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="540" viewBox="0 0 720 540" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="540" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">发布闲置：选图 → 本地预览 → 表单校验 → 提交的两条分支</text>
+
+  <!-- ===== 主流程 ===== -->
+  <rect x="20" y="46" width="680" height="150" fill="#e7f3ff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+  <text x="34" y="66" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="start">主链路：全程不发请求，图片先在浏览器本地转一圈</text>
+
+  <!-- 步骤1 选图 -->
+  <rect x="34" y="78" width="146" height="86" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="107" y="98" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">① 选图</text>
+  <text x="107" y="118" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">el-upload</text>
+  <text x="107" y="134" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">auto-upload=false</text>
+  <text x="107" y="152" font-size="10" fill="#868e96" text-anchor="middle">只收文件不上传</text>
+
+  <line x1="182" y1="121" x2="196" y2="121" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="202,121 192,116 192,126" fill="#1971c2"/>
+
+  <!-- 步骤2 校验图片本身 -->
+  <rect x="204" y="78" width="146" height="86" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="277" y="98" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">② 拦非法图</text>
+  <text x="277" y="118" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">beforeUpload</text>
+  <text x="277" y="134" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">非图片 → return false</text>
+  <text x="277" y="152" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">超 2MB → return false</text>
+
+  <line x1="352" y1="121" x2="366" y2="121" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="372,121 362,116 362,126" fill="#1971c2"/>
+
+  <!-- 步骤3 本地预览 -->
+  <rect x="374" y="78" width="146" height="86" fill="#d8f5cc" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="447" y="98" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">③ 本地预览</text>
+  <text x="447" y="118" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">createObjectURL(file)</text>
+  <text x="447" y="134" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">→ blob: 临时地址</text>
+  <text x="447" y="152" font-size="10" fill="#868e96" text-anchor="middle">不读内存、不转 base64</text>
+
+  <line x1="522" y1="121" x2="536" y2="121" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="542,121 532,116 532,126" fill="#1971c2"/>
+
+  <!-- 步骤4 表单校验 -->
+  <rect x="544" y="78" width="146" height="86" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="617" y="98" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">④ 提交前校验</text>
+  <text x="617" y="118" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">formRef.validate()</text>
+  <text x="617" y="134" font-size="10" fill="#868e96" text-anchor="middle">标题必填 · 价格 &gt; 0</text>
+  <text x="617" y="152" font-size="10" fill="#868e96" text-anchor="middle">至少 1 张图</text>
+
+  <text x="360" y="186" font-size="11" fill="#1971c2" text-anchor="middle">校验通过才走到下一步：不通过就停在原地，把错误贴在对应输入框下方</text>
+
+  <!-- ===== 两条分支 ===== -->
+  <line x1="360" y1="196" x2="360" y2="212" stroke="#e8590c" stroke-width="2"/>
+  <polygon points="360,220 353,206 367,206" fill="#e8590c"/>
+
+  <!-- 分支 A -->
+  <rect x="20" y="220" width="334" height="150" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <circle cx="44" cy="244" r="11" fill="#2f9e44"/>
+  <text x="44" y="249" font-weight="bold" fill="#fff" font-size="12" text-anchor="middle">A</text>
+  <text x="64" y="249" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="start">真实后端：先传图，再发表单</text>
+
+  <rect x="34" y="262" width="306" height="94" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="46" y="280" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">const fd = new FormData()</text>
+  <text x="46" y="297" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">fd.append('file', img.file)</text>
+  <text x="46" y="314" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">const { data } = await uploadFile(fd)</text>
+  <text x="46" y="331" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">form.images = data.urls   // 回真实地址</text>
+  <text x="46" y="348" font-size="10" fill="#868e96" text-anchor="start">// 顺序不能反：blob 地址刷新即失效，不能入库</text>
+
+  <!-- 分支 B -->
+  <rect x="366" y="220" width="334" height="150" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <circle cx="390" cy="244" r="11" fill="#e8590c"/>
+  <text x="390" y="249" font-weight="bold" fill="#fff" font-size="12" text-anchor="middle">B</text>
+  <text x="410" y="249" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="start">本课无后端：只发表单数据</text>
+
+  <rect x="380" y="262" width="306" height="94" fill="#fff" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+  <text x="392" y="280" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">const res = await createGoods(form)</text>
+  <text x="392" y="297" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">ElMessage.success('发布成功')</text>
+  <text x="392" y="314" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">router.push('/home')</text>
+  <text x="392" y="331" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">formRef.resetFields()</text>
+  <text x="392" y="348" font-size="10" fill="#868e96" text-anchor="start">// 预览逻辑一行不用改，将来换成 A 分支即可</text>
+
+  <!-- 结果 -->
+  <text x="187" y="362" font-size="11" font-weight="bold" fill="#2f9e44" text-anchor="middle">成功 → 跳转首页，看新发布的商品</text>
+  <text x="533" y="362" font-size="11" font-weight="bold" fill="#e8590c" text-anchor="middle">失败 → 停在表单，submitLoading 复位可再点</text>
+
+  <!-- ===== 纪律 ===== -->
+  <rect x="20" y="384" width="680" height="118" fill="#fff" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <text x="360" y="406" font-weight="bold" fill="#c92a2a" font-size="13" text-anchor="middle">唯一必须记住的纪律：createObjectURL 的每一次，都要配一次 revokeObjectURL</text>
+
+  <rect x="34" y="418" width="306" height="34" fill="#fff5f5" stroke="#ffc9c9" stroke-width="1.5" rx="4"/>
+  <text x="46" y="433" font-size="11" fill="#c92a2a" text-anchor="start">✗ 用户删掉一张图，blob 地址还挂着</text>
+  <text x="46" y="447" font-size="10" fill="#868e96" text-anchor="start">内存一直涨，发 100 张图就占 100 块</text>
+
+  <rect x="380" y="418" width="306" height="34" fill="#f0f9e8" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="392" y="433" font-size="11" fill="#2f9e44" text-anchor="start">✓ 删除时 revokeObjectURL(img.url)</text>
+  <text x="392" y="447" font-size="10" fill="#868e96" text-anchor="start">组件卸载 / 路由离开时统一释放</text>
+
+  <text x="46" y="470" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">onBeforeUnmount(() =&gt; form.images.forEach(i =&gt; URL.revokeObjectURL(i.url)))</text>
+  <text x="360" y="470" font-size="10" fill="#868e96" text-anchor="middle">自动上传的坑：el-upload 默认 auto-upload 为 true，一选图就发请求</text>
+
+  <text x="360" y="518" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">发布页是全书的「表单 + 文件」合流：P10 的校验规则、P7 的草稿思路，都在这一页收口</text>
+  <text x="360" y="534" font-size="11" fill="#868e96" text-anchor="middle">真正难的从来不是发请求，而是知道哪一步该在前端做、哪一步必须等后端</text>
+</svg>

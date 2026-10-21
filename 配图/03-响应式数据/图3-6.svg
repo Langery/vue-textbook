@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="380" viewBox="0 0 720 380" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="380" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">nextTick 时序：什么时候 DOM 才真的变了</text>
+
+  <!-- 时间轴 -->
+  <text x="20" y="60" font-weight="bold" fill="#495057" font-size="13" text-anchor="start">同一次事件处理函数里的时间线</text>
+
+  <!-- 阶段 1：同步段 -->
+  <rect x="20" y="72" width="300" height="86" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="170" y="96" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">同步代码段</text>
+  <text x="170" y="118" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">count.value = 100</text>
+  <text x="170" y="136" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">// 数据已改，DOM 还没变</text>
+  <text x="170" y="152" font-size="9" fill="#868e96" text-anchor="middle">此刻读 DOM 拿到的是旧值</text>
+
+  <!-- 箭头 -->
+  <line x1="324" y1="115" x2="352" y2="115" stroke="#adb5bd" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <polygon points="360,115 348,110 348,120" fill="#adb5bd"/>
+
+  <!-- 阶段 2：等待段 -->
+  <rect x="360" y="72" width="150" height="86" fill="#fff5f5" stroke="#e03131" stroke-width="1.5" rx="4" stroke-dasharray="6 4"/>
+  <text x="435" y="96" font-weight="bold" fill="#c92a2a" font-size="13" text-anchor="middle">等待中</text>
+  <text x="435" y="118" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="middle">await nextTick()</text>
+  <text x="435" y="136" font-size="9" fill="#868e96" text-anchor="middle">微任务队列排队</text>
+  <text x="435" y="152" font-size="9" fill="#868e96" text-anchor="middle">DOM 仍然没变</text>
+
+  <!-- 箭头 -->
+  <line x1="514" y1="115" x2="542" y2="115" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="550,115 538,110 538,120" fill="#2f9e44"/>
+
+  <!-- 阶段 3：已更新 -->
+  <rect x="550" y="72" width="150" height="86" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="625" y="96" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">DOM 已更新</text>
+  <text x="625" y="118" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">读 DOM 拿到 100</text>
+  <text x="625" y="136" font-size="9" fill="#868e96" text-anchor="middle">渲染已经跑完</text>
+  <text x="625" y="152" font-size="9" fill="#868e96" text-anchor="middle">这时操作 DOM 才安全</text>
+
+  <!-- 两种写法对比 -->
+  <text x="20" y="196" font-weight="bold" fill="#495057" font-size="13" text-anchor="start">同一个需求，写法不同结果不同</text>
+
+  <rect x="20" y="210" width="330" height="128" fill="#fff5f5" stroke="#e03131" stroke-width="1.5" rx="4"/>
+  <text x="185" y="234" font-weight="bold" fill="#c92a2a" font-size="13" text-anchor="middle">❌ 忘了 await</text>
+
+  <rect x="36" y="248" width="298" height="58" fill="#fff" stroke="#ffc9c9" stroke-width="1.5" rx="4"/>
+  <text x="48" y="266" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">count.value++</text>
+  <text x="48" y="282" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">nextTick()</text>
+  <text x="48" y="298" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">console.log(el.textContent)</text>
+
+  <text x="185" y="324" fill="#c92a2a" font-size="11" text-anchor="middle">返回的 Promise 没被 await → 读到的还是旧值</text>
+
+  <rect x="370" y="210" width="330" height="128" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="535" y="234" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">✅ await nextTick()</text>
+
+  <rect x="386" y="248" width="298" height="58" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="398" y="266" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">count.value++</text>
+  <text x="398" y="282" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">await nextTick()</text>
+  <text x="398" y="298" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">console.log(el.textContent)</text>
+
+  <text x="535" y="324" fill="#2f9e44" font-size="11" text-anchor="middle">等 DOM 刷新完再读 → 拿到新值</text>
+
+  <!-- 底部 -->
+  <text x="360" y="360" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">nextTick 走微任务，比 setTimeout(fn, 0) 更早执行：DOM 一更新完它就 resolve</text>
+  <text x="360" y="378" fill="#868e96" font-size="11" text-anchor="middle">典型场景：改完数据读元素尺寸、v-if 显示后 focus 输入框、列表新增后滚动到底部</text>
+</svg>

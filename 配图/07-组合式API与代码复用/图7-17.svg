@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="440" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">useClipboard 流程：复制 → 提示 → 1.5 秒后自动复位</text>
+
+  <!-- 解构 -->
+  <rect x="20" y="50" width="680" height="38" fill="#f1f3f5" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="360" y="74" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">const { text, copy, copied, isSupported } = useClipboard()</text>
+
+  <!-- 流程链 -->
+  <rect x="20" y="110" width="130" height="60" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="85" y="134" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">① 点击按钮</text>
+  <text x="85" y="154" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">await copy(t)</text>
+
+  <line x1="152" y1="140" x2="176" y2="140" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="184,140 172,135 172,145" fill="#adb5bd"/>
+
+  <rect x="186" y="110" width="150" height="60" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="261" y="134" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="middle">② 查 isSupported</text>
+  <text x="261" y="154" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">navigator.clipboard</text>
+
+  <line x1="338" y1="140" x2="362" y2="140" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="370,140 358,135 358,145" fill="#adb5bd"/>
+
+  <rect x="372" y="110" width="150" height="60" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="447" y="134" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">③ 写剪贴板</text>
+  <text x="447" y="154" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">writeText(text)</text>
+
+  <line x1="524" y1="140" x2="548" y2="140" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="556,140 544,135 544,145" fill="#adb5bd"/>
+
+  <rect x="558" y="110" width="142" height="60" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="629" y="134" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">④ copied = true</text>
+  <text x="629" y="154" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">按钮变「已复制」</text>
+
+  <!-- 分支：不支持 -->
+  <path d="M 261 170 L 261 200 L 130 200 L 130 226" fill="none" stroke="#c92a2a" stroke-width="1.5"/>
+  <polygon points="130,234 124,222 136,222" fill="#c92a2a"/>
+  <rect x="20" y="236" width="220" height="52" fill="#fff5f5" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <text x="130" y="258" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="middle">不支持：直接 alert 提示</text>
+  <text x="130" y="278" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">非 HTTPS 环境下会走到这</text>
+
+  <!-- 分支：定时复位 -->
+  <path d="M 629 170 L 629 200 L 360 200 L 360 226" fill="none" stroke="#e8590c" stroke-width="1.5"/>
+  <polygon points="360,234 354,222 366,222" fill="#e8590c"/>
+  <rect x="250" y="236" width="220" height="52" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="258" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="middle">起一个 1.5 秒定时器</text>
+  <text x="360" y="278" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">超时后 copied = false</text>
+
+  <line x1="470" y1="262" x2="500" y2="262" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="508,262 496,257 496,267" fill="#adb5bd"/>
+
+  <rect x="510" y="236" width="190" height="52" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="605" y="258" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">按钮文案自动恢复</text>
+  <text x="605" y="278" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#868e96" text-anchor="middle">模板里三元切换即可</text>
+
+  <!-- 模板 -->
+  <rect x="20" y="304" width="330" height="112" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="185" y="328" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">模板里只用 copied 做切换</text>
+  <text x="36" y="352" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">&lt;button @click="copy(url)"&gt;</text>
+  <text x="36" y="372" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">  {{ copied ? '已复制' : '复制' }}</text>
+  <text x="36" y="392" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">&lt;/button&gt;</text>
+  <text x="36" y="410" fill="#868e96" font-size="10" text-anchor="start">计时、重置全由库内部管</text>
+
+  <!-- 注意 -->
+  <rect x="370" y="304" width="330" height="112" fill="#fff5f5" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <text x="535" y="328" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="middle">三个坑</text>
+  <text x="386" y="352" fill="#495057" font-size="11" text-anchor="start">① 必须 HTTPS 或 localhost 才可用</text>
+  <text x="386" y="374" fill="#495057" font-size="11" text-anchor="start">② 必须用户手势触发，不能自动跑</text>
+  <text x="386" y="396" fill="#495057" font-size="11" text-anchor="start">③ 读 text 要用户授权，常拿不到</text>
+  <text x="386" y="412" fill="#868e96" font-size="10" text-anchor="start">先判断 isSupported 再 copy，顺序反了会静默失败</text>
+</svg>

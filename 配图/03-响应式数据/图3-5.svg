@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="420" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">响应式触发：同步改 3 次，异步只渲染 1 次</text>
+
+  <!-- 上：同步更新（假想的做法） -->
+  <rect x="20" y="48" width="680" height="150" fill="#fff5f5" stroke="#e03131" stroke-width="1.5" rx="4"/>
+  <text x="36" y="72" font-weight="bold" fill="#c92a2a" font-size="14" text-anchor="start">如果每次赋值都同步渲染（Vue 不是这么干的）</text>
+
+  <rect x="36" y="86" width="86" height="40" fill="#fff" stroke="#e03131" stroke-width="1.5" rx="4"/>
+  <text x="79" y="102" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">count = 1</text>
+  <text x="79" y="118" font-size="9" fill="#868e96" text-anchor="middle">改数据</text>
+
+  <line x1="124" y1="106" x2="146" y2="106" stroke="#e03131" stroke-width="1.5"/>
+  <polygon points="154,106 142,101 142,111" fill="#e03131"/>
+
+  <rect x="154" y="86" width="86" height="40" fill="#ffe3e3" stroke="#e03131" stroke-width="1.5" rx="4"/>
+  <text x="197" y="102" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="middle">render()</text>
+  <text x="197" y="118" font-size="9" fill="#868e96" text-anchor="middle">渲染第 1 次</text>
+
+  <line x1="242" y1="106" x2="264" y2="106" stroke="#e03131" stroke-width="1.5"/>
+  <polygon points="272,106 260,101 260,111" fill="#e03131"/>
+
+  <rect x="272" y="86" width="86" height="40" fill="#fff" stroke="#e03131" stroke-width="1.5" rx="4"/>
+  <text x="315" y="102" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">count = 2</text>
+  <text x="315" y="118" font-size="9" fill="#868e96" text-anchor="middle">改数据</text>
+
+  <line x1="360" y1="106" x2="382" y2="106" stroke="#e03131" stroke-width="1.5"/>
+  <polygon points="390,106 378,101 378,111" fill="#e03131"/>
+
+  <rect x="390" y="86" width="86" height="40" fill="#ffe3e3" stroke="#e03131" stroke-width="1.5" rx="4"/>
+  <text x="433" y="102" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="middle">render()</text>
+  <text x="433" y="118" font-size="9" fill="#868e96" text-anchor="middle">渲染第 2 次</text>
+
+  <line x1="478" y1="106" x2="500" y2="106" stroke="#e03131" stroke-width="1.5"/>
+  <polygon points="508,106 496,101 496,111" fill="#e03131"/>
+
+  <rect x="508" y="86" width="86" height="40" fill="#fff" stroke="#e03131" stroke-width="1.5" rx="4"/>
+  <text x="551" y="102" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">count = 3</text>
+  <text x="551" y="118" font-size="9" fill="#868e96" text-anchor="middle">改数据</text>
+
+  <line x1="596" y1="106" x2="618" y2="106" stroke="#e03131" stroke-width="1.5"/>
+  <polygon points="626,106 614,101 614,111" fill="#e03131"/>
+
+  <rect x="626" y="86" width="58" height="40" fill="#ffe3e3" stroke="#e03131" stroke-width="1.5" rx="4"/>
+  <text x="655" y="102" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="middle">render()</text>
+  <text x="655" y="118" font-size="9" fill="#868e96" text-anchor="middle">第 3 次</text>
+
+  <text x="36" y="152" fill="#c92a2a" font-size="12" font-weight="bold" text-anchor="start">改 3 次 → 重绘 3 次：中间那些用户根本看不见的状态也被算了一遍</text>
+  <text x="36" y="174" fill="#868e96" font-size="11" text-anchor="start">数据量一大就是成倍的性能浪费</text>
+
+  <!-- 下：Vue 3 实际的批量更新 -->
+  <rect x="20" y="212" width="680" height="150" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="36" y="236" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="start">Vue 3 的实际做法：先把改动攒起来，异步渲染一次</text>
+
+  <rect x="36" y="250" width="86" height="40" fill="#d8f5cc" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="79" y="266" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">count = 1</text>
+  <text x="79" y="282" font-size="9" fill="#868e96" text-anchor="middle">改数据</text>
+
+  <line x1="124" y1="270" x2="146" y2="270" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="154,270 142,265 142,275" fill="#2f9e44"/>
+
+  <rect x="154" y="250" width="86" height="40" fill="#d8f5cc" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="197" y="266" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">count = 2</text>
+  <text x="197" y="282" font-size="9" fill="#868e96" text-anchor="middle">改数据</text>
+
+  <line x1="242" y1="270" x2="264" y2="270" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="272,270 260,265 260,275" fill="#2f9e44"/>
+
+  <rect x="272" y="250" width="86" height="40" fill="#d8f5cc" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="315" y="266" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">count = 3</text>
+  <text x="315" y="282" font-size="9" fill="#868e96" text-anchor="middle">改数据</text>
+
+  <line x1="360" y1="270" x2="392" y2="270" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="400,270 388,265 388,275" fill="#2f9e44"/>
+
+  <rect x="400" y="250" width="130" height="40" fill="#fff" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="465" y="266" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">同一个 tick 结束</text>
+  <text x="465" y="282" font-size="9" fill="#868e96" text-anchor="middle">进微任务队列</text>
+
+  <line x1="532" y1="270" x2="564" y2="270" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="572,270 560,265 560,275" fill="#2f9e44"/>
+
+  <rect x="572" y="250" width="112" height="40" fill="#2f9e44" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="628" y="266" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#fff" text-anchor="middle">render()</text>
+  <text x="628" y="282" font-size="9" fill="#d8f5cc" text-anchor="middle">只渲染 1 次</text>
+
+  <text x="36" y="316" fill="#2f9e44" font-size="12" font-weight="bold" text-anchor="start">改 3 次 → 渲染 1 次：队列用 Set 去重，同一组件只排一次</text>
+  <text x="36" y="338" fill="#868e96" font-size="11" text-anchor="start">for 循环里连改 100 次也一样只渲染 1 次，最终值直接是 100</text>
+
+  <!-- 底部 -->
+  <text x="360" y="392" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">Vue 用 Promise.resolve().then() 把刷新排到微任务：比同步晚一点、比 setTimeout 早很多</text>
+  <text x="360" y="410" fill="#868e96" font-size="11" text-anchor="middle">代价：改完数据立刻读 DOM 拿到的还是旧值——这就是 nextTick 存在的理由</text>
+</svg>

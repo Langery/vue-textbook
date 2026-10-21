@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="490" viewBox="0 0 720 490" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="490" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">computed 的缓存机制：依赖没变就不重算</text>
+
+  <!-- 依赖来源 -->
+  <rect x="250" y="48" width="220" height="76" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="360" y="72" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">响应式依赖</text>
+  <text x="360" y="94" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">const count = ref(0)</text>
+  <text x="360" y="114" fill="#868e96" font-size="11" text-anchor="middle">getter 里读了它</text>
+
+  <line x1="360" y1="124" x2="360" y2="144" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="360,150 354,138 366,138" fill="#adb5bd"/>
+
+  <!-- 判断 -->
+  <rect x="250" y="146" width="220" height="56" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="180" font-weight="bold" fill="#e8590c" font-size="14" text-anchor="middle">依赖变了吗？</text>
+
+  <!-- 两条分支 -->
+  <line x1="300" y1="202" x2="192" y2="240" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="184,246 197,240 195,251" fill="#2f9e44"/>
+  <line x1="420" y1="202" x2="528" y2="240" stroke="#c92a2a" stroke-width="1.5"/>
+  <polygon points="536,246 523,240 525,251" fill="#c92a2a"/>
+
+  <rect x="40" y="248" width="250" height="110" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="165" y="272" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">否：依赖没变</text>
+  <text x="165" y="296" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">return _cache</text>
+  <text x="165" y="320" fill="#495057" font-size="11" text-anchor="middle">getter 根本不执行</text>
+  <text x="165" y="342" fill="#868e96" font-size="11" text-anchor="middle">读 100 次只算 1 次</text>
+
+  <rect x="430" y="248" width="250" height="110" fill="#fff5f5" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <text x="555" y="272" font-weight="bold" fill="#c92a2a" font-size="13" text-anchor="middle">是：依赖变了</text>
+  <text x="555" y="296" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="middle">_cache = getter()</text>
+  <text x="555" y="320" fill="#495057" font-size="11" text-anchor="middle">重新执行 getter</text>
+  <text x="555" y="342" fill="#868e96" font-size="11" text-anchor="middle">算完覆盖旧缓存</text>
+
+  <!-- 底部要点 -->
+  <rect x="20" y="378" width="680" height="96" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="402" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">缓存 + 惰性求值：computed 的两个关键特性</text>
+  <text x="360" y="428" fill="#495057" font-size="11" text-anchor="middle">惰性：没人读它的值，getter 就一次都不会执行 —— 写在模板最外层也不浪费性能</text>
+  <text x="360" y="450" fill="#868e96" font-size="11" text-anchor="middle">失效条件：getter 里读到的响应式依赖变了才失效，纯读取也算依赖</text>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="480" viewBox="0 0 720 480" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="480" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">对象和数组的正确更新姿势（Vue 3 语义）</text>
+
+  <!-- 格子 1 -->
+  <rect x="20" y="48" width="330" height="172" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <circle cx="46" cy="74" r="12" fill="#2f9e44"/>
+  <text x="46" y="79" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">1</text>
+  <text x="68" y="79" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="start">改对象属性</text>
+
+  <rect x="34" y="94" width="302" height="38" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="46" y="118" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">obj.a = x</text>
+
+  <text x="34" y="158" fill="#495057" font-size="11" text-anchor="start">Proxy 拦得住属性写入</text>
+  <text x="34" y="178" fill="#495057" font-size="11" text-anchor="start">新增属性、delete 属性同样生效</text>
+  <text x="34" y="200" fill="#2f9e44" font-size="11" font-weight="bold" text-anchor="start">✅ 直接改就行，不用 $set</text>
+
+  <!-- 格子 2 -->
+  <rect x="370" y="48" width="330" height="172" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <circle cx="396" cy="74" r="12" fill="#2f9e44"/>
+  <text x="396" y="79" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">2</text>
+  <text x="418" y="79" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="start">数组的变异方法</text>
+
+  <rect x="384" y="94" width="302" height="38" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="396" y="118" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">arr.push(x)</text>
+
+  <text x="384" y="158" fill="#495057" font-size="11" text-anchor="start">push / pop / splice / sort 原地改原数组</text>
+  <text x="384" y="178" fill="#495057" font-size="11" text-anchor="start">改完自动触发更新，语义也最直白</text>
+  <text x="384" y="200" fill="#2f9e44" font-size="11" font-weight="bold" text-anchor="start">✅ 首选写法</text>
+
+  <!-- 格子 3 -->
+  <rect x="20" y="236" width="330" height="172" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <circle cx="46" cy="262" r="12" fill="#1971c2"/>
+  <text x="46" y="267" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">3</text>
+  <text x="68" y="267" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="start">按索引赋值（Vue 3 已支持）</text>
+
+  <rect x="34" y="282" width="302" height="38" fill="#fff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+  <text x="46" y="306" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">arr[0] = x</text>
+
+  <text x="34" y="346" fill="#495057" font-size="11" text-anchor="start">Proxy 代理整个对象，索引和 length 都能拦</text>
+  <text x="34" y="366" fill="#495057" font-size="11" text-anchor="start">arr.length = 2 也会触发更新</text>
+  <text x="34" y="388" fill="#1971c2" font-size="11" font-weight="bold" text-anchor="start">✅ Vue 2 的旧限制已作废</text>
+
+  <!-- 格子 4 -->
+  <rect x="370" y="236" width="330" height="172" fill="#fff5f5" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <circle cx="396" cy="262" r="12" fill="#c92a2a"/>
+  <text x="396" y="267" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">4</text>
+  <text x="418" y="267" font-weight="bold" fill="#c92a2a" font-size="14" text-anchor="start">filter 后不赋回去</text>
+
+  <rect x="384" y="282" width="302" height="38" fill="#fff" stroke="#ffc9c9" stroke-width="1.5" rx="4"/>
+  <text x="396" y="306" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">list.filter(fn)  // 没赋值</text>
+
+  <text x="384" y="346" fill="#495057" font-size="11" text-anchor="start">filter / map 返回的是新数组，原数组没动</text>
+  <text x="384" y="366" fill="#495057" font-size="11" text-anchor="start">结果没写回去，等于什么都没做</text>
+  <text x="384" y="388" fill="#c92a2a" font-size="11" font-weight="bold" text-anchor="start">❌ 唯一要记住的坑</text>
+
+  <!-- 底部 -->
+  <rect x="20" y="420" width="680" height="52" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="442" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">Vue 3 的 Proxy 填平了 Vue 2 的大部分坑：不用 $set / $delete，索引和 length 都能改</text>
+  <text x="360" y="462" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">list.splice(0, list.length, ...list.filter(fn))</text>
+</svg>

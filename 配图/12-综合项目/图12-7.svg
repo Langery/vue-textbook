@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="560" viewBox="0 0 720 560" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="560" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">管理后台：CRUD 三条入口 + 分页数据流的闭环</text>
+
+  <!-- ===== 上半：CRUD 入口 ===== -->
+  <text x="20" y="54" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="start">① 四个入口：新增 / 编辑 / 删除 / 上下架，都汇到同一个 fetchList</text>
+
+  <rect x="20" y="64" width="164" height="96" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="102" y="86" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">新增</text>
+  <text x="102" y="106" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">/goods/add</text>
+  <text x="102" y="126" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">isEdit = false</text>
+  <text x="102" y="146" font-size="10" fill="#868e96" text-anchor="middle">空表单，直接填</text>
+
+  <rect x="192" y="64" width="164" height="96" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="274" y="86" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">编辑</text>
+  <text x="274" y="106" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">/goods/edit/:id</text>
+  <text x="274" y="126" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">isEdit = true</text>
+  <text x="274" y="146" font-size="10" fill="#868e96" text-anchor="middle">onMounted 回填</text>
+
+  <rect x="364" y="64" width="164" height="96" fill="#fff5f5" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <text x="446" y="86" font-weight="bold" fill="#c92a2a" font-size="13" text-anchor="middle">删除</text>
+  <text x="446" y="106" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">ElMessageBox</text>
+  <text x="446" y="126" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">.confirm()</text>
+  <text x="446" y="146" font-size="10" fill="#868e96" text-anchor="middle">确认后才发请求</text>
+
+  <rect x="536" y="64" width="164" height="96" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="618" y="86" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">上下架</text>
+  <text x="618" y="106" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">PUT {status}</text>
+  <text x="618" y="126" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">on_sale ⇄ off</text>
+  <text x="618" y="146" font-size="10" fill="#868e96" text-anchor="middle">局部改那一行</text>
+
+  <!-- 汇入箭头 -->
+  <line x1="102" y1="160" x2="102" y2="180" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="274" y1="160" x2="274" y2="180" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="446" y1="160" x2="446" y2="180" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="618" y1="160" x2="618" y2="180" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="102" y1="180" x2="618" y2="180" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="360" y1="180" x2="360" y2="204" stroke="#1971c2" stroke-width="2"/>
+  <polygon points="360,212 353,198 367,198" fill="#1971c2"/>
+
+  <!-- ===== 分页数据流 ===== -->
+  <text x="20" y="234" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="start">② 分页数据流：翻一次页，就完整重跑一遍</text>
+
+  <!-- 状态盒 -->
+  <rect x="20" y="246" width="180" height="112" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="110" y="268" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="middle">pagination</text>
+  <text x="110" y="288" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">pageNum: 1</text>
+  <text x="110" y="306" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">pageSize: 10</text>
+  <text x="110" y="324" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">total: 0</text>
+  <text x="110" y="346" font-size="10" fill="#868e96" text-anchor="middle">keyword: ''</text>
+
+  <!-- 请求 -->
+  <line x1="200" y1="302" x2="248" y2="302" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="256,302 244,297 244,307" fill="#1971c2"/>
+  <text x="228" y="290" font-size="10" fill="#1971c2" text-anchor="middle">带参数</text>
+
+  <rect x="258" y="246" width="180" height="112" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="348" y="268" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">getGoodsList()</text>
+  <text x="348" y="290" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">GET /api/goods</text>
+  <text x="348" y="308" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">?pageNum=2</text>
+  <text x="348" y="326" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">&amp;pageSize=10</text>
+  <text x="348" y="348" font-size="10" fill="#868e96" text-anchor="middle">loading = true</text>
+
+  <!-- 后端分页 -->
+  <line x1="438" y1="302" x2="486" y2="302" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="494,302 482,297 482,307" fill="#1971c2"/>
+
+  <rect x="496" y="246" width="204" height="112" fill="#f1f3f5" stroke="#495057" stroke-width="1.5" rx="4"/>
+  <text x="598" y="268" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">后端只返回这一页</text>
+  <text x="598" y="290" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">{ list: [...], total: 37 }</text>
+  <text x="598" y="310" font-size="10" fill="#868e96" text-anchor="middle">list 是当页 10 条，total 是全量条数</text>
+  <text x="598" y="330" font-size="10" fill="#868e96" text-anchor="middle">分页在服务端做，前端不做全量切片</text>
+  <text x="598" y="350" font-size="10" font-weight="bold" fill="#e8590c" text-anchor="middle">total 只用来画分页条</text>
+
+  <!-- 回到表格 -->
+  <line x1="598" y1="358" x2="598" y2="380" stroke="#2f9e44" stroke-width="2"/>
+  <polygon points="598,388 591,374 605,374" fill="#2f9e44"/>
+
+  <rect x="20" y="388" width="680" height="94" fill="#f0f9e8" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="36" y="410" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="start">③ 渲染：tableData 换新数组 → el-table 自动重画 → loading 复位</text>
+
+  <text x="36" y="432" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">tableData.value = res.list</text>
+  <text x="36" y="450" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">pagination.total = res.total</text>
+  <text x="36" y="468" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">finally { loading.value = false }</text>
+
+  <rect x="360" y="406" width="326" height="60" fill="#fff" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="374" y="426" font-size="11" fill="#495057" text-anchor="start">v-loading 挂在 el-table 上，网络慢时</text>
+  <text x="374" y="444" font-size="11" fill="#495057" text-anchor="start">整块转圈，而不是让用户盯着空白表格</text>
+  <text x="374" y="460" font-size="10" fill="#868e96" text-anchor="start">三态：loading / 有数据 / 空状态</text>
+
+  <!-- ===== 分页三条行为 ===== -->
+  <rect x="20" y="496" width="680" height="50" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="36" y="518" font-weight="bold" fill="#495057" font-size="12" text-anchor="start">分页黄金行为</text>
+  <text x="132" y="518" font-size="11" fill="#495057" text-anchor="start">切页码：只改 pageNum</text>
+  <text x="286" y="518" font-size="11" fill="#495057" text-anchor="start">切每页条数：pageNum 重置 1</text>
+  <text x="500" y="518" font-size="11" fill="#495057" text-anchor="start">搜索：pageNum 也重置 1</text>
+  <text x="132" y="536" font-size="10" fill="#c92a2a" text-anchor="start">不改会怎样：停在第 5 页 + 每页 50 条 → 该页可能不存在 → 表格空白，看起来像接口坏了</text>
+</svg>

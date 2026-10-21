@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="440" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">readonly：让后代组件只能看，不能改</text>
+
+  <!-- 父组件 -->
+  <rect x="20" y="48" width="290" height="128" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="165" y="72" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">父组件 App.vue</text>
+  <text x="165" y="94" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">const theme = reactive({</text>
+  <text x="165" y="110" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">  color: 'blue' })</text>
+  <text x="165" y="132" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">provide('theme',</text>
+  <text x="165" y="148" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">  readonly(theme))</text>
+  <text x="165" y="168" fill="#495057" font-size="11" text-anchor="middle">自己手里留着可写的那份</text>
+
+  <!-- 箭头 -->
+  <line x1="314" y1="112" x2="404" y2="112" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="412,112 400,107 400,117" fill="#1971c2"/>
+  <text x="360" y="98" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">inject('theme')</text>
+
+  <!-- 子组件 -->
+  <rect x="430" y="48" width="270" height="128" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="565" y="72" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="middle">子组件（第 3 层）</text>
+  <text x="565" y="96" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">const theme =</text>
+  <text x="565" y="112" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">  inject('theme')</text>
+  <text x="565" y="136" fill="#495057" font-size="11" text-anchor="middle">拿到的是深度只读代理</text>
+  <text x="565" y="158" fill="#868e96" font-size="11" text-anchor="middle">读得到，写不进去</text>
+
+  <!-- 子组件尝试修改 -->
+  <rect x="20" y="196" width="290" height="104" fill="#fff5f5" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <text x="165" y="222" font-weight="bold" fill="#c92a2a" font-size="13" text-anchor="middle">子组件尝试修改</text>
+  <text x="165" y="248" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">theme.color = 'red'</text>
+  <text x="165" y="276" fill="#c92a2a" font-size="12" text-anchor="middle">写入被拦截，不生效</text>
+
+  <line x1="316" y1="248" x2="342" y2="248" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="350,248 338,243 338,253" fill="#adb5bd"/>
+
+  <rect x="350" y="196" width="340" height="104" fill="#f1f3f5" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="520" y="222" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">控制台会打印一条警告</text>
+  <text x="520" y="248" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">[Vue warn] target is readonly</text>
+  <text x="520" y="276" fill="#868e96" font-size="12" text-anchor="middle">不是报错，是「温柔地提醒」</text>
+
+  <!-- 正确姿势 -->
+  <rect x="20" y="320" width="680" height="106" fill="#f0f9e8" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="360" y="344" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">正确姿势：数据只读，方法可写</text>
+  <text x="360" y="370" fill="#495057" font-size="11" text-anchor="middle">父组件把「改数据的方法」一起 provide 下去，子组件只调方法、不直接改数据</text>
+  <text x="360" y="396" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">&lt;button @click="setColor('red')"&gt;切换主题&lt;/button&gt;</text>
+  <text x="360" y="420" fill="#868e96" font-size="11" text-anchor="middle">父组件内部改 reactive → 所有后代自动收到新值</text>
+</svg>

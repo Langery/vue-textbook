@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="460" viewBox="0 0 720 460" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="460" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">useLocalStorage：一个 ref 和 localStorage 双向同步</text>
+
+  <!-- 左侧：ref -->
+  <rect x="20" y="56" width="230" height="170" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="135" y="82" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">组件里的 ref</text>
+  <rect x="36" y="96" width="198" height="34" fill="#cce5ff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+  <text x="135" y="118" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">const theme = ref('light')</text>
+  <text x="135" y="154" fill="#495057" font-size="11" text-anchor="middle">用户改它 → 界面立刻更新</text>
+  <text x="135" y="180" fill="#868e96" font-size="11" text-anchor="middle">初始化时先读一次存量值</text>
+  <text x="135" y="206" fill="#495057" font-size="11" text-anchor="middle">存的是对象也能用</text>
+
+  <!-- 右侧：localStorage -->
+  <rect x="470" y="56" width="230" height="170" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="585" y="82" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="middle">localStorage</text>
+  <rect x="486" y="96" width="198" height="34" fill="#d8f5cc" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="585" y="118" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">"theme" =&gt; "dark"</text>
+  <text x="585" y="154" fill="#495057" font-size="11" text-anchor="middle">关掉浏览器再打开还在</text>
+  <text x="585" y="180" fill="#868e96" font-size="11" text-anchor="middle">同一个 key 全站共享</text>
+  <text x="585" y="206" fill="#868e96" font-size="11" text-anchor="middle">原生存的是字符串</text>
+
+  <!-- 上半箭头：ref → LS -->
+  <path d="M 250 108 Q 360 62 470 108" fill="none" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="478,112 466,100 464,110" fill="#1971c2"/>
+  <rect x="288" y="242" width="144" height="30" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="360" y="262" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">JSON.stringify(v)</text>
+  <text x="360" y="290" fill="#1971c2" font-size="11" text-anchor="middle">方向一：ref 变了 → 写进 storage</text>
+  <text x="360" y="312" fill="#868e96" font-size="11" text-anchor="middle">靠 watch(data, ..., { deep: true }) 盯着</text>
+
+  <line x1="250" y1="196" x2="360" y2="240" stroke="#adb5bd" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="470" y1="196" x2="360" y2="240" stroke="#adb5bd" stroke-width="1" stroke-dasharray="3 3"/>
+
+  <!-- 下半箭头：LS → ref -->
+  <path d="M 470 316 Q 360 356 250 316" fill="none" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="242,312 254,324 256,314" fill="#2f9e44"/>
+  <rect x="288" y="330" width="144" height="30" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="360" y="350" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">JSON.parse(s)</text>
+  <text x="360" y="378" fill="#2f9e44" font-size="11" text-anchor="middle">方向二：storage 变了 → 更新 ref</text>
+  <text x="360" y="400" fill="#868e96" font-size="11" text-anchor="middle">另一个标签页改了，当前页也跟着变</text>
+
+  <!-- 底部要点 -->
+  <rect x="20" y="412" width="680" height="34" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="434" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">方向一必须写，方向二要额外监听 window 的 storage 事件（自己写常被漏掉）</text>
+</svg>

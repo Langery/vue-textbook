@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="400" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">三个实战指令：v-copy / v-focus / v-debounce</text>
+
+  <!-- 卡 1 v-copy -->
+  <rect x="20" y="56" width="220" height="250" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <circle cx="46" cy="84" r="12" fill="#1971c2"/>
+  <text x="46" y="89" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">1</text>
+  <text x="68" y="89" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="start">v-copy 复制</text>
+  <text x="130" y="116" fill="#495057" font-size="11" text-anchor="middle">点击元素，把指定文本</text>
+  <text x="130" y="134" fill="#495057" font-size="11" text-anchor="middle">写进剪贴板</text>
+
+  <rect x="34" y="150" width="192" height="66" fill="#fff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+  <text x="46" y="170" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">&lt;button v-copy="url"&gt;</text>
+  <text x="46" y="188" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">  复制链接&lt;/button&gt;</text>
+  <text x="46" y="206" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#868e96" text-anchor="start">// value = url</text>
+
+  <text x="34" y="242" font-weight="bold" fill="#1971c2" font-size="11" text-anchor="start">关键钩子</text>
+  <text x="34" y="262" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">mounted 存值 + 加 click</text>
+  <text x="34" y="280" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">updated 换最新 value</text>
+  <text x="34" y="298" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">unmounted 解绑 click</text>
+
+  <!-- 卡 2 v-focus -->
+  <rect x="250" y="56" width="220" height="250" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <circle cx="276" cy="84" r="12" fill="#2f9e44"/>
+  <text x="276" y="89" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">2</text>
+  <text x="298" y="89" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="start">v-focus 聚焦</text>
+  <text x="360" y="116" fill="#495057" font-size="11" text-anchor="middle">元素挂载后自动</text>
+  <text x="360" y="134" fill="#495057" font-size="11" text-anchor="middle">获得输入焦点</text>
+
+  <rect x="264" y="150" width="192" height="66" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="276" y="170" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">&lt;input v-focus&gt;</text>
+  <text x="276" y="188" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">&lt;input v-focus="true"&gt;</text>
+  <text x="276" y="206" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#868e96" text-anchor="start">// 有值才执行</text>
+
+  <text x="264" y="242" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="start">关键钩子</text>
+  <text x="264" y="262" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">mounted(el) {</text>
+  <text x="264" y="280" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  el.focus()</text>
+  <text x="264" y="298" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">// 弹窗搜索框常用</text>
+
+  <!-- 卡 3 v-debounce -->
+  <rect x="480" y="56" width="220" height="250" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <circle cx="506" cy="84" r="12" fill="#e8590c"/>
+  <text x="506" y="89" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">3</text>
+  <text x="528" y="89" font-weight="bold" fill="#e8590c" font-size="14" text-anchor="start">v-debounce 防抖</text>
+  <text x="590" y="116" fill="#495057" font-size="11" text-anchor="middle">给事件加防抖，停下</text>
+  <text x="590" y="134" fill="#495057" font-size="11" text-anchor="middle">再执行绑的函数</text>
+
+  <rect x="494" y="150" width="192" height="66" fill="#fff" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+  <text x="506" y="170" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">&lt;input</text>
+  <text x="506" y="188" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">  v-debounce:500="go"&gt;</text>
+  <text x="506" y="206" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#868e96" text-anchor="start">// arg=500 value=go</text>
+
+  <text x="494" y="242" font-weight="bold" fill="#e8590c" font-size="11" text-anchor="start">关键钩子</text>
+  <text x="494" y="262" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">mounted 读 arg 定延迟</text>
+  <text x="494" y="280" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">清 timer 再 setTimeout</text>
+  <text x="494" y="298" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">unmounted 务必清 timer</text>
+
+  <!-- 底部 -->
+  <rect x="20" y="326" width="680" height="56" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="348" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">口诀：有模板要样式用组件，只想给现有元素加 DOM 行为用指令</text>
+  <text x="360" y="370" fill="#868e96" font-size="11" text-anchor="middle">指令零侵入、不多造 DOM 节点，还能全局注册一次到处用</text>
+</svg>

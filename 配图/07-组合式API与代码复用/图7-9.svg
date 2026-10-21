@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="400" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">一个 composable 的三段式结构模板</text>
+
+  <!-- 输入 -->
+  <rect x="20" y="56" width="200" height="210" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="120" y="82" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">① 输入</text>
+  <rect x="34" y="96" width="172" height="34" fill="#cce5ff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+  <text x="120" y="118" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">function useX(a, b)</text>
+  <text x="120" y="152" fill="#495057" font-size="11" text-anchor="middle">普通值 / ref 都能接</text>
+  <text x="120" y="176" font-weight="bold" fill="#1971c2" font-size="11" text-anchor="middle">尽量都收 ref</text>
+  <text x="120" y="198" fill="#868e96" font-size="10" text-anchor="middle">外部改了内部能感知</text>
+  <text x="120" y="220" fill="#868e96" font-size="10" text-anchor="middle">解构 props 不会丢响应性</text>
+  <text x="120" y="248" fill="#868e96" font-size="10" text-anchor="middle">用 toRefs 转成 ref</text>
+
+  <!-- 箭头 -->
+  <line x1="222" y1="160" x2="252" y2="160" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="260,160 248,155 248,165" fill="#adb5bd"/>
+
+  <!-- 内部逻辑 -->
+  <rect x="262" y="56" width="196" height="210" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="360" y="82" font-weight="bold" fill="#495057" font-size="14" text-anchor="middle">② 内部逻辑</text>
+  <text x="360" y="108" fill="#495057" font-size="11" text-anchor="middle">私有 ref / computed</text>
+  <text x="360" y="130" fill="#495057" font-size="11" text-anchor="middle">watch / watchEffect</text>
+  <text x="360" y="152" fill="#495057" font-size="11" text-anchor="middle">定时器、事件监听</text>
+  <text x="360" y="174" fill="#495057" font-size="11" text-anchor="middle">请求、缓存读写</text>
+  <rect x="276" y="188" width="168" height="30" fill="#f1f3f5" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="207" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">不该泄漏给调用方</text>
+  <text x="360" y="244" fill="#868e96" font-size="10" text-anchor="middle">副作用自己清理干净</text>
+
+  <!-- 箭头 -->
+  <line x1="460" y1="160" x2="490" y2="160" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="498,160 486,155 486,165" fill="#adb5bd"/>
+
+  <!-- 返回 -->
+  <rect x="500" y="56" width="200" height="210" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="600" y="82" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="middle">③ 返回</text>
+  <rect x="514" y="96" width="172" height="72" fill="#d8f5cc" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="600" y="118" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">return {</text>
+  <text x="600" y="138" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">  value, isReady,</text>
+  <text x="600" y="158" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">  reset, stop,</text>
+  <text x="600" y="192" fill="#495057" font-size="11" text-anchor="middle">状态给 ref / computed</text>
+  <text x="600" y="216" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="middle">操作用普通函数</text>
+  <text x="600" y="246" fill="#868e96" font-size="10" text-anchor="middle">需要的话带上 stop()</text>
+
+  <!-- 调用侧 -->
+  <rect x="20" y="288" width="680" height="94" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="312" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">调用侧长这样：组件里只剩两行</text>
+  <text x="80" y="340" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">const { value, reset } = useX(keyword)</text>
+  <text x="80" y="364" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">&lt;p&gt;{{ value }}&lt;/p&gt;</text>
+  <text x="470" y="340" fill="#868e96" font-size="11" text-anchor="start">命名用 use 开头，</text>
+  <text x="470" y="364" fill="#868e96" font-size="11" text-anchor="start">和组件一眼认得出</text>
+</svg>

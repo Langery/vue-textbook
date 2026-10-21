@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="400" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">ref 为什么能自动更新：Proxy 把赋值拦下来了</text>
+
+  <!-- 第一段：写入链路 -->
+  <text x="20" y="58" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="start">Vue 3 的写入链路：赋值 → 拦截 → 通知 → 重渲染</text>
+
+  <rect x="20" y="72" width="140" height="60" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="90" y="96" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">① 你改数据</text>
+  <text x="90" y="116" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">count.value = 1</text>
+
+  <line x1="162" y1="102" x2="192" y2="102" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="200,102 188,97 188,107" fill="#1971c2"/>
+
+  <rect x="200" y="72" width="140" height="60" fill="#cce5ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="270" y="96" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">② Proxy 拦截</text>
+  <text x="270" y="116" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">set(target, key, val)</text>
+
+  <line x1="342" y1="102" x2="372" y2="102" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="380,102 368,97 368,107" fill="#1971c2"/>
+
+  <rect x="380" y="72" width="140" height="60" fill="#cce5ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="450" y="96" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">③ 触发依赖</text>
+  <text x="450" y="116" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">trigger(target, 'set')</text>
+
+  <line x1="522" y1="102" x2="552" y2="102" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="560,102 548,97 548,107" fill="#1971c2"/>
+
+  <rect x="560" y="72" width="140" height="60" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="630" y="96" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">④ 视图更新</text>
+  <text x="630" y="116" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">组件重新渲染</text>
+
+  <!-- 第二段：对比 -->
+  <text x="20" y="166" font-weight="bold" fill="#495057" font-size="13" text-anchor="start">对比：同一个赋值，两种结局</text>
+
+  <rect x="20" y="180" width="330" height="152" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="185" y="204" font-weight="bold" fill="#868e96" font-size="14" text-anchor="middle">普通对象：Vue 不知情</text>
+
+  <rect x="36" y="216" width="298" height="34" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="50" y="237" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">const obj = { count: 0 }</text>
+
+  <rect x="36" y="256" width="298" height="34" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="50" y="277" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">obj.count = 1</text>
+
+  <text x="185" y="310" fill="#868e96" font-size="11" text-anchor="middle">赋值成功了，但没有任何人通知 Vue</text>
+  <text x="185" y="326" fill="#c92a2a" font-size="11" text-anchor="middle">页面上的 count 还是 0</text>
+
+  <rect x="370" y="180" width="330" height="152" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="535" y="204" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="middle">reactive 对象：拦得住</text>
+
+  <rect x="386" y="216" width="298" height="34" fill="#d8f5cc" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="400" y="237" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">const obj = reactive({ count: 0 })</text>
+
+  <rect x="386" y="256" width="298" height="34" fill="#d8f5cc" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="400" y="277" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">obj.count = 1   // 走 set 拦截</text>
+
+  <text x="535" y="310" fill="#2f9e44" font-size="11" text-anchor="middle">set 拦截 → trigger → 通知所有依赖者</text>
+  <text x="535" y="326" fill="#2f9e44" font-size="11" text-anchor="middle">页面上的 count 变成 1</text>
+
+  <!-- 底部结论 -->
+  <text x="360" y="362" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">依赖收集（track）与派发更新（trigger）是一对：读的时候记下谁在用，写的时候通知它们</text>
+  <text x="360" y="384" fill="#868e96" font-size="11" text-anchor="middle">没有收集过依赖的数据被改动，Vue 不会重新渲染——这就是「改了没反应」的第一号原因</text>
+</svg>

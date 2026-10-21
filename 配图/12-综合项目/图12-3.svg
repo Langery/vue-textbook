@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="480" viewBox="0 0 720 480" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="480" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">一条完整数据流：组件 → action → api → Axios → 后端</text>
+
+  <!-- ===== 请求链路（向下） ===== -->
+  <rect x="20" y="46" width="680" height="128" fill="#e7f3ff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+  <text x="34" y="66" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="start">请求方向：组件只管调 action，绝不直接碰 api 与 Axios</text>
+
+  <!-- 1 组件 -->
+  <rect x="34" y="76" width="122" height="60" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="95" y="96" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">① 组件</text>
+  <text x="95" y="114" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">HomeView.vue</text>
+  <text x="95" y="128" font-size="10" fill="#868e96" text-anchor="middle">按钮 / onMounted</text>
+
+  <line x1="158" y1="106" x2="172" y2="106" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="178,106 168,101 168,111" fill="#1971c2"/>
+  <text x="165" y="142" font-size="10" fill="#1971c2" text-anchor="middle">调</text>
+
+  <!-- 2 action -->
+  <rect x="180" y="76" width="122" height="60" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="241" y="96" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">② action</text>
+  <text x="241" y="114" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">fetchGoods()</text>
+  <text x="241" y="128" font-size="10" fill="#868e96" text-anchor="middle">await + 写 state</text>
+
+  <line x1="304" y1="106" x2="318" y2="106" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="324,106 314,101 314,111" fill="#2f9e44"/>
+  <text x="311" y="142" font-size="10" fill="#2f9e44" text-anchor="middle">调</text>
+
+  <!-- 3 api -->
+  <rect x="326" y="76" width="122" height="60" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="387" y="96" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="middle">③ api 层</text>
+  <text x="387" y="114" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">api/goods.js</text>
+  <text x="387" y="128" font-size="10" fill="#868e96" text-anchor="middle">拼 url 与参数</text>
+
+  <line x1="450" y1="106" x2="464" y2="106" stroke="#e8590c" stroke-width="1.5"/>
+  <polygon points="470,106 460,101 460,111" fill="#e8590c"/>
+  <text x="457" y="142" font-size="10" fill="#e8590c" text-anchor="middle">调</text>
+
+  <!-- 4 Axios -->
+  <rect x="472" y="76" width="122" height="60" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="533" y="96" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">④ Axios</text>
+  <text x="533" y="114" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">request 实例</text>
+  <text x="533" y="128" font-size="10" fill="#868e96" text-anchor="middle">拦截器加 token</text>
+
+  <line x1="596" y1="106" x2="610" y2="106" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="616,106 606,101 606,111" fill="#1971c2"/>
+  <text x="603" y="142" font-size="10" fill="#1971c2" text-anchor="middle">发</text>
+
+  <!-- 5 后端 -->
+  <rect x="618" y="76" width="70" height="60" fill="#f1f3f5" stroke="#495057" stroke-width="1.5" rx="4"/>
+  <text x="653" y="96" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">⑤ 后端</text>
+  <text x="653" y="114" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">GET /goods</text>
+  <text x="653" y="128" font-size="10" fill="#868e96" text-anchor="middle">json-server</text>
+
+  <text x="360" y="164" font-size="11" fill="#1971c2" text-anchor="middle">开发时由 Vite 代理把 /api 转发到 localhost:3000，上线后由 Nginx 反代到真实后端</text>
+
+  <!-- ===== 响应链路（向上） ===== -->
+  <rect x="20" y="190" width="680" height="128" fill="#f0f9e8" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="34" y="210" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="start">响应方向：数据回到 action 写进 state，组件自动重渲染</text>
+
+  <rect x="618" y="220" width="70" height="60" fill="#fff" stroke="#495057" stroke-width="1.5" rx="4"/>
+  <text x="653" y="240" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">响应体</text>
+  <text x="653" y="258" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">{list,total}</text>
+  <text x="653" y="272" font-size="10" fill="#868e96" text-anchor="middle">HTTP 200</text>
+
+  <line x1="610" y1="250" x2="596" y2="250" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="590,250 600,245 600,255" fill="#2f9e44"/>
+  <text x="603" y="294" font-size="10" fill="#2f9e44" text-anchor="middle">过拦截器</text>
+
+  <rect x="472" y="220" width="122" height="60" fill="#fff" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="533" y="240" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">拆包 data</text>
+  <text x="533" y="258" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">return res.data</text>
+  <text x="533" y="272" font-size="10" fill="#868e96" text-anchor="middle">失败走 catch</text>
+
+  <line x1="464" y1="250" x2="450" y2="250" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="444,250 454,245 454,255" fill="#2f9e44"/>
+  <text x="457" y="294" font-size="10" fill="#2f9e44" text-anchor="middle">return</text>
+
+  <rect x="326" y="220" width="122" height="60" fill="#fff" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="387" y="240" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">原样返回</text>
+  <text x="387" y="258" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">return promise</text>
+  <text x="387" y="272" font-size="10" fill="#868e96" text-anchor="middle">api 不加工</text>
+
+  <line x1="318" y1="250" x2="304" y2="250" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="298,250 308,245 308,255" fill="#2f9e44"/>
+  <text x="311" y="294" font-size="10" fill="#2f9e44" text-anchor="middle">await 后</text>
+
+  <rect x="180" y="220" width="122" height="60" fill="#d8f5cc" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="241" y="240" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">写 state</text>
+  <text x="241" y="258" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">list.value = r.list</text>
+  <text x="241" y="272" font-size="10" fill="#868e96" text-anchor="middle">唯一数据源</text>
+
+  <line x1="172" y1="250" x2="158" y2="250" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="152,250 162,245 162,255" fill="#2f9e44"/>
+  <text x="165" y="294" font-size="10" fill="#2f9e44" text-anchor="middle">改 state</text>
+
+  <rect x="34" y="220" width="122" height="60" fill="#fff" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="95" y="240" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">重渲染</text>
+  <text x="95" y="258" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">v-for goods</text>
+  <text x="95" y="272" font-size="10" fill="#868e96" text-anchor="middle">模板自动更新</text>
+
+  <!-- ===== 每层职责 ===== -->
+  <rect x="20" y="332" width="680" height="112" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="360" y="352" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">每层只干一件事——分层的全部意义就在这四句职责里</text>
+
+  <text x="34" y="374" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">组件</text>
+  <text x="34" y="392" font-size="11" fill="#495057" text-anchor="start">渲染 + 发指令，不写请求代码</text>
+
+  <text x="204" y="374" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="start">action</text>
+  <text x="204" y="392" font-size="11" fill="#495057" text-anchor="start">编排异步，管 loading 与错误</text>
+
+  <text x="374" y="374" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="start">api</text>
+  <text x="374" y="392" font-size="11" fill="#495057" text-anchor="start">只描述「调哪个接口」</text>
+
+  <text x="544" y="374" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">Axios 实例</text>
+  <text x="544" y="392" font-size="11" fill="#495057" text-anchor="start">统一 baseURL 与 token</text>
+
+  <line x1="20" y1="404" x2="700" y2="404" stroke="#dee2e6" stroke-width="1.5"/>
+
+  <text x="360" y="422" font-size="11" fill="#c92a2a" text-anchor="middle">✗ 反面写法：HomeView 里直接 import axios 再 .get('/goods') —— 换后端要改几十个文件</text>
+  <text x="360" y="438" font-size="11" fill="#868e96" text-anchor="middle">✓ 分层之后：换后端只改 api/index.js 一处，组件与 store 一行不用动</text>
+</svg>

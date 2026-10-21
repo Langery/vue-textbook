@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="520" viewBox="0 0 720 520" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="520" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">父子组件通信的 4 种方式与适用场景</text>
+
+  <!-- 方式 1 -->
+  <rect x="20" y="48" width="330" height="220" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <circle cx="46" cy="76" r="12" fill="#1971c2"/>
+  <text x="46" y="81" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">1</text>
+  <text x="68" y="81" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="start">props / emit</text>
+
+  <rect x="34" y="96" width="302" height="56" fill="#fff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+  <text x="46" y="115" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">&lt;Child :data="d" @save="onSave" /&gt;</text>
+  <text x="46" y="133" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">const props = defineProps(['data'])</text>
+  <text x="46" y="147" font-size="10" fill="#868e96" text-anchor="start">父传子 / 子传父，方向永远相反</text>
+
+  <text x="34" y="178" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">适用场景</text>
+  <text x="34" y="197" fill="#495057" font-size="11" text-anchor="start">最通用，父子之间的常规数据往来</text>
+  <text x="34" y="215" fill="#495057" font-size="11" text-anchor="start">数据要经过中间层一层层往下传</text>
+
+  <rect x="34" y="226" width="302" height="30" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="46" y="246" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="start">✓ 默认首选：够用、清晰、最好调试</text>
+
+  <!-- 方式 2 -->
+  <rect x="370" y="48" width="330" height="220" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <circle cx="396" cy="76" r="12" fill="#2f9e44"/>
+  <text x="396" y="81" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">2</text>
+  <text x="418" y="81" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="start">v-model</text>
+
+  <rect x="384" y="96" width="302" height="56" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="396" y="115" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">&lt;Input v-model="text" /&gt;</text>
+  <text x="396" y="133" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">emit('update:modelValue', v)</text>
+  <text x="396" y="147" font-size="10" fill="#868e96" text-anchor="start">props + emit 的语法糖</text>
+
+  <text x="384" y="178" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="start">适用场景</text>
+  <text x="384" y="197" fill="#495057" font-size="11" text-anchor="start">表单类组件：输入框、开关、下拉选择</text>
+  <text x="384" y="215" fill="#495057" font-size="11" text-anchor="start">需要「父改子」也生效的场景</text>
+
+  <rect x="384" y="226" width="302" height="30" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="396" y="246" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="start">✓ 双向绑定只用在表单值上</text>
+
+  <!-- 方式 3 -->
+  <rect x="20" y="284" width="330" height="220" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <circle cx="46" cy="312" r="12" fill="#e8590c"/>
+  <text x="46" y="317" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">3</text>
+  <text x="68" y="317" font-weight="bold" fill="#e8590c" font-size="14" text-anchor="start">provide / inject</text>
+
+  <rect x="34" y="332" width="302" height="56" fill="#fff" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+  <text x="46" y="351" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">// 祖先</text>
+  <text x="46" y="367" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">provide('theme', theme)</text>
+  <text x="46" y="382" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">inject('theme')</text>
+
+  <text x="34" y="414" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="start">适用场景</text>
+  <text x="34" y="433" fill="#495057" font-size="11" text-anchor="start">跨多层传同一个数据：主题、语言</text>
+  <text x="34" y="451" fill="#495057" font-size="11" text-anchor="start">祖先直接注入后代，跳过中间层</text>
+
+  <rect x="34" y="462" width="302" height="30" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="46" y="482" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="start">✓ 层级太深时用它省事</text>
+
+  <!-- 方式 4 -->
+  <rect x="370" y="284" width="330" height="220" fill="#fff5f5" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <circle cx="396" cy="312" r="12" fill="#c92a2a"/>
+  <text x="396" y="317" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">4</text>
+  <text x="418" y="317" font-weight="bold" fill="#c92a2a" font-size="14" text-anchor="start">ref + expose</text>
+
+  <rect x="384" y="332" width="302" height="56" fill="#fff" stroke="#ffc9c9" stroke-width="1.5" rx="4"/>
+  <text x="396" y="351" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">// 父组件</text>
+  <text x="396" y="367" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">const child = ref(null)</text>
+  <text x="396" y="382" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">child.value.focus()</text>
+
+  <text x="384" y="414" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="start">适用场景</text>
+  <text x="384" y="433" fill="#495057" font-size="11" text-anchor="start">命令式操作：聚焦、滚动、触发表单校验</text>
+  <text x="384" y="451" fill="#495057" font-size="11" text-anchor="start">子组件要用 defineExpose 主动暴露方法</text>
+
+  <rect x="384" y="462" width="302" height="30" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="396" y="482" font-weight="bold" fill="#c92a2a" font-size="11" text-anchor="start">⚠ 少数场景用，别当万能钥匙</text>
+</svg>

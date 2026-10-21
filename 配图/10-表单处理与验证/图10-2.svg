@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="440" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">五种表单输入的 v-model 绑定速查</text>
+
+  <!-- 表头 -->
+  <rect x="20" y="48" width="680" height="30" fill="#1971c2" rx="4"/>
+  <text x="36" y="68" font-weight="bold" fill="#fff" font-size="12" text-anchor="start">控件</text>
+  <text x="130" y="68" font-weight="bold" fill="#fff" font-size="12" text-anchor="start">v-model 写法</text>
+  <text x="400" y="68" font-weight="bold" fill="#fff" font-size="12" text-anchor="start">绑定类型</text>
+  <text x="490" y="68" font-weight="bold" fill="#fff" font-size="12" text-anchor="start">注意点</text>
+
+  <!-- 行 1：text -->
+  <rect x="20" y="78" width="680" height="58" fill="#fff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="36" y="100" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">text</text>
+  <text x="36" y="118" fill="#868e96" font-size="10" text-anchor="start">单行文本</text>
+  <text x="130" y="100" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">&lt;input v-model="text"&gt;</text>
+  <text x="130" y="118" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#868e96" text-anchor="start">&lt;input v-model.trim="t"&gt;</text>
+  <text x="400" y="100" fill="#495057" font-size="11" text-anchor="start">字符串</text>
+  <text x="400" y="118" fill="#868e96" font-size="10" text-anchor="start">一对一</text>
+  <text x="490" y="100" fill="#495057" font-size="11" text-anchor="start">.trim 去空格</text>
+  <text x="490" y="118" fill="#868e96" font-size="10" text-anchor="start">.number 转数字</text>
+
+  <!-- 行 2：textarea -->
+  <rect x="20" y="136" width="680" height="58" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+  <text x="36" y="158" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="start">textarea</text>
+  <text x="36" y="176" fill="#868e96" font-size="10" text-anchor="start">多行文本</text>
+  <text x="130" y="158" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">&lt;textarea v-model="msg"&gt;&lt;/textarea&gt;</text>
+  <text x="130" y="176" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#868e96" text-anchor="start">&lt;textarea v-model="m"&gt;&lt;/textarea&gt;</text>
+  <text x="400" y="158" fill="#495057" font-size="11" text-anchor="start">字符串</text>
+  <text x="400" y="176" fill="#868e96" font-size="10" text-anchor="start">一对一</text>
+  <text x="490" y="158" fill="#495057" font-size="11" text-anchor="start">不支持 {{ }} 插值</text>
+  <text x="490" y="176" fill="#868e96" font-size="10" text-anchor="start">只能用 v-model</text>
+
+  <!-- 行 3：checkbox -->
+  <rect x="20" y="194" width="680" height="58" fill="#fff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="36" y="216" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="start">checkbox</text>
+  <text x="36" y="234" fill="#868e96" font-size="10" text-anchor="start">复选框</text>
+  <text x="130" y="216" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">单个 v-model="ok"</text>
+  <text x="130" y="234" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">成组 v-model="hobbies"</text>
+  <text x="400" y="216" fill="#495057" font-size="11" text-anchor="start">布尔 / 数组</text>
+  <text x="400" y="234" fill="#868e96" font-size="10" text-anchor="start">看绑什么类型</text>
+  <text x="490" y="216" fill="#495057" font-size="11" text-anchor="start">成组必须写 value</text>
+  <text x="490" y="234" fill="#868e96" font-size="10" text-anchor="start">否则存进 "on"</text>
+
+  <!-- 行 4：radio -->
+  <rect x="20" y="252" width="680" height="58" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+  <text x="36" y="274" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="start">radio</text>
+  <text x="36" y="292" fill="#868e96" font-size="10" text-anchor="start">单选钮</text>
+  <text x="130" y="274" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">&lt;input type="radio" v-model="gender"&gt;</text>
+  <text x="130" y="292" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#868e96" text-anchor="start">&lt;input type="radio" value="m"&gt;</text>
+  <text x="400" y="274" fill="#495057" font-size="11" text-anchor="start">字符串</text>
+  <text x="400" y="292" fill="#868e96" font-size="10" text-anchor="start">选中项的 value</text>
+  <text x="490" y="274" fill="#495057" font-size="11" text-anchor="start">同组绑同一变量</text>
+  <text x="490" y="292" fill="#868e96" font-size="10" text-anchor="start">靠它互斥，不靠 name</text>
+
+  <!-- 行 5：select -->
+  <rect x="20" y="310" width="680" height="58" fill="#fff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="36" y="332" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">select</text>
+  <text x="36" y="350" fill="#868e96" font-size="10" text-anchor="start">下拉选择</text>
+  <text x="130" y="332" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">&lt;select v-model="city"&gt;</text>
+  <text x="130" y="350" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">&lt;select v-model="cs" multiple&gt;</text>
+  <text x="400" y="332" fill="#495057" font-size="11" text-anchor="start">值 / 数组</text>
+  <text x="400" y="350" fill="#868e96" font-size="10" text-anchor="start">多选绑数组</text>
+  <text x="490" y="332" fill="#495057" font-size="11" text-anchor="start">:value 可绑整个对象</text>
+  <text x="490" y="350" fill="#868e96" font-size="10" text-anchor="start">占位项 disabled value=""</text>
+
+  <!-- 底部 -->
+  <rect x="20" y="378" width="680" height="46" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="398" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">记一张对照表：text/textarea → 字符串，checkbox 单 → 布尔、组 → 数组</text>
+  <text x="360" y="416" fill="#868e96" font-size="11" text-anchor="middle">radio → 选中项的 value，select 单选 → 值、多选 → 数组</text>
+</svg>

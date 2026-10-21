@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="578" viewBox="0 0 720 578" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="578" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">前台组件树与目录结构：树上每个方框，都能在磁盘上找到对应文件</text>
+
+  <!-- ============ ① 组件树 ============ -->
+  <text x="20" y="54" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="start">① 前台组件树：App.vue 套 Layout，Layout 套四个页面</text>
+  <text x="700" y="54" font-size="11" fill="#868e96" text-anchor="end">蓝＝页面级（views/）　绿＝复用级（components/）</text>
+
+  <!-- App.vue -->
+  <rect x="300" y="64" width="120" height="28" fill="#1971c2" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="360" y="83" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#fff" text-anchor="middle">App.vue</text>
+  <line x1="360" y1="92" x2="360" y2="101" stroke="#adb5bd" stroke-width="1.5"/>
+
+  <!-- AppLayout.vue -->
+  <rect x="280" y="102" width="160" height="28" fill="#cce5ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="360" y="121" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">AppLayout.vue</text>
+
+  <!-- 树分叉 -->
+  <line x1="360" y1="130" x2="360" y2="140" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="100" y1="140" x2="610" y2="140" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="100" y1="140" x2="100" y2="147" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="270" y1="140" x2="270" y2="147" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="440" y1="140" x2="440" y2="147" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="610" y1="140" x2="610" y2="147" stroke="#adb5bd" stroke-width="1.5"/>
+
+  <!-- 四个页面组件 -->
+  <rect x="20" y="148" width="160" height="42" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="100" y="166" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">HomeView.vue</text>
+  <text x="100" y="184" font-size="11" fill="#495057" text-anchor="middle">首页：列表 + 搜索筛选</text>
+
+  <rect x="190" y="148" width="160" height="42" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="270" y="166" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">GoodsDetailView.vue</text>
+  <text x="270" y="184" font-size="11" fill="#495057" text-anchor="middle">详情 + 留言砍价</text>
+
+  <rect x="360" y="148" width="160" height="42" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="440" y="166" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">PublishView.vue</text>
+  <text x="440" y="184" font-size="11" fill="#495057" text-anchor="middle">发布闲置表单</text>
+
+  <rect x="530" y="148" width="160" height="42" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="610" y="166" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">CartView.vue</text>
+  <text x="610" y="184" font-size="11" fill="#495057" text-anchor="middle">购物车 + 模拟下单</text>
+
+  <!-- 四个复用子组件 -->
+  <line x1="100" y1="190" x2="100" y2="211" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="270" y1="190" x2="270" y2="211" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="440" y1="190" x2="440" y2="211" stroke="#adb5bd" stroke-width="1.5"/>
+  <line x1="610" y1="190" x2="610" y2="211" stroke="#adb5bd" stroke-width="1.5"/>
+
+  <rect x="25" y="212" width="150" height="28" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="100" y="231" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">GoodsCard.vue</text>
+
+  <rect x="195" y="212" width="150" height="28" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="270" y="231" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">CommentList.vue</text>
+
+  <rect x="365" y="212" width="150" height="28" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="440" y="231" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">ImageUploader.vue</text>
+
+  <rect x="535" y="212" width="150" height="28" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="610" y="231" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">CartTable.vue</text>
+
+  <line x1="20" y1="256" x2="700" y2="256" stroke="#dee2e6" stroke-width="1.5"/>
+  <text x="20" y="274" font-weight="bold" fill="#495057" font-size="14" text-anchor="start">② 目录结构：左边三块是「支撑层」，右边一列是「页面层」</text>
+
+  <!-- 左列 -->
+  <text x="20" y="312" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">src/</text>
+
+  <text x="20" y="329" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">├─ api/</text>
+  <text x="250" y="329" font-size="11" fill="#e8590c" text-anchor="start">请求层</text>
+
+  <text x="20" y="346" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">│   index.js</text>
+  <text x="250" y="346" font-size="11" fill="#868e96" text-anchor="start">Axios 实例 + 拦截器</text>
+
+  <text x="20" y="363" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">│   goods.js</text>
+  <text x="250" y="363" font-size="11" fill="#868e96" text-anchor="start">物品 CRUD</text>
+
+  <text x="20" y="380" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">│   order.js</text>
+  <text x="250" y="380" font-size="11" fill="#868e96" text-anchor="start">订单 CRUD</text>
+
+  <text x="20" y="397" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">├─ components/</text>
+  <text x="250" y="397" font-size="11" fill="#2f9e44" text-anchor="start">可复用组件</text>
+
+  <text x="20" y="414" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">│   GoodsCard.vue</text>
+  <text x="250" y="414" font-size="11" fill="#868e96" text-anchor="start">商品卡片</text>
+
+  <text x="20" y="431" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">│   Pagination.vue</text>
+  <text x="250" y="431" font-size="11" fill="#868e96" text-anchor="start">分页条</text>
+
+  <text x="20" y="448" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">│   EmptyState.vue</text>
+  <text x="250" y="448" font-size="11" fill="#868e96" text-anchor="start">空状态</text>
+
+  <text x="20" y="465" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">├─ stores/</text>
+  <text x="250" y="465" font-size="11" fill="#1971c2" text-anchor="start">Pinia 状态</text>
+
+  <text x="20" y="482" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">│   user.js</text>
+  <text x="250" y="482" font-size="11" fill="#868e96" text-anchor="start">token 与用户</text>
+
+  <text x="20" y="499" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">│   cart.js</text>
+  <text x="250" y="499" font-size="11" fill="#868e96" text-anchor="start">购物车</text>
+
+  <!-- 右列 -->
+  <text x="380" y="312" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">├─ views/</text>
+  <text x="600" y="312" font-size="11" fill="#1971c2" text-anchor="start">页面组件</text>
+
+  <text x="380" y="329" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">│   front/</text>
+  <text x="600" y="329" font-size="11" fill="#2f9e44" text-anchor="start">前台商城</text>
+
+  <text x="380" y="346" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">│     HomeView.vue</text>
+  <text x="600" y="346" font-size="11" fill="#868e96" text-anchor="start">列表 + 筛选</text>
+
+  <text x="380" y="363" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">│     GoodsDetailView.vue</text>
+  <text x="600" y="363" font-size="11" fill="#868e96" text-anchor="start">详情与留言</text>
+
+  <text x="380" y="380" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">│     PublishView.vue</text>
+  <text x="600" y="380" font-size="11" fill="#868e96" text-anchor="start">发布闲置</text>
+
+  <text x="380" y="397" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">│     CartView.vue</text>
+  <text x="600" y="397" font-size="11" fill="#868e96" text-anchor="start">购物车下单</text>
+
+  <text x="380" y="414" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">│   admin/</text>
+  <text x="600" y="414" font-size="11" fill="#e8590c" text-anchor="start">管理后台</text>
+
+  <text x="380" y="431" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">│     GoodsList.vue</text>
+  <text x="600" y="431" font-size="11" fill="#868e96" text-anchor="start">物品列表</text>
+
+  <text x="380" y="448" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">│     GoodsForm.vue</text>
+  <text x="600" y="448" font-size="11" fill="#868e96" text-anchor="start">物品表单</text>
+
+  <text x="380" y="465" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">│     OrderList.vue</text>
+  <text x="600" y="465" font-size="11" fill="#868e96" text-anchor="start">订单列表</text>
+
+  <text x="380" y="482" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">│   dashboard/</text>
+  <text x="600" y="482" font-size="11" fill="#2f9e44" text-anchor="start">数据看板</text>
+
+  <text x="380" y="499" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">│     DashboardView.vue</text>
+
+  <text x="20" y="516" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">├─ router/index.js</text>
+  <text x="250" y="516" font-size="11" fill="#868e96" text-anchor="start">路由表 + 守卫</text>
+  <text x="380" y="516" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">└─ mock/db.json</text>
+  <text x="600" y="516" font-size="11" fill="#868e96" text-anchor="start">假后端</text>
+
+  <!-- ============ ③ 小项目合拢 ============ -->
+  <line x1="20" y1="530" x2="700" y2="530" stroke="#dee2e6" stroke-width="1.5"/>
+  <text x="360" y="548" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="middle">③ 前面 P1~P11 的小项目，在这一层全部合拢</text>
+
+  <rect x="20" y="556" width="222" height="18" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="131" y="569" font-size="11" fill="#495057" text-anchor="middle">P2 列表渲染 → HomeView</text>
+
+  <rect x="246" y="556" width="222" height="18" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="357" y="569" font-size="11" fill="#495057" text-anchor="middle">P5 金额合计 → cart store</text>
+
+  <rect x="472" y="556" width="222" height="18" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="583" y="569" font-size="11" fill="#495057" text-anchor="middle">P8 路由 + Pinia → router/</text>
+</svg>

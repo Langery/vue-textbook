@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="470" viewBox="0 0 720 470" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="470" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">购物车跨页面共享：三个页面读写同一个 cart store</text>
+
+  <text x="360" y="50" font-size="11" fill="#868e96" text-anchor="middle">蓝线＝页面写 store（调 action）　　绿线＝store 变化回流到页面（读 state）</text>
+
+  <!-- 中心 store -->
+  <rect x="252" y="120" width="216" height="230" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="144" font-weight="bold" fill="#e8590c" font-size="14" text-anchor="middle">useCartStore</text>
+  <text x="360" y="162" font-size="11" fill="#495057" text-anchor="middle">stores/cart.js（全局唯一）</text>
+
+  <rect x="266" y="174" width="188" height="26" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="192" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">state  items[]</text>
+
+  <rect x="266" y="206" width="188" height="26" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="224" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="middle">getters  totalCount</text>
+
+  <rect x="266" y="238" width="188" height="26" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="256" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="middle">getters  totalPrice</text>
+
+  <rect x="266" y="270" width="188" height="26" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="288" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="middle">getters  isEmpty</text>
+
+  <rect x="266" y="302" width="188" height="26" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="320" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="middle">actions add / remove / clear</text>
+
+  <text x="360" y="342" font-size="11" fill="#868e96" text-anchor="middle">只存「哪件商品 × 几件」</text>
+
+  <!-- 三个页面 -->
+  <rect x="20" y="60" width="204" height="106" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="122" y="82" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">HomeView</text>
+  <text x="122" y="100" font-size="11" fill="#868e96" text-anchor="middle">商品列表页</text>
+  <text x="34" y="122" font-size="11" fill="#495057" text-anchor="start">写：addItem(goods)</text>
+  <text x="34" y="140" font-size="11" fill="#495057" text-anchor="start">读：角标显示 totalCount</text>
+  <text x="34" y="158" font-size="10" fill="#868e96" text-anchor="start">在卡片上加「加入购物车」按钮</text>
+
+  <rect x="20" y="196" width="204" height="106" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="122" y="218" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">GoodsDetailView</text>
+  <text x="122" y="236" font-size="11" fill="#868e96" text-anchor="middle">商品详情页</text>
+  <text x="34" y="258" font-size="11" fill="#495057" text-anchor="start">写：addItem(goods, qty)</text>
+  <text x="34" y="276" font-size="11" fill="#495057" text-anchor="start">读：数量选择器初值</text>
+  <text x="34" y="294" font-size="10" fill="#868e96" text-anchor="start">加购后提示「已加入，去购物车看看」</text>
+
+  <rect x="20" y="332" width="204" height="106" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="122" y="354" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">CartView</text>
+  <text x="122" y="372" font-size="11" fill="#868e96" text-anchor="middle">购物车页</text>
+  <text x="34" y="394" font-size="11" fill="#495057" text-anchor="start">写：changeQty / removeItem</text>
+  <text x="34" y="412" font-size="11" fill="#495057" text-anchor="start">写：下单成功后 clearCart</text>
+  <text x="34" y="430" font-size="10" fill="#868e96" text-anchor="start">读：整张表 + 合计金额</text>
+
+  <!-- 箭头 页面 → store（蓝：调 action） -->
+  <line x1="226" y1="113" x2="246.6" y2="170.6" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="250,180 242.4,172.1 250.9,169.1" fill="#1971c2"/>
+
+  <line x1="226" y1="249" x2="240.6" y2="243.5" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="250,240 242.2,247.7 239.1,239.3" fill="#1971c2"/>
+
+  <line x1="226" y1="385" x2="247.2" y2="311.6" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="250,302 251.5,312.9 242.9,310.4" fill="#1971c2"/>
+
+  <!-- 箭头 store → 页面（绿：读 state） -->
+  <line x1="250" y1="196" x2="228.1" y2="147.1" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="224,138 232.2,145.3 224,149" fill="#2f9e44"/>
+
+  <line x1="250" y1="206" x2="227.1" y2="276.5" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="224,286 222.8,275.1 231.4,277.9" fill="#2f9e44"/>
+
+  <line x1="250" y1="330" x2="227.4" y2="392.6" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="224,402 223.2,391.1 231.6,394.1" fill="#2f9e44"/>
+
+  <!-- 右侧说明 -->
+  <rect x="496" y="60" width="204" height="378" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="516" y="82" font-weight="bold" fill="#495057" font-size="13" text-anchor="start">为什么不是 props</text>
+  <text x="516" y="102" font-size="11" fill="#868e96" text-anchor="start">首页和详情页是并列路由，</text>
+  <text x="516" y="118" font-size="11" fill="#868e96" text-anchor="start">互相不是父子，props 传不到。</text>
+  <text x="516" y="134" font-size="11" fill="#868e96" text-anchor="start">提升到 App 逐层透传更荒唐。</text>
+
+  <line x1="516" y1="150" x2="684" y2="150" stroke="#dee2e6" stroke-width="1.5"/>
+
+  <text x="516" y="172" font-weight="bold" fill="#495057" font-size="13" text-anchor="start">storeToRefs 别忘</text>
+  <text x="516" y="192" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">const { items } = cart</text>
+  <text x="516" y="208" font-size="10" fill="#c92a2a" text-anchor="start">✗ 解构丢响应式</text>
+  <text x="516" y="228" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">const { items } =</text>
+  <text x="516" y="244" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">  storeToRefs(cart)</text>
+  <text x="516" y="260" font-size="10" fill="#2f9e44" text-anchor="start">✓ 方法不解构，直接调</text>
+
+  <line x1="516" y1="278" x2="684" y2="278" stroke="#dee2e6" stroke-width="1.5"/>
+
+  <text x="516" y="300" font-weight="bold" fill="#495057" font-size="13" text-anchor="start">状态只存一份</text>
+  <text x="516" y="320" font-size="11" fill="#868e96" text-anchor="start">列表页删一件，购物车页</text>
+  <text x="516" y="336" font-size="11" fill="#868e96" text-anchor="start">的表格和合计同时变，</text>
+  <text x="516" y="352" font-size="11" fill="#868e96" text-anchor="start">不用手动通知谁。</text>
+
+  <rect x="512" y="368" width="172" height="56" fill="#fff4e6" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+  <text x="524" y="386" font-size="11" font-weight="bold" fill="#e8590c" text-anchor="start">P5 记账小账本的回声</text>
+  <text x="524" y="404" font-size="10" fill="#868e96" text-anchor="start">「多笔记录 → 合计金额」</text>
+  <text x="524" y="418" font-size="10" fill="#868e96" text-anchor="start">今天长成了 getters</text>
+
+  <text x="360" y="460" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">一句话：路由决定「你在哪个页面」，store 决定「你在任何页面看到的都是同一份数据」</text>
+</svg>

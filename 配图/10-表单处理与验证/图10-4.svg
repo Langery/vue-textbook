@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="480" viewBox="0 0 720 480" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="480" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">VeeValidate 4：useForm 中心向外辐射的 API</text>
+
+  <!-- 中心：useForm -->
+  <rect x="245" y="196" width="230" height="92" fill="#e7f3ff" stroke="#1971c2" stroke-width="2" rx="4"/>
+  <text x="360" y="224" font-weight="bold" fill="#1971c2" font-size="15" text-anchor="middle">useForm()</text>
+  <text x="360" y="246" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">useForm({ validationSchema })</text>
+  <text x="360" y="268" fill="#868e96" font-size="11" text-anchor="middle">表单总管：规则 + 提交 + 错误</text>
+
+  <!-- 上方：values -->
+  <rect x="30" y="56" width="200" height="66" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="130" y="80" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">values</text>
+  <text x="130" y="98" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">所有字段的当前值</text>
+  <text x="130" y="114" fill="#868e96" font-size="10" text-anchor="middle">响应式对象，直接 v-model</text>
+
+  <!-- 上方：errors -->
+  <rect x="260" y="56" width="200" height="66" fill="#fff" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <text x="360" y="80" font-weight="bold" fill="#c92a2a" font-size="13" text-anchor="middle">errors</text>
+  <text x="360" y="98" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">字段名 → 错误信息</text>
+  <text x="360" y="114" fill="#868e96" font-size="10" text-anchor="middle">errors.email 取第一条</text>
+
+  <!-- 上方：handleSubmit -->
+  <rect x="490" y="56" width="200" height="66" fill="#fff" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="590" y="80" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">handleSubmit</text>
+  <text x="590" y="98" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">handleSubmit(cb)</text>
+  <text x="590" y="114" fill="#868e96" font-size="10" text-anchor="middle">校验通过才执行 cb</text>
+
+  <!-- 下方：defineField -->
+  <rect x="30" y="352" width="200" height="66" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="130" y="376" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="middle">defineField</text>
+  <text x="130" y="394" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">defineField('email')</text>
+  <text x="130" y="410" fill="#868e96" font-size="10" text-anchor="middle">取出字段的值和绑定属性</text>
+
+  <!-- 下方：resetForm -->
+  <rect x="490" y="352" width="200" height="66" fill="#fff" stroke="#868e96" stroke-width="1.5" rx="4"/>
+  <text x="590" y="376" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">resetForm</text>
+  <text x="590" y="394" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">resetForm()</text>
+  <text x="590" y="410" fill="#868e96" font-size="10" text-anchor="middle">恢复初始值或指定值</text>
+
+  <!-- 下方：isValid / isSubmitting -->
+  <rect x="260" y="352" width="200" height="66" fill="#fff" stroke="#868e96" stroke-width="1.5" rx="4"/>
+  <text x="360" y="376" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">isValid / isSubmitting</text>
+  <text x="360" y="394" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">isSubmitting.value</text>
+  <text x="360" y="410" fill="#868e96" font-size="10" text-anchor="middle">用来禁用提交按钮</text>
+
+  <!-- 连线 -->
+  <line x1="300" y1="196" x2="180" y2="122" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="176,116 173,128 184,124" fill="#1971c2"/>
+
+  <line x1="360" y1="196" x2="360" y2="122" stroke="#c92a2a" stroke-width="1.5"/>
+  <polygon points="360,116 353,128 367,128" fill="#c92a2a"/>
+
+  <line x1="420" y1="196" x2="540" y2="122" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="544,116 537,124 548,128" fill="#2f9e44"/>
+
+  <line x1="280" y1="288" x2="180" y2="352" stroke="#e8590c" stroke-width="1.5"/>
+  <polygon points="176,358 173,346 184,350" fill="#e8590c"/>
+
+  <line x1="360" y1="288" x2="360" y2="352" stroke="#868e96" stroke-width="1.5"/>
+  <polygon points="360,358 353,346 367,346" fill="#868e96"/>
+
+  <line x1="440" y1="288" x2="540" y2="352" stroke="#868e96" stroke-width="1.5"/>
+  <polygon points="544,358 537,350 548,346" fill="#868e96"/>
+
+  <!-- 说明 -->
+  <text x="20" y="150" font-weight="bold" fill="#495057" font-size="12" text-anchor="start">怎么用</text>
+  <text x="20" y="170" fill="#1971c2" font-size="11" text-anchor="start">values / errors 直接用</text>
+  <text x="20" y="190" fill="#868e96" font-size="11" text-anchor="start">字段值用 defineField 取</text>
+  <text x="20" y="210" fill="#868e96" font-size="11" text-anchor="start">提交用 handleSubmit 包</text>
+
+  <text x="20" y="250" font-weight="bold" fill="#495057" font-size="12" text-anchor="start">两个大坑</text>
+  <text x="20" y="270" fill="#c92a2a" font-size="11" text-anchor="start">useForm 不会把字段值</text>
+  <text x="20" y="288" fill="#c92a2a" font-size="11" text-anchor="start">暴露成模板变量</text>
+  <text x="20" y="312" fill="#c92a2a" font-size="11" text-anchor="start">handleSubmit 要先在</text>
+  <text x="20" y="330" fill="#c92a2a" font-size="11" text-anchor="start">script 里接住</text>
+
+  <text x="700" y="150" font-weight="bold" fill="#495057" font-size="12" text-anchor="end">校验通过后</text>
+  <text x="700" y="170" fill="#2f9e44" font-size="11" text-anchor="end">回调拿到的就是</text>
+  <text x="700" y="190" fill="#2f9e44" font-size="11" text-anchor="end">校验后的值对象</text>
+  <text x="700" y="212" fill="#868e96" font-size="10" text-anchor="end">不用自己再过滤一遍</text>
+
+  <!-- 底部 -->
+  <rect x="20" y="434" width="680" height="32" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="455" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">defineRule 必须先注册规则，validationSchema 里才能用；VeeValidate 3 是选项式，API 完全不同</text>
+</svg>

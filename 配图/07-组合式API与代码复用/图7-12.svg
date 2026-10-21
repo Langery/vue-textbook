@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="480" viewBox="0 0 720 480" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="480" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">自定义指令的生命周期：钩子与组件一一对应</text>
+
+  <!-- 时间轴 -->
+  <line x1="50" y1="118" x2="670" y2="118" stroke="#adb5bd" stroke-width="2"/>
+  <polygon points="680,118 668,112 668,124" fill="#adb5bd"/>
+
+  <!-- 节点 1 mounted -->
+  <circle cx="130" cy="118" r="11" fill="#1971c2"/>
+  <circle cx="130" cy="118" r="4" fill="#fff"/>
+  <text x="130" y="88" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">mounted</text>
+  <text x="130" y="106" fill="#868e96" font-size="10" text-anchor="middle">元素已插入 DOM</text>
+  <line x1="130" y1="131" x2="130" y2="152" stroke="#1971c2" stroke-width="1.5"/>
+
+  <!-- 节点 2 updated -->
+  <circle cx="360" cy="118" r="11" fill="#e8590c"/>
+  <circle cx="360" cy="118" r="4" fill="#fff"/>
+  <text x="360" y="88" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="middle">updated</text>
+  <text x="360" y="106" fill="#868e96" font-size="10" text-anchor="middle">绑定值变化后</text>
+  <line x1="360" y1="131" x2="360" y2="152" stroke="#e8590c" stroke-width="1.5"/>
+
+  <!-- 节点 3 unmounted -->
+  <circle cx="590" cy="118" r="11" fill="#c92a2a"/>
+  <circle cx="590" cy="118" r="4" fill="#fff"/>
+  <text x="590" y="88" font-weight="bold" fill="#c92a2a" font-size="13" text-anchor="middle">unmounted</text>
+  <text x="590" y="106" fill="#868e96" font-size="10" text-anchor="middle">元素被移除</text>
+  <line x1="590" y1="131" x2="590" y2="152" stroke="#c92a2a" stroke-width="1.5"/>
+
+  <!-- 三张说明卡 -->
+  <rect x="40" y="154" width="180" height="112" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="130" y="178" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">只跑一次</text>
+  <text x="130" y="200" fill="#495057" font-size="11" text-anchor="middle">初次渲染后触发</text>
+  <text x="130" y="222" fill="#495057" font-size="11" text-anchor="middle">加监听、聚焦、</text>
+  <text x="130" y="240" fill="#495057" font-size="11" text-anchor="middle">绑定第三方库</text>
+  <text x="130" y="258" fill="#1971c2" font-size="10" text-anchor="middle">v-focus 就是它</text>
+
+  <rect x="270" y="154" width="180" height="112" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="178" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="middle">每次更新都跑</text>
+  <text x="360" y="200" fill="#495057" font-size="11" text-anchor="middle">父组件重渲染后</text>
+  <text x="360" y="222" fill="#495057" font-size="11" text-anchor="middle">用来同步最新的</text>
+  <text x="360" y="240" fill="#495057" font-size="11" text-anchor="middle">binding.value</text>
+  <text x="360" y="258" fill="#868e96" font-size="10" text-anchor="middle">这里别做重活</text>
+
+  <rect x="500" y="154" width="180" height="112" fill="#fff5f5" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <text x="590" y="178" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="middle">必须清理</text>
+  <text x="590" y="200" fill="#495057" font-size="11" text-anchor="middle">解绑监听、关定时器</text>
+  <text x="590" y="222" fill="#495057" font-size="11" text-anchor="middle">不写就是内存泄漏</text>
+  <text x="590" y="240" fill="#c92a2a" font-size="10" text-anchor="middle">v-debounce 必写</text>
+  <text x="590" y="258" fill="#868e96" font-size="10" text-anchor="middle">解绑事件名要对上</text>
+
+  <!-- 参数表 -->
+  <rect x="20" y="288" width="680" height="34" fill="#f1f3f5" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="360" y="310" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">钩子统一三个参数：el（真实 DOM）、binding（传参）、vnode（虚拟节点）</text>
+
+  <rect x="20" y="336" width="680" height="128" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="40" y="360" font-weight="bold" fill="#495057" font-size="13" text-anchor="start">binding 里最常用的四个字段</text>
+
+  <rect x="40" y="372" width="200" height="34" fill="#e7f3ff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+  <text x="140" y="394" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">binding.value</text>
+  <text x="260" y="394" fill="#495057" font-size="11" text-anchor="start">= 引号里绑的值，v-copy="链接" 的链接</text>
+
+  <rect x="40" y="414" width="200" height="34" fill="#f0f9e8" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="140" y="436" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">binding.arg</text>
+  <text x="260" y="436" fill="#495057" font-size="11" text-anchor="start">= 冒号后的参数，v-debounce:500 的 500</text>
+
+  <text x="470" y="394" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">binding.modifiers</text>
+  <text x="470" y="436" fill="#868e96" font-size="11" text-anchor="start">= 点后的修饰符，如 .prevent</text>
+  <text x="40" y="458" fill="#868e96" font-size="10" text-anchor="start">简写形式 v-focus 等价于只写 mounted 和 updated 两个钩子，参数用不到时正好够用</text>
+</svg>

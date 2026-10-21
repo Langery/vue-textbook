@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="500" viewBox="0 0 720 500" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="500" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">useStorage 原理：ref 与 storage 之间的序列化管道</text>
+
+  <!-- 调用 -->
+  <rect x="20" y="52" width="680" height="40" fill="#f1f3f5" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="360" y="77" font-size="12" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">const theme = useStorage('app-theme', 'light', localStorage)</text>
+
+  <!-- 核心：ref 盒子 -->
+  <rect x="40" y="116" width="240" height="150" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="160" y="142" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">① ref 值</text>
+  <rect x="58" y="156" width="204" height="34" fill="#cce5ff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+  <text x="160" y="178" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">theme.value === 'dark'</text>
+  <text x="160" y="212" fill="#495057" font-size="11" text-anchor="middle">改它 → 触发 watch</text>
+  <text x="160" y="234" fill="#495057" font-size="11" text-anchor="middle">读它 → 模板正常用</text>
+  <text x="160" y="256" fill="#868e96" font-size="10" text-anchor="middle">对调用方来说就是普通 ref</text>
+
+  <!-- 序列化层 -->
+  <rect x="440" y="116" width="240" height="150" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="560" y="142" font-weight="bold" fill="#e8590c" font-size="14" text-anchor="middle">③ 序列化管道</text>
+  <rect x="458" y="156" width="204" height="30" fill="#fff" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+  <text x="560" y="176" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="middle">JSON.stringify(v)</text>
+  <rect x="458" y="192" width="204" height="30" fill="#fff" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+  <text x="560" y="212" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="middle">JSON.parse(str)</text>
+  <text x="560" y="244" fill="#495057" font-size="11" text-anchor="middle">对象、数组都能存</text>
+  <text x="560" y="256" fill="#868e96" font-size="10" text-anchor="middle">storage 只能存字符串</text>
+
+  <!-- 中间的读写层 -->
+  <rect x="300" y="116" width="120" height="150" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="360" y="140" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">② 读写层</text>
+  <text x="360" y="164" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">watch(</text>
+  <text x="360" y="180" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">  deep)</text>
+  <text x="360" y="206" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">setItem()</text>
+  <text x="360" y="230" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">getItem()</text>
+  <text x="360" y="256" fill="#868e96" font-size="10" text-anchor="middle">默认值兜底</text>
+
+  <line x1="282" y1="190" x2="298" y2="190" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="306,190 294,185 294,195" fill="#adb5bd"/>
+  <line x1="422" y1="190" x2="438" y2="190" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="446,190 434,185 434,195" fill="#adb5bd"/>
+
+  <!-- storage 通道 -->
+  <rect x="20" y="290" width="680" height="76" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="314" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">④ storage 通道：可插拔的第三、第四个参数</text>
+  <text x="44" y="338" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">default: 'light'</text>
+  <text x="230" y="338" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">localStorage / sessionStorage</text>
+  <text x="480" y="338" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">{ mergeDefaults }</text>
+  <text x="44" y="358" fill="#868e96" font-size="10" text-anchor="start">读不到时的兜底值</text>
+  <text x="230" y="358" fill="#868e96" font-size="10" text-anchor="start">换个存储介质</text>
+  <text x="480" y="358" fill="#868e96" font-size="10" text-anchor="start">和默认对象合并</text>
+
+  <!-- 与手写版对比 -->
+  <rect x="20" y="382" width="330" height="100" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="185" y="406" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">手写 useLocalStorage 要自己搞</text>
+  <text x="185" y="428" fill="#495057" font-size="11" text-anchor="middle">JSON 解析、默认值</text>
+  <text x="185" y="448" fill="#495057" font-size="11" text-anchor="middle">deep 监听、storage 事件</text>
+  <text x="185" y="468" fill="#868e96" font-size="10" text-anchor="middle">几十行，还容易漏边界情况</text>
+
+  <rect x="370" y="382" width="330" height="100" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="535" y="406" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">useStorage 一行搞定</text>
+  <text x="535" y="428" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">const s = useStorage('k', v)</text>
+  <text x="535" y="448" fill="#495057" font-size="11" text-anchor="middle">跨标签页自动同步</text>
+  <text x="535" y="468" fill="#868e96" font-size="10" text-anchor="middle">异步场景再换 useStorageAsync</text>
+</svg>

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="492" viewBox="0 0 720 492" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="492" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">computed / watch / methods 该用哪个</text>
+
+  <!-- 起点 -->
+  <rect x="255" y="46" width="210" height="40" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="360" y="71" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">要实现一段响应式逻辑</text>
+  <line x1="360" y1="86" x2="360" y2="104" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="360,110 354,98 366,98" fill="#adb5bd"/>
+
+  <!-- 判断一 -->
+  <rect x="200" y="106" width="320" height="46" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="134" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="middle">① 需要「算出一个值」放进模板吗？</text>
+
+  <line x1="252" y1="152" x2="152" y2="184" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="144,190 156,182 158,194" fill="#2f9e44"/>
+  <text x="186" y="172" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="middle">是</text>
+
+  <line x1="470" y1="152" x2="470" y2="184" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="470,190 464,178 476,178" fill="#adb5bd"/>
+  <text x="492" y="172" font-weight="bold" fill="#868e96" font-size="11" text-anchor="start">否</text>
+
+  <!-- computed -->
+  <rect x="20" y="188" width="215" height="232" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="127" y="216" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="middle">computed</text>
+  <rect x="34" y="230" width="187" height="60" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="44" y="250" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44">const total =</text>
+  <text x="44" y="266" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44">  computed(() =&gt;</text>
+  <text x="44" y="282" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44">  cart.reduce())</text>
+  <text x="127" y="314" fill="#495057" font-size="11" text-anchor="middle">有缓存，依赖不变不重算</text>
+  <text x="127" y="336" fill="#495057" font-size="11" text-anchor="middle">模板里直接读结果</text>
+  <text x="127" y="366" fill="#868e96" font-size="11" text-anchor="middle">典型场景</text>
+  <text x="127" y="388" fill="#495057" font-size="11" text-anchor="middle">总价、筛选结果</text>
+  <text x="127" y="408" fill="#495057" font-size="11" text-anchor="middle">格式化后展示</text>
+
+  <!-- 判断二 -->
+  <rect x="270" y="188" width="430" height="46" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="485" y="216" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="middle">② 需要副作用（发请求 / 操作 DOM）吗？</text>
+
+  <line x1="370" y1="234" x2="370" y2="264" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="370,270 364,258 376,258" fill="#1971c2"/>
+  <text x="352" y="256" font-weight="bold" fill="#1971c2" font-size="11" text-anchor="end">是</text>
+
+  <line x1="600" y1="234" x2="600" y2="264" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="600,270 594,258 606,258" fill="#adb5bd"/>
+  <text x="618" y="256" font-weight="bold" fill="#868e96" font-size="11" text-anchor="start">否</text>
+
+  <!-- watch -->
+  <rect x="270" y="268" width="205" height="152" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="372" y="296" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">watch</text>
+  <text x="372" y="324" fill="#495057" font-size="11" text-anchor="middle">监听变化后执行</text>
+  <text x="372" y="346" fill="#495057" font-size="11" text-anchor="middle">能拿到新旧值</text>
+  <text x="372" y="376" fill="#868e96" font-size="11" text-anchor="middle">默认惰性，首屏要</text>
+  <text x="372" y="398" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#868e96" text-anchor="middle">immediate: true</text>
+
+  <!-- methods -->
+  <rect x="495" y="268" width="205" height="152" fill="#f1f3f5" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="597" y="296" font-weight="bold" fill="#495057" font-size="14" text-anchor="middle">methods</text>
+  <text x="597" y="324" fill="#495057" font-size="11" text-anchor="middle">模板调用才执行</text>
+  <text x="597" y="346" fill="#495057" font-size="11" text-anchor="middle">不缓存、不自动跑</text>
+  <text x="597" y="376" fill="#868e96" font-size="11" text-anchor="middle">点按钮 / 提交表单时</text>
+  <text x="597" y="398" fill="#868e96" font-size="11" text-anchor="middle">才做一次动作</text>
+
+  <!-- 口诀 -->
+  <rect x="20" y="438" width="680" height="34" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="460" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">一句话：要「算值」用 computed，要「做事」用 watch，要「等用户操作」用 methods</text>
+</svg>

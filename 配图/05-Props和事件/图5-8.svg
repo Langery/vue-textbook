@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="440" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">组件上的 v-model：语法糖展开成两条通道</text>
+
+  <!-- 父组件 -->
+  <rect x="20" y="48" width="680" height="140" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="36" y="72" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="start">父组件 App.vue</text>
+
+  <rect x="36" y="84" width="648" height="34" fill="#fff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+  <text x="360" y="106" font-size="12" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">&lt;CustomInput v-model="text" /&gt;</text>
+
+  <text x="36" y="140" fill="#495057" font-size="11" text-anchor="start">↑ 往下传：</text>
+  <text x="96" y="140" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">:model-value="text"</text>
+  <text x="360" y="140" fill="#495057" font-size="11" text-anchor="start">↑ 往回传：</text>
+  <text x="432" y="140" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">@update:model-value="text = $event"</text>
+
+  <text x="36" y="166" fill="#868e96" font-size="11" text-anchor="start">v-model 只是这两条的简写：一收一发，缺一不可</text>
+  <text x="36" y="180" fill="#868e96" font-size="11" text-anchor="start">只写 modelValue 不 emit，或只 emit 不接 prop，绑定都不成立</text>
+
+  <!-- 通道箭头：props 向下 -->
+  <line x1="200" y1="188" x2="200" y2="238" stroke="#1971c2" stroke-width="2"/>
+  <polygon points="200,248 192,232 208,232" fill="#1971c2"/>
+  <text x="212" y="222" font-size="11" fill="#1971c2" text-anchor="start">modelValue（prop）</text>
+
+  <!-- 通道箭头：emit 向上 -->
+  <line x1="520" y1="248" x2="520" y2="188" stroke="#2f9e44" stroke-width="2"/>
+  <polygon points="520,188 512,204 528,204" fill="#2f9e44"/>
+  <text x="508" y="222" font-size="11" fill="#2f9e44" text-anchor="end">update:modelValue（emit）</text>
+
+  <!-- 子组件 -->
+  <rect x="20" y="248" width="680" height="130" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="36" y="272" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="start">子组件 CustomInput.vue</text>
+
+  <rect x="36" y="284" width="648" height="58" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="48" y="304" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">defineProps(['modelValue'])</text>
+  <text x="48" y="322" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">const emit = defineEmits(['update:modelValue'])</text>
+  <text x="48" y="336" font-size="10" fill="#868e96" text-anchor="start">收 modelValue，发 update:modelValue —— 这就是「支持 v-model」的完整契约</text>
+
+  <text x="36" y="362" fill="#495057" font-size="11" text-anchor="start">v-model:title 可以绑多个值：</text>
+  <text x="190" y="362" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">emit('update:title', v)</text>
+
+  <!-- 底部 -->
+  <text x="20" y="406" font-weight="bold" fill="#495057" font-size="12" text-anchor="start">记三件套</text>
+  <text x="100" y="406" font-size="12" fill="#1971c2" text-anchor="start">收 modelValue</text>
+  <text x="196" y="406" font-size="12" fill="#868e96" text-anchor="start">·</text>
+  <text x="210" y="406" font-size="12" fill="#2f9e44" text-anchor="start">发 update:modelValue</text>
+  <text x="360" y="406" font-size="12" fill="#868e96" text-anchor="start">·</text>
+  <text x="374" y="406" font-size="12" fill="#e8590c" text-anchor="start">父组件 v-model 绑定</text>
+  <text x="20" y="428" font-size="11" fill="#868e96" text-anchor="start">Vue 3.4+ 还可以用 defineModel() 一行搞定：const text = defineModel()</text>
+</svg>

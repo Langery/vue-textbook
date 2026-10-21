@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="480" viewBox="0 0 720 480" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="480" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">自定义验证规则的三种写法</text>
+
+  <!-- 方式一：defineRule -->
+  <rect x="20" y="48" width="218" height="360" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="129" y="74" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">① defineRule 全局注册</text>
+
+  <rect x="32" y="88" width="194" height="132" fill="#fff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+  <text x="42" y="107" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">defineRule('phone',</text>
+  <text x="42" y="122" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">  (value) =&gt; {</text>
+  <text x="42" y="137" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">  if (!value)</text>
+  <text x="42" y="152" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">    return true</text>
+  <text x="42" y="167" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">  if (!/^1[3-9]/)</text>
+  <text x="42" y="182" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">    return '格式错'</text>
+  <text x="42" y="197" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">  return true })</text>
+
+  <text x="32" y="244" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">怎么用</text>
+  <text x="32" y="263" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">phone: 'required|phone'</text>
+  <text x="32" y="287" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">适用场景</text>
+  <text x="32" y="306" fill="#495057" font-size="11" text-anchor="start">3 处以上要用的规则</text>
+  <text x="32" y="324" fill="#495057" font-size="11" text-anchor="start">建议集中放 rules.js</text>
+
+  <rect x="32" y="338" width="194" height="58" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="42" y="358" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="start">✓ 定义一次，全项目可用</text>
+  <text x="42" y="376" fill="#868e96" font-size="10" text-anchor="start">规则集中、好维护</text>
+  <text x="42" y="390" fill="#868e96" font-size="10" text-anchor="start">支持带参：between:0,150</text>
+
+  <!-- 方式二：内联函数 -->
+  <rect x="251" y="48" width="218" height="360" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="360" y="74" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="middle">② schema 内联函数</text>
+
+  <rect x="263" y="88" width="194" height="132" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="273" y="107" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">useForm({</text>
+  <text x="273" y="122" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">  validationSchema: {</text>
+  <text x="273" y="137" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">    nickname: (v) =&gt; {</text>
+  <text x="273" y="152" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">      if (!v)</text>
+  <text x="273" y="167" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">        return '不能空'</text>
+  <text x="273" y="182" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">      return true</text>
+  <text x="273" y="197" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">    } } })</text>
+
+  <text x="263" y="244" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="start">怎么用</text>
+  <text x="263" y="263" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">直接写在 schema 里</text>
+  <text x="263" y="287" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="start">适用场景</text>
+  <text x="263" y="306" fill="#495057" font-size="11" text-anchor="start">只在一个表单用一次的规则</text>
+  <text x="263" y="324" fill="#495057" font-size="11" text-anchor="start">不想污染全局命名</text>
+
+  <rect x="263" y="338" width="194" height="58" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="273" y="358" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="start">✓ 不用 defineRule</text>
+  <text x="273" y="376" fill="#868e96" font-size="10" text-anchor="start">读代码就能看到规则</text>
+  <text x="273" y="390" fill="#868e96" font-size="10" text-anchor="start">但不能被别的表单复用</text>
+
+  <!-- 方式三：异步规则 -->
+  <rect x="482" y="48" width="218" height="360" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="591" y="74" font-weight="bold" fill="#e8590c" font-size="14" text-anchor="middle">③ 异步规则</text>
+
+  <rect x="494" y="88" width="194" height="132" fill="#fff" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+  <text x="504" y="107" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">defineRule('unique',</text>
+  <text x="504" y="122" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">  async (value) =&gt; {</text>
+  <text x="504" y="137" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">   if (!value)</text>
+  <text x="504" y="152" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">     return true</text>
+  <text x="504" y="167" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">   const res =</text>
+  <text x="504" y="182" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">     await fetch(..)</text>
+  <text x="504" y="197" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">   return true })</text>
+
+  <text x="494" y="244" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="start">怎么用</text>
+  <text x="494" y="263" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">name: 'required|unique'</text>
+  <text x="494" y="287" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="start">适用场景</text>
+  <text x="494" y="306" fill="#495057" font-size="11" text-anchor="start">用户名查重、手机号是否注册</text>
+  <text x="494" y="324" fill="#495057" font-size="11" text-anchor="start">需要调后端接口的校验</text>
+
+  <rect x="494" y="338" width="194" height="58" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="504" y="358" font-weight="bold" fill="#c92a2a" font-size="11" text-anchor="start">⚠ 要防抖，别每个字符都查</text>
+  <text x="504" y="376" fill="#868e96" font-size="10" text-anchor="start">提交时再兜底查一次</text>
+  <text x="504" y="390" fill="#868e96" font-size="10" text-anchor="start">要处理竞态，以最后一次为准</text>
+
+  <!-- 底部 -->
+  <rect x="20" y="422" width="680" height="42" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="442" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">共同约定：返回 true 表示通过，返回字符串当错误信息，返回 false 用默认提示</text>
+  <text x="360" y="458" fill="#868e96" font-size="11" text-anchor="middle">选型口诀：3 处以上用 defineRule，只用一次就内联，要调接口就写成异步</text>
+</svg>
