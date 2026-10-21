@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="440" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">onErrorCaptured：组件级错误边界</text>
+
+  <!-- 左：App -->
+  <rect x="40" y="52" width="330" height="50" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="205" y="73" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">App.vue 父组件</text>
+  <text x="205" y="90" fill="#495057" font-size="10" text-anchor="middle">页面主体一直正常</text>
+  <line x1="205" y1="102" x2="205" y2="116" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="205,116 200,106 210,106" fill="#adb5bd"/>
+
+  <!-- 左：ErrorBoundary -->
+  <rect x="40" y="118" width="330" height="58" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="205" y="139" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">ErrorBoundary 包裹层</text>
+  <text x="205" y="156" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">onErrorCaptured(err, inst, info)</text>
+  <text x="205" y="170" fill="#868e96" font-size="10" text-anchor="middle">后代组件的错误在这里被接住</text>
+  <line x1="205" y1="176" x2="205" y2="190" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="205,190 200,180 210,180" fill="#adb5bd"/>
+
+  <!-- 左：出错的子组件 -->
+  <rect x="40" y="192" width="330" height="58" fill="#fff5f5" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <text x="205" y="213" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="middle">UserCard 子组件</text>
+  <text x="205" y="230" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">props.user.name.toUpperCase()</text>
+  <text x="205" y="244" fill="#c92a2a" font-size="10" text-anchor="middle">user 为 null，这一行抛错</text>
+  <line x1="205" y1="250" x2="205" y2="278" stroke="#1971c2" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <polygon points="205,280 200,268 210,268" fill="#1971c2"/>
+  <text x="216" y="270" font-weight="bold" fill="#1971c2" font-size="10" text-anchor="start">return false</text>
+
+  <!-- 左：兜底 UI -->
+  <rect x="40" y="282" width="330" height="58" fill="#d8f5cc" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="205" y="303" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">只把这块替换成兜底 UI</text>
+  <text x="205" y="320" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">&lt;div class="error"&gt;加载失败&lt;/div&gt;</text>
+  <text x="205" y="334" fill="#868e96" font-size="10" text-anchor="middle">页面其余部分照常显示</text>
+
+  <!-- 右：无边界 -->
+  <rect x="390" y="52" width="310" height="44" fill="#f1f3f5" stroke="#868e96" stroke-width="1.5" rx="4"/>
+  <text x="545" y="80" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">没有错误边界时</text>
+
+  <rect x="390" y="110" width="310" height="44" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="545" y="137" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">App.vue 照常渲染</text>
+  <line x1="545" y1="154" x2="545" y2="166" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="545,166 540,156 550,156" fill="#adb5bd"/>
+
+  <rect x="390" y="168" width="310" height="44" fill="#fff5f5" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <text x="545" y="195" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="middle">UserCard 抛出错误</text>
+  <line x1="545" y1="212" x2="545" y2="224" stroke="#c92a2a" stroke-width="1.5"/>
+  <polygon points="545,224 540,214 550,214" fill="#c92a2a"/>
+
+  <rect x="390" y="226" width="310" height="44" fill="#fff5f5" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <text x="545" y="243" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="middle">错误一路冒泡到根实例</text>
+  <text x="545" y="260" fill="#868e96" font-size="10" text-anchor="middle">没人拦，Vue 直接抛给全局</text>
+  <line x1="545" y1="270" x2="545" y2="282" stroke="#c92a2a" stroke-width="1.5"/>
+  <polygon points="545,282 540,272 550,272" fill="#c92a2a"/>
+
+  <rect x="390" y="284" width="310" height="56" fill="#c92a2a" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <text x="545" y="307" font-weight="bold" fill="#fff" font-size="13" text-anchor="middle">整页白屏</text>
+  <text x="545" y="325" fill="#ffe3e3" font-size="10" text-anchor="middle">用户不刷新页面就回不来</text>
+
+  <!-- 底部要点 -->
+  <rect x="20" y="356" width="680" height="66" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="34" y="380" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">要点一</text>
+  <text x="86" y="380" fill="#495057" font-size="11" text-anchor="start">onErrorCaptured 只管「后代」：组件自己抛的错它接不住</text>
+  <text x="34" y="406" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">要点二</text>
+  <text x="86" y="406" fill="#495057" font-size="11" text-anchor="start">回调里 return false，就不再往上冒泡，否则还会惊动 app.config.errorHandler</text>
+</svg>

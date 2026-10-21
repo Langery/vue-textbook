@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="512" viewBox="0 0 720 512" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="512" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">异步测试的时序：不等就断言，等于白测</text>
+
+  <!-- 步骤 1 -->
+  <circle cx="48" cy="77" r="15" fill="#1971c2"/>
+  <text x="48" y="82" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">1</text>
+  <rect x="72" y="52" width="348" height="50" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="86" y="73" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">触发交互</text>
+  <text x="86" y="91" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">await w.find('button').trigger('click')</text>
+
+  <line x1="48" y1="102" x2="48" y2="118" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="48,118 43,108 53,108" fill="#1971c2"/>
+
+  <!-- 步骤 2 -->
+  <circle cx="48" cy="143" r="15" fill="#1971c2"/>
+  <text x="48" y="148" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">2</text>
+  <rect x="72" y="118" width="348" height="50" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="86" y="139" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">组件内发出请求</text>
+  <text x="86" y="157" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">const list = await getList()</text>
+
+  <line x1="48" y1="168" x2="48" y2="184" stroke="#adb5bd" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <polygon points="48,184 43,174 53,174" fill="#adb5bd"/>
+
+  <!-- 步骤 3 -->
+  <circle cx="48" cy="209" r="15" fill="#868e96"/>
+  <text x="48" y="214" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">3</text>
+  <rect x="72" y="184" width="348" height="50" fill="#f1f3f5" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="86" y="205" font-weight="bold" fill="#495057" font-size="12" text-anchor="start">Promise 处于 pending</text>
+  <text x="86" y="223" fill="#868e96" font-size="10" text-anchor="start">此刻 DOM 还是空的，断言必然失败</text>
+
+  <line x1="48" y1="234" x2="48" y2="250" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="48,250 43,240 53,240" fill="#2f9e44"/>
+
+  <!-- 步骤 4 -->
+  <circle cx="48" cy="275" r="15" fill="#2f9e44"/>
+  <text x="48" y="280" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">4</text>
+  <rect x="72" y="250" width="348" height="50" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="86" y="271" font-weight="bold" fill="#2f9e44" font-size="12" font-family="ui-monospace,Menlo,monospace" text-anchor="start">await flushPromises()</text>
+  <text x="86" y="289" fill="#495057" font-size="10" text-anchor="start">清空微任务队列，让 .then 里的赋值跑完</text>
+
+  <line x1="48" y1="300" x2="48" y2="316" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="48,316 43,306 53,306" fill="#2f9e44"/>
+
+  <!-- 步骤 5 -->
+  <circle cx="48" cy="341" r="15" fill="#2f9e44"/>
+  <text x="48" y="346" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">5</text>
+  <rect x="72" y="316" width="348" height="50" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="86" y="337" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="start">Vue 调度更新，DOM 刷新</text>
+  <text x="86" y="355" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">list 变化 → 重新渲染出 &lt;li&gt;</text>
+
+  <line x1="48" y1="366" x2="48" y2="382" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="48,382 43,372 53,372" fill="#2f9e44"/>
+
+  <!-- 步骤 6 -->
+  <circle cx="48" cy="407" r="15" fill="#e8590c"/>
+  <text x="48" y="412" font-weight="bold" fill="#fff" font-size="14" text-anchor="middle">6</text>
+  <rect x="72" y="382" width="348" height="50" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="86" y="403" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="start">这时才断言</text>
+  <text x="86" y="421" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">expect(w.findAll('li')).toHaveLength(3)</text>
+
+  <!-- 右侧：不 await 的后果 -->
+  <rect x="440" y="52" width="260" height="196" fill="#fff5f5" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <text x="570" y="78" font-weight="bold" fill="#c92a2a" font-size="13" text-anchor="middle">漏掉 await 会怎样</text>
+  <text x="458" y="102" fill="#495057" font-size="11" text-anchor="start">· trigger / setValue 必须 await</text>
+  <text x="458" y="124" fill="#495057" font-size="11" text-anchor="start">· 请求返回后要等队列清空</text>
+  <text x="458" y="146" fill="#495057" font-size="11" text-anchor="start">· 此时断言读到的是旧 DOM</text>
+  <text x="458" y="168" fill="#495057" font-size="11" text-anchor="start">· 表现为「偶发失败」：</text>
+  <text x="458" y="188" fill="#868e96" font-size="10" text-anchor="start">本地能过、CI 偶挂，最难查</text>
+  <rect x="456" y="202" width="228" height="34" fill="#fff" stroke="#e03131" stroke-width="1.5" rx="4"/>
+  <text x="570" y="224" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="middle">拿不到就多等一轮</text>
+
+  <!-- 右侧：两个 await 的区别 -->
+  <rect x="440" y="264" width="260" height="168" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="570" y="290" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">两个 await 的分工</text>
+  <text x="458" y="314" font-weight="bold" fill="#1971c2" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">nextTick()</text>
+  <text x="458" y="332" fill="#868e96" font-size="10" text-anchor="start">等 Vue 把 DOM 刷完</text>
+  <text x="458" y="352" fill="#868e96" font-size="10" text-anchor="start">同步改 data / ref 后用它</text>
+  <text x="458" y="382" font-weight="bold" fill="#2f9e44" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">flushPromises()</text>
+  <text x="458" y="400" fill="#868e96" font-size="10" text-anchor="start">等 Promise 链走完（Vue Test</text>
+  <text x="458" y="418" fill="#868e96" font-size="10" text-anchor="start">Utils 提供），再触发更新</text>
+
+  <!-- 底部代码 -->
+  <rect x="20" y="446" width="680" height="50" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="34" y="468" font-weight="bold" fill="#1971c2" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">await button.trigger('click')</text>
+  <text x="330" y="468" font-weight="bold" fill="#2f9e44" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">await flushPromises()</text>
+  <text x="560" y="468" fill="#868e96" font-size="11" text-anchor="start">再断言</text>
+  <text x="34" y="488" fill="#868e96" font-size="10" text-anchor="start">顺序：先触发 → 再清队列 → 最后查 DOM。中间少任何一步，用例就是在赌运气。</text>
+</svg>

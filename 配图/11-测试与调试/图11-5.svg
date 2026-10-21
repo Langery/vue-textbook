@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="470" viewBox="0 0 720 470" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="470" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">常用断言速查：expect 到底在比什么</text>
+
+  <!-- 表头 -->
+  <rect x="20" y="48" width="680" height="30" fill="#1971c2" rx="4"/>
+  <text x="36" y="68" font-weight="bold" fill="#fff" font-size="12" text-anchor="start">断言</text>
+  <text x="190" y="68" font-weight="bold" fill="#fff" font-size="12" text-anchor="start">判定什么</text>
+  <text x="380" y="68" font-weight="bold" fill="#fff" font-size="12" text-anchor="start">例子</text>
+
+  <!-- 行 1：toBe -->
+  <rect x="20" y="78" width="680" height="50" fill="#fff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="36" y="98" font-weight="bold" fill="#1971c2" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">toBe</text>
+  <text x="36" y="118" fill="#868e96" font-size="10" text-anchor="start">严格相等</text>
+  <text x="190" y="98" fill="#495057" font-size="11" text-anchor="start">值和引用都一样</text>
+  <text x="190" y="118" fill="#868e96" font-size="10" text-anchor="start">对象比的是同一个引用</text>
+  <text x="380" y="98" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">expect(w.props('n')).toBe(0)</text>
+  <text x="380" y="118" fill="#868e96" font-size="10" text-anchor="start">数字、字符串、布尔用它</text>
+
+  <!-- 行 2：toEqual -->
+  <rect x="20" y="128" width="680" height="50" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+  <text x="36" y="148" font-weight="bold" fill="#2f9e44" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">toEqual</text>
+  <text x="36" y="168" fill="#868e96" font-size="10" text-anchor="start">深度相等</text>
+  <text x="190" y="148" fill="#495057" font-size="11" text-anchor="start">结构一样，内容一样</text>
+  <text x="190" y="168" fill="#868e96" font-size="10" text-anchor="start">不要求是同一个对象</text>
+  <text x="380" y="148" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">expect(w.props('u')).toEqual({</text>
+  <text x="380" y="168" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  id: 1, name: 'Tom' })</text>
+
+  <!-- 行 3：toContain -->
+  <rect x="20" y="178" width="680" height="50" fill="#fff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="36" y="198" font-weight="bold" fill="#e8590c" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">toContain</text>
+  <text x="36" y="218" fill="#868e96" font-size="10" text-anchor="start">包含</text>
+  <text x="190" y="198" fill="#495057" font-size="11" text-anchor="start">字符串含子串 / 数组含元素</text>
+  <text x="190" y="218" fill="#868e96" font-size="10" text-anchor="start">查渲染出的文字最常用</text>
+  <text x="380" y="198" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">expect(w.text()).toContain('提交')</text>
+  <text x="380" y="218" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">expect(emits).toContain('save')</text>
+
+  <!-- 行 4：toHaveLength -->
+  <rect x="20" y="228" width="680" height="50" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+  <text x="36" y="248" font-weight="bold" fill="#1971c2" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">toHaveLength</text>
+  <text x="36" y="268" fill="#868e96" font-size="10" text-anchor="start">长度</text>
+  <text x="190" y="248" fill="#495057" font-size="11" text-anchor="start">数组 / 字符串的项数</text>
+  <text x="190" y="268" fill="#868e96" font-size="10" text-anchor="start">列表渲染数量的第一断言</text>
+  <text x="380" y="248" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">expect(w.findAll('li')).toHaveLength(3)</text>
+  <text x="380" y="268" fill="#868e96" font-size="10" text-anchor="start">比 toBe(list.length) 更好读</text>
+
+  <!-- 行 5：toBeTruthy -->
+  <rect x="20" y="278" width="680" height="50" fill="#fff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="36" y="298" font-weight="bold" fill="#2f9e44" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">toBeTruthy</text>
+  <text x="36" y="318" fill="#868e96" font-size="10" text-anchor="start">非空</text>
+  <text x="190" y="298" fill="#495057" font-size="11" text-anchor="start">转成布尔后为真</text>
+  <text x="190" y="318" fill="#868e96" font-size="10" text-anchor="start">配 toBeFalsy() 一起用</text>
+  <text x="380" y="298" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">expect(w.find('.err').exists())</text>
+  <text x="380" y="318" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  .toBeTruthy()</text>
+
+  <!-- 行 6：toThrow -->
+  <rect x="20" y="328" width="680" height="50" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+  <text x="36" y="348" font-weight="bold" fill="#c92a2a" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">toThrow</text>
+  <text x="36" y="368" fill="#868e96" font-size="10" text-anchor="start">抛错</text>
+  <text x="190" y="348" fill="#495057" font-size="11" text-anchor="start">调用时有没有抛异常</text>
+  <text x="190" y="368" fill="#868e96" font-size="10" text-anchor="start">可传字符串匹配错误信息</text>
+  <text x="380" y="348" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">expect(() =&gt; del()).toThrow()</text>
+  <text x="380" y="368" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">expect(fn).toThrow('不能为空')</text>
+
+  <!-- 行 7：toHaveBeenCalled -->
+  <rect x="20" y="378" width="680" height="50" fill="#fff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="36" y="398" font-weight="bold" fill="#e8590c" font-size="10" font-family="ui-monospace,Menlo,monospace" text-anchor="start">toHaveBeenCalled</text>
+  <text x="36" y="418" fill="#868e96" font-size="10" text-anchor="start">mock 被调用</text>
+  <text x="190" y="398" fill="#495057" font-size="11" text-anchor="start">vi.fn() 有没有被调用过</text>
+  <text x="190" y="418" fill="#868e96" font-size="10" text-anchor="start">测接口、测埋点必备</text>
+  <text x="380" y="398" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">expect(getUser).toHaveBeenCalledTimes(1)</text>
+  <text x="380" y="418" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">expect(api).toHaveBeenCalledWith(id)</text>
+
+  <!-- 底部 -->
+  <rect x="20" y="440" width="330" height="30" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="185" y="460" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">值比内容用 toEqual，别用 toBe</text>
+  <rect x="370" y="440" width="330" height="30" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="535" y="460" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="middle">查找用 find，断言用 get，少一个空壳坑</text>
+</svg>

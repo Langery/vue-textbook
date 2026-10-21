@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="560" viewBox="0 0 720 560" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="560" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">一次 HTTP 请求的完整生命周期：从调用到渲染</text>
+
+  <text x="460" y="52" font-weight="bold" fill="#495057" font-size="12" text-anchor="start">耗时发生在哪</text>
+
+  <!-- ① 组件调用 -->
+  <rect x="40" y="64" width="390" height="46" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <rect x="52" y="74" width="26" height="26" fill="#1971c2" rx="4"/>
+  <text x="65" y="92" font-weight="bold" fill="#fff" font-size="12" text-anchor="middle">1</text>
+  <text x="90" y="84" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="start">① 组件调用</text>
+  <text x="90" y="100" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">api.getGoods({ page: 1 })</text>
+  <text x="418" y="84" font-size="11" fill="#868e96" text-anchor="end">前端</text>
+  <rect x="460" y="64" width="240" height="46" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="474" y="82" font-weight="bold" fill="#495057" font-size="12" text-anchor="start">同步调用</text>
+  <text x="474" y="100" font-size="11" fill="#868e96" text-anchor="start">≈ 0 ms</text>
+  <line x1="235" y1="110" x2="235" y2="120" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="235,126 228,114 242,114" fill="#adb5bd"/>
+
+  <!-- ② 请求拦截器 -->
+  <rect x="40" y="126" width="390" height="46" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <rect x="52" y="136" width="26" height="26" fill="#1971c2" rx="4"/>
+  <text x="65" y="154" font-weight="bold" fill="#fff" font-size="12" text-anchor="middle">2</text>
+  <text x="90" y="146" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="start">② 请求拦截器</text>
+  <text x="90" y="162" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">config.headers.Authorization = token</text>
+  <text x="418" y="146" font-size="11" fill="#868e96" text-anchor="end">前端</text>
+  <rect x="460" y="126" width="240" height="46" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="474" y="144" font-weight="bold" fill="#495057" font-size="12" text-anchor="start">同步调用</text>
+  <text x="474" y="162" font-size="11" fill="#868e96" text-anchor="start">≈ 0 ms</text>
+  <line x1="235" y1="172" x2="235" y2="182" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="235,188 228,176 242,176" fill="#adb5bd"/>
+
+  <!-- ③ 浏览器发包 -->
+  <rect x="40" y="188" width="390" height="46" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <rect x="52" y="198" width="26" height="26" fill="#e8590c" rx="4"/>
+  <text x="65" y="216" font-weight="bold" fill="#fff" font-size="12" text-anchor="middle">3</text>
+  <text x="90" y="208" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="start">③ 浏览器发包（DNS → TCP → TLS）</text>
+  <text x="90" y="224" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">GET /api/goods?page=1</text>
+  <text x="418" y="208" font-size="11" fill="#868e96" text-anchor="end">网络</text>
+  <rect x="460" y="188" width="240" height="46" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="474" y="206" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="start">网络传输</text>
+  <text x="474" y="224" font-size="11" fill="#e8590c" text-anchor="start">20 ~ 300 ms</text>
+  <line x1="235" y1="234" x2="235" y2="244" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="235,250 228,238 242,238" fill="#adb5bd"/>
+
+  <!-- ④ 服务器处理 -->
+  <rect x="40" y="250" width="390" height="46" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <rect x="52" y="260" width="26" height="26" fill="#e8590c" rx="4"/>
+  <text x="65" y="278" font-weight="bold" fill="#fff" font-size="12" text-anchor="middle">4</text>
+  <text x="90" y="270" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="start">④ 服务器处理</text>
+  <text x="90" y="286" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">路由 → 查库 → JSON 序列化</text>
+  <text x="418" y="270" font-size="11" fill="#868e96" text-anchor="end">后端</text>
+  <rect x="460" y="250" width="240" height="46" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="474" y="268" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="start">服务端处理</text>
+  <text x="474" y="286" font-size="11" fill="#e8590c" text-anchor="start">10 ~ 500 ms</text>
+  <line x1="235" y1="296" x2="235" y2="306" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="235,312 228,300 242,300" fill="#adb5bd"/>
+
+  <!-- ⑤ 响应回来 -->
+  <rect x="40" y="312" width="390" height="46" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <rect x="52" y="322" width="26" height="26" fill="#2f9e44" rx="4"/>
+  <text x="65" y="340" font-weight="bold" fill="#fff" font-size="12" text-anchor="middle">5</text>
+  <text x="90" y="332" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="start">⑤ 响应回来</text>
+  <text x="90" y="348" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">200 OK  { list: [...], total: 20 }</text>
+  <text x="418" y="332" font-size="11" fill="#868e96" text-anchor="end">前端</text>
+  <rect x="460" y="312" width="240" height="46" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="474" y="330" font-weight="bold" fill="#495057" font-size="12" text-anchor="start">响应体解析</text>
+  <text x="474" y="348" font-size="11" fill="#868e96" text-anchor="start">已含在第 3 段</text>
+  <line x1="235" y1="358" x2="235" y2="368" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="235,374 228,362 242,362" fill="#adb5bd"/>
+
+  <!-- ⑥ 响应拦截器 -->
+  <rect x="40" y="374" width="390" height="46" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <rect x="52" y="384" width="26" height="26" fill="#2f9e44" rx="4"/>
+  <text x="65" y="402" font-weight="bold" fill="#fff" font-size="12" text-anchor="middle">6</text>
+  <text x="90" y="394" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="start">⑥ 响应拦截器</text>
+  <text x="90" y="410" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">return res.data  // 统一拆包</text>
+  <text x="418" y="394" font-size="11" fill="#868e96" text-anchor="end">前端</text>
+  <rect x="460" y="374" width="240" height="46" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="474" y="392" font-weight="bold" fill="#495057" font-size="12" text-anchor="start">同步调用</text>
+  <text x="474" y="410" font-size="11" fill="#868e96" text-anchor="start">≈ 0 ms</text>
+  <line x1="235" y1="420" x2="235" y2="430" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="235,436 228,424 242,424" fill="#adb5bd"/>
+
+  <!-- ⑦ 更新状态 -->
+  <rect x="40" y="436" width="390" height="46" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <rect x="52" y="446" width="26" height="26" fill="#2f9e44" rx="4"/>
+  <text x="65" y="464" font-weight="bold" fill="#fff" font-size="12" text-anchor="middle">7</text>
+  <text x="90" y="456" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="start">⑦ 更新状态</text>
+  <text x="90" y="472" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">data.value = res.list</text>
+  <text x="418" y="456" font-size="11" fill="#868e96" text-anchor="end">前端</text>
+  <rect x="460" y="436" width="240" height="46" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="474" y="454" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">调度渲染</text>
+  <text x="474" y="472" font-size="11" fill="#1971c2" text-anchor="start">下一个 tick</text>
+
+  <!-- 小结 -->
+  <rect x="40" y="494" width="660" height="48" fill="#f1f3f5" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="360" y="512" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">总耗时 ≈ 网络传输 + 服务端处理，其余全是同步开销</text>
+  <text x="360" y="531" font-size="11" fill="#868e96" text-anchor="middle">能优化的只有前两段：压缩请求体、CDN 缓存、后端加索引</text>
+</svg>

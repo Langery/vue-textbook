@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="500" viewBox="0 0 720 500" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="500" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">AbortController 取消请求：只有最后一次的结果该生效</text>
+
+  <!-- 场景 -->
+  <rect x="20" y="46" width="680" height="34" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="68" font-size="12" fill="#495057" text-anchor="middle">场景：搜索框里连续输入 a → ab → abc，接口很慢，先发的请求可能后返回</text>
+
+  <!-- 触发时刻 -->
+  <text x="175" y="100" font-weight="bold" fill="#e8590c" font-size="11" text-anchor="middle">输入 a</text>
+  <text x="345" y="100" font-weight="bold" fill="#e8590c" font-size="11" text-anchor="middle">输入 ab</text>
+  <text x="515" y="100" font-weight="bold" fill="#e8590c" font-size="11" text-anchor="middle">输入 abc</text>
+  <circle cx="175" cy="110" r="5" fill="#e8590c"/>
+  <circle cx="345" cy="110" r="5" fill="#e8590c"/>
+  <circle cx="515" cy="110" r="5" fill="#e8590c"/>
+  <line x1="175" y1="115" x2="175" y2="270" stroke="#d4d4d4" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="345" y1="115" x2="345" y2="270" stroke="#d4d4d4" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="515" y1="115" x2="515" y2="270" stroke="#d4d4d4" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <!-- 请求 ① -->
+  <rect x="140" y="125" width="560" height="40" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="26" y="141" font-weight="bold" fill="#495057" font-size="12" text-anchor="start">请求 ①</text>
+  <text x="26" y="158" font-size="11" fill="#868e96" text-anchor="start">关键词 a</text>
+  <rect x="175" y="137" width="160" height="16" fill="#adb5bd" rx="4"/>
+  <polygon points="341,145 331,139 331,151" fill="#adb5bd"/>
+  <text x="341" y="151" font-weight="bold" fill="#c92a2a" font-size="14" text-anchor="middle">✕</text>
+  <text x="356" y="150" font-size="11" font-weight="bold" fill="#c92a2a" text-anchor="start">被取消</text>
+
+  <!-- 请求 ② -->
+  <rect x="140" y="175" width="560" height="40" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="26" y="191" font-weight="bold" fill="#495057" font-size="12" text-anchor="start">请求 ②</text>
+  <text x="26" y="208" font-size="11" fill="#868e96" text-anchor="start">关键词 ab</text>
+  <rect x="345" y="187" width="160" height="16" fill="#adb5bd" rx="4"/>
+  <polygon points="511,195 501,189 501,201" fill="#adb5bd"/>
+  <text x="511" y="201" font-weight="bold" fill="#c92a2a" font-size="14" text-anchor="middle">✕</text>
+  <text x="526" y="200" font-size="11" font-weight="bold" fill="#c92a2a" text-anchor="start">被取消</text>
+
+  <!-- 请求 ③ -->
+  <rect x="140" y="225" width="560" height="40" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="26" y="241" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="start">请求 ③</text>
+  <text x="26" y="258" font-size="11" fill="#868e96" text-anchor="start">关键词 abc</text>
+  <rect x="515" y="237" width="115" height="16" fill="#2f9e44" rx="4"/>
+  <polygon points="636,245 626,239 626,251" fill="#2f9e44"/>
+  <text x="636" y="251" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="middle">✓</text>
+  <text x="651" y="250" font-size="11" font-weight="bold" fill="#2f9e44" text-anchor="start">生效</text>
+
+  <!-- 结论 -->
+  <rect x="20" y="282" width="680" height="38" fill="#d8f5cc" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="360" y="306" font-size="12" font-weight="bold" fill="#2f9e44" text-anchor="middle">前两个请求的响应即使回来也直接丢弃，只有最后一个的响应写进 data</text>
+
+  <!-- 代码 -->
+  <rect x="20" y="336" width="680" height="126" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="360" y="358" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">用 AbortController 取消上一个请求</text>
+
+  <rect x="34" y="368" width="330" height="80" fill="#f1f3f5" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="48" y="386" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">let controller = null</text>
+  <text x="48" y="404" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">function search (kw) {</text>
+  <text x="48" y="422" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">  controller?.abort()  // 取消上一次</text>
+  <text x="48" y="440" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  controller = new AbortController()</text>
+
+  <rect x="378" y="368" width="308" height="80" fill="#f1f3f5" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="392" y="386" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  api.getGoods({ signal: controller.signal })</text>
+  <text x="392" y="404" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">    .then(res =&gt; (data.value = res.data))</text>
+  <text x="392" y="422" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">}</text>
+  <text x="392" y="440" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">catch (e) { if (isCancel(e)) return }</text>
+
+  <text x="360" y="480" font-size="11" fill="#868e96" text-anchor="middle">被取消的请求会抛 CanceledError，要在 catch 里静默忽略，否则会误报成错误</text>
+</svg>

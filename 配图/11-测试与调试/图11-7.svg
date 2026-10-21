@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="510" viewBox="0 0 720 510" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="510" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">Bug 排查思路：从现象一路收到根因</text>
+
+  <!-- 1 现象 -->
+  <rect x="60" y="52" width="320" height="48" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="220" y="73" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">① 现象是什么</text>
+  <text x="220" y="90" fill="#495057" font-size="10" text-anchor="middle">能一句话说清：谁、在哪、看到什么</text>
+  <line x1="220" y1="100" x2="220" y2="114" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="220,114 215,104 225,104" fill="#1971c2"/>
+
+  <!-- 2 复现 -->
+  <polygon points="220,116 300,142 220,168 140,142" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5"/>
+  <text x="220" y="147" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="middle">能稳定复现吗</text>
+  <line x1="300" y1="142" x2="396" y2="142" stroke="#e8590c" stroke-width="1.5"/>
+  <polygon points="396,142 386,137 386,147" fill="#e8590c"/>
+  <text x="348" y="135" font-weight="bold" fill="#e8590c" font-size="11" text-anchor="middle">不能</text>
+  <rect x="400" y="116" width="300" height="52" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="550" y="138" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="middle">先提高复现率</text>
+  <text x="550" y="156" fill="#495057" font-size="10" text-anchor="middle">固定数据、录屏；复现不了先别改</text>
+  <line x1="220" y1="168" x2="220" y2="184" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="220,184 215,174 225,174" fill="#1971c2"/>
+
+  <!-- 3 Console -->
+  <polygon points="220,186 300,212 220,238 140,212" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5"/>
+  <text x="220" y="217" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="middle">Console 有报错吗</text>
+  <line x1="300" y1="212" x2="396" y2="212" stroke="#e8590c" stroke-width="1.5"/>
+  <polygon points="396,212 386,207 386,217" fill="#e8590c"/>
+  <text x="348" y="205" font-weight="bold" fill="#e8590c" font-size="11" text-anchor="middle">有</text>
+  <rect x="400" y="186" width="300" height="52" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="550" y="208" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="middle">顺着报错回溯</text>
+  <text x="550" y="226" fill="#495057" font-size="10" text-anchor="middle">黄色 warn 常是真正的线索</text>
+  <line x1="220" y1="238" x2="220" y2="254" stroke="#1971c2" stroke-width="1.5"/>
+  <polygon points="220,254 215,244 225,244" fill="#1971c2"/>
+
+  <!-- 4 Network -->
+  <polygon points="220,256 300,282 220,308 140,282" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5"/>
+  <text x="220" y="287" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="middle">请求发出去且成功吗</text>
+  <line x1="300" y1="282" x2="396" y2="282" stroke="#e8590c" stroke-width="1.5"/>
+  <polygon points="396,282 386,277 386,287" fill="#e8590c"/>
+  <text x="348" y="275" font-weight="bold" fill="#e8590c" font-size="11" text-anchor="middle">没成功</text>
+  <rect x="400" y="256" width="300" height="52" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="550" y="278" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="middle">去查接口</text>
+  <text x="550" y="296" fill="#495057" font-size="10" text-anchor="middle">看请求参数、状态码、响应体</text>
+  <line x1="220" y1="308" x2="220" y2="324" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="220,324 215,314 225,314" fill="#2f9e44"/>
+
+  <!-- 5 断点 -->
+  <rect x="60" y="326" width="320" height="48" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="220" y="347" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">⑤ 断点跟数据流</text>
+  <text x="220" y="364" fill="#495057" font-size="10" text-anchor="middle">props → 响应式 → 计算 → DOM</text>
+  <line x1="220" y1="374" x2="220" y2="388" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="220,388 215,378 225,378" fill="#2f9e44"/>
+
+  <!-- 6 根因 -->
+  <rect x="60" y="390" width="320" height="48" fill="#d8f5cc" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="220" y="411" font-weight="bold" fill="#2f9e44" font-size="13" text-anchor="middle">⑥ 定位根因</text>
+  <text x="220" y="428" fill="#495057" font-size="10" text-anchor="middle">先补一条失败的用例，再改代码</text>
+
+  <!-- 右下工具箱 -->
+  <rect x="400" y="326" width="300" height="112" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="550" y="350" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">顺手用上的工具</text>
+  <text x="418" y="374" fill="#1971c2" font-size="11" text-anchor="start">Console：看报错和 warn</text>
+  <text x="418" y="396" fill="#1971c2" font-size="11" text-anchor="start">Network：看请求和响应</text>
+  <text x="418" y="418" fill="#1971c2" font-size="11" text-anchor="start">Sources：打断点看变量</text>
+
+  <!-- 底部 -->
+  <rect x="20" y="456" width="680" height="34" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="478" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">顺序不能跳：不确定能复现就动手改，改完也不知道是修好了还是碰巧</text>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="440" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">写组件测试前，先问自己这三个问题</text>
+
+  <!-- ① 渲染 -->
+  <rect x="20" y="52" width="220" height="238" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="130" y="80" font-weight="bold" fill="#1971c2" font-size="15" text-anchor="middle">① 渲染对不对</text>
+  <rect x="32" y="92" width="196" height="76" fill="#fff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+  <text x="46" y="112" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">mount(Card, { props })</text>
+  <text x="46" y="132" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">w.text()   // 渲染文本</text>
+  <text x="46" y="152" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">w.html()   // HTML 片段</text>
+  <text x="32" y="192" font-weight="bold" fill="#1971c2" font-size="11" text-anchor="start">问：内容对吗？状态对吗？</text>
+  <text x="32" y="214" fill="#495057" font-size="11" text-anchor="start">· props 传进去，文字变了吗</text>
+  <text x="32" y="234" fill="#495057" font-size="11" text-anchor="start">· v-if / v-for 该显示的显示了吗</text>
+  <text x="32" y="254" fill="#495057" font-size="11" text-anchor="start">· computed 的值算对了吗</text>
+  <text x="32" y="276" fill="#868e96" font-size="10" text-anchor="start">快照测试：w.html() 存基线</text>
+
+  <!-- ② 交互 -->
+  <rect x="250" y="52" width="220" height="238" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="360" y="80" font-weight="bold" fill="#2f9e44" font-size="15" text-anchor="middle">② 交互对不对</text>
+  <rect x="262" y="92" width="196" height="76" fill="#fff" stroke="#8ce99a" stroke-width="1.5" rx="4"/>
+  <text x="276" y="112" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">await w.find('button')</text>
+  <text x="276" y="132" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">  .trigger('click')</text>
+  <text x="276" y="152" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">w.emitted('submit')</text>
+  <text x="262" y="192" font-weight="bold" fill="#2f9e44" font-size="11" text-anchor="start">问：事件触发了吗？</text>
+  <text x="262" y="214" fill="#495057" font-size="11" text-anchor="start">· 点一下 emit 了吗，参数对吗</text>
+  <text x="262" y="234" fill="#495057" font-size="11" text-anchor="start">· 输入框 setValue 后值变了吗</text>
+  <text x="262" y="254" fill="#495057" font-size="11" text-anchor="start">· 防抖 / 禁用时不该触发</text>
+  <text x="262" y="276" fill="#868e96" font-size="10" text-anchor="start">trigger 要 await，别忘</text>
+
+  <!-- ③ 边界 -->
+  <rect x="480" y="52" width="220" height="238" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="590" y="80" font-weight="bold" fill="#e8590c" font-size="15" text-anchor="middle">③ 边界对不对</text>
+  <rect x="492" y="92" width="196" height="76" fill="#fff" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+  <text x="506" y="112" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">await mount(Card, {</text>
+  <text x="506" y="132" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">  props: { list: [] } })</text>
+  <text x="506" y="152" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">expect(w.text()).toBe(..)</text>
+  <text x="492" y="192" font-weight="bold" fill="#e8590c" font-size="11" text-anchor="start">问：空态和异常扛得住吗？</text>
+  <text x="492" y="214" fill="#495057" font-size="11" text-anchor="start">· 空数组 / null 会不会白屏</text>
+  <text x="492" y="234" fill="#495057" font-size="11" text-anchor="start">· 请求失败渲染错误提示了吗</text>
+  <text x="492" y="254" fill="#495057" font-size="11" text-anchor="start">· 超长文本有没有兜住布局</text>
+  <text x="492" y="276" fill="#868e96" font-size="10" text-anchor="start">一条用例只问一个问题</text>
+
+  <!-- 底部 -->
+  <rect x="20" y="306" width="680" height="116" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="360" y="330" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">同一个组件，三问各来一条用例就够覆盖主干</text>
+  <text x="44" y="358" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="start">it('渲染出商品列表', () =&gt; { ... })</text>
+  <text x="44" y="382" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">it('点加入购物车会 emit', async () =&gt; { ... })</text>
+  <text x="44" y="406" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="start">it('列表为空时显示空态', () =&gt; { ... })</text>
+  <text x="470" y="358" fill="#868e96" font-size="11" text-anchor="start">只改输入，不断言 = 白测</text>
+  <text x="470" y="382" fill="#868e96" font-size="11" text-anchor="start">先想清楚「应该变成什么」</text>
+  <text x="470" y="406" fill="#868e96" font-size="11" text-anchor="start">再动手写 trigger</text>
+</svg>

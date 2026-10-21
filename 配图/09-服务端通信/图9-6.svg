@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="550" viewBox="0 0 720 550" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="550" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">useRequest 封装：把 loading / error / data 三件套收进一个函数</text>
+
+  <!-- 左：手写 -->
+  <rect x="20" y="50" width="330" height="296" fill="#fff" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <text x="36" y="74" font-weight="bold" fill="#c92a2a" font-size="14" text-anchor="start">✗ 手写版：每个组件都抄一遍</text>
+
+  <rect x="34" y="86" width="302" height="160" fill="#f1f3f5" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="48" y="104" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">const loading = ref(false)</text>
+  <text x="48" y="120" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">const error = ref(null)</text>
+  <text x="48" y="136" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">const data = ref(null)</text>
+  <text x="48" y="158" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">async function load() {</text>
+  <text x="48" y="174" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  loading.value = true</text>
+  <text x="48" y="190" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  error.value = null</text>
+  <text x="48" y="206" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  try { data.value = await api() }</text>
+  <text x="48" y="222" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  catch (e) { error.value = e }</text>
+  <text x="48" y="238" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  finally { loading.value = false }</text>
+
+  <text x="36" y="268" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="start">问题在哪</text>
+  <text x="36" y="290" font-size="11" fill="#495057" text-anchor="start">· 三个状态、try/catch/finally 全靠复制</text>
+  <text x="36" y="310" font-size="11" fill="#495057" text-anchor="start">· loading 常常忘在 finally 里复位</text>
+  <text x="36" y="330" font-size="11" fill="#495057" text-anchor="start">· 十个组件就有十份不一致的错误处理</text>
+
+  <!-- 右：封装 -->
+  <rect x="370" y="50" width="330" height="296" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="386" y="74" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="start">✓ 封装版：一行拿到三件套</text>
+
+  <rect x="384" y="86" width="302" height="106" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="398" y="104" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">const { loading, error, data, run }</text>
+  <text x="398" y="120" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">  = useRequest(api.getGoods)</text>
+  <text x="398" y="142" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">onMounted(() =&gt; run())</text>
+  <text x="398" y="164" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">&lt;div v-if="loading"&gt;加载中…&lt;/div&gt;</text>
+
+  <text x="386" y="212" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="start">useRequest 帮你做了什么</text>
+  <text x="386" y="232" font-size="11" fill="#495057" text-anchor="start">· 统一管理 loading / error / data 三个 ref</text>
+  <text x="386" y="252" font-size="11" fill="#495057" text-anchor="start">· 统一 try/catch，错误对象直接吐出来</text>
+  <text x="386" y="272" font-size="11" fill="#495057" text-anchor="start">· 卸载时清理，避免内存泄漏</text>
+  <text x="386" y="292" font-size="11" fill="#495057" text-anchor="start">· 拿到的都是 ref，模板里直接用</text>
+  <text x="386" y="312" font-size="11" fill="#868e96" text-anchor="start">· 换接口只改传进去的那个函数</text>
+
+  <!-- 底部：内部实现 -->
+  <rect x="20" y="356" width="680" height="180" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="360" y="378" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">useRequest 内部就这么点事</text>
+
+  <rect x="34" y="390" width="316" height="128" fill="#f1f3f5" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="48" y="408" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">export function useRequest(api) {</text>
+  <text x="48" y="424" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  const loading = ref(false)</text>
+  <text x="48" y="440" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  const error = ref(null)</text>
+  <text x="48" y="456" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  const data = ref(null)</text>
+  <text x="48" y="472" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  async function run() {</text>
+  <text x="48" y="488" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">    loading.value = true</text>
+
+  <rect x="366" y="390" width="320" height="128" fill="#f1f3f5" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="380" y="408" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">    error.value = null</text>
+  <text x="380" y="424" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">    try { data.value = await api() }</text>
+  <text x="380" y="440" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">    catch (e) { error.value = e }</text>
+  <text x="380" y="456" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">    finally { loading.value = false }</text>
+  <text x="380" y="472" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  }</text>
+  <text x="380" y="488" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">  return { loading, error, data, run }</text>
+
+  <text x="360" y="530" font-size="11" fill="#868e96" text-anchor="middle">本质就是把上面那段样板代码搬进函数，谁用都一样</text>
+</svg>

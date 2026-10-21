@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="470" viewBox="0 0 720 470" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="470" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">wrapper 查找元素：find / get / findAll / findComponent</text>
+
+  <!-- 表头 -->
+  <rect x="20" y="48" width="680" height="30" fill="#1971c2" rx="4"/>
+  <text x="36" y="68" font-weight="bold" fill="#fff" font-size="12" text-anchor="start">方法</text>
+  <text x="230" y="68" font-weight="bold" fill="#fff" font-size="12" text-anchor="start">返回什么</text>
+  <text x="420" y="68" font-weight="bold" fill="#fff" font-size="12" text-anchor="start">找不到时</text>
+  <text x="540" y="68" font-weight="bold" fill="#fff" font-size="12" text-anchor="start">什么时候用</text>
+
+  <!-- 行 1：find -->
+  <rect x="20" y="78" width="680" height="66" fill="#fff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="36" y="100" font-weight="bold" fill="#1971c2" font-size="12" font-family="ui-monospace,Menlo,monospace" text-anchor="start">find(sel)</text>
+  <text x="36" y="122" fill="#868e96" font-size="10" font-family="ui-monospace,Menlo,monospace" text-anchor="start">find('.price')</text>
+  <text x="230" y="100" fill="#495057" font-size="11" text-anchor="start">DOMWrapper（第一个）</text>
+  <text x="230" y="122" fill="#868e96" font-size="10" text-anchor="start">或组件 wrapper</text>
+  <text x="420" y="100" fill="#e8590c" font-size="11" text-anchor="start">返回空壳</text>
+  <text x="420" y="122" fill="#868e96" font-size="10" font-family="ui-monospace,Menlo,monospace" text-anchor="start">ErrorWrapper</text>
+  <text x="540" y="100" fill="#495057" font-size="11" text-anchor="start">元素可能不存在</text>
+  <text x="540" y="122" fill="#868e96" font-size="10" text-anchor="start">要先 exists() 再操作</text>
+
+  <!-- 行 2：get -->
+  <rect x="20" y="144" width="680" height="66" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+  <text x="36" y="166" font-weight="bold" fill="#2f9e44" font-size="12" font-family="ui-monospace,Menlo,monospace" text-anchor="start">get(sel)</text>
+  <text x="36" y="188" fill="#868e96" font-size="10" font-family="ui-monospace,Menlo,monospace" text-anchor="start">get('#submit')</text>
+  <text x="230" y="166" fill="#495057" font-size="11" text-anchor="start">同 find，一定有</text>
+  <text x="230" y="188" fill="#868e96" font-size="10" text-anchor="start">语义上更「硬」</text>
+  <text x="420" y="166" fill="#c92a2a" font-size="11" text-anchor="start">直接抛错！</text>
+  <text x="420" y="188" fill="#868e96" font-size="10" text-anchor="start">用例当场失败</text>
+  <text x="540" y="166" fill="#495057" font-size="11" text-anchor="start">组件关键结构</text>
+  <text x="540" y="188" fill="#868e96" font-size="10" text-anchor="start">缺失即 bug</text>
+
+  <!-- 行 3：findAll -->
+  <rect x="20" y="210" width="680" height="66" fill="#fff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="36" y="232" font-weight="bold" fill="#e8590c" font-size="12" font-family="ui-monospace,Menlo,monospace" text-anchor="start">findAll(sel)</text>
+  <text x="36" y="254" fill="#868e96" font-size="10" font-family="ui-monospace,Menlo,monospace" text-anchor="start">findAll('li')</text>
+  <text x="230" y="232" fill="#495057" font-size="11" text-anchor="start">Wrapper 数组</text>
+  <text x="230" y="254" fill="#868e96" font-size="10" text-anchor="start">可以 at(i) 取某个</text>
+  <text x="420" y="232" fill="#e8590c" font-size="11" text-anchor="start">空数组</text>
+  <text x="420" y="254" fill="#868e96" font-size="10" text-anchor="start">后面 at(0) 才炸</text>
+  <text x="540" y="232" fill="#495057" font-size="11" text-anchor="start">列表 / 循环渲染</text>
+  <text x="540" y="254" fill="#868e96" font-size="10" text-anchor="start">数个数、比内容</text>
+
+  <!-- 行 4：findComponent -->
+  <rect x="20" y="276" width="680" height="66" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1"/>
+  <text x="36" y="298" font-weight="bold" fill="#1971c2" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">findComponent</text>
+  <text x="36" y="320" fill="#868e96" font-size="10" font-family="ui-monospace,Menlo,monospace" text-anchor="start">findComponent(Sub)</text>
+  <text x="230" y="298" fill="#495057" font-size="11" text-anchor="start">子组件 wrapper</text>
+  <text x="230" y="320" fill="#868e96" font-size="10" text-anchor="start">能读它的 props/emitted</text>
+  <text x="420" y="298" fill="#e8590c" font-size="11" text-anchor="start">空壳 wrapper</text>
+  <text x="420" y="320" fill="#868e96" font-size="10" text-anchor="start">exists() 为 false</text>
+  <text x="540" y="298" fill="#495057" font-size="11" text-anchor="start">测父子通信</text>
+  <text x="540" y="320" fill="#868e96" font-size="10" text-anchor="start">也可传组件对象</text>
+
+  <!-- 行 5：读值 -->
+  <rect x="20" y="342" width="680" height="66" fill="#fff" stroke="#dee2e6" stroke-width="1"/>
+  <text x="36" y="364" font-weight="bold" fill="#495057" font-size="11" font-family="ui-monospace,Menlo,monospace" text-anchor="start">props() / text()</text>
+  <text x="36" y="386" fill="#868e96" font-size="10" font-family="ui-monospace,Menlo,monospace" text-anchor="start">w.props('n') / w.text()</text>
+  <text x="230" y="364" fill="#495057" font-size="11" text-anchor="start">读值，不查找</text>
+  <text x="230" y="386" fill="#868e96" font-size="10" text-anchor="start">html() 取 HTML</text>
+  <text x="420" y="364" fill="#495057" font-size="11" text-anchor="start">prop 没声明</text>
+  <text x="420" y="386" fill="#868e96" font-size="10" text-anchor="start">返回 undefined</text>
+  <text x="540" y="364" fill="#495057" font-size="11" text-anchor="start">断言渲染结果</text>
+  <text x="540" y="386" fill="#868e96" font-size="10" text-anchor="start">最常用的一类</text>
+
+  <!-- 底部要点 -->
+  <rect x="20" y="420" width="680" height="34" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="360" y="442" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="middle">要点：find 返回空壳不报错，所以「找不到」这件事必须你自己用 exists() 断言</text>
+</svg>

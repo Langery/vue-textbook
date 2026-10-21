@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="480" viewBox="0 0 720 480" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="480" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">Axios 实例与拦截器：一份配置，所有接口统一生效</text>
+
+  <!-- ① 创建实例 -->
+  <rect x="20" y="50" width="250" height="256" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="36" y="76" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="start">① 创建实例</text>
+  <rect x="34" y="88" width="222" height="72" fill="#fff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+  <text x="145" y="106" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">const http = axios.create({</text>
+  <text x="145" y="122" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">  baseURL: '/api',</text>
+  <text x="145" y="138" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">  timeout: 10000</text>
+  <text x="145" y="154" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">})</text>
+
+  <text x="36" y="186" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">baseURL</text>
+  <text x="36" y="202" font-size="11" fill="#495057" text-anchor="start">所有请求的公共前缀</text>
+  <text x="36" y="226" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">timeout</text>
+  <text x="36" y="242" font-size="11" fill="#495057" text-anchor="start">超时毫秒数，超时就报错</text>
+  <text x="36" y="266" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">headers</text>
+  <text x="36" y="282" font-size="11" fill="#495057" text-anchor="start">公共请求头，如 Content-Type</text>
+
+  <!-- ② 请求拦截器 -->
+  <rect x="290" y="50" width="410" height="122" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="306" y="76" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="start">② 请求拦截器（发出前统一加工）</text>
+  <rect x="306" y="88" width="378" height="72" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <text x="495" y="106" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">http.interceptors.request.use(cfg =&gt; {</text>
+  <text x="495" y="122" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">  cfg.headers.Authorization = token</text>
+  <text x="495" y="138" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">  return cfg</text>
+  <text x="495" y="154" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">})</text>
+
+  <!-- ③ 响应拦截器 -->
+  <rect x="290" y="184" width="410" height="122" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="306" y="210" font-weight="bold" fill="#e8590c" font-size="14" text-anchor="start">③ 响应拦截器（回来后统一处理）</text>
+  <rect x="306" y="222" width="378" height="72" fill="#fff" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+  <text x="495" y="240" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="middle">http.interceptors.response.use(</text>
+  <text x="495" y="256" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="middle">  res =&gt; res.data,      // 拆掉外层壳</text>
+  <text x="495" y="272" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="middle">  err =&gt; handleError(err) // 401 跳登录</text>
+  <text x="495" y="288" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="middle">)</text>
+  <!-- 底部：组件统一用这个实例 -->
+  <rect x="20" y="322" width="680" height="138" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="360" y="346" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">组件统一用这个实例：全项目只 import http 一个东西</text>
+
+  <rect x="22" y="360" width="96" height="52" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="70" y="380" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">组件</text>
+  <text x="70" y="398" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">LoginView</text>
+  <polygon points="124,386 114,381 114,391" fill="#adb5bd"/>
+
+  <rect x="138" y="360" width="96" height="52" fill="#fff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="186" y="380" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">调用实例</text>
+  <text x="186" y="398" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">http.get()</text>
+  <polygon points="240,386 230,381 230,391" fill="#adb5bd"/>
+
+  <rect x="254" y="360" width="96" height="52" fill="#d8f5cc" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="302" y="380" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">请求拦截器</text>
+  <text x="302" y="398" font-size="10" fill="#495057" text-anchor="middle">加 token</text>
+  <polygon points="356,386 346,381 346,391" fill="#adb5bd"/>
+
+  <rect x="370" y="360" width="96" height="52" fill="#f1f3f5" stroke="#495057" stroke-width="1.5" rx="4"/>
+  <text x="418" y="380" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">服务器</text>
+  <text x="418" y="398" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">200 OK</text>
+  <polygon points="472,386 462,381 462,391" fill="#adb5bd"/>
+
+  <rect x="486" y="360" width="96" height="52" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="534" y="380" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="middle">响应拦截器</text>
+  <text x="534" y="398" font-size="10" fill="#495057" text-anchor="middle">拆 data</text>
+  <polygon points="588,386 578,381 578,391" fill="#adb5bd"/>
+
+  <rect x="602" y="360" width="96" height="52" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="650" y="380" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">组件</text>
+  <text x="650" y="398" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="middle">拿到数据</text>
+
+  <text x="360" y="436" font-size="11" fill="#868e96" text-anchor="middle">换后端只改 baseURL 一处；加登录态只改请求拦截器一处</text>
+  <text x="360" y="452" font-size="11" fill="#c92a2a" text-anchor="middle">401 在响应拦截器里统一清 token 跳登录，组件里不写任何判断</text>
+</svg>

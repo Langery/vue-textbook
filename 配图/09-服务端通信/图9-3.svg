@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="490" viewBox="0 0 720 490" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="490" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">Axios 四种请求方法对比：参数放哪、能不能重试</text>
+
+  <!-- 表头 -->
+  <rect x="20" y="58" width="680" height="32" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="65" y="79" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">方法</text>
+  <text x="122" y="79" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="start">用途</text>
+  <text x="282" y="79" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="start">参数位置</text>
+  <text x="475" y="79" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="middle">是否幂等</text>
+  <text x="542" y="79" font-weight="bold" fill="#1971c2" font-size="13" text-anchor="start">典型场景</text>
+
+  <!-- GET 行 -->
+  <rect x="20" y="90" width="680" height="62" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <rect x="20" y="90" width="4" height="62" fill="#1971c2" rx="2"/>
+  <text x="65" y="122" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">GET</text>
+  <text x="122" y="114" font-size="12" fill="#495057" text-anchor="start">查询数据</text>
+  <text x="122" y="134" font-size="11" fill="#868e96" text-anchor="start">不改变服务器状态</text>
+  <text x="282" y="114" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">URL query</text>
+  <text x="282" y="134" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#868e96" text-anchor="start">params: { id }</text>
+  <rect x="452" y="104" width="46" height="20" fill="#d8f5cc" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="475" y="119" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">是</text>
+  <text x="475" y="140" font-size="10" fill="#2f9e44" text-anchor="middle">可安全重试</text>
+  <text x="542" y="114" font-size="11" fill="#495057" text-anchor="start">列表页、详情页</text>
+  <text x="542" y="134" font-size="11" fill="#868e96" text-anchor="start">可加缓存、可预加载</text>
+
+  <!-- POST 行 -->
+  <rect x="20" y="152" width="680" height="62" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <rect x="20" y="152" width="4" height="62" fill="#e8590c" rx="2"/>
+  <text x="65" y="184" font-weight="bold" fill="#e8590c" font-size="14" text-anchor="middle">POST</text>
+  <text x="122" y="176" font-size="12" fill="#495057" text-anchor="start">创建新资源</text>
+  <text x="122" y="196" font-size="11" fill="#868e96" text-anchor="start">会改变服务器状态</text>
+  <text x="282" y="176" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">请求体 body</text>
+  <text x="282" y="196" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#868e96" text-anchor="start">data: { ... }</text>
+  <rect x="452" y="166" width="46" height="20" fill="#f1f3f5" stroke="#c92a2a" stroke-width="1.5" rx="4"/>
+  <text x="475" y="181" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="middle">否</text>
+  <text x="475" y="202" font-size="10" fill="#c92a2a" text-anchor="middle">重试会重复</text>
+  <text x="542" y="176" font-size="11" fill="#495057" text-anchor="start">提交表单、新增订单</text>
+  <text x="542" y="196" font-size="11" fill="#868e96" text-anchor="start">重复发会造两条数据</text>
+
+  <!-- PUT 行 -->
+  <rect x="20" y="214" width="680" height="62" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <rect x="20" y="214" width="4" height="62" fill="#2f9e44" rx="4"/>
+  <text x="65" y="246" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="middle">PUT</text>
+  <text x="122" y="238" font-size="12" fill="#495057" text-anchor="start">整体更新资源</text>
+  <text x="122" y="258" font-size="11" fill="#868e96" text-anchor="start">全量覆盖已有资源</text>
+  <text x="282" y="238" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">路径带 id + body</text>
+  <text x="282" y="258" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#868e96" text-anchor="start">put('/u/12', data)</text>
+  <rect x="452" y="228" width="46" height="20" fill="#d8f5cc" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="475" y="243" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">是</text>
+  <text x="475" y="264" font-size="10" fill="#2f9e44" text-anchor="middle">可安全重试</text>
+  <text x="542" y="238" font-size="11" fill="#495057" text-anchor="start">编辑资料、改状态</text>
+  <text x="542" y="258" font-size="11" fill="#868e96" text-anchor="start">路径带 id 定位资源</text>
+
+  <!-- DELETE 行 -->
+  <rect x="20" y="276" width="680" height="62" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <rect x="20" y="276" width="4" height="62" fill="#495057" rx="2"/>
+  <text x="65" y="308" font-weight="bold" fill="#495057" font-size="14" text-anchor="middle">DELETE</text>
+  <text x="122" y="300" font-size="12" fill="#495057" text-anchor="start">删除资源</text>
+  <text x="122" y="320" font-size="11" fill="#868e96" text-anchor="start">会改变服务器状态</text>
+  <text x="282" y="300" font-size="11" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">路径带 id</text>
+  <text x="282" y="320" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#868e96" text-anchor="start">delete('/u/12')</text>
+  <rect x="452" y="290" width="46" height="20" fill="#d8f5cc" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="475" y="305" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">是</text>
+  <text x="475" y="326" font-size="10" fill="#2f9e44" text-anchor="middle">可安全重试</text>
+  <text x="542" y="300" font-size="11" fill="#495057" text-anchor="start">删除购物车项</text>
+  <text x="542" y="320" font-size="11" fill="#868e96" text-anchor="start">删过了再删也不报错</text>
+
+  <!-- 结论区 -->
+  <rect x="20" y="352" width="680" height="122" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="360" y="374" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">幂等性决定「这次请求失败了，能不能再发一遍」</text>
+
+  <text x="34" y="400" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="start">幂等的请求</text>
+  <text x="34" y="418" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">GET / PUT / DELETE</text>
+  <text x="34" y="440" font-size="11" fill="#495057" text-anchor="start">重试多少次结果都一样</text>
+  <text x="34" y="459" font-size="11" fill="#868e96" text-anchor="start">失败可以放心重发</text>
+
+  <line x1="245" y1="386" x2="245" y2="464" stroke="#dee2e6" stroke-width="1.5"/>
+
+  <text x="262" y="400" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="start">不幂等的请求</text>
+  <text x="262" y="418" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">POST</text>
+  <text x="262" y="440" font-size="11" fill="#495057" text-anchor="start">重试一次多一条记录</text>
+  <text x="262" y="459" font-size="11" fill="#868e96" text-anchor="start">要靠幂等键去重</text>
+
+  <line x1="468" y1="386" x2="468" y2="464" stroke="#dee2e6" stroke-width="1.5"/>
+
+  <text x="485" y="400" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="start">幂等键</text>
+  <text x="485" y="418" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#495057" text-anchor="start">Idempotency-Key</text>
+  <text x="485" y="440" font-size="11" fill="#495057" text-anchor="start">后端按 key 记住已处理</text>
+  <text x="485" y="459" font-size="11" fill="#868e96" text-anchor="start">重复请求只生效一次</text>
+</svg>

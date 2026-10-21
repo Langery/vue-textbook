@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="540" viewBox="0 0 720 540" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="540" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">请求状态管理：idle → loading → success / error</text>
+
+  <!-- ===== 状态机 ===== -->
+  <rect x="20" y="46" width="680" height="196" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="36" y="66" font-weight="bold" fill="#495057" font-size="13" text-anchor="start">四个状态之间的流转</text>
+
+  <!-- idle -->
+  <rect x="40" y="82" width="125" height="52" fill="#f1f3f5" stroke="#868e96" stroke-width="1.5" rx="4"/>
+  <text x="102" y="104" font-weight="bold" fill="#495057" font-size="14" text-anchor="middle">idle</text>
+  <text x="102" y="122" font-size="11" fill="#868e96" text-anchor="middle">还没发请求</text>
+
+  <line x1="170" y1="108" x2="200" y2="108" stroke="#adb5bd" stroke-width="1.5"/>
+  <polygon points="208,108 198,103 198,113" fill="#adb5bd"/>
+  <text x="186" y="100" font-size="10" fill="#495057" text-anchor="middle">run()</text>
+
+  <!-- loading -->
+  <rect x="208" y="82" width="125" height="52" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="270" y="104" font-weight="bold" fill="#1971c2" font-size="14" text-anchor="middle">loading</text>
+  <text x="270" y="122" font-size="11" fill="#868e96" text-anchor="middle">请求飞行中</text>
+
+  <!-- success -->
+  <rect x="396" y="82" width="125" height="52" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="458" y="104" font-weight="bold" fill="#2f9e44" font-size="14" text-anchor="middle">success</text>
+  <text x="458" y="122" font-size="11" fill="#868e96" text-anchor="middle">拿到 data</text>
+
+  <!-- error -->
+  <rect x="396" y="166" width="125" height="52" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="458" y="188" font-weight="bold" fill="#e8590c" font-size="14" text-anchor="middle">error</text>
+  <text x="458" y="206" font-size="11" fill="#868e96" text-anchor="middle">拿到 error</text>
+
+  <!-- loading -> success -->
+  <line x1="337" y1="100" x2="388" y2="100" stroke="#2f9e44" stroke-width="1.5"/>
+  <polygon points="396,100 386,95 386,105" fill="#2f9e44"/>
+  <text x="365" y="92" font-size="10" font-weight="bold" fill="#2f9e44" text-anchor="middle">2xx</text>
+
+  <!-- loading -> error -->
+  <line x1="270" y1="134" x2="270" y2="152" stroke="#e8590c" stroke-width="1.5"/>
+  <line x1="270" y1="152" x2="396" y2="152" stroke="#e8590c" stroke-width="1.5"/>
+  <line x1="396" y1="152" x2="396" y2="159" stroke="#e8590c" stroke-width="1.5"/>
+  <polygon points="396,166 391,155 401,155" fill="#e8590c"/>
+  <text x="333" y="144" font-size="10" font-weight="bold" fill="#e8590c" text-anchor="middle">4xx / 5xx / 断网</text>
+
+  <!-- error -> loading（重试） -->
+  <line x1="458" y1="218" x2="458" y2="230" stroke="#868e96" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <line x1="458" y1="230" x2="245" y2="230" stroke="#868e96" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <line x1="245" y1="230" x2="245" y2="145" stroke="#868e96" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <polygon points="245,134 240,144 250,144" fill="#868e96"/>
+  <text x="350" y="226" font-size="10" fill="#868e96" text-anchor="middle">用户点重试</text>
+
+  <!-- idle 说明 -->
+  <text x="40" y="162" font-size="11" font-weight="bold" fill="#495057" text-anchor="start">首屏是 idle：</text>
+  <text x="40" y="180" font-size="11" fill="#868e96" text-anchor="start">不显示骨架屏，</text>
+  <text x="40" y="198" font-size="11" fill="#868e96" text-anchor="start">给一句空态占位，</text>
+  <text x="40" y="216" font-size="11" fill="#868e96" text-anchor="start">避免页面闪一下</text>
+
+  <!-- ===== UI 对照 ===== -->
+  <rect x="20" y="254" width="680" height="254" fill="#fff" stroke="#adb5bd" stroke-width="1.5" rx="4"/>
+  <text x="36" y="274" font-weight="bold" fill="#495057" font-size="13" text-anchor="start">每个状态在模板里长什么样</text>
+
+  <!-- 卡片 1 idle -->
+  <rect x="34" y="286" width="154" height="206" fill="#f1f3f5" stroke="#868e96" stroke-width="1.5" rx="4"/>
+  <text x="111" y="306" font-weight="bold" fill="#495057" font-size="12" text-anchor="middle">idle 空闲</text>
+  <text x="111" y="324" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#868e96" text-anchor="middle">status === 'idle'</text>
+  <rect x="44" y="336" width="134" height="110" fill="#fafafa" stroke="#adb5bd" stroke-width="1.5" stroke-dasharray="4 3" rx="4"/>
+  <text x="111" y="395" font-size="11" fill="#868e96" text-anchor="middle">还没有数据</text>
+  <text x="111" y="413" font-size="10" fill="#adb5bd" text-anchor="middle">试试搜索别的关键词</text>
+  <text x="111" y="464" font-size="11" fill="#495057" text-anchor="middle">空态占位文案</text>
+  <text x="111" y="484" font-size="11" fill="#868e96" text-anchor="middle">别急着弹错误</text>
+
+  <!-- 卡片 2 loading -->
+  <rect x="200" y="286" width="154" height="206" fill="#e7f3ff" stroke="#1971c2" stroke-width="1.5" rx="4"/>
+  <text x="277" y="306" font-weight="bold" fill="#1971c2" font-size="12" text-anchor="middle">loading 请求中</text>
+  <text x="277" y="324" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#1971c2" text-anchor="middle">status === 'loading'</text>
+  <rect x="210" y="336" width="134" height="110" fill="#fff" stroke="#74c0fc" stroke-width="1.5" rx="4"/>
+  <rect x="222" y="352" width="110" height="12" fill="#cce5ff" rx="4"/>
+  <rect x="222" y="372" width="88" height="12" fill="#cce5ff" rx="4"/>
+  <rect x="222" y="392" width="100" height="12" fill="#cce5ff" rx="4"/>
+  <text x="277" y="430" font-size="10" fill="#868e96" text-anchor="middle">骨架屏占位</text>
+  <text x="277" y="464" font-size="11" fill="#495057" text-anchor="middle">骨架屏 + 禁按钮</text>
+  <text x="277" y="484" font-size="11" fill="#868e96" text-anchor="middle">别用转圈菊花</text>
+
+  <!-- 卡片 3 success -->
+  <rect x="366" y="286" width="154" height="206" fill="#f0f9e8" stroke="#2f9e44" stroke-width="1.5" rx="4"/>
+  <text x="443" y="306" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="middle">success 成功</text>
+  <text x="443" y="324" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="middle">status === 'success'</text>
+  <rect x="376" y="336" width="134" height="110" fill="#fff" stroke="#a9e095" stroke-width="1.5" rx="4"/>
+  <rect x="388" y="352" width="12" height="12" fill="#d8f5cc" rx="2"/>
+  <text x="406" y="362" font-size="10" fill="#495057" text-anchor="start">商品 A</text>
+  <rect x="388" y="378" width="12" height="12" fill="#d8f5cc" rx="2"/>
+  <text x="406" y="388" font-size="10" fill="#495057" text-anchor="start">商品 B</text>
+  <rect x="388" y="404" width="12" height="12" fill="#d8f5cc" rx="2"/>
+  <text x="406" y="414" font-size="10" fill="#495057" text-anchor="start">商品 C</text>
+  <text x="443" y="464" font-size="11" fill="#495057" text-anchor="middle">渲染真实数据</text>
+  <text x="443" y="484" font-size="11" fill="#868e96" text-anchor="middle">同时关掉 loading</text>
+
+  <!-- 卡片 4 error -->
+  <rect x="532" y="286" width="154" height="206" fill="#fff4e6" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="609" y="306" font-weight="bold" fill="#e8590c" font-size="12" text-anchor="middle">error 失败</text>
+  <text x="609" y="324" font-size="10" font-family="ui-monospace,Menlo,monospace" fill="#e8590c" text-anchor="middle">status === 'error'</text>
+  <rect x="542" y="336" width="134" height="110" fill="#fff" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+  <text x="609" y="372" font-size="11" fill="#c92a2a" text-anchor="middle">加载失败</text>
+  <rect x="572" y="388" width="74" height="26" fill="#e8590c" rx="4"/>
+  <text x="609" y="406" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">重试</text>
+  <text x="609" y="464" font-size="11" fill="#495057" text-anchor="middle">错误提示 + 重试</text>
+  <text x="609" y="484" font-size="11" fill="#868e96" text-anchor="middle">别忘了清 loading</text>
+
+  <text x="360" y="530" font-size="12" fill="#495057" text-anchor="middle">三件套都用 ref 存，状态一变模板自动跟着更新</text>
+</svg>

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="510" viewBox="0 0 720 510" font-family="system-ui,PingFang SC,sans-serif">
+  <rect width="720" height="510" fill="#fafafa"/>
+  <text x="360" y="30" font-weight="bold" fill="#333" font-size="18" text-anchor="middle">覆盖率报告怎么看：四个数字，只有一个最容易骗人</text>
+
+  <!-- 卡片 1：分支覆盖率 -->
+  <rect x="20" y="52" width="161" height="200" fill="#fff4e6" stroke="#e8590c" stroke-width="2" rx="4"/>
+  <text x="100" y="80" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="middle">分支覆盖率</text>
+  <text x="100" y="98" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#868e96" text-anchor="middle">branches</text>
+  <line x1="32" y1="108" x2="169" y2="108" stroke="#ffc078" stroke-width="1"/>
+  <text x="32" y="130" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="start">100%</text>
+  <text x="32" y="148" fill="#495057" font-size="10" text-anchor="start">if / else 两侧</text>
+  <text x="32" y="164" fill="#495057" font-size="10" text-anchor="start">全都走到了</text>
+  <line x1="32" y1="178" x2="169" y2="178" stroke="#ffc078" stroke-width="1"/>
+  <text x="32" y="200" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="start">80%</text>
+  <text x="32" y="218" fill="#495057" font-size="10" text-anchor="start">有一侧从没进过</text>
+  <text x="32" y="236" fill="#868e96" font-size="10" text-anchor="start">最容易漏的一类</text>
+
+  <!-- 卡片 2：函数覆盖率 -->
+  <rect x="193" y="52" width="161" height="200" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="273" y="80" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">函数覆盖率</text>
+  <text x="273" y="98" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#868e96" text-anchor="middle">functions</text>
+  <line x1="205" y1="108" x2="342" y2="108" stroke="#dee2e6" stroke-width="1"/>
+  <text x="205" y="130" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="start">100%</text>
+  <text x="205" y="148" fill="#495057" font-size="10" text-anchor="start">每个函数都被</text>
+  <text x="205" y="164" fill="#495057" font-size="10" text-anchor="start">至少调用过一次</text>
+  <line x1="205" y1="178" x2="342" y2="178" stroke="#dee2e6" stroke-width="1"/>
+  <text x="205" y="200" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="start">80%</text>
+  <text x="205" y="218" fill="#495057" font-size="10" text-anchor="start">有函数从没被调</text>
+  <text x="205" y="236" fill="#868e96" font-size="10" text-anchor="start">常是死代码或漏测</text>
+
+  <!-- 卡片 3：行覆盖率 -->
+  <rect x="366" y="52" width="161" height="200" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="446" y="80" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">行覆盖率</text>
+  <text x="446" y="98" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#868e96" text-anchor="middle">lines</text>
+  <line x1="378" y1="108" x2="515" y2="108" stroke="#dee2e6" stroke-width="1"/>
+  <text x="378" y="130" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="start">100%</text>
+  <text x="378" y="148" fill="#495057" font-size="10" text-anchor="start">每一行都执行过</text>
+  <text x="378" y="164" fill="#495057" font-size="10" text-anchor="start">没有漏掉的逻辑</text>
+  <line x1="378" y1="178" x2="515" y2="178" stroke="#dee2e6" stroke-width="1"/>
+  <text x="378" y="200" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="start">80%</text>
+  <text x="378" y="218" fill="#495057" font-size="10" text-anchor="start">有几行没跑到</text>
+  <text x="378" y="236" fill="#868e96" font-size="10" text-anchor="start">往上是漏测的线索</text>
+
+  <!-- 卡片 4：语句覆盖率 -->
+  <rect x="539" y="52" width="161" height="200" fill="#fff" stroke="#dee2e6" stroke-width="1.5" rx="4"/>
+  <text x="619" y="80" font-weight="bold" fill="#495057" font-size="13" text-anchor="middle">语句覆盖率</text>
+  <text x="619" y="98" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#868e96" text-anchor="middle">statements</text>
+  <line x1="551" y1="108" x2="688" y2="108" stroke="#dee2e6" stroke-width="1"/>
+  <text x="551" y="130" font-weight="bold" fill="#2f9e44" font-size="12" text-anchor="start">100%</text>
+  <text x="551" y="148" fill="#495057" font-size="10" text-anchor="start">每条语句都执行</text>
+  <text x="551" y="164" fill="#495057" font-size="10" text-anchor="start">和行覆盖率接近</text>
+  <line x1="551" y1="178" x2="688" y2="178" stroke="#dee2e6" stroke-width="1"/>
+  <text x="551" y="200" font-weight="bold" fill="#c92a2a" font-size="12" text-anchor="start">80%</text>
+  <text x="551" y="218" fill="#495057" font-size="10" text-anchor="start">缺语句也会缺行</text>
+  <text x="551" y="236" fill="#868e96" font-size="10" text-anchor="start">一起看即可</text>
+
+  <!-- 分支低 = 漏测 -->
+  <rect x="20" y="266" width="680" height="224" fill="#fff" stroke="#e8590c" stroke-width="1.5" rx="4"/>
+  <text x="40" y="294" font-weight="bold" fill="#e8590c" font-size="13" text-anchor="start">分支覆盖率低 = 下面这些判断的另一侧从来没被测过</text>
+
+  <rect x="36" y="306" width="204" height="130" fill="#fff4e6" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+  <text x="50" y="328" font-weight="bold" fill="#e8590c" font-size="11" text-anchor="start">if / else</text>
+  <text x="50" y="352" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">if (n &gt; 0) {</text>
+  <text x="50" y="370" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">  showList()</text>
+  <text x="50" y="388" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">} else {</text>
+  <text x="50" y="406" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">  showEmpty()  // 红</text>
+  <text x="50" y="424" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">}  从未执行</text>
+
+  <rect x="258" y="306" width="204" height="130" fill="#fff4e6" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+  <text x="272" y="328" font-weight="bold" fill="#e8590c" font-size="11" text-anchor="start">三元表达式</text>
+  <text x="272" y="352" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">const t = n &gt; 0</text>
+  <text x="272" y="370" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">  ? '有数据'</text>
+  <text x="272" y="388" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">  : '空的'  // 红</text>
+  <text x="272" y="406" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">   ↑ 这一侧</text>
+  <text x="272" y="424" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">   永远走不到</text>
+
+  <rect x="480" y="306" width="204" height="130" fill="#fff4e6" stroke="#ffc078" stroke-width="1.5" rx="4"/>
+  <text x="494" y="328" font-weight="bold" fill="#e8590c" font-size="11" text-anchor="start">switch</text>
+  <text x="494" y="352" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">switch (kind) {</text>
+  <text x="494" y="370" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#2f9e44" text-anchor="start">case 'a': run()</text>
+  <text x="494" y="388" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">default: // 红</text>
+  <text x="494" y="406" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">  none()</text>
+  <text x="494" y="424" font-size="9" font-family="ui-monospace,Menlo,monospace" fill="#c92a2a" text-anchor="start">}  从未执行</text>
+
+  <text x="40" y="460" fill="#495057" font-size="11" text-anchor="start">补法：给每条红分支补一条用例——空数组测一遍、超长输入测一遍、null 测一遍</text>
+  <text x="40" y="480" fill="#868e96" font-size="10" text-anchor="start">别追 100%：追不到的高覆盖常常是靠空断言刷出来的，重点看漏掉的那几个分支写了什么</text>
+</svg>
